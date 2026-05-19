@@ -7,6 +7,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const baseUrl = 'https://fontainesaintmichel.com';
   const zhUrl = `${baseUrl}/cookie-settings`;
   const enUrl = `${baseUrl}/en/cookie-settings`;
