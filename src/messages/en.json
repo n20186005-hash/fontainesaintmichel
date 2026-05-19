@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "title": "Fontaine Saint-Michel | Iconic Paris Fountain - Visitor Guide",
+    "description": "Complete guide to Fontaine Saint-Michel in Paris. Learn about this iconic 19th-century fountain, its history, architecture, and visiting information near Latin Quarter."
+  },
+  "header": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "map": "Map",
+    "backToHome": "Back to Home"
+  },
+  "hero": {
+    "title": "Fontaine Saint-Michel",
+    "subtitle": "Paris's Majestic 19th-Century Fountain & Architectural Masterpiece",
+    "rating": "4.4(7,853)",
+    "reviewCount": "7,853 reviews",
+    "type": "Historic Fountain · Public Monument",
+    "openMaps": "View Location"
+  },
+  "intro": {
+    "title": "Discover Fontaine Saint-Michel",
+    "description": "Standing proudly at the intersection of Boulevard Saint-Michel and Place Saint-Michel, the Fontaine Saint-Michel is one of Paris's most recognizable monuments. Built between 1858 and 1860 under the direction of architect Gabriel Davioud during Baron Haussmann's massive urban renovation of Paris.\n\nThe fountain's centerpiece is the impressive statue of Archangel Michael defeating the devil, created by sculptor Francisque Jouffroy. The monumental structure rises 26 meters high and features four Corinthian columns framing the central niche, with two allegorical figures representing Law and Justice on either side.\n\nLocated in the heart of the Latin Quarter, the fountain has served as a popular meeting point for Parisians and tourists alike for over 160 years. Its strategic position connects the Left Bank's vibrant student district with the historic Île de la Cité, making it an essential landmark in Paris's cultural landscape.\n\nThe fountain is beautifully illuminated at night, creating a magical atmosphere in the bustling Place Saint-Michel. It's freely accessible 24/7, making it perfect for both daytime exploration and evening strolls through Paris's enchanting streets.",
+    "visitGuide": {
+      "title": "Visit Tips",
+      "items": [
+        "Free to visit, accessible 24/7 with no restrictions",
+        "Best photographed in early morning or late evening to avoid crowds",
+        "Perfect starting point for exploring Latin Quarter and Boulevard Saint-Michel",
+        "Beautifully illuminated at night — ideal for evening photography"
+      ]
+    },
+    "alsoKnownAs": {
+      "title": "Highlights",
+      "items": [
+        "Built 1858-1860 by architect Gabriel Davioud during Haussmann's Paris renovation",
+        "Features 26-meter tall monumental structure with Corinthian columns",
+        "Central statue: Archangel Michael defeating the devil by Francisque Jouffroy",
+        "Allegorical figures of Law and Justice flank the main composition"
+      ]
+    }
+  },
+  "knowledge": {
+    "title": "The Story of Fontaine Saint-Michel",
+    "sections": [
+      {
+        "id": "history",
+        "title": "History & Construction",
+        "content": "The Fontaine Saint-Michel was commissioned as part of Baron Haussmann's massive urban renovation project in 19th-century Paris. Architect Gabriel Davioud designed this monumental fountain between 1858 and 1860, creating what would become one of the most iconic public monuments in the Latin Quarter.\n\nThe fountain was strategically placed at the entrance to Rue Danton, marking the boundary between the bustling commercial district and the historic Latin Quarter. Its construction represented the Second Empire's commitment to beautifying Paris with grand public works that combined artistic excellence with functional urban design."
+      },
+      {
+        "id": "architecture",
+        "title": "Architectural Significance",
+        "content": "Standing 26 meters tall, the Fontaine Saint-Michel is a masterpiece of Second Empire architecture. The structure features four majestic Corinthian columns that frame the central niche. The red marble columns contrast beautifully with the white stone facade, creating a striking visual impact.\n\nThe central niche houses the dramatic group sculpture of Archangel Michael vanquishing the devil, carved by Francisque Jouffroy. Two allegorical figures adorn the sides: 'Law' by Louis-Auguste Barrias on the left, and 'Justice' by Alexandre Falguière on the right. The fountain's basin collects water from four spouts shaped like marine monsters."
+      },
+      {
+        "id": "location",
+        "title": "The Latin Quarter Setting",
+        "content": "Place Saint-Michel has been a vibrant crossroads since ancient times. During the Roman era, this area marked the boundary between the Île de la Cité and the Left Bank. The fountain's location at the junction of Boulevard Saint-Michel and Quai Saint-Michel makes it a natural gathering point.\n\nThe surrounding area is filled with historic cafés, bookshops, and the Sorbonne University. The fountain has witnessed countless student protests, romantic meetings, and tourist encounters. It's also the starting point for the famous Boulevard Saint-Michel, which stretches all the way to the Luxembourg Gardens."
+      },
+      {
+        "id": "cultural",
+        "title": "Cultural Impact",
+        "content": "Fontaine Saint-Michel has appeared in numerous films, photographs, and works of literature. It serves as a symbol of the Latin Quarter's bohemian spirit and intellectual heritage. The fountain is particularly beloved by students from the nearby Sorbonne, who have adopted it as an unofficial meeting spot.\n\nDuring the 1968 student protests, the fountain area was a focal point of activity. Today, it remains a popular meeting place, with locals often saying 'Let's meet at Saint-Michel' — referring to the fountain. The monument's enduring appeal lies in its perfect integration into Paris's urban fabric, serving both as art and as a functional part of city life."
+      }
+    ]
+  },
+  "basicInfo": {
+    "title": "Basic Information",
+    "officialName": "Official Name",
+    "officialNameValue": "Fontaine Saint-Michel",
+    "type": "Monument Type",
+    "typeValue": "Historic Fountain, Public Monument, Second Empire Architecture",
+    "country": "Country",
+    "countryValue": "France",
+    "city": "City",
+    "cityValue": "Paris",
+    "googleRating": "Google Rating",
+    "googleRatingValue": "4.4/5 (7,853)",
+    "phone": "Phone",
+    "address": "Address",
+    "addressValue": "Pl. Saint-Michel, 75005 Paris, France"
+  },
+  "hours": {
+    "title": "Visiting Information",
+    "park": "Access",
+    "parkTime": "Free access 24/7, no restrictions",
+    "bestTime": "Best Time to Visit",
+    "bestTimeSpring": "Morning (8-10 AM): Soft light, fewer crowds for photos",
+    "bestTimeSummer": "Evening (8-10 PM): Beautiful illumination, pleasant for night walks",
+    "bestTimeAutumn": "Afternoon (2-4 PM): Golden hour light, comfortable temperature",
+    "bestTimeWinter": "Midday (11 AM-2 PM): Best natural light, less crowded",
+    "tip": "Beautifully illuminated after sunset — perfect for evening photography"
+  },
+  "tickets": {
+    "title": "Ticket Information",
+    "park": "Fountain Viewing",
+    "parkPrice": "Completely free, no ticket required",
+    "info": "Additional Information",
+    "infoDesc": "As a public monument, Fontaine Saint-Michel is freely accessible. No guided tours are offered on-site. For more information about the fountain's history and architecture, please refer to official Paris tourism resources."
+  },
+  "transport": {
+    "title": "How to Get Here",
+    "fromAirport": "From Charles de Gaulle Airport (CDG)",
+    "fromAirportDesc": "Take RER B direct to 'Saint-Michel Notre-Dame' station (approx. 45 min, €11.80). The fountain is right outside the station.",
+    "fromOrly": "From Orly Airport (ORY)",
+    "fromOrlyDesc": "Take Orlyval + RER B to 'Saint-Michel Notre-Dame' station (approx. 60 min, €14.10). The fountain is right outside the station.",
+    "fromCenter": "From Notre-Dame Cathedral",
+    "fromCenterDesc": "Walk 5 minutes from Notre-Dame across Petit Pont to Boulevard Saint-Michel. The fountain is impossible to miss at the intersection.",
+    "fromStation": "From Saint-Michel Notre-Dame Station",
+    "fromStationDesc": "The station is right next to the fountain. Served by RER B, RER C, and Metro Line 10. Exit following 'Sortie Place Saint-Michel' signs.",
+    "publicTransport": "Public Transport",
+    "publicTransportDesc": "Metro Line 10 to 'Cluny - La Sorbonne' (3 min walk) or 'Odéon' (5 min walk). RER B/C to 'Saint-Michel Notre-Dame' (direct access).",
+    "walking": "Walking Tour",
+    "walkingDesc": "Perfect starting point for Latin Quarter exploration — walk to Sorbonne (3 min), Shakespeare & Company (5 min), Panthéon (10 min).",
+    "driving": "Driving & Parking",
+    "drivingDesc": "Limited parking in area. Recommended to use public transport. The area is pedestrian-friendly with many attractions within walking distance."
+  },
+  "route": {
+    "title": "Recommended Walking Route",
+    "overview": "Start at Fontaine Saint-Michel, walk to Shakespeare & Company (5 min), continue to Notre-Dame (5 min), cross to Île de la Cité, visit Sainte-Chapelle (10 min), then explore Latin Quarter's narrow streets and end at Luxembourg Gardens (15 min). Total walking time: about 2-3 hours including breaks.",
+    "steps": [
+      "Start at Fontaine Saint-Michel, admire the 26m tall monumental structure",
+      "Walk along Boulevard Saint-Michel to Shakespeare & Company bookstore (5 minutes)",
+      "Browse the famous English-language bookstore, soak in literary atmosphere",
+      "Continue to Notre-Dame Cathedral via Petit Pont (5 minutes)",
+      "Admire Notre-Dame's facade (exterior view due to reconstruction)",
+      "Cross back to Left Bank, walk along Quai de Montebello",
+      "Visit Sainte-Chapelle on Île de la Cité (10 minutes from Notre-Dame)",
+      "Return to Latin Quarter, explore Rue de la Huchette",
+      "Stop at a traditional café on Place de la Sorbonne",
+      "End at Luxembourg Gardens, relax and enjoy the scenery"
+    ]
+  },
+  "photoSpots": {
+    "title": "Photo Spots",
+    "spots": [
+      {
+        "name": "Front View from Place",
+        "desc": "Classic angle capturing the full 26m height with Corinthian columns and central niche"
+      },
+      {
+        "name": "Side Angle with Boulevard",
+        "desc": "Capture the fountain with bustling Boulevard Saint-Michel, showing its urban context"
+      },
+      {
+        "name": "Night Illumination",
+        "desc": "Evening shot when the fountain is beautifully lit, creating dramatic shadows and golden glow"
+      },
+      {
+        "name": "Detail of Archangel Michael",
+        "desc": "Close-up of the central sculpture showing Archangel Michael defeating the devil"
+      },
+      {
+        "name": "With Place Saint-Michel",
+        "desc": "Wide angle showing the fountain within the lively square, capturing Parisian street life"
+      }
+    ]
+  },
+  "hotels": {
+    "title": "Accommodation Areas",
+    "hotels": [
+      {
+        "name": "Boutique Hotels in Latin Quarter",
+        "desc": "Located in the heart of Latin Quarter, walking distance to the fountain and major attractions, elegant and quiet environment",
+        "price": "~€150-250/night"
+      },
+      {
+        "name": "Hotels in Saint-Germain Area",
+        "desc": "Near Saint-Germain-des-Prés, convenient transportation, surrounded by cafés and bookstores",
+        "price": "~€120-200/night"
+      },
+      {
+        "name": "Budget Chain Hotels",
+        "desc": "Affordable prices, complete infrastructure, suitable for budget travelers",
+        "price": "~€80-120/night"
+      },
+      {
+        "name": "Apartment Rentals",
+        "desc": "Experience authentic Parisian life, choose apartments in Latin Quarter or Saint-Germain area",
+        "price": "~€70-150/night"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Fontaine Saint-Michel - Paris's Iconic Fountain",
+    "captions": [
+      "Fountain Full View",
+      "Archangel Michael Statue",
+      "Corinthian Columns Detail",
+      "Night Illumination",
+      "Law and Justice Statues",
+      "Place Saint-Michel",
+      "Fountain Basin",
+      "Boulevard View"
+    ],
+    "viewAll": "View on Google Maps",
+    "showAll": "View All Photos",
+    "showLess": "Show Less"
+  },
+  "reviews": {
+    "title": "Visitor Reviews",
+    "declaration": "Visitor feedback can be viewed via Google Maps (external link).",
+    "moreReviews": "View more reviews on Google Maps",
+    "items": [
+      {
+        "name": "Marie Laurent",
+        "date": "May 2026",
+        "rating": 5,
+        "text": "Absolutely stunning fountain! The detail on Archangel Michael is incredible. Perfect meeting point in the Latin Quarter, and beautifully lit at night."
+      },
+      {
+        "name": "John Anderson",
+        "date": "April 2026",
+        "rating": 5,
+        "text": "A magnificent piece of 19th-century architecture. The location is perfect for starting a walking tour of the Left Bank. Don't miss it!"
+      },
+      {
+        "name": "Yuki Tanaka",
+        "date": "March 2026",
+        "rating": 4,
+        "text": "Beautiful fountain with rich history. It gets crowded during the day, but the night view with illumination is magical. Great photo spot!"
+      },
+      {
+        "name": "Sophie Martin",
+        "date": "February 2026",
+        "rating": 5,
+        "text": "As a local, I love meeting friends at 'Saint-Michel.' The fountain is iconic and the surrounding area is full of life — great cafés and bookshops everywhere."
+      }
+    ]
+  },
+  "mapSection": {
+    "title": "How to Get Here",
+    "subtitle": "Pl. Saint-Michel, 75005 Paris, France",
+    "openMaps": "View on Google Maps"
+  },
+  "footer": {
+    "rights": "© 2026 Fontaine Saint-Michel Independent Tourism Research Association · All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Settings",
+    "officialResourcesTitle": "Related Resources & Information",
+    "officialLinks": {
+      "paris": "Paris City",
+      "culture": "French Culture",
+      "iledefrance": "Île-de-France Region",
+      "visitparisregion": "Visit Paris Region",
+      "servicepublic": "French Public Service"
+    },
+    "disclaimer": "This website is an independent third-party tourist information project. We are not affiliated with the local government or any other official institutions."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: May 2026",
+    "sections": [
+      {
+        "heading": "1. Information Collection",
+        "content": "We generally do not actively collect personally identifiable information from users. Any information provided by you through contact forms or emails will be kept strictly confidential."
+      },
+      {
+        "heading": "2. Use of Information",
+        "content": "The information we collect is used solely to provide, maintain, and improve our services, and to communicate with you. We do not sell or share your personal information with third parties for marketing purposes."
+      },
+      {
+        "heading": "3. Cookies and Tracking",
+        "content": "We use cookies and similar tracking technologies to track the activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      },
+      {
+        "heading": "4. Data Security",
+        "content": "The security of your data is important to us. We use commercially acceptable means to protect your Personal Data, though no method of transmission over the Internet is 100% secure."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: May 2026",
+    "sections": [
+      {
+        "heading": "1. Acceptance of Terms",
+        "content": "By accessing and using this website, you agree to be bound by these terms of service. If you disagree with any part of the terms, you may not access the service."
+      },
+      {
+        "heading": "2. Use of Service",
+        "content": "This website is an independent third-party tourist information project. The information provided is for general informational purposes only. You agree to use the site responsibly and lawfully."
+      },
+      {
+        "heading": "3. Intellectual Property",
+        "content": "All content on this website, including texts, images, and logos, is the property of the website owner unless otherwise stated. Unauthorized use, reproduction, or distribution is strictly prohibited."
+      },
+      {
+        "heading": "4. Limitation of Liability",
+        "content": "We shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use this website or the information contained herein."
+      }
+    ]
+  },
+  "cookieSettings": {
+    "title": "Cookie Settings",
+    "description": "Manage your cookie preferences.",
+    "essential": {
+      "title": "Essential Cookies",
+      "description": "Required for basic website functionality.",
+      "badge": "Always active"
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "description": "Help us understand how visitors interact with the site."
+    },
+    "marketing": {
+      "title": "Marketing Cookies",
+      "description": "Used to track visitors across websites."
+    },
+    "save": "Save Preferences",
+    "saved": "Preferences saved!"
+  },
+  "officialManagement": {
+    "title": "About Fontaine Saint-Michel",
+    "text": "The Fontaine Saint-Michel is a monumental public fountain located in Place Saint-Michel, 5th arrondissement of Paris. Built between 1858 and 1860 by architect Gabriel Davioud, it stands as one of the most iconic monuments of the Latin Quarter.\n\nThe fountain features a dramatic sculpture of Archangel Michael defeating the devil, flanked by allegorical figures of Law and Justice. At 26 meters tall with its distinctive Corinthian columns, it has been a beloved meeting point and photographic subject for over 160 years."
+  },
+  "recommendations": {
+    "title": "Discover More",
+    "attractionsTitle": "Nearby Attractions",
+    "toursTitle": "Recommended Tours & Activities",
+    "attractions": [
+      {"name": "Notre-Dame Cathedral", "url": "https://www.paris.fr/"},
+      {"name": "Shakespeare & Company", "url": "https://www.shakespeareandcompany.com/"},
+      {"name": "Sorbonne University", "url": "https://www.sorbonne-universite.fr/"},
+      {"name": "Luxembourg Gardens", "url": "https://www.senat.fr/"}
+    ],
+    "tours": [
+      {"name": "Latin Quarter Walking Tour", "url": "https://parisjetaime.com/"},
+      {"name": "Seine River Cruise", "url": "https://www.bateaux-parisiens.com/"},
+      {"name": "Île de la Cité Tour", "url": "https://www.paris.fr/"},
+      {"name": "Latin Quarter Food Tour", "url": "https://www.tripadvisor.com/"}
+    ]
+  }
+}

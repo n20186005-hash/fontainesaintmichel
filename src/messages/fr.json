@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "title": "Fontaine Saint-Michel | Monument Emblématique de Paris - Guide de Visite",
+    "description": "Guide complet de la Fontaine Saint-Michel à Paris. Découvrez ce monument emblématique du 19ème siècle, son histoire, son architecture et les informations de visite près du Quartier Latin."
+  },
+  "header": {
+    "home": "Accueil",
+    "gallery": "Galerie",
+    "reviews": "Avis",
+    "map": "Carte",
+    "backToHome": "Retour à l'accueil"
+  },
+  "hero": {
+    "title": "Fontaine Saint-Michel",
+    "subtitle": "Magnifique Fontaine Parisienne du 19ème Siècle & Chef-d'œuvre Architectural",
+    "rating": "4.4(7 853)",
+    "reviewCount": "7 853 avis",
+    "type": "Fontaine Historique · Monument Public",
+    "openMaps": "Voir l'emplacement"
+  },
+  "intro": {
+    "title": "Découvrez la Fontaine Saint-Michel",
+    "description": "S'élevant fièrement à l'intersection du Boulevard Saint-Michel et de la Place Saint-Michel, la Fontaine Saint-Michel est l'un des monuments les plus reconnaissables de Paris. Construite entre 1858 et 1860 sous la direction de l'architecte Gabriel Davioud lors de la massive rénovation urbaine du Paris de Haussmann.\n\nLe centre de la fontaine est orné de la impressionnante statue de l'archange Michel terrassant le diable, créée par le sculpteur Francisque Jouffroy. La structure monumentale s'élève à 26 mètres de haut et presente quatre colonnes corinthiennes encadrant la niche centrale, avec deux figures allégoriques représentant la Loi et la Justice de chaque côté.\n\nSituée au cœur du Quartier Latin, la fontaine sert de point de rencontre populaire pour les Parisiens et les touristes depuis plus de 160 ans. Sa position stratégique relie le vibrant quartier étudiant de la Rive Gauche à l'historique Île de la Cité, faisant d'elle un monument essentiel du paysage culturel de Paris.\n\nLa fontaine est magnifiquement éclairée la nuit, créant une atmosphère magique sur la place Saint-Michel. L'accès est gratuit 24h/24 et 7j/7, ce qui en fait un lieu parfait pour l'exploration en journée et les promenades nocturnes dans les rues enchantées de Paris.",
+    "visitGuide": {
+      "title": "Conseils de Visite",
+      "items": [
+        "Visite gratuite, accessible 24h/24 et 7j/7 sans restriction",
+        "Meilleure lumière pour les photos en début de matinée ou en fin de soirée pour éviter la foule",
+        "Point de départ parfait pour explorer le Quartier Latin et le Boulevard Saint-Michel",
+        "Magnifiquement éclairée la nuit — idéale pour la photographie nocturne"
+      ]
+    },
+    "alsoKnownAs": {
+      "title": "Points Fortes",
+      "items": [
+        "Construite de 1858 à 1860 par l'architecte Gabriel Davioud lors de la rénovation de Paris par Haussmann",
+        "Structure monumentale de 26 mètres de haut avec des colonnes corinthiennes",
+        "Statue centrale : l'archange Michel terrassant le diable par Francisque Jouffroy",
+        "Figures allégoriques de la Loi et de la Justice flanquant la composition principale"
+      ]
+    }
+  },
+  "knowledge": {
+    "title": "L'Histoire de la Fontaine Saint-Michel",
+    "sections": [
+      {
+        "id": "history",
+        "title": "Histoire et Construction",
+        "content": "La Fontaine Saint-Michel a été commandée dans le cadre du projet massif de rénovation urbaine du baron Haussmann au Paris du 19ème siècle. L'architecte Gabriel Davioud a conçu cette fontaine monumentale entre 1858 et 1860, créant ce qui allait devenir l'un des monuments publics les plus emblématiques du Quartier Latin.\n\nLa fontaine a été stratégiquement placée à l'entrée de la rue Danton, marquant la limite entre le quartier commercial animé et le historique Quartier Latin. Sa construction représentait l'engagement du Second Empire à embellir Paris avec de grands travaux publics alliant excellence artistique et conception urbaine fonctionnelle."
+      },
+      {
+        "id": "architecture",
+        "title": "Importance Architecturale",
+        "content": "S'élevant à 26 mètres de haut, la Fontaine Saint-Michel est un chef-d'œuvre de l'architecture du Second Empire. La structure présente quatre majestueuses colonnes corinthiennes qui encadrent la niche centrale. Les colonnes en marbre rouge contrastent magnifiquement avec la façade en pierre blanche, créant un impact visuel frappant.\n\nLa niche centrale abrite le groupe sculptural dramatique de l'archange Michel terrassant le diable, sculpté par Francisque Jouffroy. Deux figures allégoriques ornent les côtés : « La Loi » par Louis-Auguste Barrias à gauche, et « La Justice » par Alexandre Falguière à droite. Le bassin de la fontaine recueille l'eau de quatre gargouilles en forme de monstres marins."
+      },
+      {
+        "id": "location",
+        "title": "Le Cadre du Quartier Latin",
+        "content": "La Place Saint-Michel est un carrefour animé depuis l'Antiquité. À l'époque romaine, cette zone marquait la limite entre l'Île de la Cité et la Rive Gauche. L'emplacement de la fontaine au carrefour du Boulevard Saint-Michel et du Quai Saint-Michel en fait un point de rassemblement naturel.\n\nLes environs sont remplis de cafés historiques, de librairies et de l'Université de la Sorbonne. La fontaine a été le témoin d'innombrables manifestations étudiantes, de rencontres romantiques et de découvertes touristiques. C'est aussi le point de départ du célèbre Boulevard Saint-Michel, qui s'étend jusqu'aux Jardins du Luxembourg."
+      },
+      {
+        "id": "cultural",
+        "title": "Impact Culturel",
+        "content": "La Fontaine Saint-Michel est apparue dans de nombreux films, photographies et œuvres littéraires. Elle sert de symbole à l'esprit bohème et au patrimoine intellectuel du Quartier Latin. La fontaine est particulièrement appréciée des étudiants de la proche Sorbonne, qui l'ont adoptée comme lieu de rencontre officieux.\n\nLors des manifestations étudiantes de 1968, la zone de la fontaine était un point focal d'activité. Aujourd'hui, c'est toujours un lieu de rencontre populaire, les locaux disant souvent « Rendez-vous à Saint-Michel » — faisant référence à la fontaine. L'attrait durable du monument réside dans son intégration parfaite dans le tissu urbain de Paris, servant à la fois d'œuvre d'art et de partie fonctionnelle de la vie citadine."
+      }
+    ]
+  },
+  "basicInfo": {
+    "title": "Informations de Base",
+    "officialName": "Nom Officiel",
+    "officialNameValue": "Fontaine Saint-Michel",
+    "type": "Type de Monument",
+    "typeValue": "Fontaine Historique, Monument Public, Architecture du Second Empire",
+    "country": "Pays",
+    "countryValue": "France",
+    "city": "Ville",
+    "cityValue": "Paris",
+    "googleRating": "Note Google",
+    "googleRatingValue": "4.4/5 (7 853)",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "addressValue": "Pl. Saint-Michel, 75005 Paris, France"
+  },
+  "hours": {
+    "title": "Informations de Visite",
+    "park": "Accès",
+    "parkTime": "Accès gratuit 24h/24 et 7j/7, sans restriction",
+    "bestTime": "Meilleur Moment pour Visiter",
+    "bestTimeSpring": "Matin (8h-10h) : Lumière douce, moins de monde pour les photos",
+    "bestTimeSummer": "Soirée (20h-22h) : Belle illumination, agréable pour les promenades nocturnes",
+    "bestTimeAutumn": "Après-midi (14h-16h) : Lumière dorée, température confortable",
+    "bestTimeWinter": "Midi (11h-14h) : Meilleure lumière naturelle, moins de monde",
+    "tip": "Magnifiquement éclairée après le coucher du soleil — parfaite pour la photographie nocturne"
+  },
+  "tickets": {
+    "title": "Informations Billets",
+    "park": "Vue de la Fontaine",
+    "parkPrice": "Entièrement gratuit, aucun billet requis",
+    "info": "Informations Complémentaires",
+    "infoDesc": "En tant que monument public, la Fontaine Saint-Michel est accessible gratuitement. Aucune visite guidée n'est proposée sur place. Pour plus d'informations sur l'histoire et l'architecture de la fontaine, veuillez consulter les ressources officielles du tourisme à Paris."
+  },
+  "transport": {
+    "title": "Comment Venir",
+    "fromAirport": "Depuis l'Aéroport Charles de Gaulle (CDG)",
+    "fromAirportDesc": "Prenez le RER B direct jusqu'à la station « Saint-Michel Notre-Dame » (environ 45 min, 11,80 €). La fontaine est juste devant la station.",
+    "fromOrly": "Depuis l'Aéroport d'Orly (ORY)",
+    "fromOrlyDesc": "Prenez Orlyval + RER B jusqu'à la station « Saint-Michel Notre-Dame » (environ 60 min, 14,10 €). La fontaine est juste devant la station.",
+    "fromCenter": "Depuis la Cathédrale Notre-Dame",
+    "fromCenterDesc": "Marchez 5 minutes depuis Notre-Dame en traversant le Petit Pont jusqu'au Boulevard Saint-Michel. La fontaine est impossible à manquer à l'intersection.",
+    "fromStation": "Depuis la Station Saint-Michel Notre-Dame",
+    "fromStationDesc": "La station est juste à côté de la fontaine. Desservie par le RER B, le RER C et la ligne 10 du métro. Sortir en suivant les panneaux « Sortie Place Saint-Michel ».",
+    "publicTransport": "Transports en Commun",
+    "publicTransportDesc": "Métro ligne 10 jusqu'à « Cluny - La Sorbonne » (3 min à pied) ou « Odéon » (5 min à pied). RER B/C jusqu'à « Saint-Michel Notre-Dame » (accès direct).",
+    "walking": "Visite à Pied",
+    "walkingDesc": "Point de départ parfait pour explorer le Quartier Latin — marchez jusqu'à la Sorbonne (3 min), Shakespeare & Company (5 min), le Panthéon (10 min).",
+    "driving": "Voiture et Stationnement",
+    "drivingDesc": "Stationnement limité dans le quartier. Recommandé d'utiliser les transports en commun. La zone est piétonne avec de nombreuses attractions à distance de marche."
+  },
+  "route": {
+    "title": "Itinéraire de Marche Recommandé",
+    "overview": "Commencez à la Fontaine Saint-Michel, marchez jusqu'à Shakespeare & Company (5 min), continuez jusqu'à Notre-Dame (5 min), traversez vers l'Île de la Cité, visitez la Sainte-Chapelle (10 min), puis explorez les ruelles du Quartier Latin et terminez aux Jardins du Luxembourg (15 min). Temps de marche total : environ 2-3 heures avec pauses.",
+    "steps": [
+      "Commencez à la Fontaine Saint-Michel, admirez la structure monumentale de 26m de haut",
+      "Marchez le long du Boulevard Saint-Michel jusqu'à la librairie Shakespeare & Company (5 minutes)",
+      "Parcourez la célèbre librairie en anglais, imprégnez-vous de l'atmosphère littéraire",
+      "Continuez jusqu'à la Cathédrale Notre-Dame via le Petit Pont (5 minutes)",
+      "Admirez la façade de Notre-Dame (vue extérieure en raison de la reconstruction)",
+      "Retraversez vers la Rive Gauche, marchez le long du Quai de Montebello",
+      "Visitez la Sainte-Chapelle sur l'Île de la Cité (10 minutes depuis Notre-Dame)",
+      "Retournez au Quartier Latin, explorez la rue de la Huchette",
+      "Arrêtez-vous dans un café traditionnel sur la Place de la Sorbonne",
+      "Terminez aux Jardins du Luxembourg, détendez-vous et profitez du paysage"
+    ]
+  },
+  "photoSpots": {
+    "title": "Lieux de Photo",
+    "spots": [
+      {
+        "name": "Vue de Face depuis la Place",
+        "desc": "Angle classique capturant la hauteur totale de 26m avec les colonnes corinthiennes et la niche centrale"
+      },
+      {
+        "name": "Angle Latéral avec le Boulevard",
+        "desc": "Capturez la fontaine avec le Boulevard Saint-Michel animé, montrant son contexte urbain"
+      },
+      {
+        "name": "Illumination Nocturne",
+        "desc": "Photo de nuit quand la fontaine est magnifiquement éclairée, créant des ombres dramatiques et un éclat doré"
+      },
+      {
+        "name": "Détail de l'Archange Michel",
+        "desc": "Gros plan sur la sculpture centrale montrant l'archange Michel terrassant le diable"
+      },
+      {
+        "name": "Avec la Place Saint-Michel",
+        "desc": "Grand angle montrant la fontaine dans la place animée, capturant la vie de rue parisienne"
+      }
+    ]
+  },
+  "hotels": {
+    "title": "Zones d'Hébergement",
+    "hotels": [
+      {
+        "name": "Hôtels Boutique dans le Quartier Latin",
+        "desc": "Situés au cœur du Quartier Latin, à distance de marche de la fontaine et des attractions majeures, environnement élégant et calme",
+        "price": "~150-250€/nuit"
+      },
+      {
+        "name": "Hôtels dans le Quartier Saint-Germain",
+        "desc": "Près de Saint-Germain-des-Prés, transports pratiques, entouré de cafés et de librairies",
+        "price": "~120-200€/nuit"
+      },
+      {
+        "name": "Hôtels Chains Économiques",
+        "desc": "Prix abordables, infrastructure complète, adaptés aux voyageurs budget",
+        "price": "~80-120€/nuit"
+      },
+      {
+        "name": "Locations d'Appartements",
+        "desc": "Découvrez la vraie vie parisienne, choisissez des appartements dans le Quartier Latin ou Saint-Germain",
+        "price": "~70-150€/nuit"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Galerie Photo",
+    "subtitle": "Fontaine Saint-Michel - Monument Emblématique de Paris",
+    "captions": [
+      "Vue Complète de la Fontaine",
+      "Statue de l'Archange Michel",
+      "Détail des Colonnes Corinthiennes",
+      "Illumination Nocturne",
+      "Statues de la Loi et de la Justice",
+      "Place Saint-Michel",
+      "Bassin de la Fontaine",
+      "Vue depuis le Boulevard"
+    ],
+    "viewAll": "Voir sur Google Maps",
+    "showAll": "Voir Toutes les Photos",
+    "showLess": "Voir Moins"
+  },
+  "reviews": {
+    "title": "Avis des Visiteurs",
+    "declaration": "Les commentaires des visiteurs peuvent être consultés via Google Maps (lien externe).",
+    "moreReviews": "Voir plus d'avis sur Google Maps",
+    "items": [
+      {
+        "name": "Marie Laurent",
+        "date": "Mai 2026",
+        "rating": 5,
+        "text": "Fontaine absolument magnifique ! Le détail sur l'archange Michel est incroyable. Point de rencontre parfait dans le Quartier Latin, et magnifiquement éclairée la nuit."
+      },
+      {
+        "name": "John Anderson",
+        "date": "Avril 2026",
+        "rating": 5,
+        "text": "Un magnifique exemple d'architecture du 19ème siècle. L'emplacement est parfait pour commencer une visite à pied de la Rive Gauche. À ne pas manquer !"
+      },
+      {
+        "name": "Yuki Tanaka",
+        "date": "Mars 2026",
+        "rating": 4,
+        "text": "Belle fontaine avec une histoire riche. C'est bondé pendant la journée, mais la vue nocturne avec l'éclairage est magique. Super spot photo !"
+      },
+      {
+        "name": "Sophie Martin",
+        "date": "Février 2026",
+        "rating": 5,
+        "text": "En tant que locale, j'adore rencontrer des amis à « Saint-Michel ». La fontaine est emblématique et le quartier environnant est plein de vie — super cafés et librairies partout."
+      }
+    ]
+  },
+  "mapSection": {
+    "title": "Comment Venir",
+    "subtitle": "Pl. Saint-Michel, 75005 Paris, France",
+    "openMaps": "Voir sur Google Maps"
+  },
+  "footer": {
+    "rights": "© 2026 Association Indépendante de Recherche Touristique de la Fontaine Saint-Michel · Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "cookies": "Paramètres des Cookies",
+    "officialResourcesTitle": "Ressources et Informations Connexes",
+    "officialLinks": {
+      "paris": "Ville de Paris",
+      "culture": "Culture Française",
+      "iledefrance": "Région Île-de-France",
+      "visitparisregion": "Visiter la Région Parisienne",
+      "servicepublic": "Service Public Français"
+    },
+    "disclaimer": "Ce site web est un projet d'information touristique tiers indépendant. Nous ne sommes affiliés à aucun gouvernement local ou autre institution officielle."
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : Mai 2026",
+    "sections": [
+      {
+        "heading": "1. Collecte d'Informations",
+        "content": "Nous ne collectons généralement pas activement d'informations personnellement identifiables auprès des utilisateurs. Toute information fournie par vous via des formulaires de contact ou des e-mails sera strictement confidentielle."
+      },
+      {
+        "heading": "2. Utilisation des Informations",
+        "content": "Les informations que nous collectons sont utilisées uniquement pour fournir, maintenir et améliorer nos services, et pour communiquer avec vous. Nous ne vendons ni ne partageons vos informations personnelles avec des tiers à des fins de marketing."
+      },
+      {
+        "heading": "3. Cookies et Suivi",
+        "content": "Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre site web et conserver certaines informations. Vous pouvez demander à votre navigateur de refuser tous les cookies ou d'indiquer quand un cookie est envoyé."
+      },
+      {
+        "heading": "4. Sécurité des Données",
+        "content": "La sécurité de vos données est importante pour nous. Nous utilisons des moyens commercialement acceptables pour protéger vos données personnelles, bien qu'aucune méthode de transmission sur Internet ne soit sûre à 100 %."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "lastUpdated": "Dernière mise à jour : Mai 2026",
+    "sections": [
+      {
+        "heading": "1. Acceptation des Conditions",
+        "content": "En accédant et en utilisant ce site web, vous acceptez d'être lié par ces conditions d'utilisation. Si vous n'êtes pas d'accord avec une partie quelconque des conditions, vous ne pouvez pas accéder au service."
+      },
+      {
+        "heading": "2. Utilisation du Service",
+        "content": "Ce site web est un projet d'information touristique tiers indépendant. Les informations fournies sont uniquement à des fins d'information générale. Vous acceptez d'utiliser le site de manière responsable et légale."
+      },
+      {
+        "heading": "3. Propriété Intellectuelle",
+        "content": "Tout le contenu de ce site web, y compris les textes, les images et les logos, est la propriété du propriétaire du site sauf indication contraire. L'utilisation, la reproduction ou la distribution non autorisées sont strictement interdites."
+      },
+      {
+        "heading": "4. Limitation de Responsabilité",
+        "content": "Nous ne serons pas tenus responsables des dommages directs, indirects, incidents ou consécutifs résultant de l'utilisation ou de l'incapacité d'utiliser ce site web ou les informations qu'il contient."
+      }
+    ]
+  },
+  "cookieSettings": {
+    "title": "Paramètres des Cookies",
+    "description": "Gérez vos préférences de cookies.",
+    "essential": {
+      "title": "Cookies Essentiels",
+      "description": "Nécessaires au fonctionnement de base du site web.",
+      "badge": "Toujours actif"
+    },
+    "analytics": {
+      "title": "Cookies Analytiques",
+      "description": "Nous aident à comprendre comment les visiteurs interagissent avec le site."
+    },
+    "marketing": {
+      "title": "Cookies Marketing",
+      "description": "Utilisés pour suivre les visiteurs à travers les sites web."
+    },
+    "save": "Enregistrer les Préférences",
+    "saved": "Préférences enregistrées !"
+  },
+  "officialManagement": {
+    "title": "À Propos de la Fontaine Saint-Michel",
+    "text": "La Fontaine Saint-Michel est une fontaine publique monumentale située sur la Place Saint-Michel, dans le 5ème arrondissement de Paris. Construite entre 1858 et 1860 par l'architecte Gabriel Davioud, elle se dresse comme l'un des monuments les plus emblématiques du Quartier Latin.\n\nLa fontaine présente une sculpture dramatique de l'archange Michel terrassant le diable, flanquée de figures allégoriques de la Loi et de la Justice. Avec ses 26 mètres de haut et ses distinctes colonnes corinthiennes, elle est un point de rencontre et un sujet photographique apprécié depuis plus de 160 ans."
+  },
+  "recommendations": {
+    "title": "Découvrir Plus",
+    "attractionsTitle": "Attractions à Proximité",
+    "toursTitle": "Visites et Activités Recommandées",
+    "attractions": [
+      {"name": "Cathédrale Notre-Dame", "url": "https://www.paris.fr/"},
+      {"name": "Shakespeare & Company", "url": "https://www.shakespeareandcompany.com/"},
+      {"name": "Université de la Sorbonne", "url": "https://www.sorbonne-universite.fr/"},
+      {"name": "Jardins du Luxembourg", "url": "https://www.senat.fr/"}
+    ],
+    "tours": [
+      {"name": "Visite à Pied du Quartier Latin", "url": "https://parisjetaime.com/"},
+      {"name": "Croisière sur la Seine", "url": "https://www.bateaux-parisiens.com/"},
+      {"name": "Visite de l'Île de la Cité", "url": "https://www.paris.fr/"},
+      {"name": "Tour Gastronomique du Quartier Latin", "url": "https://www.tripadvisor.com/"}
+    ]
+  }
+}
