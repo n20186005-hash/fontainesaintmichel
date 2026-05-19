@@ -317,22 +317,5 @@
   "officialManagement": {
     "title": "关于圣米歇尔喷泉",
     "text": "圣米歇尔喷泉（Fontaine Saint-Michel）是位于巴黎第五区圣米歇尔广场的纪念碑式公共喷泉。建于1858年至1860年间，由建筑师加布里埃尔·达维乌德建造，是拉丁区最具标志性的纪念碑之一。\n\n喷泉以大天使米歇尔击败魔鬼的戏剧性雕塑为特色，两侧是法律和正义的寓意雕像。高26米，拥有独特的科林斯柱，160多年来一直是深受喜爱的聚会地点和摄影主题。"
-  },
-  "recommendations": {
-    "title": "探索更多",
-    "attractionsTitle": "附近景点",
-    "toursTitle": "推荐行程与活动",
-    "attractions": [
-      {"name": "巴黎圣母院", "url": "https://www.paris.fr/"},
-      {"name": "莎士比亚书店", "url": "https://www.shakespeareandcompany.com/"},
-      {"name": "索邦大学", "url": "https://www.sorbonne-universite.fr/"},
-      {"name": "卢森堡花园", "url": "https://www.senat.fr/"}
-    ],
-    "tours": [
-      {"name": "拉丁区步行游览", "url": "https://parisjetaime.com/"},
-      {"name": "塞纳河游船", "url": "https://www.bateaux-parisiens.com/"},
-      {"name": "城岛tour", "url": "https://www.paris.fr/"},
-      {"name": "拉丁区美食之旅", "url": "https://www.tripadvisor.com/"}
-    ]
   }
 }

@@ -317,22 +317,5 @@
   "officialManagement": {
     "title": "À Propos de la Fontaine Saint-Michel",
     "text": "La Fontaine Saint-Michel est une fontaine publique monumentale située sur la Place Saint-Michel, dans le 5ème arrondissement de Paris. Construite entre 1858 et 1860 par l'architecte Gabriel Davioud, elle se dresse comme l'un des monuments les plus emblématiques du Quartier Latin.\n\nLa fontaine présente une sculpture dramatique de l'archange Michel terrassant le diable, flanquée de figures allégoriques de la Loi et de la Justice. Avec ses 26 mètres de haut et ses distinctes colonnes corinthiennes, elle est un point de rencontre et un sujet photographique apprécié depuis plus de 160 ans."
-  },
-  "recommendations": {
-    "title": "Découvrir Plus",
-    "attractionsTitle": "Attractions à Proximité",
-    "toursTitle": "Visites et Activités Recommandées",
-    "attractions": [
-      {"name": "Cathédrale Notre-Dame", "url": "https://www.paris.fr/"},
-      {"name": "Shakespeare & Company", "url": "https://www.shakespeareandcompany.com/"},
-      {"name": "Université de la Sorbonne", "url": "https://www.sorbonne-universite.fr/"},
-      {"name": "Jardins du Luxembourg", "url": "https://www.senat.fr/"}
-    ],
-    "tours": [
-      {"name": "Visite à Pied du Quartier Latin", "url": "https://parisjetaime.com/"},
-      {"name": "Croisière sur la Seine", "url": "https://www.bateaux-parisiens.com/"},
-      {"name": "Visite de l'Île de la Cité", "url": "https://www.paris.fr/"},
-      {"name": "Tour Gastronomique du Quartier Latin", "url": "https://www.tripadvisor.com/"}
-    ]
   }
 }

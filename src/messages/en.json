@@ -317,22 +317,5 @@
   "officialManagement": {
     "title": "About Fontaine Saint-Michel",
     "text": "The Fontaine Saint-Michel is a monumental public fountain located in Place Saint-Michel, 5th arrondissement of Paris. Built between 1858 and 1860 by architect Gabriel Davioud, it stands as one of the most iconic monuments of the Latin Quarter.\n\nThe fountain features a dramatic sculpture of Archangel Michael defeating the devil, flanked by allegorical figures of Law and Justice. At 26 meters tall with its distinctive Corinthian columns, it has been a beloved meeting point and photographic subject for over 160 years."
-  },
-  "recommendations": {
-    "title": "Discover More",
-    "attractionsTitle": "Nearby Attractions",
-    "toursTitle": "Recommended Tours & Activities",
-    "attractions": [
-      {"name": "Notre-Dame Cathedral", "url": "https://www.paris.fr/"},
-      {"name": "Shakespeare & Company", "url": "https://www.shakespeareandcompany.com/"},
-      {"name": "Sorbonne University", "url": "https://www.sorbonne-universite.fr/"},
-      {"name": "Luxembourg Gardens", "url": "https://www.senat.fr/"}
-    ],
-    "tours": [
-      {"name": "Latin Quarter Walking Tour", "url": "https://parisjetaime.com/"},
-      {"name": "Seine River Cruise", "url": "https://www.bateaux-parisiens.com/"},
-      {"name": "Île de la Cité Tour", "url": "https://www.paris.fr/"},
-      {"name": "Latin Quarter Food Tour", "url": "https://www.tripadvisor.com/"}
-    ]
   }
 }
