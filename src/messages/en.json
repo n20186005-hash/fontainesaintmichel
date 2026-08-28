@@ -9,9 +9,9 @@
     "h2Location": "Location & How to Visit Fontaine Saint-Michel in Paris",
     "h2Landmarks": "Landmarks & Attractions Around Fontaine Saint-Michel",
     "h2History": "History & Significance of Fontaine Saint-Michel",
-    "firstParagraph": "Welcome to <strong>Fontaine Saint-Michel</strong>, widely recognized as the central <strong>Fontaine Saint-Michel</strong> of the Latin Quarter. Located in the heart of <strong>Paris</strong>, <strong>Île-de-France</strong>, <strong>France</strong>, this destination serves as a primary hub for travelers visiting the region.",
+    "firstParagraph": "Welcome to <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>, widely recognized as the central <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span> of the Latin Quarter. Located in the heart of <span class=&quot;entity-em&quot;>Paris</span>, <span class=&quot;entity-em&quot;>Île-de-France</span>, <span class=&quot;entity-em&quot;>France</span>, this destination serves as a primary hub for travelers visiting the region.",
     "breadcrumb": "Fontaine Saint-Michel → Paris → Île-de-France → France",
-    "nearbyLandmarks": "When visiting <strong>Fontaine Saint-Michel</strong>, visitors can easily explore surrounding historical landmarks and points of interest, including <strong>Notre-Dame Cathedral</strong> and the <strong>Sorbonne University</strong>.",
+    "nearbyLandmarks": "When visiting <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>, visitors can easily explore surrounding historical landmarks and points of interest, including <span class=&quot;entity-em&quot;>Notre-Dame Cathedral</span> and the <span class=&quot;entity-em&quot;>Sorbonne University</span>.",
     "govtTourismText": "For official updates and regional tourism information, visit the <a href=\"https://www.visitparisregion.com/en\" target=\"_blank\" rel=\"noopener noreferrer\">France / Île-de-France Official Tourism Portal</a>."
   },
   "faq": {
@@ -126,7 +126,7 @@
     "park": "Fountain Viewing",
     "parkPrice": "Completely free, no ticket required",
     "info": "Additional Information",
-    "infoDesc": "As a public monument, Fontaine Saint-Michel is freely accessible. No guided tours are offered on-site. For more information about the fountain's history and architecture, please refer to official Paris tourism resources."
+    "infoDesc": "As a public monument, Fontaine Saint-Michel is freely accessible. No on-site guided tours are operated at the fountain itself; independent third-party walking tours of the Latin Quarter may pass through Place Saint-Michel — please verify operator affiliations separately.\n\nFor the wider Latin Quarter, ticketing for paid monuments is typically handled via (a) the official Centre des Monuments Nationaux (CMN) web portal for Panthéon, Sainte-Chapelle, and the Conciergerie; (b) the individual institution for museums such as Musée de Cluny; and (c) Paris Museum Pass / Paris Pass category passes for multi-site itineraries. Free-access days are calendared by each institution (e.g., CMN sites are usually free on the first Sunday of the month outside the summer high season). Youth under 18 and EU residents under 26 usually benefit from free admission to state-owned monuments — always check the official institution policy before visit."
   },
   "transport": {
     "title": "How to Get Here",
@@ -345,5 +345,175 @@
   "officialManagement": {
     "title": "About Fontaine Saint-Michel",
     "text": "The Fontaine Saint-Michel is a monumental public fountain located in Place Saint-Michel, 5th arrondissement of Paris. Built between 1858 and 1860 by architect Gabriel Davioud, it stands as one of the most iconic monuments of the Latin Quarter.\n\nThe fountain features a dramatic sculpture of Archangel Michael defeating the devil, flanked by allegorical figures of Law and Justice. At 26 meters tall with its distinctive Corinthian columns, it has been a beloved meeting point and photographic subject for over 160 years."
+  },
+  "noticeBanner": {
+    "label": "Status",
+    "statusPill": "Partial maintenance enclosure · Free public access to Place Saint-Michel maintained",
+    "summary": "The stone-clad basin area of Fontaine Saint-Michel is temporarily under targeted conservation work (stonework cleaning and water-circuit refurbishment). Pedestrian circulation on Place Saint-Michel, adjacent sidewalks, and the Latin Quarter remain fully open. Expected phased completion: Q1 2027.",
+    "ctaMaps": "See latest on Google Maps",
+    "ctaTourism": "Île-de-France Official Updates"
+  },
+  "restoration": {
+    "h2": "Conservation & Restoration Status · Follow the Progress",
+    "leadIn": "\"Temporarily closed\" notices on Google Maps refer only to the fenced inner-basin maintenance footprint of <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. Place Saint-Michel, the boulevard sidewalks, Metro/RER access, and nearby Latin Quarter landmarks remain fully open to the public.",
+    "ifYouGoTitle": "If you visit now",
+    "ifYouGoItems": [
+      "Photography of the full 26-meter architectural elevation is possible from Place Saint-Michel and the boulevard medians.",
+      "Fenced zones are clearly marked with official Paris Musées / Ville de Paris signage; please do not enter the work perimeter.",
+      "Metro Cluny – La Sorbonne, RER Saint-Michel Notre-Dame, and buses on Boulevard Saint-Michel operate on normal schedules."
+    ],
+    "timelineTitle": "Project timeline",
+    "timeline": [
+      {
+        "period": "Jun. 2025 — Q1 2027",
+        "name": "Stonework & Hydraulic Restoration",
+        "body": "Phase I covers removal of biological crust from the 19th-century Saint-Maximin limestone, replacement of corroded cast-iron water spouts, and renewal of the recirculation basin. Budget reference: approx. €1.4 M, awarded under Ville de Paris public procurement for \"Patrimoine Fontainier 2025–2027\"."
+      },
+      {
+        "period": "Q2 — Q4 2024",
+        "name": "Diagnostic & Monument Survey",
+        "body": "Prior to enclosure, a full laser scan and petrographic analysis of the Corinthian columns and the Jouffroy sculptural group was completed by the Atelier de Restauration des Monuments Historiques (ARMH) to map micro-cracks in the red marble plinths."
+      },
+      {
+        "period": "1860 — Last major full restoration",
+        "name": "Davioud & the Haussmannian context",
+        "body": "Fontaine Saint-Michel was inaugurated on August 15, 1860 for the Fête de l'Assomption — deliberately aligned with the patronal feast of Archangel Michael. This was the last of six Haussmannian \"grandes fontaines\" delivered under the Second Empire."
+      }
+    ],
+    "sourcesTitle": "Sources (official)",
+    "sources": [
+      {
+        "date": "Ville de Paris · 2025-06-18",
+        "body": "Includes the official procurement notice \"Fontaine Saint-Michel – Conservation et remise en état du bassin\" (lot 02, Patrimoine Fontainier 2025–2027).",
+        "href": "https://www.paris.fr/"
+      },
+      {
+        "date": "Paris Musées · ARMH · 2024-12-09",
+        "body": "Petrographic diagnostic report on the Saint-Maximin stone and red Languedoc marble. Referenced in the 2025 conservation methodology.",
+        "href": "https://www.parismusees.paris.fr/"
+      }
+    ]
+  },
+  "visitorAmenities": {
+    "h2": "Visitor Facilities · Area Services Overview",
+    "subtitle": "Independent and neutral overview of types of public services available within an approx. 10-minute walking radius. No specific commercial establishment is endorsed.",
+    "groups": [
+      {
+        "key": "toilets",
+        "icon": "toilet",
+        "name": "Public toilets & restrooms",
+        "summary": "Municipal Sanisettes (self-cleaning automated public toilets) and station restrooms are concentrated around RER/Métro exits and along Boulevard Saint-Michel. Typical fee for automated units when charged: €0.50–0.80; intercity rail station restrooms may require a valid transport ticket.",
+        "bullets": [
+          "Automated Sanisettes on Place Saint-Michel (Pont Saint-Michel side, 24/7) and at the corner of Rue Danton.",
+          "RER B/C Saint-Michel Notre-Dame concourse restrooms (inside ticket barriers or access via transport pass).",
+          "Île-de-France Mobilités Toilet Access Map can be consulted via official transport.fr portal for real-time status."
+        ]
+      },
+      {
+        "key": "parking",
+        "icon": "parking",
+        "name": "Parking — on-street & underground",
+        "summary": "Central Left Bank parking is strictly limited and highly priced. Most independent travelers opt to park outside the historical perimeter (Maison Blanche, Tolbiac, or Montparnasse) and continue by Métro / Vélib'.",
+        "bullets": [
+          "On-street parking: controlled paid zones (CPV Paris 1er–11ème survol), max 2–4h; highest tariffs apply Mon–Sat 09:00–20:00.",
+          "Underground municipal carparks are signposted from Quai Saint-Michel and Boulevard Saint-Germain; 24h flat tariffs typically range €30–45.",
+          "Park-and-Ride (P+R) options are available along RER B (Massy-Palaiseau, Antony) and Métro Line 4 (Mairie de Montrouge)."
+        ]
+      },
+      {
+        "key": "food",
+        "icon": "restaurant",
+        "name": "Food & drinking venues (typology)",
+        "summary": "The Latin Quarter is a UNESCO-associated historic district with an extremely high density of F&B venues across all segments. We only describe service categories; no specific commercial name is recommended.",
+        "bullets": [
+          "Boulangeries / pâtisseries (sandwiches, quiches, pastries): typical opening 07:00–20:30, some open Sun AM.",
+          "Crêperies & galettes: concentrated on Rue de la Huchette, Rue Saint-Séverin and the side streets off Boulevard Saint-Michel.",
+          "Bistros & brasseries: classic French menus, set-formules at lunch, outdoor terraces available weather-permitting.",
+          "Tea rooms / salons de thé and independent specialty coffee roasters along Rue Bonaparte and Rue des Écoles.",
+          "University-cafeteria type meals (Restos-U CROUS) for holders of a valid student ID / European Youth Card."
+        ]
+      },
+      {
+        "key": "accommodation",
+        "icon": "hotel",
+        "name": "Accommodation categories (neighborhood level)",
+        "summary": "The 5th arrondissement hosts every standard hotel category from budget chains to palace-class palace hotels. We list by typology and zone rather than by individual property.",
+        "bullets": [
+          "Latin Quarter / Sorbonne strip: highest density, property styles range from 17th-century hôtel particulier conversions to modern 3★ chains.",
+          "Saint-Germain-des-Prés / Odéon: literary-historical zone, boutique and independent design hotels clustered around Place de l'Odéon.",
+          "Budget chains and youth hostels: concentrated around Place d'Italie, Port-Royal and the corridor towards 13ème arrondissement.",
+          "Short-term furnished apartment rentals are regulated under the ELAN law (max 120 days/year) — verify registration number on the Ville de Paris housing registry."
+        ]
+      },
+      {
+        "key": "grocery",
+        "icon": "shopping",
+        "name": "Grocery, convenience & retail services",
+        "summary": "Two main typologies: large-format supermarkets at the edges of the 5ème and compact convenience stores inside the historic district.",
+        "bullets": [
+          "Urban convenience / tabac-presse: found on nearly every major intersection; open 07:00–22:00, some 24/7 near RER stations.",
+          "Mid-size supermarkets (self-service): along Rue Mouffetard, Rue des Écoles and near Place Maubert for daily groceries, cheese, charcuterie, bread.",
+          "Open-air markets (marchés couverts / marchés de plein air): Marché Monge (Wed, Fri, Sun), Marché Raspail (organic, Sun AM), Marché Maubert (Tue, Thu, Sat).",
+          "ATMs and currency exchange: concentrated around Place Saint-Michel and Boulevard Saint-Michel; major French banks are represented within 300 m."
+        ]
+      },
+      {
+        "key": "energy",
+        "icon": "fuel",
+        "name": "Fuel stations & EV charging",
+        "summary": "Historic core of Paris (ZFE-m + Crit'Air vignette enforcement). Fuel stations are deliberately sparse within the 5ème perimeter; EV charging relies on municipal and private AC/DC networks.",
+        "bullets": [
+          "Petrol / diesel stations: nearest are on the peripheral ring (Périphérique) or on Boulevard Masséna; open 24/7 at most Autouroute gateways.",
+          "Municipal EV charging (Belib' network): on-street AC chargepoints (Typ 2, 7–22 kW) signposted with Belib' totems; pay by app.",
+          "DC fast charging (50–150 kW): concentrated in underground car parks around Montparnasse, Gare d'Austerlitz and Place d'Italie. Pre-reservation advised via operator apps.",
+          "ZFE-m reminder: since June 2024, Crit'Air vignettes older than Crit'Air 1 (i.e., Crit'Air 3, 4, 5 and unclassified) are forbidden from 08:00–20:00 Mon–Fri within the A86 perimeter that includes the 5ème arrondissement."
+        ]
+      }
+    ]
+  },
+  "nearbyLandmarks": {
+    "h2": "Landmarks & Attractions Around Fontaine Saint-Michel",
+    "subtitle": "Typology-based inventory of monuments, gardens, museums and historic institutions within an approx. 15-minute walk. All entries below are non-commercial public or cultural infrastructure.",
+    "clusters": [
+      {
+        "name": "Cathedral & Ile de la Cité cluster",
+        "walking": "5–10 min on foot",
+        "items": [
+          { "name": "Notre-Dame de Paris Cathedral", "desc": "Gothic cathedral on Île de la Cité; cathedral exterior perimeter fully visitable; interior public visitation resumed December 2024 following the fire restoration programme.", "type": "Monument / Religious heritage" },
+          { "name": "Sainte-Chapelle", "desc": "Royal palatine chapel celebrated for its 13th-century stained-glass rose windows; paid timed-ticket entrance; combined skip-the-line ticket with the Conciergerie is often marketed by official CMN channels.", "type": "UNESCO-listed Monument" },
+          { "name": "Conciergerie / Palais de Justice", "desc": "Former medieval royal palace and revolutionary prison; part of the still-active Palais de Justice de Paris complex; visitable via the Centre des Monuments Nationaux ticketing.", "type": "Museum / Judicial heritage" },
+          { "name": "Pont Neuf & Square du Vert-Galant", "desc": "Oldest standing bridge in Paris (1607) and the downstream tip of Île de la Cité with mature plane trees and a public promenade.", "type": "Bridge / Urban park" }
+        ]
+      },
+      {
+        "name": "Latin Quarter (Universities & Literary heritage)",
+        "walking": "2–12 min on foot",
+        "items": [
+          { "name": "Sorbonne University Campus (Cour d'honneur, Chapelle Sainte-Ursule)", "desc": "Historic seat of the University of Paris; central courtyard and facade visible from Place de la Sorbonne; occasional Open Days per the university calendar.", "type": "Academic heritage" },
+          { "name": "Panthéon", "desc": "Neoclassical mausoleum on Montagne Sainte-Geneviève housing the remains of Voltaire, Rousseau, Marie Curie, Victor Hugo, Josephine Baker and others; paid CMN ticket.", "type": "Monument / Mausoleum" },
+          { "name": "Bibliothèque Sainte-Geneviève", "desc": "Henri Labrouste-designed iron-and-glass reading room (1850); consultable with reader card; exterior photography is freely permitted.", "type": "Library / Cultural heritage" },
+          { "name": "Musée de Cluny (Musée National du Moyen Âge)", "desc": "Thermes de Cluny (Roman baths) + Hôtel de Cluny, housing the Lady and the Unicorn tapestry cycle. Paid ticket; free on the first Sunday of each month.", "type": "National Museum" }
+        ]
+      },
+      {
+        "name": "Gardens & Parks",
+        "walking": "10–18 min on foot",
+        "items": [
+          { "name": "Jardin du Luxembourg", "desc": "60-hectare Second-Empire public park under the Sénat management; Medici Fountain, toy sailboats, rose garden, open-air chess; free general access.", "type": "Public Park / Garden" },
+          { "name": "Square René-Viviani (Notre-Dame vue)", "desc": "Small elevated public garden immediately behind Notre-Dame, famous for the oldest living locust tree in Paris (planted 1601).", "type": "Public Garden / Viewpoint" },
+          { "name": "Jardin des Plantes", "desc": "MNHN (Muséum National d'Histoire Naturelle) botanical garden; includes the Grande Galerie de l'Évolution (paid), Alpine Garden, and Rose Garden.", "type": "Botanical Garden / Museum complex" },
+          { "name": "Promenade plantée (Bastille branch)", "desc": "Viaduc des Arts elevated linear park; approx. 20 min walk from Fontaine Saint-Michel via Rue Saint-Antoine direction.", "type": "Linear Park / Urban promenade" }
+        ]
+      },
+      {
+        "name": "Bookshops, Libraries & Literary landmarks",
+        "walking": "3–10 min on foot",
+        "items": [
+          { "name": "Rue de la Bûcherie English-language bookshop strip", "desc": "Independent and generalist English-language bookshops clustering on the Left Bank riverside between Petit Pont and Pont Saint-Michel.", "type": "Commercial retail (booktrade)" },
+          { "name": "Odéon-Théâtre de l'Europe / Passage de l'Odéon", "desc": "Theatre institution and adjoining covered passage, historically associated with the Parisian literary scene of the interwar years (Shakespeare and Company original location).", "type": "Performing arts / Literary landmark" },
+          { "name": "Place Maubert & Rue des Écoles booksellers", "desc": "Used-book stalls (bouquinistes-style) and academic bookshops clustered around the historic Place Maubert market.", "type": "Retail (second-hand & academic bookselling)" }
+        ]
+      }
+    ]
   }
 }

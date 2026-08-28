@@ -1,6 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import Header from '@/components/Header';
+import NoticeBanner from '@/components/NoticeBanner';
 import Hero from '@/components/Hero';
+import RestorationUpdate from '@/components/RestorationUpdate';
 import Intro from '@/components/Intro';
 import BasicInfo from '@/components/BasicInfo';
 import HoursSection from '@/components/HoursSection';
@@ -13,6 +15,8 @@ import HotelsSection from '@/components/HotelsSection';
 import Gallery from '@/components/Gallery';
 import Reviews from '@/components/Reviews';
 import FAQSection from '@/components/FAQSection';
+import NearbyLandmarksSection from '@/components/NearbyLandmarksSection';
+import VisitorAmenitiesSection from '@/components/VisitorAmenitiesSection';
 import MapEmbed from '@/components/MapEmbed';
 import Footer from '@/components/Footer';
 
@@ -27,8 +31,10 @@ export default async function HomePage({
   return (
     <>
       <Header />
+      <NoticeBanner />
       <main>
         <Hero />
+        <RestorationUpdate />
         <Intro />
         <BasicInfo />
         <HoursSection />
@@ -41,6 +47,8 @@ export default async function HomePage({
         <Gallery />
         <Reviews />
         <FAQSection />
+        <NearbyLandmarksSection />
+        <VisitorAmenitiesSection />
         <MapEmbed />
       </main>
       <Footer />

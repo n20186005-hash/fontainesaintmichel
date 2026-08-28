@@ -216,6 +216,17 @@ export default async function LocaleLayout({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="800" />
         <meta property="og:image:type" content="image/jpeg" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              .entity-em {
+                font-weight: 600;
+                color: var(--text-primary);
+                letter-spacing: 0.002em;
+              }
+            `,
+          }}
+        />
 
         <script
           type="application/ld+json"

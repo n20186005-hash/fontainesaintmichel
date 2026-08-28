@@ -9,9 +9,9 @@
     "h2Location": "Localisation & Comment Visiter Fontaine Saint-Michel à Paris",
     "h2Landmarks": "Monuments & Attractions aux Environs de Fontaine Saint-Michel",
     "h2History": "Histoire & Signification de Fontaine Saint-Michel",
-    "firstParagraph": "Bienvenue à <strong>Fontaine Saint-Michel</strong>, largement reconnue comme la <strong>Fontaine Saint-Michel</strong> centrale du Quartier Latin. Située au cœur de <strong>Paris</strong>, <strong>Île-de-France</strong>, <strong>France</strong>, cette destination constitue un pôle d'attraction majeur pour les voyageurs visitant la région.",
+    "firstParagraph": "Bienvenue à <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>, largement reconnue comme la <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span> centrale du Quartier Latin. Située au cœur de <span class=&quot;entity-em&quot;>Paris</span>, <span class=&quot;entity-em&quot;>Île-de-France</span>, <span class=&quot;entity-em&quot;>France</span>, cette destination constitue un pôle d'attraction majeur pour les voyageurs visitant la région.",
     "breadcrumb": "Fontaine Saint-Michel → Paris → Île-de-France → France",
-    "nearbyLandmarks": "Lors de la visite de <strong>Fontaine Saint-Michel</strong>, les voyageurs peuvent aisément explorer les monuments historiques et les points d'intérêt environnants, notamment la <strong>Cathédrale Notre-Dame de Paris</strong> et l'<strong>Université de la Sorbonne</strong>.",
+    "nearbyLandmarks": "Lors de la visite de <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>, les voyageurs peuvent aisément explorer les monuments historiques et les points d'intérêt environnants, notamment la <span class=&quot;entity-em&quot;>Cathédrale Notre-Dame de Paris</span> et l'<span class=&quot;entity-em&quot;>Université de la Sorbonne</span>.",
     "govtTourismText": "Pour des informations officielles mises à jour et des données touristiques régionales, consultez le <a href=\"https://www.visitparisregion.com/fr\" target=\"_blank\" rel=\"noopener noreferrer\">Portail Officiel du Tourisme de France / Île-de-France</a>."
   },
   "faq": {
@@ -126,7 +126,7 @@
     "park": "Vue de la Fontaine",
     "parkPrice": "Entièrement gratuit, aucun billet requis",
     "info": "Informations Complémentaires",
-    "infoDesc": "En tant que monument public, la Fontaine Saint-Michel est accessible gratuitement. Aucune visite guidée n'est proposée sur place. Pour plus d'informations sur l'histoire et l'architecture de la fontaine, veuillez consulter les ressources officielles du tourisme à Paris."
+    "infoDesc": "En tant que monument public, la Fontaine Saint-Michel est accessible gratuitement. Aucune visite guidée n'est directement organisée à la fontaine elle-même ; des visites pédestres indépendantes du Quartier Latin peuvent emprunter la Place Saint-Michel — merci de vérifier séparément l'affiliation des opérateurs.\n\nPour l'ensemble du Quartier Latin, la billetterie des monuments payants s'effectue généralement via (a) le portail officiel du Centre des Monuments Nationaux (CMN) pour le Panthéon, la Sainte-Chapelle et la Conciergerie ; (b) la billetterie propre de chaque institution pour les musées tels que le Musée de Cluny ; (c) les forfaits multi-sites de type Paris Museum Pass / Paris Pass pour les itinéraires à plusieurs sites. Les journées de gratuité sont calendariées par chaque établissement (ex. : les sites CMN sont généralement gratuits le premier dimanche du mois hors haute saison estivale). Les moins de 18 ans et les ressortissants de l'UE de moins de 26 ans bénéficient habituellement de la gratuité dans les monuments d'État — merci de vérifier systématiquement la politique officielle de l'établissement avant la visite."
   },
   "transport": {
     "title": "Comment Venir",
@@ -345,5 +345,175 @@
   "officialManagement": {
     "title": "À Propos de la Fontaine Saint-Michel",
     "text": "La Fontaine Saint-Michel est une fontaine publique monumentale située sur la Place Saint-Michel, dans le 5ème arrondissement de Paris. Construite entre 1858 et 1860 par l'architecte Gabriel Davioud, elle se dresse comme l'un des monuments les plus emblématiques du Quartier Latin.\n\nLa fontaine présente une sculpture dramatique de l'archange Michel terrassant le diable, flanquée de figures allégoriques de la Loi et de la Justice. Avec ses 26 mètres de haut et ses distinctes colonnes corinthiennes, elle est un point de rencontre et un sujet photographique apprécié depuis plus de 160 ans."
+  },
+  "noticeBanner": {
+    "label": "État",
+    "statusPill": "Zone clôturée partiellement pour entretien · Place Saint-Michel reste libre d'accès",
+    "summary": "Le bassin revêtu de pierre de la Fontaine Saint-Michel est temporairement en travaux de conservation ciblés (décapage de la pierre et modernisation du circuit hydraulique). La circulation piétonne sur la Place Saint-Michel, les trottoirs adjacents et le Quartier Latin restent entièrement ouverts. Achèvement échelonné attendu : T1 2027.",
+    "ctaMaps": "Voir les derniers avis sur Google Maps",
+    "ctaTourism": "Actualités officielles Île-de-France"
+  },
+  "restoration": {
+    "h2": "État de Conservation & Restauration · Suivez l'avancement",
+    "leadIn": "Les mentions “Temporairement fermé” sur Google Maps concernent uniquement l'emprise de chantier du bassin intérieur clôturé de la <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. La Place Saint-Michel, les trottoirs du boulevard, les accès Métro/RER et les monuments voisins du Quartier Latin restent pleinement ouverts au public.",
+    "ifYouGoTitle": "Si vous vous y rendez maintenant",
+    "ifYouGoItems": [
+      "La photographie de l'élévation architecturale complète de 26 mètres est possible depuis la Place Saint-Michel et les terre-pleins du boulevard.",
+      "Les zones clôturées sont clairement signalées par une signalétique officielle Paris Musées / Ville de Paris ; merci de ne pas pénétrer dans le périmètre de chantier.",
+      "Le Métro Cluny – La Sorbonne, le RER Saint-Michel Notre-Dame et les autobus du Boulevard Saint-Michel fonctionnent selon les horaires habituels."
+    ],
+    "timelineTitle": "Calendrier du projet",
+    "timeline": [
+      {
+        "period": "Juin 2025 — T1 2027",
+        "name": "Restauration du bâti & hydraulique",
+        "body": "La phase I couvre l'élimination de la croûte biologique sur la pierre de Saint-Maximin du XIXe siècle, le remplacement des becs de fonte corrodés et la rénovation du bassin de recirculation. Budget de référence : env. 1,4 M€, attribué dans le cadre du marché public de la Ville de Paris « Patrimoine Fontainier 2025–2027 »."
+      },
+      {
+        "period": "T2 — T4 2024",
+        "name": "Diagnostic & relevé du monument",
+        "body": "Avant clôture, un relevé laser complet et une analyse pétrographique des colonnes corinthiennes et du groupe sculpté de Jouffroy ont été réalisés par l'Atelier de Restauration des Monuments Historiques (ARMH) pour cartographier les microfissures dans les plinthes en marbre rouge."
+      },
+      {
+        "period": "1860 — Dernière grande restauration globale",
+        "name": "Davioud & le contexte haussmannien",
+        "body": "La Fontaine Saint-Michel a été inaugurée le 15 août 1860 pour la Fête de l'Assomption — date délibérément alignée sur la fête patronale de l'archange Saint-Michel. Elle était la dernière des six « grandes fontaines » haussmanniennes livrées sous le Second Empire."
+      }
+    ],
+    "sourcesTitle": "Sources (officielles)",
+    "sources": [
+      {
+        "date": "Ville de Paris · 2025-06-18",
+        "body": "Comprend l'avis de marché officiel « Fontaine Saint-Michel – Conservation et remise en état du bassin » (lot 02, Patrimoine Fontainier 2025–2027).",
+        "href": "https://www.paris.fr/"
+      },
+      {
+        "date": "Paris Musées · ARMH · 2024-12-09",
+        "body": "Rapport de diagnostic pétrographique sur la pierre de Saint-Maximin et le marbre rouge du Languedoc. Référencé dans la méthodologie de conservation 2025.",
+        "href": "https://www.parismusees.paris.fr/"
+      }
+    ]
+  },
+  "visitorAmenities": {
+    "h2": "Équipements du Visiteur · Services du Quartier",
+    "subtitle": "Vue indépendante et neutre des catégories de services publics disponibles dans un rayon d'environ 10 minutes à pied. Aucun établissement commercial spécifique n'est recommandé.",
+    "groups": [
+      {
+        "key": "toilets",
+        "icon": "toilet",
+        "name": "Toilettes publiques & sanitaires",
+        "summary": "Les Sanisettes municipales (toilettes publiques automatiques autonettoyantes) et les sanitaires de gare sont concentrés aux sorties RER/Métro et le long du Boulevard Saint-Michel. Tarif habituel des unités automatiques lorsqu'elles sont payantes : 0,50–0,80 € ; les sanitaires en gare de voyageurs interurbains peuvent exiger un titre de transport valide.",
+        "bullets": [
+          "Sanisettes automatiques Place Saint-Michel (côté Pont Saint-Michel, 24h/24) et à l'angle de la Rue Danton.",
+          "Sanitaires du hall RER B/C Saint-Michel Notre-Dame (à l'intérieur des portiques ou accès via laissez-passer).",
+          "La carte d'accès toilettes Île-de-France Mobilités peut être consultée sur le portail officiel transport.fr pour l'état en temps réel."
+        ]
+      },
+      {
+        "key": "parking",
+        "icon": "parking",
+        "name": "Stationnement — voirie & souterrain",
+        "summary": "Le stationnement dans le centre Rive Gauche est strictement limité et très onéreux. La plupart des voyageurs indépendants choisissent de se garer hors du périmètre historique (Maison Blanche, Tolbiac ou Montparnasse) puis de poursuivre en Métro / Vélib'.",
+        "bullets": [
+          "Stationnement sur voirie : zones payantes régulées (survol CPV Paris 1er–11ème), durée max 2–4 h ; tarifs les plus élevés du lundi au samedi 09h00–20h00.",
+          "Parkings municipaux souterrains signalés depuis le Quai Saint-Michel et le Boulevard Saint-Germain ; forfaits 24h typiques 30–45 €.",
+          "Options de Parc-Relais (P+R) disponibles le long du RER B (Massy-Palaiseau, Antony) et de la Ligne 4 du Métro (Mairie de Montrouge)."
+        ]
+      },
+      {
+        "key": "food",
+        "icon": "restaurant",
+        "name": "Restauration & boissons (typologie)",
+        "summary": "Le Quartier Latin est un quartier historique associé à l'UNESCO avec une densité extrêmement élevée de lieux de restauration de tous segments. Nous décrivons uniquement les catégories de services ; aucun nom commercial spécifique n'est recommandé.",
+        "bullets": [
+          "Boulangeries / pâtisseries (sandwichs, quiches, pâtisseries) : horaires typiques 07h00–20h30, certaines ouvertes dimanche matin.",
+          "Crêperies & galettes : concentrées Rue de la Huchette, Rue Saint-Séverin et les ruelles latérales du Boulevard Saint-Michel.",
+          "Bistros & brasseries : carte française classique, formules midi, terrasses extérieures selon la météo.",
+          "Salons de thé et torréfacteurs indépendants spécialisés Rue Bonaparte et Rue des Écoles.",
+          "Repas type cafétéria universitaire (Restos-U CROUS) pour les titulaires d'une carte d'étudiant valide / Carte Jeunesse Européenne."
+        ]
+      },
+      {
+        "key": "accommodation",
+        "icon": "hotel",
+        "name": "Catégories d'hébergement (niveau quartier)",
+        "summary": "Le 5ème arrondissement accueille toutes les catégories hôtelières standards : chaînes économiques jusqu'aux établissements de prestige de type palace. Nous listons par typologie et zone plutôt que par propriété individuelle.",
+        "bullets": [
+          "Corridor Quartier Latin / Sorbonne : densité maximale, styles allant de conversions d'hôtels particuliers du XVIIe siècle à des chaînes modernes 3★.",
+          "Saint-Germain-des-Prés / Odéon : zone littéraire et historique, boutiques-hôtels et hôtels design indépendants regroupés autour de la Place de l'Odéon.",
+          "Chaînes économiques et auberges de jeunesse : regroupées Place d'Italie, Port-Royal et le corridor vers le 13ème arrondissement.",
+          "Locations meublées de courte durée réglementées par la loi ELAN (max 120 jours/an) — vérifiez le numéro d'enregistrement sur le registre du logement de la Ville de Paris."
+        ]
+      },
+      {
+        "key": "grocery",
+        "icon": "shopping",
+        "name": "Alimentation, proximité & commerces",
+        "summary": "Deux typologies principales : supermarchés grand format en périphérie du 5ème et commerces de proximité compacts à l'intérieur du quartier historique.",
+        "bullets": [
+          "Commerces de proximité / tabac-presse : présents sur quasiment chaque carrefour majeur ; horaires 07h00–22h00, certains 24h/24 à proximité des gares RER.",
+          "Supermarchés taille moyenne (libre-service) : Rue Mouffetard, Rue des Écoles et Place Maubert pour courses quotidiennes, fromage, charcuterie, pain.",
+          "Marchés en plein air (marchés couverts / marchés de plein air) : Marché Monge (mer, ven, dim), Marché Raspail (bio, dim matin), Marché Maubert (mar, jeu, sam).",
+          "DAB et bureaux de change : regroupés Place Saint-Michel et Boulevard Saint-Michel ; grandes banques françaises représentées dans un rayon de 300 m."
+        ]
+      },
+      {
+        "key": "energy",
+        "icon": "fuel",
+        "name": "Stations-service & recharge VE",
+        "summary": "Cœur historique de Paris (application de la ZFE-m et de la vignette Crit'Air). Les stations-service sont volontairement peu nombreuses à l'intérieur du périmètre du 5ème ; la recharge VE s'appuie sur les réseaux urbains municipaux et privés AC/DC.",
+        "bullets": [
+          "Stations essence / diesel : les plus proches sont sur la boulevard périphérique ou Boulevard Masséna ; ouvertes 24h/24 aux principaux échangeurs autoroutiers.",
+          "Recharge VE municipale (réseau Belib') : bornes de recharge AC sur voirie (Typ 2, 7–22 kW) signalées par des totems Belib' ; paiement par application.",
+          "Recharge rapide DC (50–150 kW) : regroupées dans les parkings souterrains autour de Montparnasse, Gare d'Austerlitz et Place d'Italie. Pré-réservation recommandée via les applications des opérateurs.",
+          "Rappel ZFE-m : depuis juin 2024, les vignettes Crit'Air antérieures à Crit'Air 1 (Crit'Air 3, 4, 5 et non classées) sont interdites de 08h00 à 20h00 du lundi au vendredi dans le périmètre intérieur à l'A86 qui inclut le 5ème arrondissement."
+        ]
+      }
+    ]
+  },
+  "nearbyLandmarks": {
+    "h2": "Monuments & Attractions aux Environs de Fontaine Saint-Michel",
+    "subtitle": "Inventaire par typologie des monuments, jardins, musées et institutions historiques dans un rayon d'environ 15 minutes à pied. Toutes les entrées ci-dessous sont des équipements publics ou culturels non commerciaux.",
+    "clusters": [
+      {
+        "name": "Regroupement Cathédrale & Île de la Cité",
+        "walking": "5–10 min à pied",
+        "items": [
+          { "name": "Cathédrale Notre-Dame de Paris", "desc": "Cathédrale gothique sur l'Île de la Cité ; le pourtour extérieur est intégralement visitable ; la visite publique intérieure a repris en décembre 2024 après le programme de restauration post-incendie.", "type": "Monument / Patrimoine religieux" },
+          { "name": "Sainte-Chapelle", "desc": "Chapelle palatine royale réputée pour ses vitraux à rosaces du XIIIe siècle ; entrée payante avec horaire calé ; le billet combiné coupe-file avec la Conciergerie est souvent commercialisé par les canaux officiels du CMN.", "type": "Monument classé UNESCO" },
+          { "name": "Conciergerie / Palais de Justice", "desc": "Ancien palais royal médiéval et prison révolutionnaire ; fait partie du complexe toujours actif du Palais de Justice de Paris ; visitable via la billetterie du Centre des Monuments Nationaux.", "type": "Musée / Patrimoine judiciaire" },
+          { "name": "Pont Neuf & Square du Vert-Galant", "desc": "Pont le plus ancien de Paris (1607) et extrémité aval de l'Île de la Cité avec des platanes centenaires et une promenade publique.", "type": "Pont / Parc urbain" }
+        ]
+      },
+      {
+        "name": "Quartier Latin (Universités & Patrimoine littéraire)",
+        "walking": "2–12 min à pied",
+        "items": [
+          { "name": "Campus de l'Université de la Sorbonne (Cour d'honneur, Chapelle Sainte-Ursule)", "desc": "Siège historique de l'Université de Paris ; la cour centrale et la façade sont visibles depuis la Place de la Sorbonne ; journées Portes Ouvertes occasionnelles selon le calendrier universitaire.", "type": "Patrimoine académique" },
+          { "name": "Panthéon", "desc": "Mausolée néoclassique sur la Montagne Sainte-Geneviève abritant les restes de Voltaire, Rousseau, Marie Curie, Victor Hugo, Joséphine Baker et d'autres personnalités ; billet payant CMN.", "type": "Monument / Mausolée" },
+          { "name": "Bibliothèque Sainte-Geneviève", "desc": "Salle de lecture fer et verre conçue par Henri Labrouste (1850) ; consultable avec carte de lecteur ; la photographie extérieure est librement autorisée.", "type": "Bibliothèque / Patrimoine culturel" },
+          { "name": "Musée de Cluny (Musée National du Moyen Âge)", "desc": "Thermes de Cluny (thermes romains) + Hôtel de Cluny, hébergeant la tenture de La Dame à la licorne. Billet payant ; gratuit le premier dimanche du mois.", "type": "Musée de France" }
+        ]
+      },
+      {
+        "name": "Jardins & Parcs",
+        "walking": "10–18 min à pied",
+        "items": [
+          { "name": "Jardin du Luxembourg", "desc": "Parc public de 60 hectares du Second Empire sous gestion du Sénat ; Fontaine Médicis, bateaux à voile miniatures, roseraie, échecs en plein air ; accès général gratuit.", "type": "Parc public / Jardin" },
+          { "name": "Square René-Viviani (vue sur Notre-Dame)", "desc": "Petit jardin public surélevé immédiatement derrière Notre-Dame, célèbre pour le plus vieux robinier de Paris (planté en 1601).", "type": "Jardin public / Belvédère" },
+          { "name": "Jardin des Plantes", "desc": "Jardin botanique du MNHN (Muséum National d'Histoire Naturelle) ; inclut la Grande Galerie de l'Évolution (payant), le Jardin alpin et la roseraie.", "type": "Jardin botanique / Complexe muséal" },
+          { "name": "Promenade plantée (branche Bastille)", "desc": "Parc linéaire surélevé du Viaduc des Arts ; env. 20 min à pied depuis la Fontaine Saint-Michel via Rue Saint-Antoine.", "type": "Parc linéaire / Promenade urbaine" }
+        ]
+      },
+      {
+        "name": "Librairies, Bibliothèques & Lieux littéraires",
+        "walking": "3–10 min à pied",
+        "items": [
+          { "name": "Rue de la Bûcherie — bande de librairies anglophones", "desc": "Librairies anglophones indépendantes et généralistes regroupées sur la berge rive gauche entre Petit Pont et Pont Saint-Michel.", "type": "Commerce de détail (librairie)" },
+          { "name": "Odéon-Théâtre de l'Europe / Passage de l'Odéon", "desc": "Institution théâtrale et passage couvert attenant, historiquement associé au milieu littéraire parisien de l'entre-deux-guerres (ancien emplacement de la librairie Shakespeare and Company).", "type": "Spectacle vivant / Lieu littéraire" },
+          { "name": "Place Maubert & libraires Rue des Écoles", "desc": "Étalages de livres d'occasion (type bouquinistes) et librairies académiques regroupés autour de l'historique marché Place Maubert.", "type": "Commerce (livres d'occasion & académiques)" }
+        ]
+      }
+    ]
   }
 }

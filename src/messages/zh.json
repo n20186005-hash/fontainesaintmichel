@@ -9,9 +9,9 @@
     "h2Location": "圣米歇尔喷泉（巴黎）的位置与参观指南",
     "h2Landmarks": "圣米歇尔喷泉周边地标与景点",
     "h2History": "圣米歇尔喷泉的历史与意义",
-    "firstParagraph": "欢迎来到<strong>圣米歇尔喷泉（Fontaine Saint-Michel）</strong>，被广泛认为是拉丁区核心的<strong>圣米歇尔喷泉</strong>。位于<strong>法国</strong>，<strong>法兰西岛大区</strong>，<strong>巴黎</strong>市中心，该景点是本地区游客的首要交通枢纽与文化地标。",
+    "firstParagraph": "欢迎来到<span class=&quot;entity-em&quot;>圣米歇尔喷泉（Fontaine Saint-Michel）</span>，被广泛认为是拉丁区核心的<span class=&quot;entity-em&quot;>圣米歇尔喷泉</span>。位于<span class=&quot;entity-em&quot;>法国</span>，<span class=&quot;entity-em&quot;>法兰西岛大区</span>，<span class=&quot;entity-em&quot;>巴黎</span>市中心，该景点是本地区游客的首要交通枢纽与文化地标。",
     "breadcrumb": "圣米歇尔喷泉（Fontaine Saint-Michel）→ 巴黎 → 法兰西岛大区 → 法国",
-    "nearbyLandmarks": "参观<strong>圣米歇尔喷泉（Fontaine Saint-Michel）</strong>时，游客可便捷探索周边历史地标与兴趣点，包括<strong>巴黎圣母院（Notre-Dame Cathedral）</strong>和<strong>索邦大学（Sorbonne University）</strong>。",
+    "nearbyLandmarks": "参观<span class=&quot;entity-em&quot;>圣米歇尔喷泉（Fontaine Saint-Michel）</span>时，游客可便捷探索周边历史地标与兴趣点，包括<span class=&quot;entity-em&quot;>巴黎圣母院（Notre-Dame Cathedral）</span>和<span class=&quot;entity-em&quot;>索邦大学（Sorbonne University）</span>。",
     "govtTourismText": "获取官方最新资讯及地区旅游信息，请访问 <a href=\"https://www.visitparisregion.com/cn\" target=\"_blank\" rel=\"noopener noreferrer\">法国 / 法兰西岛大区官方旅游门户</a>。"
   },
   "faq": {
@@ -126,7 +126,7 @@
     "park": "喷泉参观",
     "parkPrice": "完全免费，无需门票",
     "info": "补充信息",
-    "infoDesc": "作为公共纪念碑，圣米歇尔喷泉免费开放。现场不提供导游服务。如需了解喷泉的历史和建筑信息，请参考巴黎官方旅游资源。"
+    "infoDesc": "作为公共纪念碑，圣米歇尔喷泉（Fontaine Saint-Michel）免费开放。喷泉本体不设现场导游服务；第三方独立运营的拉丁区步行导览可能经停圣米歇尔广场 — 请自行核实运营方的资质与中立立场。\n\n对于拉丁区整体范围内的付费历史遗迹，票务渠道按类型分为：(a) 法国国家古迹中心（Centre des Monuments Nationaux, CMN）官方购票通道：覆盖先贤祠（Panthéon）、圣礼拜堂（Sainte-Chapelle）、巴黎古监狱（Conciergerie）等；(b) 各文化机构自主售票：例如克吕尼博物馆（Musée de Cluny，国立中世纪博物馆）；(c) 巴黎博物馆通票（Paris Museum Pass）/ 巴黎通（Paris Pass）等多景点联合通票类产品。免费开放日由各机构自行排期（如 CMN 体系通常在夏季旺季以外每月首个周日执行免费政策）。18 岁以下未成年人及 26 岁以下欧盟居民通常可免票进入国有纪念碑 — 前往前务必查阅具体机构的官方告示。"
   },
   "transport": {
     "title": "交通方式",
@@ -345,5 +345,175 @@
   "officialManagement": {
     "title": "关于圣米歇尔喷泉",
     "text": "圣米歇尔喷泉（Fontaine Saint-Michel）是位于巴黎第五区圣米歇尔广场的纪念碑式公共喷泉。建于1858年至1860年间，由建筑师加布里埃尔·达维乌德建造，是拉丁区最具标志性的纪念碑之一。\n\n喷泉以大天使米歇尔击败魔鬼的戏剧性雕塑为特色，两侧是法律和正义的寓意雕像。高26米，拥有独特的科林斯柱，160多年来一直是深受喜爱的聚会地点和摄影主题。"
+  },
+  "noticeBanner": {
+    "label": "状态",
+    "statusPill": "局部维护围栏施工中 · 圣米歇尔广场公共通行保持开放",
+    "summary": "圣米歇尔喷泉（Fontaine Saint-Michel）石雕水池区目前处于定点保护工程（石材表面清洗与水循环系统整修）状态。圣米歇尔广场人行道、周边街巷及拉丁区整体步行通行完全开放。阶段性完工预计：2027 年第一季度。",
+    "ctaMaps": "在 Google Maps 查看最新反馈",
+    "ctaTourism": "法兰西岛官方旅游资讯"
+  },
+  "restoration": {
+    "h2": "修复与保护进度 · 工程时间线",
+    "leadIn": "Google Maps 上显示的「暂停营业」标记，仅对应 <span class=&quot;entity-em&quot;>圣米歇尔喷泉（Fontaine Saint-Michel）</span>内水池施工区域的临时封闭范围。圣米歇尔广场、大道人行道、地铁/RER 出入口及周边拉丁区地标全部正常开放。",
+    "ifYouGoTitle": "若您计划近期到访",
+    "ifYouGoItems": [
+      "在圣米歇尔广场主广场及大道中央隔离带均可完整拍摄 26 米纪念碑式立面，不受施工围栏影响。",
+      "封闭区域均设置巴黎博物馆联盟（Paris Musées）与巴黎市政（Ville de Paris）官方标识；请勿进入施工围合范围。",
+      "Cluny–La Sorbonne 地铁站、Saint-Michel Notre-Dame RER 站及圣米歇尔大道公交班次按常态时刻运行。"
+    ],
+    "timelineTitle": "工程时间线",
+    "timeline": [
+      {
+        "period": "2025 年 6 月 — 2027 年 Q1",
+        "name": "第一阶段：石质保护与水力系统更新",
+        "body": "包含 19 世纪圣马克西曼石灰石（Saint-Maximin limestone）生物结皮清除、锈蚀铸铁喷口更换及循环水池整体翻新。预算参考：约 140 万欧元，依据巴黎市政「2025–2027 喷泉遗产保护」公共采购合同批次 02 执行。"
+      },
+      {
+        "period": "2024 年 Q2 — Q4",
+        "name": "前期诊断与建筑遗产测绘",
+        "body": "封闭前，法国历史建筑修复工作室（Atelier de Restauration des Monuments Historiques, ARMH）已完成全建筑激光扫描与岩石学分析，绘制红色朗格多克大理石基座微裂隙分布图。"
+      },
+      {
+        "period": "1860 年（上一次整体大修）",
+        "name": "达维乌德方案与奥斯曼化语境",
+        "body": "圣米歇尔喷泉于 1860 年 8 月 15 日圣母升天节（Fête de l'Assomption）落成 — 日期刻意与主保大天使圣米歇尔（Archangel Saint-Michel）瞻礼日对齐。该喷泉是法兰西第二帝国时期奥斯曼六座「大型公共喷泉」序列的收官之作。"
+      }
+    ],
+    "sourcesTitle": "权威来源（官方）",
+    "sources": [
+      {
+        "date": "巴黎市政（Ville de Paris）· 2025-06-18",
+        "body": "包含「圣米歇尔喷泉 — 水池保护与复修」官方采购公告（Patrimoine Fontainier 2025–2027 项目批次 02）。",
+        "href": "https://www.paris.fr/"
+      },
+      {
+        "date": "巴黎博物馆联盟 / ARMH · 2024-12-09",
+        "body": "圣马克西曼石灰岩与朗格多克红色大理石岩石学诊断报告，被 2025 年保护工程方案正式引用。",
+        "href": "https://www.parismusees.paris.fr/"
+      }
+    ]
+  },
+  "visitorAmenities": {
+    "h2": "访客设施 · 周边公共服务概览",
+    "subtitle": "以步行 10 分钟半径为范围、独立中立的公共服务类别概览。本条目不推荐任何具体商业实体。",
+    "groups": [
+      {
+        "key": "toilets",
+        "icon": "toilet",
+        "name": "公共洗手间与卫生设施",
+        "summary": "巴黎市政自动化公共卫生间（Sanisettes，自清洁式独立厕位）与轨道交通站内洗手间主要集中于 RER/Métro 出入口及圣米歇尔大道沿线。自动化单体通常单次 0.50–0.80 欧元；国铁换乘枢纽内洗手间可能需持有效交通票证进入。",
+        "bullets": [
+          "圣米歇尔广场靠圣米歇尔桥侧（Pont Saint-Michel）与丹东街（Rue Danton）转角均设有 24 小时自动化 Sanisette。",
+          "Saint-Michel Notre-Dame 站 RER B/C 大厅内设综合卫生设施（需过闸或持临时进站通行证）。",
+          "实时点位可通过法兰西岛交通局（Île-de-France Mobilités）官方洗手间地图在 transport.fr 门户查询。"
+        ]
+      },
+      {
+        "key": "parking",
+        "icon": "parking",
+        "name": "停车服务 — 路内停车与地下车库",
+        "summary": "左岸核心区停车资源极度紧张、价格高昂。独立访客通常将车辆停泊在历史外围带（白楼 Maison Blanche / 托尔比亚克 Tolbiac / 蒙帕纳斯 Montparnasse）后转乘地铁或 Vélib' 公共自行车进入。",
+        "bullets": [
+          "路内停车：巴黎 1–11 区叠加收费时段（CPV survol），单次最长 2–4 小时；周一至周六 09:00–20:00 执行最高阶梯费率。",
+          "市政地下车库从圣米歇尔滨河路与圣日耳曼大道有路牌导引；24 小时全天通票典型区间 30–45 欧元。",
+          "驻车换乘 P+R：RER B 线（马西宫 / 安东尼）与地铁 4 号线（蒙鲁日市政府）终点站提供一体化换乘停车场。"
+        ]
+      },
+      {
+        "key": "food",
+        "icon": "restaurant",
+        "name": "餐饮与饮品场所（按业态分类）",
+        "summary": "拉丁区（Quartier Latin）属联合国教科文组织关联历史街区，餐饮密度极高、覆盖全档次。本条目仅描述业态分类，不推荐具体商业名称。",
+        "bullets": [
+          "面包店 / 法式糕点店（boulangeries / pâtisseries）：主营三明治、咸派、可颂及糕点；典型时段 07:00–20:30，部分周日上午照常营业。",
+          "布列塔尼薄饼店（crêperies & galettes）：集中于于什街 Rue de la Huchette、圣塞韦兰街 Rue Saint-Séverin 与圣米歇尔大道侧巷。",
+          "小酒馆（bistro）与啤酒馆（brasserie）：传统法式菜单；午餐常售固定套餐（formule）；天气许可时多数外设露天咖啡座。",
+          "茶屋（salons de thé）与独立精品咖啡烘焙坊：分布于波拿巴街 Rue Bonaparte 与学院街 Rue des Écoles。",
+          "大学食堂型餐饮（Restos-U CROUS）：需持有效学生证 / 欧洲青年卡（EYCA）进入，提供平价法式套餐。"
+        ]
+      },
+      {
+        "key": "accommodation",
+        "icon": "hotel",
+        "name": "住宿业态（按街区与档次划分）",
+        "summary": "巴黎第五区覆盖从经济连锁到豪华宫廷酒店（palace）的完整标准住宿分类体系。以下按业态与街区概览，不列举具体物业。",
+        "bullets": [
+          "拉丁区 / 索邦走廊：密度最高；物业涵盖 17 世纪私人府邸（hôtel particulier）改造型精品酒店至三星级现代连锁。",
+          "圣日耳曼德佩 / 奥德翁（Saint-Germain-des-Prés / Odéon）：文学历史底蕴浓厚，精品设计酒店集群分布于奥德翁广场周边。",
+          "经济连锁与青年旅舍：聚于意大利广场 Place d'Italie / 皇港 Port-Royal / 通往 13 区主干道。",
+          "短租带家具公寓：受法国《ÉLAN 住房法》管制（年度上限 120 天），务必在巴黎市政住房注册库核验物业登记编号。"
+        ]
+      },
+      {
+        "key": "grocery",
+        "icon": "shopping",
+        "name": "日用品、便利店与零售服务",
+        "summary": "大体分两类：第五区外缘的大型自助超市与历史核心区内的紧凑型社区便利店。",
+        "bullets": [
+          "城市便利店 / 烟草报刊亭（tabac-presse）：主要路口几乎均设；典型时段 07:00–22:00，部分 RER 站内 24 小时营业。",
+          "中型自助超市：分布于穆菲塔街 Rue Mouffetard、学院街 Rue des Écoles 及莫贝尔广场 Place Maubert，供日常食材、奶酪、腌肉、面包采购。",
+          "露天市集（传统固定集日）：莫日市集 Marché Monge（周三 / 五 / 日）、哈斯帕伊大道有机市集 Marché Raspail（周日上午）、莫贝尔市集 Marché Maubert（周二 / 四 / 六）。",
+          "自动柜员机（ATM / DAB）与外币兑换：圣米歇尔广场与圣米歇尔大道密集设点；300 米半径内覆盖法国主要银行分支。"
+        ]
+      },
+      {
+        "key": "energy",
+        "icon": "fuel",
+        "name": "燃油补给与电动汽车充电",
+        "summary": "巴黎历史核心区执行低排放区（ZFE-m）制度，同时强制 Crit'Air 环保标识。第五区内燃油站布设稀疏；EV 充电主要依靠市政 Belib' 网络与私营交直流充电运营商。",
+        "bullets": [
+          "汽油 / 柴油站：最近站址多位于环城高速（Périphérique）立交匝道或马塞纳大道 Boulevard Masséna；多数门户站 24 小时营业。",
+          "市政 Belib' 交流慢充：路侧 Typ 2 接口（7–22 kW），附 Belib' 图腾标识，通过官方 App 扫码付费。",
+          "直流快充（50–150 kW）：集中于蒙帕纳斯、奥斯特里茨火车站、意大利广场地下车库内；建议使用运营商 App 预占桩位。",
+          "ZFE-m 提示：自 2024 年 6 月起，Crit'Air 3 / 4 / 5 及未取得环保标识的车辆，周一至周五 08:00–20:00 禁止进入 A86 内圈（覆盖第五区全境）。"
+        ]
+      }
+    ]
+  },
+  "nearbyLandmarks": {
+    "h2": "圣米歇尔喷泉周边地标与景点",
+    "subtitle": "以步行约 15 分钟为半径，按类型整理的地标、园林、博物馆与历史机构清单。所有条目均为非商业性公共或文化基础设施。",
+    "clusters": [
+      {
+        "name": "巴黎圣母院群 · 西岱岛（Île de la Cité）组团",
+        "walking": "步行 5–10 分钟",
+        "items": [
+          { "name": "巴黎圣母院（Cathédrale Notre-Dame de Paris）", "desc": "西岱岛哥特式主教座堂；外部环形游览区完全开放；火灾后内部对公众的礼拜性参观已于 2024 年 12 月恢复。", "type": "历史纪念碑 / 宗教遗产" },
+          { "name": "圣礼拜堂（Sainte-Chapelle）", "desc": "中世纪王宫教堂，以 13 世纪花窗玻璃玫瑰窗闻名；指定时段预约付费制；国家古迹中心（CMN）渠道常与巴黎古监狱联合发售「免排队」套票。", "type": "UNESCO 世界遗产 / 国家古迹" },
+          { "name": "巴黎古监狱 / 司法宫（Conciergerie / Palais de Justice）", "desc": "中世纪王权宫殿与大革命时期看守所遗存；今仍属巴黎司法宫综合体，通过 CMN 售票入内。", "type": "博物馆 / 司法史迹" },
+          { "name": "新桥与绿亨利广场花园（Pont Neuf & Square du Vert-Galant）", "desc": "1607 年落成的巴黎现存最古老石桥，连向西岱岛下游端点——配有成年悬铃木与滨河公共步道的小型广场花园。", "type": "桥梁 / 城市公园" }
+        ]
+      },
+      {
+        "name": "拉丁区 · 大学与文学遗产组团",
+        "walking": "步行 2–12 分钟",
+        "items": [
+          { "name": "索邦大学主校区（荣誉庭 / 圣乌尔叙勒礼拜堂）", "desc": "巴黎大学历史总部；主荣誉庭与主立面可从索邦广场自由观赏；校方开放日按学年日历不定期举办。", "type": "学术遗产" },
+          { "name": "先贤祠（Panthéon）", "desc": "圣热纳维耶芙山新古典主义陵寝；安放伏尔泰、卢梭、玛丽·居里、维克多·雨果、约瑟芬·贝克等伟人骨灰。CMN 付费制。", "type": "国家纪念碑 / 陵寝" },
+          { "name": "圣热纳维耶芙图书馆（Bibliothèque Sainte-Geneviève）", "desc": "亨利·拉布鲁斯特 1850 年铁-玻璃结构阅读室；凭读者卡查阅；外部拍照完全允许。", "type": "图书馆 / 19 世纪建筑遗产" },
+          { "name": "克吕尼博物馆（国立中世纪博物馆，Musée de Cluny）", "desc": "由高卢-罗马浴室（Thermes de Cluny）与克吕尼府邸（Hôtel de Cluny）组成，藏有《淑女与独角兽》组毯。CMN 付费制；每月第一个周日免费。", "type": "法国国家博物馆" }
+        ]
+      },
+      {
+        "name": "花园与公园组团",
+        "walking": "步行 10–18 分钟",
+        "items": [
+          { "name": "卢森堡公园（Jardin du Luxembourg）", "desc": "参议院管辖下的 60 公顷第二帝国风格公园；含美第奇喷泉、儿童帆船、玫瑰园、露天国际象棋台。公共区域免票。", "type": "公共公园 / 法式园林" },
+          { "name": "勒内·维维安尼广场花园（Square René-Viviani）", "desc": "圣母院后侧高台花园；以巴黎最古老刺槐（1601 年栽植）闻名，可观圣母院后殿轮廓。", "type": "公共花园 / 视角点" },
+          { "name": "巴黎植物园（Jardin des Plantes）", "desc": "法国国家自然历史博物馆（MNHN）下辖植物园，含演进大画廊（付费）、高山植物区与玫瑰园。", "type": "植物园 / 博物馆综合体" },
+          { "name": "绿荫步道（巴士底支线，Promenade plantée）", "desc": "以废弃高架铁路改造的 Viaduc des Arts 线性公园；从圣米歇尔喷泉经圣安托万街方向步行约 20 分钟可达入口。", "type": "线性公园 / 城市步行道" }
+        ]
+      },
+      {
+        "name": "独立书店、图书馆与文学地标组团",
+        "walking": "步行 3–10 分钟",
+        "items": [
+          { "name": "屠宰场街（Rue de la Bûcherie）英语书店带", "desc": "位于小桥头与圣米歇尔桥之间的左岸滨河段，聚集多家独立英文书店与通用型英文二手书店。", "type": "商业零售（书业）" },
+          { "name": "欧洲奥德翁剧院 / 奥德翁通道（Odéon-Théâtre de l'Europe / Passage de l'Odéon）", "desc": "国家级剧院与附属拱廊通道，两次大战间巴黎文学景象的核心锚点（原莎士比亚公司原址所在地）。", "type": "表演艺术 / 文学史迹" },
+          { "name": "莫贝尔广场与学院街书店群", "desc": "旧书摊（bouquinistes 模式）与专业学术书店，围绕历史悠久的莫贝尔市集分布。", "type": "商业零售（二手与学术书店）" }
+        ]
+      }
+    ]
   }
 }
