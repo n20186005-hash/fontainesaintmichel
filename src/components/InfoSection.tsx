@@ -2,6 +2,7 @@ import { useTranslations, useMessages } from 'next-intl';
 
 export default function InfoSection() {
   const t = useTranslations('knowledge');
+  const tSeo = useTranslations('seo');
   const messages = useMessages() as any;
   const sections = (messages?.knowledge?.sections || []) as Array<{ id: string; title: string; content: string }>;
 
@@ -12,7 +13,7 @@ export default function InfoSection() {
           className="font-display text-3xl sm:text-4xl font-semibold mb-6 text-center"
           style={{ color: 'var(--text-primary)' }}
         >
-          {t('title')}
+          {tSeo('h2History')}
         </h2>
         <div className="w-12 h-0.5 mb-12 mx-auto" style={{ background: 'var(--accent)' }} />
 

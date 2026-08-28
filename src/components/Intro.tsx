@@ -2,6 +2,7 @@ import { useTranslations, useMessages } from 'next-intl';
 
 export default function Intro() {
   const t = useTranslations('intro');
+  const tSeo = useTranslations('seo');
   const tOff = useTranslations('officialManagement');
   const messages = useMessages() as any;
   const items: string[] = messages?.intro?.visitGuide?.items || [];
@@ -14,9 +15,33 @@ export default function Intro() {
           className="font-display text-3xl sm:text-4xl font-semibold mb-6"
           style={{ color: 'var(--text-primary)' }}
         >
-          {t('title')}
+          {tSeo('h2About')}
         </h2>
         <div className="w-12 h-0.5 mb-8" style={{ background: 'var(--accent)' }} />
+
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 p-4 rounded-lg border border-dashed text-sm tracking-wide"
+          style={{
+            borderColor: 'var(--border-color)',
+            background: 'var(--bg-secondary)',
+            color: 'var(--text-muted)',
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            letterSpacing: '0.02em',
+          }}
+        >
+          <span className="opacity-80">{tSeo('breadcrumb')}</span>
+        </nav>
+
+        <div
+          className="text-lg leading-relaxed mb-6 p-6 rounded-xl border-l-4"
+          style={{
+            borderColor: 'var(--accent)',
+            background: 'var(--bg-tertiary)',
+            color: 'var(--text-secondary)',
+          }}
+          dangerouslySetInnerHTML={{ __html: tSeo('firstParagraph') }}
+        />
 
         <div className="mb-8 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 text-amber-800 dark:text-amber-200">
           <p className="text-sm md:text-base font-medium flex items-start gap-2">
@@ -28,11 +53,21 @@ export default function Intro() {
         </div>
 
         <p
-          className="text-lg leading-relaxed mb-12"
+          className="text-lg leading-relaxed mb-12 whitespace-pre-wrap"
           style={{ color: 'var(--text-secondary)' }}
         >
           {t('description')}
         </p>
+
+        <div
+          className="mb-12 text-lg leading-relaxed p-6 rounded-xl border border-dashed"
+          style={{
+            borderColor: 'var(--border-color)',
+            background: 'var(--bg-secondary)',
+            color: 'var(--text-secondary)',
+          }}
+          dangerouslySetInnerHTML={{ __html: tSeo('nearbyLandmarks') }}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
@@ -77,9 +112,9 @@ export default function Intro() {
         </div>
 
         <div className="mt-12 p-6 sm:p-8 rounded-xl border border-[var(--accent)]" style={{ background: 'var(--bg-tertiary)' }}>
-          <h2 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
+          <h3 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>
             {tOff('title')}
-          </h2>
+          </h3>
           <div className="text-base leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-secondary)' }}>
             {tOff('text')}
           </div>

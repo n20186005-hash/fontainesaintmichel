@@ -2,42 +2,91 @@
 
 import { useTranslations, useMessages } from 'next-intl';
 import { useState, useCallback } from 'react';
+import { useLocale } from 'next-intl';
 
-const photos = [
-  { src: '/gallery/fontainesaintmichel (1).jpg', alt: 'Fontaine Saint-Michel 正面全景' },
-  { src: '/gallery/fontainesaintmichel (2).jpg', alt: '大天使米歇尔雕像细节' },
-  { src: '/gallery/fontainesaintmichel (3).jpg', alt: '科林斯柱细节' },
-  { src: '/gallery/fontainesaintmichel (4).jpg', alt: '夜景灯光' },
-  { src: '/gallery/fontainesaintmichel (5).jpg', alt: '法律与正义雕像' },
-  { src: '/gallery/fontainesaintmichel (6).jpg', alt: '圣米歇尔广场' },
-  { src: '/gallery/fontainesaintmichel (7).jpg', alt: '喷泉水池' },
-  { src: '/gallery/fontainesaintmichel (8).jpg', alt: '大道景观' },
-  { src: '/gallery/fontainesaintmichel (9).jpg', alt: '喷泉雕刻细节' },
-  { src: '/gallery/fontainesaintmichel (10).jpg', alt: '天使与龙雕塑' },
-  { src: '/gallery/fontainesaintmichel (11).jpg', alt: '喷泉侧面视角' },
-  { src: '/gallery/fontainesaintmichel (12).jpg', alt: '圣米歇尔屠龙' },
-  { src: '/gallery/fontainesaintmichel (13).jpg', alt: '喷泉与背景建筑' },
-  { src: '/gallery/fontainesaintmichel (14).jpg', alt: '游客与喷泉' },
-  { src: '/gallery/fontainesaintmichel (15).jpg', alt: '喷泉基座细节' },
-  { src: '/gallery/fontainesaintmichel (16).jpg', alt: '黄昏时分的喷泉' },
-  { src: '/gallery/fontainesaintmichel (17).jpg', alt: '喷泉顶部雕塑' },
-  { src: '/gallery/fontainesaintmichel (18).jpg', alt: '喷泉与塞纳河' },
-  { src: '/gallery/fontainesaintmichel (19).jpg', alt: '巴黎街景与喷泉' },
-];
+const MAPS_SHARE_URL = 'https://maps.app.goo.gl/34Ufnj4GUV4RybQx7';
+
+const photoAltMap: Record<string, { src: string; alt: string }[]> = {
+  fr: [
+    { src: '/gallery/fontainesaintmichel (1).jpg', alt: 'Fontaine Saint-Michel - Vue principale à Paris, France' },
+    { src: '/gallery/fontainesaintmichel (2).jpg', alt: 'Statue de l\'Archange Michel, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (3).jpg', alt: 'Détail des colonnes corinthiennes, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (4).jpg', alt: 'Illumination nocturne, Fontaine Saint-Michel Paris' },
+    { src: '/gallery/fontainesaintmichel (5).jpg', alt: 'Statues de la Loi et de la Justice, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (6).jpg', alt: 'Place Saint-Michel près de la Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (7).jpg', alt: 'Bassin de la Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (8).jpg', alt: 'Vue depuis le Boulevard Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (9).jpg', alt: 'Détail sculpté de la Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (10).jpg', alt: 'Groupe sculptural de l\'Archange, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (11).jpg', alt: 'Angle latéral de la Fontaine Saint-Michel, Paris' },
+    { src: '/gallery/fontainesaintmichel (12).jpg', alt: 'Archange terrassant le démon, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (13).jpg', alt: 'Fontaine Saint-Michel et façons haussmanniennes' },
+    { src: '/gallery/fontainesaintmichel (14).jpg', alt: 'Visiteurs à la Fontaine Saint-Michel, Paris' },
+    { src: '/gallery/fontainesaintmichel (15).jpg', alt: 'Détail du socle de la Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (16).jpg', alt: 'Fontaine Saint-Michel au crépuscule, Paris' },
+    { src: '/gallery/fontainesaintmichel (17).jpg', alt: 'Statues du couronnement, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (18).jpg', alt: 'Fontaine Saint-Michel près de la Seine' },
+    { src: '/gallery/fontainesaintmichel (19).jpg', alt: 'Rue parisienne et Fontaine Saint-Michel' },
+  ],
+  en: [
+    { src: '/gallery/fontainesaintmichel (1).jpg', alt: 'Fontaine Saint-Michel - Main view in Paris, France' },
+    { src: '/gallery/fontainesaintmichel (2).jpg', alt: 'Archangel Michael statue near Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (3).jpg', alt: 'Corinthian columns detail of Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (4).jpg', alt: 'Night illumination at Fontaine Saint-Michel, Paris' },
+    { src: '/gallery/fontainesaintmichel (5).jpg', alt: 'Law and Justice statues at Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (6).jpg', alt: 'Place Saint-Michel near Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (7).jpg', alt: 'Basin of Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (8).jpg', alt: 'Boulevard view near Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (9).jpg', alt: 'Sculpture detail of Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (10).jpg', alt: 'Archangel sculptural group at Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (11).jpg', alt: 'Side angle of Fontaine Saint-Michel, Paris' },
+    { src: '/gallery/fontainesaintmichel (12).jpg', alt: 'Archangel slaying the devil, Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (13).jpg', alt: 'Fontaine Saint-Michel with Haussmann facades' },
+    { src: '/gallery/fontainesaintmichel (14).jpg', alt: 'Visitors at Fontaine Saint-Michel, Paris' },
+    { src: '/gallery/fontainesaintmichel (15).jpg', alt: 'Plinth detail of Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (16).jpg', alt: 'Fontaine Saint-Michel at dusk, Paris' },
+    { src: '/gallery/fontainesaintmichel (17).jpg', alt: 'Crowning statues at Fontaine Saint-Michel' },
+    { src: '/gallery/fontainesaintmichel (18).jpg', alt: 'Fontaine Saint-Michel near the Seine' },
+    { src: '/gallery/fontainesaintmichel (19).jpg', alt: 'Paris streetscape with Fontaine Saint-Michel' },
+  ],
+  zh: [
+    { src: '/gallery/fontainesaintmichel (1).jpg', alt: '圣米歇尔喷泉 Fontaine Saint-Michel - 法国巴黎主景视角' },
+    { src: '/gallery/fontainesaintmichel (2).jpg', alt: '圣米歇尔喷泉之大天使米歇尔雕像' },
+    { src: '/gallery/fontainesaintmichel (3).jpg', alt: '圣米歇尔喷泉之科林斯柱细节' },
+    { src: '/gallery/fontainesaintmichel (4).jpg', alt: '巴黎圣米歇尔喷泉之夜景灯光' },
+    { src: '/gallery/fontainesaintmichel (5).jpg', alt: '圣米歇尔喷泉之法律与正义雕像' },
+    { src: '/gallery/fontainesaintmichel (6).jpg', alt: '圣米歇尔喷泉旁的圣米歇尔广场' },
+    { src: '/gallery/fontainesaintmichel (7).jpg', alt: '圣米歇尔喷泉之喷泉水池' },
+    { src: '/gallery/fontainesaintmichel (8).jpg', alt: '圣米歇尔喷泉大道视角' },
+    { src: '/gallery/fontainesaintmichel (9).jpg', alt: '圣米歇尔喷泉雕刻细节' },
+    { src: '/gallery/fontainesaintmichel (10).jpg', alt: '圣米歇尔喷泉之大天使雕塑群' },
+    { src: '/gallery/fontainesaintmichel (11).jpg', alt: '巴黎圣米歇尔喷泉侧面视角' },
+    { src: '/gallery/fontainesaintmichel (12).jpg', alt: '圣米歇尔喷泉之大天使战魔鬼' },
+    { src: '/gallery/fontainesaintmichel (13).jpg', alt: '圣米歇尔喷泉与奥斯曼建筑' },
+    { src: '/gallery/fontainesaintmichel (14).jpg', alt: '巴黎游客与圣米歇尔喷泉' },
+    { src: '/gallery/fontainesaintmichel (15).jpg', alt: '圣米歇尔喷泉基座细节' },
+    { src: '/gallery/fontainesaintmichel (16).jpg', alt: '巴黎黄昏中的圣米歇尔喷泉' },
+    { src: '/gallery/fontainesaintmichel (17).jpg', alt: '圣米歇尔喷泉顶部雕塑' },
+    { src: '/gallery/fontainesaintmichel (18).jpg', alt: '塞纳河畔的圣米歇尔喷泉' },
+    { src: '/gallery/fontainesaintmichel (19).jpg', alt: '巴黎街景与圣米歇尔喷泉' },
+  ],
+};
 
 export default function Gallery() {
   const t = useTranslations('gallery');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const locale = useLocale();
+  const photos = photoAltMap[locale] || photoAltMap.en;
 
   const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
-  }, []);
+  }, [photos.length]);
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
-  }, []);
+  }, [photos.length]);
 
   const openLightbox = () => setIsLightboxOpen(true);
   const closeLightbox = () => setIsLightboxOpen(false);
@@ -72,6 +121,7 @@ export default function Gallery() {
                     className="w-full h-full object-cover rounded-lg"
                     style={{ minHeight: i === 0 ? '400px' : '180px' }}
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors rounded-lg flex items-end">
                     <p className="text-white text-sm p-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -121,7 +171,7 @@ export default function Gallery() {
                 </button>
               )}
               <a
-                href="https://maps.app.goo.gl/r1jfAjauKmSvUv77A"
+                href={MAPS_SHARE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm hover:underline"

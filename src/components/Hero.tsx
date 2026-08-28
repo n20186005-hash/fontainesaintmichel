@@ -1,31 +1,43 @@
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const tSeo = useTranslations('seo');
+  const locale = useLocale();
+
+  const heroAltMap: Record<string, string> = {
+    fr: 'Fontaine Saint-Michel - Vue principale à Paris, France',
+    en: 'Fontaine Saint-Michel - Main view in Paris, France',
+    zh: '圣米歇尔喷泉 Fontaine Saint-Michel - 法国巴黎主景视角',
+  };
+
+  const heroAlt = heroAltMap[locale] || heroAltMap.en;
+  const mapsShareUrl = 'https://maps.app.goo.gl/34Ufnj4GUV4RybQx7';
 
   return (
     <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 overflow-hidden">
-      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src="/gallery/fontainesaintmichel (1).jpg"
-          alt="Fontaine Saint-Michel"
+          alt={heroAlt}
           className="w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0" style={{ background: 'var(--hero-overlay)' }} />
       </div>
-      
-      {/* Content */}
+
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
         <div className="max-w-3xl">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 animate-fade-in-up">
-            {t('title')}
+            {tSeo('heroTitle')}
           </h1>
           <p className="text-lg sm:text-xl text-white/80 mb-8 animate-fade-in-up animation-delay-100 font-light">
             {t('subtitle')}
           </p>
 
-          {/* Meta row */}
           <div className="flex flex-wrap items-center gap-4 mb-8 animate-fade-in-up animation-delay-200">
             <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="#f0b429" stroke="none">
@@ -42,7 +54,7 @@ export default function Hero() {
               <span className="text-white text-sm">{t('type')}</span>
             </div>
             <a
-              href="https://maps.app.goo.gl/r1jfAjauKmSvUv77A"
+              href={mapsShareUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/25 transition-colors"
@@ -57,7 +69,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" opacity="0.5">
           <polyline points="6 9 12 15 18 9"/>
