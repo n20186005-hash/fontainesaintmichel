@@ -31,9 +31,9 @@ export default async function HomePage({
   return (
     <>
       <Header />
-      <NoticeBanner />
       <main>
         <Hero />
+        <NoticeBanner />
         <RestorationUpdate />
         <Intro />
         <BasicInfo />

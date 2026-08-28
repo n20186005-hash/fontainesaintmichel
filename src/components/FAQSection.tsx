@@ -7,7 +7,6 @@ type FaqItem = { question: string; answer: string };
 
 export default function FAQSection() {
   const t = useTranslations('faq');
-  const tSeo = useTranslations('seo');
   const messages = useMessages() as any;
   const items: FaqItem[] = (messages?.faq?.items || []) as FaqItem[];
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -81,14 +80,6 @@ export default function FAQSection() {
             );
           })}
         </div>
-
-        <h2
-          className="font-display text-3xl sm:text-4xl font-semibold mb-6 mt-16"
-          style={{ color: 'var(--text-primary)' }}
-        >
-          {tSeo('h2Landmarks')}
-        </h2>
-        <div className="w-12 h-0.5 mb-8" style={{ background: 'var(--accent)' }} />
       </div>
     </section>
   );
