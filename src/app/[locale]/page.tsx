@@ -19,6 +19,7 @@ import NearbyLandmarksSection from '@/components/NearbyLandmarksSection';
 import VisitorAmenitiesSection from '@/components/VisitorAmenitiesSection';
 import MapEmbed from '@/components/MapEmbed';
 import Footer from '@/components/Footer';
+import TopicExplore from '@/components/TopicExplore';
 
 export default async function HomePage({
   params,
@@ -48,6 +49,7 @@ export default async function HomePage({
         <Reviews />
         <FAQSection />
         <NearbyLandmarksSection />
+        <TopicExplore />
         <VisitorAmenitiesSection />
         <MapEmbed />
       </main>

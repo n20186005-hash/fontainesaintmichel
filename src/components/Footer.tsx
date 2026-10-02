@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
+import { TOPIC_SLUGS } from '@/i18n/routing';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const tt = useTranslations('topics');
   const locale = useLocale();
   const prefix = `/${locale}`;
 
@@ -37,6 +39,21 @@ export default function Footer() {
                 {t('officialLinks.servicepublic')}
               </a>
             </div>
+          </div>
+          <div className="flex flex-col gap-2 text-sm mt-4 sm:mt-0">
+            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
+              {tt('exploreTitle')}
+            </p>
+            {TOPIC_SLUGS.map((slug) => (
+              <a
+                key={slug}
+                href={`${prefix}/${slug}`}
+                style={{ color: 'var(--text-secondary)' }}
+                className="hover:underline"
+              >
+                {tt(`nav.${slug}`)}
+              </a>
+            ))}
           </div>
           <div className="flex flex-wrap gap-4 text-sm mt-4 sm:mt-0">
             <a href={`${prefix}/privacy-policy`} style={{ color: 'var(--text-secondary)' }} className="hover:underline">

@@ -19,7 +19,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-end pb-16 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/gallery/fontainesaintmichel (1).jpg"
+          src="/gallery/fontaine-saint-michel-paris-1.jpg"
           alt={heroAlt}
           className="w-full h-full object-cover"
           loading="eager"

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Fontaine Saint-Michel (Paris) - Visitor Guide & Location",
-    "description": "Discover Fontaine Saint-Michel, the iconic landmark in Paris, Île-de-France, France. View location map, opening details, nearby Notre-Dame de Paris and the Sorbonne, and travel tips."
+    "title": "Fontaine Saint-Michel Paris | History, Restoration & Visitor Guide",
+    "description": "Visit Fontaine Saint-Michel in Paris, the iconic 19th-century fountain on Place Saint-Michel. Discover its history, architecture, restoration status, photos, location and nearby Latin Quarter attractions."
   },
   "seo": {
     "heroTitle": "Fontaine Saint-Michel (Paris)",
@@ -41,15 +41,15 @@
   "hero": {
     "title": "Fontaine Saint-Michel",
     "subtitle": "Paris's Majestic 19th-Century Fountain & Architectural Masterpiece",
-    "rating": "4.4(7,955)",
-    "reviewCount": "7,955 reviews",
+    "rating": "4.4(7,986)",
+    "reviewCount": "7,986 reviews",
     "type": "Historic Fountain · Public Monument",
     "openMaps": "View Location"
   },
   "intro": {
     "title": "Discover Fontaine Saint-Michel",
     "notice": "Note: Currently due to partial repair or maintenance, there may be enclosures. Please confirm the latest open status before visiting.",
-    "description": "Standing proudly at the intersection of Boulevard Saint-Michel and Place Saint-Michel, the Fontaine Saint-Michel is one of Paris's most recognizable monuments. Built between 1858 and 1860 under the direction of architect Gabriel Davioud during Baron Haussmann's massive urban renovation of Paris.\n\nThe fountain's centerpiece is the impressive statue of Archangel Michael defeating the devil, created by sculptor Francisque Jouffroy. The monumental structure rises 26 meters high and features four Corinthian columns framing the central niche, with two allegorical figures representing Law and Justice on either side.\n\nLocated in the heart of the Latin Quarter, the fountain has served as a popular meeting point for Parisians and tourists alike for over 160 years. Its strategic position connects the Left Bank's vibrant student district with the historic Île de la Cité, making it an essential landmark in Paris's cultural landscape.\n\nThe fountain is beautifully illuminated at night, creating a magical atmosphere in the bustling Place Saint-Michel. It's freely accessible 24/7, making it perfect for both daytime exploration and evening strolls through Paris's enchanting streets.",
+    "description": "Standing proudly at the intersection of Boulevard Saint-Michel and Place Saint-Michel, the Fontaine Saint-Michel is one of Paris's most recognizable monuments. Built between 1858 and 1860 under the direction of architect Gabriel Davioud during Baron Haussmann's massive urban renovation of Paris.\n\nThe fountain's centerpiece is the impressive statue of Archangel Michael defeating the devil, created by sculptor Francisque Duret. The monumental structure rises 26 meters high and features four Corinthian columns framing the central niche, with two allegorical figures representing Law and Justice on either side.\n\nLocated in the heart of the Latin Quarter, the fountain has served as a popular meeting point for Parisians and tourists alike for over 160 years. Its strategic position connects the Left Bank's vibrant student district with the historic Île de la Cité, making it an essential landmark in Paris's cultural landscape.\n\nThe fountain is beautifully illuminated at night, creating a magical atmosphere in the bustling Place Saint-Michel. It's freely accessible 24/7, making it perfect for both daytime exploration and evening strolls through Paris's enchanting streets.",
     "visitGuide": {
       "title": "Visit Tips",
       "items": [
@@ -64,7 +64,7 @@
       "items": [
         "Built 1858-1860 by architect Gabriel Davioud during Haussmann's Paris renovation",
         "Features 26-meter tall monumental structure with Corinthian columns",
-        "Central statue: Archangel Michael defeating the devil by Francisque Jouffroy",
+        "Central statue: Archangel Michael defeating the devil, by Francisque Duret",
         "Allegorical figures of Law and Justice flank the main composition"
       ]
     }
@@ -80,7 +80,7 @@
       {
         "id": "architecture",
         "title": "Architectural Significance",
-        "content": "Standing 26 meters tall, the Fontaine Saint-Michel is a masterpiece of Second Empire architecture. The structure features four majestic Corinthian columns that frame the central niche. The red marble columns contrast beautifully with the white stone facade, creating a striking visual impact.\n\nThe central niche houses the dramatic group sculpture of Archangel Michael vanquishing the devil, carved by Francisque Jouffroy. Two allegorical figures adorn the sides: 'Law' by Louis-Auguste Barrias on the left, and 'Justice' by Alexandre Falguière on the right. The fountain's basin collects water from four spouts shaped like marine monsters."
+        "content": "Standing 26 meters tall, the Fontaine Saint-Michel is a masterpiece of Second Empire architecture. The structure features four majestic Corinthian columns that frame the central niche. The red marble columns contrast beautifully with the white stone facade, creating a striking visual impact.\n\nThe central niche houses the dramatic group sculpture of Archangel Michael vanquishing the devil, carved by Francisque Duret. Two allegorical figures representing Law and Justice flank the central group. The fountain's basin collects water from four spouts shaped like marine monsters."
       },
       {
         "id": "location",
@@ -105,7 +105,8 @@
     "city": "City",
     "cityValue": "Paris",
     "googleRating": "Google Rating",
-    "googleRatingValue": "4.4/5 (7,955)",
+    "googleRatingValue": "4.4/5 (7,986)",
+    "googleRatingNote": "Google Maps rating · last checked October 2026",
     "phone": "Phone",
     "address": "Address",
     "addressValue": "Pl. Saint-Michel, 75005 Paris, France"
@@ -230,34 +231,10 @@
   },
   "reviews": {
     "title": "Visitor Reviews",
-    "declaration": "Visitor feedback can be viewed via Google Maps (external link).",
-    "moreReviews": "View more reviews on Google Maps",
-    "items": [
-      {
-        "name": "Marie Laurent",
-        "date": "May 2026",
-        "rating": 5,
-        "text": "Absolutely stunning fountain! The detail on Archangel Michael is incredible. Perfect meeting point in the Latin Quarter, and beautifully lit at night."
-      },
-      {
-        "name": "John Anderson",
-        "date": "April 2026",
-        "rating": 5,
-        "text": "A magnificent piece of 19th-century architecture. The location is perfect for starting a walking tour of the Left Bank. Don't miss it!"
-      },
-      {
-        "name": "Yuki Tanaka",
-        "date": "March 2026",
-        "rating": 4,
-        "text": "Beautiful fountain with rich history. It gets crowded during the day, but the night view with illumination is magical. Great photo spot!"
-      },
-      {
-        "name": "Sophie Martin",
-        "date": "February 2026",
-        "rating": 5,
-        "text": "As a local, I love meeting friends at 'Saint-Michel.' The fountain is iconic and the surrounding area is full of life — great cafés and bookshops everywhere."
-      }
-    ]
+    "declaration": "This site does not publish its own visitor reviews. Ratings and traveller feedback for Fontaine Saint-Michel come from Google Maps, an independent third-party source — please consult the latest figure there.",
+    "ratingNote": "Google Maps rating: 4.4/5 · review count last checked: October 2026",
+    "moreReviews": "View latest reviews on Google Maps",
+    "items": []
   },
   "mapSection": {
     "title": "How to Get Here",
@@ -348,14 +325,14 @@
   },
   "noticeBanner": {
     "label": "Status",
-    "statusPill": "Partial maintenance enclosure · Free public access to Place Saint-Michel maintained",
-    "summary": "The stone-clad basin area of Fontaine Saint-Michel is temporarily under targeted conservation work (stonework cleaning and water-circuit refurbishment). Pedestrian circulation on Place Saint-Michel, adjacent sidewalks, and the Latin Quarter remain fully open. Expected phased completion: Q1 2027.",
+    "statusPill": "Restored · fountain unveiled August 2026",
+    "summary": "After about eighteen months of conservation work, the Ville de Paris unveiled the restored Fontaine Saint-Michel at the end of August 2026; the final restart of the water feature is scheduled for autumn 2026. Place Saint-Michel, the boulevard sidewalks and Metro/RER access remain fully open.",
     "ctaMaps": "See latest on Google Maps",
-    "ctaTourism": "Île-de-France Official Updates"
+    "ctaTourism": "Official Paris updates"
   },
   "restoration": {
     "h2": "Conservation & Restoration Status · Follow the Progress",
-    "leadIn": "\"Temporarily closed\" notices on Google Maps refer only to the fenced inner-basin maintenance footprint of <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. Place Saint-Michel, the boulevard sidewalks, Metro/RER access, and nearby Latin Quarter landmarks remain fully open to the public.",
+    "leadIn": "The \"temporarily closed\" / dry-basin notices that circulated during 2025–2026 referred only to the fenced conservation footprint of <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. Following the Ville de Paris update of 26 August 2026, the restored monument has been unveiled again, with the water feature scheduled to restart in autumn 2026. Place Saint-Michel, the boulevard sidewalks, Metro/RER access, and nearby Latin Quarter landmarks remain fully open to the public.",
     "ifYouGoTitle": "If you visit now",
     "ifYouGoItems": [
       "Photography of the full 26-meter architectural elevation is possible from Place Saint-Michel and the boulevard medians.",
@@ -365,14 +342,24 @@
     "timelineTitle": "Project timeline",
     "timeline": [
       {
-        "period": "Jun. 2025 — Q1 2027",
+        "period": "Autumn 2026",
+        "name": "Water feature restart",
+        "body": "According to the Ville de Paris update of 26 August 2026, the fountain's water circuits are scheduled to be brought back into service in autumn 2026, closing out the 2025–2026 conservation programme."
+      },
+      {
+        "period": "Aug. 2026",
+        "name": "Restored fountain unveiled",
+        "body": "After roughly eighteen months of works, the restored monument was revealed again to the public: cleaned Saint-Maximin limestone, consolidated sculptural group by Francisque Duret and renewed red-marble elements. The surrounding enclosure was progressively removed."
+      },
+      {
+        "period": "Jun. 2025 — Jul. 2026",
         "name": "Stonework & Hydraulic Restoration",
-        "body": "Phase I covers removal of biological crust from the 19th-century Saint-Maximin limestone, replacement of corroded cast-iron water spouts, and renewal of the recirculation basin. Budget reference: approx. €1.4 M, awarded under Ville de Paris public procurement for \"Patrimoine Fontainier 2025–2027\"."
+        "body": "The works covered removal of biological crust from the 19th-century Saint-Maximin limestone, replacement of corroded cast-iron water spouts, and renewal of the recirculation basin, carried out under the Ville de Paris \"Patrimoine Fontainier\" conservation programme."
       },
       {
         "period": "Q2 — Q4 2024",
         "name": "Diagnostic & Monument Survey",
-        "body": "Prior to enclosure, a full laser scan and petrographic analysis of the Corinthian columns and the Jouffroy sculptural group was completed by the Atelier de Restauration des Monuments Historiques (ARMH) to map micro-cracks in the red marble plinths."
+        "body": "Prior to enclosure, a full laser scan and petrographic analysis of the Corinthian columns and the Duret sculptural group was completed to map micro-cracks in the red marble plinths."
       },
       {
         "period": "1860 — Last major full restoration",
@@ -383,14 +370,19 @@
     "sourcesTitle": "Sources (official)",
     "sources": [
       {
-        "date": "Ville de Paris · 2025-06-18",
-        "body": "Includes the official procurement notice \"Fontaine Saint-Michel – Conservation et remise en état du bassin\" (lot 02, Patrimoine Fontainier 2025–2027).",
-        "href": "https://www.paris.fr/"
+        "date": "Ville de Paris · 2026-09-01",
+        "body": "\"1 lieu, 3 histoires : la fontaine Saint-Michel\" — official history note presenting the fully restored fountain back in the Quartier Latin landscape.",
+        "href": "https://www.paris.fr/pages/1-lieu-3-histoires-la-fontaine-saint-michel-35340"
       },
       {
-        "date": "Paris Musées · ARMH · 2024-12-09",
-        "body": "Petrographic diagnostic report on the Saint-Maximin stone and red Languedoc marble. Referenced in the 2025 conservation methodology.",
-        "href": "https://www.parismusees.paris.fr/"
+        "date": "Ville de Paris · 2026-08-26",
+        "body": "\"La fontaine Saint-Michel comme neuve\" — official update on the completion of roughly eighteen months of restoration and the autumn 2026 water-feature restart.",
+        "href": "https://www.paris.fr/pages/la-fontaine-saint-michel-comme-neuve-36203"
+      },
+      {
+        "date": "Ville de Paris · Patrimoine fontainier",
+        "body": "Municipal programme covering the conservation and refurbishment of Paris historic fountains, including the Saint-Michel basin and water circuit works.",
+        "href": "https://www.paris.fr/"
       }
     ]
   },
@@ -515,5 +507,236 @@
         ]
       }
     ]
+  },
+  "topics": {
+    "breadcrumbHome": "Fontaine Saint-Michel",
+    "faqTitle": "Frequently Asked Questions",
+    "relatedTitle": "Continue exploring",
+    "exploreTitle": "In-depth guides",
+    "exploreLead": "Short, focused pages on the questions visitors ask most about Fontaine Saint-Michel.",
+    "nav": {
+      "history": "History",
+      "restoration": "Restoration 2026",
+      "how-to-get-there": "How to get there",
+      "place-saint-michel": "Place Saint-Michel",
+      "things-to-do-near-fontaine-saint-michel": "Things to do nearby"
+    },
+    "items": {
+      "history": {
+        "title": "Fontaine Saint-Michel History – Built 1858–1860 | Paris",
+        "description": "When and why Fontaine Saint-Michel was built: Gabriel Davioud's 1858–1860 design under Haussmann, the 1860 inauguration, the sculptors, and what to look at today.",
+        "h1": "History of Fontaine Saint-Michel, Paris",
+        "updated": "Last updated: October 2026",
+        "lead": "Fontaine Saint-Michel is a monumental wall fountain built between 1858 and 1860 on Place Saint-Michel in the 5th arrondissement. It was designed by the architect Gabriel Davioud as part of Baron Haussmann's rebuilding of Paris and inaugurated on 15 August 1860.",
+        "sections": [
+          {
+            "heading": "When was it built?",
+            "content": "Construction ran from 1858 to 1860, during the Second Empire, and the fountain was inaugurated on 15 August 1860 — the feast of the Assumption and the patronal feast of the Archangel Michael. It belongs to the generation of monumental public fountains created under Haussmann's transformation of Paris, alongside the fountains of the Châtelet and the Observatoire, and it is generally cited as the last of the great Second Empire fountains to be completed."
+          },
+          {
+            "heading": "Why it stands where it stands",
+            "content": "The fountain occupies the corner where Boulevard Saint-Michel meets Rue Danton. It was conceived as a wall fountain: a decorative screen closing the perspective of Rue Danton and masking the bare gable end of the block, while giving the new Haussmannian boulevard a monumental focal point at the entrance to the Latin Quarter."
+          },
+          {
+            "heading": "Architect and sculptors",
+            "content": "The architecture is by Gabriel Davioud, Haussmann's preferred architect for street furniture and public fountains. The ensemble is about 26 metres high: four Corinthian columns in red marble frame a central niche, with allegorical figures representing Law and Justice on either side. The dramatic central group of the Archangel Michael overcoming the devil is attributed by the Ville de Paris to the sculptor Francisque Duret."
+          },
+          {
+            "heading": "From 1860 to today",
+            "content": "For more than 160 years the fountain has served as a landmark and a meeting point — \"meet at Saint-Michel\" is still everyday Parisian shorthand. It has been cleaned and consolidated several times, most recently in the 2025–2026 conservation campaign, after which the restored monument was unveiled again at the end of August 2026, with the water feature due to restart in autumn 2026."
+          }
+        ],
+        "faq": [
+          {
+            "question": "When was Fontaine Saint-Michel built?",
+            "answer": "It was built between 1858 and 1860 and inaugurated on 15 August 1860, during the Second Empire."
+          },
+          {
+            "question": "Who designed and built Fontaine Saint-Michel?",
+            "answer": "The fountain was designed by the architect Gabriel Davioud under Baron Haussmann's urban programme. The central group of the Archangel Michael is attributed by the Ville de Paris to the sculptor Francisque Duret."
+          },
+          {
+            "question": "How tall is Fontaine Saint-Michel?",
+            "answer": "The monumental elevation is about 26 metres high, with four red marble Corinthian columns framing the central niche."
+          },
+          {
+            "question": "Why is it called Fontaine Saint-Michel?",
+            "answer": "It takes its name from Place Saint-Michel and the Boulevard Saint-Michel, which in turn recall the historic Saint-Michel chapel of the Île de la Cité; the central sculpture represents the Archangel Michael."
+          }
+        ]
+      },
+      "restoration": {
+        "title": "Fontaine Saint-Michel Restoration 2026 – Latest Updates",
+        "description": "Latest official status of the Fontaine Saint-Michel restoration: 2025–2026 conservation works, the August 2026 unveiling, the autumn 2026 water restart and current visitor access.",
+        "h1": "Fontaine Saint-Michel restoration: latest updates",
+        "updated": "Last updated: October 2026",
+        "lead": "After roughly eighteen months of conservation works, the Ville de Paris unveiled the restored Fontaine Saint-Michel at the end of August 2026. The fountain is visible again and the final restart of the water feature is scheduled for autumn 2026.",
+        "sections": [
+          {
+            "heading": "What the official updates say",
+            "content": "In its 26 August 2026 update (\"La fontaine Saint-Michel comme neuve\"), the Ville de Paris presented the fountain as revealed again after about eighteen months of restoration, with the final water feature restart planned for autumn 2026. A further official history note published on 1 September 2026 describes the monument as fully restored and back in the Quartier Latin cityscape."
+          },
+          {
+            "heading": "What was restored",
+            "content": "The campaign focused on the 19th-century Saint-Maximin limestone: removal of biological crust and soiling, consolidation of the sculpted surfaces, treatment of the red marble elements, renewal of corroded cast-iron water spouts and refurbishment of the recirculation basin and water circuit."
+          },
+          {
+            "heading": "Can you visit now?",
+            "content": "Yes. Place Saint-Michel, the boulevard sidewalks and the Metro/RER access remain open throughout, and the fountain elevation can be photographed from the square. Depending on the final commissioning phase, short working perimeters may still appear — these are marked with official Ville de Paris signage and should not be entered."
+          },
+          {
+            "heading": "How to check the current status",
+            "content": "Because the last stage of the programme is time-sensitive, verify the latest state before travelling: consult the official Ville de Paris pages linked below and the live listing on Google Maps. This page reflects the information available in October 2026."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Is Fontaine Saint-Michel open in 2026?",
+            "answer": "Yes. Place Saint-Michel and the surrounding streets are fully open, and the restored fountain was unveiled at the end of August 2026."
+          },
+          {
+            "question": "When will the water return to Fontaine Saint-Michel?",
+            "answer": "The Ville de Paris announced in August 2026 that the water feature is scheduled to restart in autumn 2026."
+          },
+          {
+            "question": "How long did the restoration take?",
+            "answer": "About eighteen months, running from mid-2025 to the unveiling in August 2026, following a diagnostic survey campaign carried out in 2024."
+          },
+          {
+            "question": "Do I need a ticket to see the restored fountain?",
+            "answer": "No. It is a public monument on a public square, freely accessible at any hour, with no ticketing."
+          }
+        ]
+      },
+      "how-to-get-there": {
+        "title": "How to Get to Fontaine Saint-Michel – Metro, RER & Walking",
+        "description": "Address, Metro and RER stations, walking routes from Notre-Dame and the Louvre, and transfers from CDG and Orly airports to Fontaine Saint-Michel on Place Saint-Michel, 75005 Paris.",
+        "h1": "How to get to Fontaine Saint-Michel",
+        "updated": "Last updated: October 2026",
+        "lead": "The fountain stands on Place Saint-Michel (Pl. Saint-Michel, 75005 Paris), where Boulevard Saint-Michel meets the Seine in the 5th arrondissement. It is one of the easiest monuments in Paris to reach: the RER station Saint-Michel – Notre-Dame is literally at its foot.",
+        "sections": [
+          {
+            "heading": "By Metro and RER",
+            "content": "RER B and RER C stop at Saint-Michel – Notre-Dame, directly beside the fountain; follow the \"Sortie Place Saint-Michel\" signs. Metro line 4 serves the Saint-Michel station on Place Saint-Michel, and Metro line 10 stops at Cluny – La Sorbonne, about three minutes' walk away. Several bus routes run along Boulevard Saint-Michel and the quays."
+          },
+          {
+            "heading": "On foot from Notre-Dame and the islands",
+            "content": "From Notre-Dame de Paris, cross the Petit Pont and walk south: the fountain is about five minutes away on Place Saint-Michel. Sainte-Chapelle and the Conciergerie on the Île de la Cité are roughly ten minutes on foot, and the Pont Neuf gives a scenic approach along the river."
+          },
+          {
+            "heading": "From the Louvre and the Eiffel Tower",
+            "content": "From the Louvre, walk south across the Pont Neuf (about 25 minutes) or take Metro line 4 towards Porte d'Orléans to Saint-Michel. From the Eiffel Tower, RER C runs directly from Champ de Mars – Tour Eiffel to Saint-Michel – Notre-Dame in roughly twenty minutes."
+          },
+          {
+            "heading": "From the airports",
+            "content": "From Charles de Gaulle, take RER B directly to Saint-Michel – Notre-Dame (around 45 minutes). From Orly, take Orlyval to Antony and continue on RER B, or the tram plus Metro combination; allow roughly an hour. From Beauvais, the coach shuttle terminates at Porte Maillot, from where Metro line 1 plus RER B or line 4 serves the Left Bank."
+          }
+        ],
+        "faq": [
+          {
+            "question": "What is the address of Fontaine Saint-Michel?",
+            "answer": "Pl. Saint-Michel, 75005 Paris, France. The Plus Code for the square is V83V+7G Paris."
+          },
+          {
+            "question": "Which Metro station is closest to Fontaine Saint-Michel?",
+            "answer": "Metro line 4 (Saint-Michel) and RER B/C (Saint-Michel – Notre-Dame) are at the square itself; Metro line 10 (Cluny – La Sorbonne) is about three minutes away."
+          },
+          {
+            "question": "How far is Fontaine Saint-Michel from Notre-Dame?",
+            "answer": "About a five-minute walk: cross the Petit Pont from the Île de la Cité and continue straight onto Place Saint-Michel."
+          },
+          {
+            "question": "How do I get to Fontaine Saint-Michel from CDG airport?",
+            "answer": "Take RER B directly from the airport to Saint-Michel – Notre-Dame, roughly 45 minutes; the fountain is outside the station exit."
+          }
+        ]
+      },
+      "place-saint-michel": {
+        "title": "Place Saint-Michel Paris – Square, Fountain & Visitor Guide",
+        "description": "Place Saint-Michel in the 5th arrondissement: the Haussmannian square, the Saint-Michel fountain, the bridge over the Seine, transport links and what to see around it.",
+        "h1": "Place Saint-Michel, Paris",
+        "updated": "Last updated: October 2026",
+        "lead": "Place Saint-Michel is the Haussmannian square on the Left Bank where Boulevard Saint-Michel meets the Seine. Created in the 1850s–1860s as part of the new boulevard axis, it is today one of the busiest crossroads of the Latin Quarter and the setting of Fontaine Saint-Michel.",
+        "sections": [
+          {
+            "heading": "How the square was created",
+            "content": "The square was laid out during Haussmann's transformation of Paris, when the new Boulevard Saint-Michel was driven south from the Seine towards the Observatoire. The creation of the square cleared older streets between Rue de la Huchette and the river and gave the new boulevard a monumental riverfront entrance on the Left Bank."
+          },
+          {
+            "heading": "The fountain and the bridge",
+            "content": "Fontaine Saint-Michel (1858–1860, Gabriel Davioud) occupies the south side, facing the boulevard. Pont Saint-Michel crosses the Seine from the square to the Île de la Cité, putting Notre-Dame about five minutes away, while the quays on both banks carry the riverside bouquinistes and the bus routes."
+          },
+          {
+            "heading": "A transport crossroads",
+            "content": "The square concentrates RER B and RER C at Saint-Michel – Notre-Dame, Metro line 4, several bus routes and Vélib' stations. This is why \"Saint-Michel\" functions as a standard meeting point and a practical base for exploring the Latin Quarter, Saint-Germain and the islands."
+          },
+          {
+            "heading": "What to do on the square",
+            "content": "Typical stops are a coffee or crêpe on the surrounding streets, the bookshops of Rue de la Huchette and Rue de la Bûcherie, a riverside walk towards Notre-Dame, and evening photography when the fountain is lit. The square also works as the starting point for a half-day Latin Quarter route towards the Panthéon and the Jardin du Luxembourg."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Where is Place Saint-Michel?",
+            "answer": "In the 5th arrondissement of Paris, at the northern end of Boulevard Saint-Michel on the Left Bank, immediately south of the Pont Saint-Michel and the Île de la Cité."
+          },
+          {
+            "question": "Is Place Saint-Michel the same as Fontaine Saint-Michel?",
+            "answer": "No: Place Saint-Michel is the square, and Fontaine Saint-Michel is the monument that stands on its south side. The fountain is named after the square."
+          },
+          {
+            "question": "Which arrondissement is Place Saint-Michel in?",
+            "answer": "The 5th arrondissement of Paris, postal code 75005, in the Latin Quarter."
+          },
+          {
+            "question": "How do I reach Place Saint-Michel by public transport?",
+            "answer": "RER B/C to Saint-Michel – Notre-Dame, Metro line 4 to Saint-Michel, or Metro line 10 to Cluny – La Sorbonne, a short walk away."
+          }
+        ]
+      },
+      "things-to-do-near-fontaine-saint-michel": {
+        "title": "Things to Do Near Fontaine Saint-Michel – 1h, 2h & Half-Day Routes",
+        "description": "What to see near Fontaine Saint-Michel: a 1-hour loop, a 2-hour route and a half-day Latin Quarter itinerary covering Notre-Dame, Sainte-Chapelle, the Panthéon and the Luxembourg Gardens.",
+        "h1": "Things to do near Fontaine Saint-Michel",
+        "updated": "Last updated: October 2026",
+        "lead": "Fontaine Saint-Michel sits at the meeting point of the Latin Quarter, the Île de la Cité and the Seine quays, which makes it an unusually efficient starting point. Below are three ready-to-walk routes of increasing length.",
+        "sections": [
+          {
+            "heading": "1-hour route: fountain, river and cathedral",
+            "content": "Start at Fontaine Saint-Michel, cross the Pont Saint-Michel to the Île de la Cité, view the west facade and the surroundings of Notre-Dame de Paris (about 5 minutes away), then return via the Petit Pont and the riverside bookstalls. Finish with a coffee on Rue de la Huchette. Total: about 1 hour at an easy pace."
+          },
+          {
+            "heading": "2-hour route: add Sainte-Chapelle and the medieval quarter",
+            "content": "Follow the 1-hour loop, then continue on the Île de la Cité to Sainte-Chapelle and the Conciergerie (paid, timed tickets sold by the Centre des Monuments Nationaux). Cross back to the Left Bank and climb Rue de la Huchette and Rue Saint-Séverin through the medieval street grid to Place de la Sorbonne. Total: about 2 hours excluding interior visits."
+          },
+          {
+            "heading": "Half-day route: Panthéon and Luxembourg",
+            "content": "From Place de la Sorbonne continue up Rue Saint-Jacques or Rue Soufflot to the Panthéon (about 12 minutes from the fountain), then descend to the Jardin du Luxembourg (15–20 minutes from the fountain) for the Medici Fountain, the orchard and the pond. Allow three to four hours with breaks."
+          },
+          {
+            "heading": "Evening option",
+            "content": "The fountain is illuminated after dark and the square stays lively. A short evening loop runs along the Quai Saint-Michel and Quai de Montebello for reflections of Notre-Dame on the river, then back to the square for the lit elevation of the monument."
+          }
+        ],
+        "faq": [
+          {
+            "question": "What is near Fontaine Saint-Michel?",
+            "answer": "Notre-Dame de Paris (about 5 minutes), Sainte-Chapelle and the Conciergerie (about 10), the Sorbonne (3), the Panthéon (12) and the Jardin du Luxembourg (15–20)."
+          },
+          {
+            "question": "How much time do I need around Fontaine Saint-Michel?",
+            "answer": "Allow at least one hour for the fountain, the square and the riverside walk; two hours if you add Sainte-Chapelle; half a day for the Panthéon and the Luxembourg Gardens."
+          },
+          {
+            "question": "Is the area walkable?",
+            "answer": "Yes — the Latin Quarter core is flat and compact, and almost everything listed above is within a 20-minute walk of the square."
+          },
+          {
+            "question": "Is there anything free to do nearby?",
+            "answer": "The fountain and square, the exterior of Notre-Dame, the riverside quays, the Sorbonne courtyard area and the Jardin du Luxembourg gardens are all free to enjoy; only monument interiors require tickets."
+          }
+        ]
+      }
+    }
   }
 }

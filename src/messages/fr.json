@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Fontaine Saint-Michel (Paris) - Guide du Visiteur & Localisation",
-    "description": "Découvrez Fontaine Saint-Michel, la fontaine emblématique de Paris, Île-de-France, France. Consultez le plan de localisation, les horaires, les environs de Notre-Dame de Paris et la Sorbonne, ainsi que nos conseils de voyage."
+    "title": "Fontaine Saint-Michel à Paris – Histoire, Accès & Visite",
+    "description": "Découvrez la Fontaine Saint-Michel à Paris : histoire, architecture, restauration, accès, photos et conseils de visite au cœur du Quartier latin."
   },
   "seo": {
     "heroTitle": "Fontaine Saint-Michel (Paris)",
@@ -41,15 +41,15 @@
   "hero": {
     "title": "Fontaine Saint-Michel",
     "subtitle": "Magnifique Fontaine Parisienne du 19ème Siècle & Chef-d'œuvre Architectural",
-    "rating": "4.4(7 955)",
-    "reviewCount": "7 955 avis",
+    "rating": "4.4(7 986)",
+    "reviewCount": "7 986 avis",
     "type": "Fontaine Historique · Monument Public",
     "openMaps": "Voir l'emplacement"
   },
   "intro": {
     "title": "Découvrez la Fontaine Saint-Michel",
     "notice": "Note : Actuellement, en raison de réparations ou d'entretien partiels, il peut y avoir des palissades. Veuillez confirmer le dernier statut d'ouverture avant votre visite.",
-    "description": "S'élevant fièrement à l'intersection du Boulevard Saint-Michel et de la Place Saint-Michel, la Fontaine Saint-Michel est l'un des monuments les plus reconnaissables de Paris. Construite entre 1858 et 1860 sous la direction de l'architecte Gabriel Davioud lors de la massive rénovation urbaine du Paris de Haussmann.\n\nLe centre de la fontaine est orné de la impressionnante statue de l'archange Michel terrassant le diable, créée par le sculpteur Francisque Jouffroy. La structure monumentale s'élève à 26 mètres de haut et presente quatre colonnes corinthiennes encadrant la niche centrale, avec deux figures allégoriques représentant la Loi et la Justice de chaque côté.\n\nSituée au cœur du Quartier Latin, la fontaine sert de point de rencontre populaire pour les Parisiens et les touristes depuis plus de 160 ans. Sa position stratégique relie le vibrant quartier étudiant de la Rive Gauche à l'historique Île de la Cité, faisant d'elle un monument essentiel du paysage culturel de Paris.\n\nLa fontaine est magnifiquement éclairée la nuit, créant une atmosphère magique sur la place Saint-Michel. L'accès est gratuit 24h/24 et 7j/7, ce qui en fait un lieu parfait pour l'exploration en journée et les promenades nocturnes dans les rues enchantées de Paris.",
+    "description": "S'élevant fièrement à l'intersection du Boulevard Saint-Michel et de la Place Saint-Michel, la Fontaine Saint-Michel est l'un des monuments les plus reconnaissables de Paris. Construite entre 1858 et 1860 sous la direction de l'architecte Gabriel Davioud lors de la massive rénovation urbaine du Paris de Haussmann.\n\nLe centre de la fontaine est orné de la impressionnante statue de l'archange Michel terrassant le diable, créée par le sculpteur Francisque Duret. La structure monumentale s'élève à 26 mètres de haut et presente quatre colonnes corinthiennes encadrant la niche centrale, avec deux figures allégoriques représentant la Loi et la Justice de chaque côté.\n\nSituée au cœur du Quartier Latin, la fontaine sert de point de rencontre populaire pour les Parisiens et les touristes depuis plus de 160 ans. Sa position stratégique relie le vibrant quartier étudiant de la Rive Gauche à l'historique Île de la Cité, faisant d'elle un monument essentiel du paysage culturel de Paris.\n\nLa fontaine est magnifiquement éclairée la nuit, créant une atmosphère magique sur la place Saint-Michel. L'accès est gratuit 24h/24 et 7j/7, ce qui en fait un lieu parfait pour l'exploration en journée et les promenades nocturnes dans les rues enchantées de Paris.",
     "visitGuide": {
       "title": "Conseils de Visite",
       "items": [
@@ -64,7 +64,7 @@
       "items": [
         "Construite de 1858 à 1860 par l'architecte Gabriel Davioud lors de la rénovation de Paris par Haussmann",
         "Structure monumentale de 26 mètres de haut avec des colonnes corinthiennes",
-        "Statue centrale : l'archange Michel terrassant le diable par Francisque Jouffroy",
+        "Statue centrale : l'archange Michel terrassant le diable, par Francisque Duret",
         "Figures allégoriques de la Loi et de la Justice flanquant la composition principale"
       ]
     }
@@ -80,7 +80,7 @@
       {
         "id": "architecture",
         "title": "Importance Architecturale",
-        "content": "S'élevant à 26 mètres de haut, la Fontaine Saint-Michel est un chef-d'œuvre de l'architecture du Second Empire. La structure présente quatre majestueuses colonnes corinthiennes qui encadrent la niche centrale. Les colonnes en marbre rouge contrastent magnifiquement avec la façade en pierre blanche, créant un impact visuel frappant.\n\nLa niche centrale abrite le groupe sculptural dramatique de l'archange Michel terrassant le diable, sculpté par Francisque Jouffroy. Deux figures allégoriques ornent les côtés : « La Loi » par Louis-Auguste Barrias à gauche, et « La Justice » par Alexandre Falguière à droite. Le bassin de la fontaine recueille l'eau de quatre gargouilles en forme de monstres marins."
+        "content": "S'élevant à 26 mètres de haut, la Fontaine Saint-Michel est un chef-d'œuvre de l'architecture du Second Empire. La structure présente quatre majestueuses colonnes corinthiennes qui encadrent la niche centrale. Les colonnes en marbre rouge contrastent magnifiquement avec la façade en pierre blanche, créant un impact visuel frappant.\n\nLa niche centrale abrite le groupe sculptural dramatique de l'archange Michel terrassant le diable, sculpté par Francisque Duret. Deux figures allégoriques représentant la Loi et la Justice encadrent le groupe central. Le bassin de la fontaine recueille l'eau de quatre gargouilles en forme de monstres marins."
       },
       {
         "id": "location",
@@ -105,7 +105,8 @@
     "city": "Ville",
     "cityValue": "Paris",
     "googleRating": "Note Google",
-    "googleRatingValue": "4.4/5 (7 955)",
+    "googleRatingValue": "4.4/5 (7 986)",
+    "googleRatingNote": "Note Google Maps · vérifiée en octobre 2026",
     "phone": "Téléphone",
     "address": "Adresse",
     "addressValue": "Pl. Saint-Michel, 75005 Paris, France"
@@ -230,34 +231,10 @@
   },
   "reviews": {
     "title": "Avis des Visiteurs",
-    "declaration": "Les commentaires des visiteurs peuvent être consultés via Google Maps (lien externe).",
-    "moreReviews": "Voir plus d'avis sur Google Maps",
-    "items": [
-      {
-        "name": "Marie Laurent",
-        "date": "Mai 2026",
-        "rating": 5,
-        "text": "Fontaine absolument magnifique ! Le détail sur l'archange Michel est incroyable. Point de rencontre parfait dans le Quartier Latin, et magnifiquement éclairée la nuit."
-      },
-      {
-        "name": "John Anderson",
-        "date": "Avril 2026",
-        "rating": 5,
-        "text": "Un magnifique exemple d'architecture du 19ème siècle. L'emplacement est parfait pour commencer une visite à pied de la Rive Gauche. À ne pas manquer !"
-      },
-      {
-        "name": "Yuki Tanaka",
-        "date": "Mars 2026",
-        "rating": 4,
-        "text": "Belle fontaine avec une histoire riche. C'est bondé pendant la journée, mais la vue nocturne avec l'éclairage est magique. Super spot photo !"
-      },
-      {
-        "name": "Sophie Martin",
-        "date": "Février 2026",
-        "rating": 5,
-        "text": "En tant que locale, j'adore rencontrer des amis à « Saint-Michel ». La fontaine est emblématique et le quartier environnant est plein de vie — super cafés et librairies partout."
-      }
-    ]
+    "declaration": "Ce site ne publie pas ses propres avis de visiteurs. Les notes et commentaires sur la Fontaine Saint-Michel proviennent de Google Maps, une source tierce indépendante — veuillez y consulter la valeur la plus récente.",
+    "ratingNote": "Note Google Maps : 4.4/5 · nombre d'avis vérifié en octobre 2026",
+    "moreReviews": "Voir les derniers avis sur Google Maps",
+    "items": []
   },
   "mapSection": {
     "title": "Comment Venir",
@@ -348,14 +325,14 @@
   },
   "noticeBanner": {
     "label": "État",
-    "statusPill": "Zone clôturée partiellement pour entretien · Place Saint-Michel reste libre d'accès",
-    "summary": "Le bassin revêtu de pierre de la Fontaine Saint-Michel est temporairement en travaux de conservation ciblés (décapage de la pierre et modernisation du circuit hydraulique). La circulation piétonne sur la Place Saint-Michel, les trottoirs adjacents et le Quartier Latin restent entièrement ouverts. Achèvement échelonné attendu : T1 2027.",
+    "statusPill": "Restauration achevée · fontaine dévoilée en août 2026",
+    "summary": "Après environ dix-huit mois de travaux de conservation, la Ville de Paris a dévoilé fin août 2026 la Fontaine Saint-Michel restaurée ; la remise en eau définitive est programmée pour l'automne 2026. La Place Saint-Michel, les trottoirs du boulevard et les accès Métro/RER restent entièrement ouverts.",
     "ctaMaps": "Voir les derniers avis sur Google Maps",
-    "ctaTourism": "Actualités officielles Île-de-France"
+    "ctaTourism": "Actualités officielles de Paris"
   },
   "restoration": {
     "h2": "État de Conservation & Restauration · Suivez l'avancement",
-    "leadIn": "Les mentions “Temporairement fermé” sur Google Maps concernent uniquement l'emprise de chantier du bassin intérieur clôturé de la <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. La Place Saint-Michel, les trottoirs du boulevard, les accès Métro/RER et les monuments voisins du Quartier Latin restent pleinement ouverts au public.",
+    "leadIn": "Les mentions « temporairement fermé » ou « bassin à sec » diffusées en 2025–2026 ne concernaient que l'emprise de chantier clôturée de la <span class=&quot;entity-em&quot;>Fontaine Saint-Michel</span>. Suite à la communication de la Ville de Paris du 26 août 2026, le monument restauré a été de nouveau dévoilé, la remise en eau étant programmée pour l'automne 2026. La Place Saint-Michel, les trottoirs du boulevard, les accès Métro/RER et les monuments voisins du Quartier Latin restent pleinement ouverts au public.",
     "ifYouGoTitle": "Si vous vous y rendez maintenant",
     "ifYouGoItems": [
       "La photographie de l'élévation architecturale complète de 26 mètres est possible depuis la Place Saint-Michel et les terre-pleins du boulevard.",
@@ -365,14 +342,24 @@
     "timelineTitle": "Calendrier du projet",
     "timeline": [
       {
-        "period": "Juin 2025 — T1 2027",
+        "period": "Automne 2026",
+        "name": "Remise en eau",
+        "body": "Selon la communication de la Ville de Paris du 26 août 2026, les circuits hydrauliques de la fontaine doivent être remis en service à l'automne 2026, ce qui clôturera le programme de conservation 2025–2026."
+      },
+      {
+        "period": "Août 2026",
+        "name": "Fontaine restaurée dévoilée",
+        "body": "Après environ dix-huit mois de travaux, le monument restauré a été de nouveau dévoilé au public : pierre de Saint-Maximin nettoyée, groupe sculpté de Francisque Duret consolidé et éléments de marbre rouge renouvelés. Le périmètre de chantier a été progressivement retiré."
+      },
+      {
+        "period": "Juin 2025 — juil. 2026",
         "name": "Restauration du bâti & hydraulique",
-        "body": "La phase I couvre l'élimination de la croûte biologique sur la pierre de Saint-Maximin du XIXe siècle, le remplacement des becs de fonte corrodés et la rénovation du bassin de recirculation. Budget de référence : env. 1,4 M€, attribué dans le cadre du marché public de la Ville de Paris « Patrimoine Fontainier 2025–2027 »."
+        "body": "Les travaux ont porté sur l'élimination de la croûte biologique sur la pierre de Saint-Maximin du XIXe siècle, le remplacement des becs de fonte corrodés et la rénovation du bassin de recirculation, menés dans le cadre du programme municipal « Patrimoine Fontainier »."
       },
       {
         "period": "T2 — T4 2024",
         "name": "Diagnostic & relevé du monument",
-        "body": "Avant clôture, un relevé laser complet et une analyse pétrographique des colonnes corinthiennes et du groupe sculpté de Jouffroy ont été réalisés par l'Atelier de Restauration des Monuments Historiques (ARMH) pour cartographier les microfissures dans les plinthes en marbre rouge."
+        "body": "Avant clôture, un relevé laser complet et une analyse pétrographique des colonnes corinthiennes et du groupe sculpté de Duret ont été réalisés pour cartographier les microfissures dans les plinthes en marbre rouge."
       },
       {
         "period": "1860 — Dernière grande restauration globale",
@@ -383,14 +370,19 @@
     "sourcesTitle": "Sources (officielles)",
     "sources": [
       {
-        "date": "Ville de Paris · 2025-06-18",
-        "body": "Comprend l'avis de marché officiel « Fontaine Saint-Michel – Conservation et remise en état du bassin » (lot 02, Patrimoine Fontainier 2025–2027).",
-        "href": "https://www.paris.fr/"
+        "date": "Ville de Paris · 2026-09-01",
+        "body": "« 1 lieu, 3 histoires : la fontaine Saint-Michel » — note historique officielle présentant la fontaine entièrement restaurée, de retour dans le paysage du Quartier latin.",
+        "href": "https://www.paris.fr/pages/1-lieu-3-histoires-la-fontaine-saint-michel-35340"
       },
       {
-        "date": "Paris Musées · ARMH · 2024-12-09",
-        "body": "Rapport de diagnostic pétrographique sur la pierre de Saint-Maximin et le marbre rouge du Languedoc. Référencé dans la méthodologie de conservation 2025.",
-        "href": "https://www.parismusees.paris.fr/"
+        "date": "Ville de Paris · 2026-08-26",
+        "body": "« La fontaine Saint-Michel comme neuve » — point officiel sur l'achèvement d'environ dix-huit mois de restauration et la remise en eau prévue à l'automne 2026.",
+        "href": "https://www.paris.fr/pages/la-fontaine-saint-michel-comme-neuve-36203"
+      },
+      {
+        "date": "Ville de Paris · Patrimoine fontainier",
+        "body": "Programme municipal de conservation et de remise en état des fontaines historiques parisiennes, dont le bassin et le circuit hydraulique de Saint-Michel.",
+        "href": "https://www.paris.fr/"
       }
     ]
   },
@@ -515,5 +507,236 @@
         ]
       }
     ]
+  },
+  "topics": {
+    "breadcrumbHome": "Fontaine Saint-Michel",
+    "faqTitle": "Questions fréquentes",
+    "relatedTitle": "Poursuivre la visite",
+    "exploreTitle": "Guides détaillés",
+    "exploreLead": "Des pages courtes et ciblées sur les questions les plus posées par les visiteurs.",
+    "nav": {
+      "history": "Histoire",
+      "restoration": "Restauration 2026",
+      "how-to-get-there": "Comment venir",
+      "place-saint-michel": "Place Saint-Michel",
+      "things-to-do-near-fontaine-saint-michel": "Que faire à proximité"
+    },
+    "items": {
+      "history": {
+        "title": "Histoire de la Fontaine Saint-Michel – construite en 1858-1860 | Paris",
+        "description": "Quand et pourquoi la Fontaine Saint-Michel a été construite : le projet de Gabriel Davioud sous Haussmann, l'inauguration de 1860, les sculpteurs et ce qu'il faut observer aujourd'hui.",
+        "h1": "Histoire de la Fontaine Saint-Michel, Paris",
+        "updated": "Dernière mise à jour : octobre 2026",
+        "lead": "La Fontaine Saint-Michel est une fontaine monumentale adossée, édifiée entre 1858 et 1860 sur la Place Saint-Michel, dans le 5e arrondissement. Elle a été conçue par l'architecte Gabriel Davioud dans le cadre de la transformation de Paris par le baron Haussmann, et inaugurée le 15 août 1860.",
+        "sections": [
+          {
+            "heading": "Quand a-t-elle été construite ?",
+            "content": "Le chantier s'étend de 1858 à 1860, sous le Second Empire, et la fontaine est inaugurée le 15 août 1860 — jour de l'Assomption et fête patronale de l'archange saint Michel. Elle appartient à la génération des grandes fontaines monumentales créées sous Haussmann, avec celles du Châtelet et de l'Observatoire, et elle est généralement citée comme la dernière des grandes fontaines du Second Empire achevées."
+          },
+          {
+            "heading": "Pourquoi cet emplacement",
+            "content": "La fontaine occupe l'angle du Boulevard Saint-Michel et de la Rue Danton. Elle a été pensée comme une fontaine adossée : un écran décoratif fermant la perspective de la Rue Danton et masquant le pignon nu de l'immeuble, tout en offrant au nouveau boulevard haussmannien un point focal monumental à l'entrée du Quartier latin."
+          },
+          {
+            "heading": "Architecte et sculpteurs",
+            "content": "L'architecture est signée Gabriel Davioud, l'architecte privilégié d'Haussmann pour le mobilier urbain et les fontaines publiques. L'ensemble atteint environ 26 mètres de haut : quatre colonnes corinthiennes en marbre rouge encadrent une niche centrale, avec des figures allégoriques représentant la Loi et la Justice de part et d'autre. Le groupe central de l'archange Michel terrassant le démon est attribué par la Ville de Paris au sculpteur Francisque Duret."
+          },
+          {
+            "heading": "De 1860 à aujourd'hui",
+            "content": "Depuis plus de 160 ans, la fontaine est un repère et un lieu de rendez-vous : « on se retrouve à Saint-Michel » reste une formule courante à Paris. Elle a été nettoyée et consolidée à plusieurs reprises, la dernière campagne de conservation datant de 2025–2026 ; le monument restauré a été de nouveau dévoilé fin août 2026, la remise en eau étant programmée pour l'automne 2026."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Quand la Fontaine Saint-Michel a-t-elle été construite ?",
+            "answer": "Elle a été construite entre 1858 et 1860 et inaugurée le 15 août 1860, sous le Second Empire."
+          },
+          {
+            "question": "Qui a conçu la Fontaine Saint-Michel ?",
+            "answer": "L'architecte Gabriel Davioud, dans le cadre du programme urbain du baron Haussmann. Le groupe central de l'archange Michel est attribué par la Ville de Paris au sculpteur Francisque Duret."
+          },
+          {
+            "question": "Quelle est la hauteur de la Fontaine Saint-Michel ?",
+            "answer": "L'élévation monumentale atteint environ 26 mètres, avec quatre colonnes corinthiennes en marbre rouge encadrant la niche centrale."
+          },
+          {
+            "question": "Pourquoi l'appelle-t-on Fontaine Saint-Michel ?",
+            "answer": "Elle tire son nom de la Place Saint-Michel et du Boulevard Saint-Michel, qui renvoient eux-mêmes à l'ancienne chapelle Saint-Michel de l'Île de la Cité ; la sculpture centrale représente l'archange Michel."
+          }
+        ]
+      },
+      "restoration": {
+        "title": "Restauration de la Fontaine Saint-Michel 2026 – dernières informations",
+        "description": "État officiel de la restauration de la Fontaine Saint-Michel : travaux 2025–2026, dévoilement d'août 2026, remise en eau à l'automne 2026 et accès actuel des visiteurs.",
+        "h1": "Restauration de la Fontaine Saint-Michel : dernières informations",
+        "updated": "Dernière mise à jour : octobre 2026",
+        "lead": "Après environ dix-huit mois de travaux de conservation, la Ville de Paris a dévoilé fin août 2026 la Fontaine Saint-Michel restaurée. La fontaine est de nouveau visible et la remise en eau définitive est programmée pour l'automne 2026.",
+        "sections": [
+          {
+            "heading": "Ce que disent les communications officielles",
+            "content": "Dans sa communication du 26 août 2026 (« La fontaine Saint-Michel comme neuve »), la Ville de Paris présente la fontaine de nouveau dévoilée après environ dix-huit mois de restauration, la remise en eau étant prévue à l'automne 2026. Une note historique officielle publiée le 1er septembre 2026 décrit le monument comme entièrement restauré, de retour dans le paysage du Quartier latin."
+          },
+          {
+            "heading": "Ce qui a été restauré",
+            "content": "La campagne a porté sur la pierre de Saint-Maximin du XIXe siècle : retrait de la croûte biologique et des salissures, consolidation des surfaces sculptées, traitement des éléments de marbre rouge, remplacement des becs en fonte corrodés et remise en état du bassin de recirculation et du circuit hydraulique."
+          },
+          {
+            "heading": "Peut-on la voir maintenant ?",
+            "content": "Oui. La Place Saint-Michel, les trottoirs du boulevard et les accès Métro/RER restent ouverts en permanence, et la fontaine se photographie depuis la place. Selon la phase finale de mise en service, de brefs périmètres de chantier peuvent encore apparaître ; ils sont signalés par la Ville de Paris et ne doivent pas être franchis."
+          },
+          {
+            "heading": "Comment vérifier l'état actuel",
+            "content": "La dernière étape du programme étant évolutive, vérifiez la situation avant de vous déplacer : consultez les pages officielles de la Ville de Paris citées ci-dessous et la fiche en direct sur Google Maps. Cette page reflète les informations disponibles en octobre 2026."
+          }
+        ],
+        "faq": [
+          {
+            "question": "La Fontaine Saint-Michel est-elle ouverte en 2026 ?",
+            "answer": "Oui. La Place Saint-Michel et les rues environnantes sont entièrement ouvertes, et la fontaine restaurée a été dévoilée fin août 2026."
+          },
+          {
+            "question": "Quand l'eau reviendra-t-elle dans la Fontaine Saint-Michel ?",
+            "answer": "La Ville de Paris a annoncé en août 2026 que la remise en eau est programmée pour l'automne 2026."
+          },
+          {
+            "question": "Combien de temps a duré la restauration ?",
+            "answer": "Environ dix-huit mois, de la mi-2025 au dévoilement d'août 2026, après une campagne de diagnostic menée en 2024."
+          },
+          {
+            "question": "Faut-il un billet pour voir la fontaine restaurée ?",
+            "answer": "Non. C'est un monument public sur une place publique, accessible librement à toute heure, sans billetterie."
+          }
+        ]
+      },
+      "how-to-get-there": {
+        "title": "Comment venir à la Fontaine Saint-Michel – Métro, RER et à pied",
+        "description": "Adresse, stations de Métro et de RER, itinéraires à pied depuis Notre-Dame et le Louvre, et liaisons depuis les aéroports de CDG et d'Orly vers la Fontaine Saint-Michel, Place Saint-Michel, 75005 Paris.",
+        "h1": "Comment venir à la Fontaine Saint-Michel",
+        "updated": "Dernière mise à jour : octobre 2026",
+        "lead": "La fontaine se dresse sur la Place Saint-Michel (Pl. Saint-Michel, 75005 Paris), là où le Boulevard Saint-Michel rejoint la Seine dans le 5e arrondissement. C'est l'un des monuments les plus simples à atteindre à Paris : la gare RER Saint-Michel – Notre-Dame se trouve littéralement à son pied.",
+        "sections": [
+          {
+            "heading": "En Métro et en RER",
+            "content": "Les RER B et C desservent Saint-Michel – Notre-Dame, juste à côté de la fontaine ; suivez les indications « Sortie Place Saint-Michel ». La ligne 4 du métro dessert la station Saint-Michel sur la place, et la ligne 10 s'arrête à Cluny – La Sorbonne, à environ trois minutes à pied. Plusieurs lignes de bus parcourent le Boulevard Saint-Michel et les quais."
+          },
+          {
+            "heading": "À pied depuis Notre-Dame et les îles",
+            "content": "Depuis Notre-Dame de Paris, franchissez le Petit Pont et marchez vers le sud : la fontaine est à environ cinq minutes, sur la Place Saint-Michel. La Sainte-Chapelle et la Conciergerie, sur l'Île de la Cité, sont à une dizaine de minutes à pied, et le Pont Neuf offre une approche panoramique le long du fleuve."
+          },
+          {
+            "heading": "Depuis le Louvre et la tour Eiffel",
+            "content": "Depuis le Louvre, marchez vers le sud en passant par le Pont Neuf (environ 25 minutes) ou prenez la ligne 4 en direction de Porte d'Orléans jusqu'à Saint-Michel. Depuis la tour Eiffel, le RER C relie directement Champ de Mars – Tour Eiffel à Saint-Michel – Notre-Dame en une vingtaine de minutes."
+          },
+          {
+            "heading": "Depuis les aéroports",
+            "content": "Depuis Charles de Gaulle, prenez le RER B directement jusqu'à Saint-Michel – Notre-Dame (environ 45 minutes). Depuis Orly, empruntez Orlyval jusqu'à Antony puis le RER B, ou la combinaison tramway + métro ; comptez environ une heure. Depuis Beauvais, la navette par autocar rejoint Porte Maillot, d'où la ligne 1 puis le RER B ou la ligne 4 desservent la Rive gauche."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Quelle est l'adresse de la Fontaine Saint-Michel ?",
+            "answer": "Pl. Saint-Michel, 75005 Paris, France. Le Plus Code de la place est V83V+7G Paris."
+          },
+          {
+            "question": "Quelle station de métro est la plus proche de la Fontaine Saint-Michel ?",
+            "answer": "La ligne 4 (Saint-Michel) et le RER B/C (Saint-Michel – Notre-Dame) se trouvent sur la place même ; la ligne 10 (Cluny – La Sorbonne) est à environ trois minutes."
+          },
+          {
+            "question": "À quelle distance la Fontaine Saint-Michel est-elle de Notre-Dame ?",
+            "answer": "Environ cinq minutes de marche : franchissez le Petit Pont depuis l'Île de la Cité et continuez tout droit vers la Place Saint-Michel."
+          },
+          {
+            "question": "Comment rejoindre la Fontaine Saint-Michel depuis l'aéroport CDG ?",
+            "answer": "Prenez le RER B directement depuis l'aéroport jusqu'à Saint-Michel – Notre-Dame, soit environ 45 minutes ; la fontaine se trouve à la sortie de la gare."
+          }
+        ]
+      },
+      "place-saint-michel": {
+        "title": "Place Saint-Michel à Paris – square, fontaine et guide de visite",
+        "description": "La Place Saint-Michel dans le 5e arrondissement : le square haussmannien, la fontaine Saint-Michel, le pont sur la Seine, les transports et que voir autour.",
+        "h1": "Place Saint-Michel, Paris",
+        "updated": "Dernière mise à jour : octobre 2026",
+        "lead": "La Place Saint-Michel est le square haussmannien de la Rive gauche où le Boulevard Saint-Michel rejoint la Seine. Aménagée dans les années 1850–1860 dans le cadre de la nouvelle percée du boulevard, c'est aujourd'hui l'un des carrefours les plus fréquentés du Quartier latin et le cadre de la Fontaine Saint-Michel.",
+        "sections": [
+          {
+            "heading": "Comment la place a été créée",
+            "content": "La place a été tracée lors de la transformation de Paris par Haussmann, lorsque le nouveau Boulevard Saint-Michel fut percé vers le sud depuis la Seine en direction de l'Observatoire. La création de la place a dégagé d'anciennes rues entre la Rue de la Huchette et le fleuve, offrant au nouveau boulevard une entrée monumentale sur la Rive gauche."
+          },
+          {
+            "heading": "La fontaine et le pont",
+            "content": "La Fontaine Saint-Michel (1858–1860, Gabriel Davioud) occupe le côté sud, face au boulevard. Le Pont Saint-Michel franchit la Seine depuis la place vers l'Île de la Cité, plaçant Notre-Dame à environ cinq minutes, tandis que les quais des deux rives accueillent les bouquinistes et les lignes de bus."
+          },
+          {
+            "heading": "Un carrefour de transports",
+            "content": "La place concentre le RER B et le RER C à Saint-Michel – Notre-Dame, la ligne 4 du métro, plusieurs lignes de bus et des stations Vélib'. C'est pourquoi « Saint-Michel » sert de point de rendez-vous courant et de base pratique pour explorer le Quartier latin, Saint-Germain et les îles."
+          },
+          {
+            "heading": "Que faire sur la place",
+            "content": "Au programme : un café ou une crêpe dans les rues voisines, les librairies de la Rue de la Huchette et de la Rue de la Bûcherie, une promenade sur la berge vers Notre-Dame, et la photographie en soirée lorsque la fontaine est éclairée. La place constitue aussi le point de départ d'un itinéraire d'une demi-journée vers le Panthéon et le Jardin du Luxembourg."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Où se trouve la Place Saint-Michel ?",
+            "answer": "Dans le 5e arrondissement de Paris, à l'extrémité nord du Boulevard Saint-Michel sur la Rive gauche, immédiatement au sud du Pont Saint-Michel et de l'Île de la Cité."
+          },
+          {
+            "question": "La Place Saint-Michel et la Fontaine Saint-Michel sont-elles la même chose ?",
+            "answer": "Non : la Place Saint-Michel est la place, la Fontaine Saint-Michel est le monument qui se dresse sur son côté sud. La fontaine tire son nom de la place."
+          },
+          {
+            "question": "Dans quel arrondissement se trouve la Place Saint-Michel ?",
+            "answer": "Dans le 5e arrondissement de Paris, code postal 75005, au cœur du Quartier latin."
+          },
+          {
+            "question": "Comment rejoindre la Place Saint-Michel en transports ?",
+            "answer": "RER B/C jusqu'à Saint-Michel – Notre-Dame, métro ligne 4 jusqu'à Saint-Michel, ou métro ligne 10 jusqu'à Cluny – La Sorbonne, à quelques minutes à pied."
+          }
+        ]
+      },
+      "things-to-do-near-fontaine-saint-michel": {
+        "title": "Que faire près de la Fontaine Saint-Michel – itinéraires 1 h, 2 h et demi-journée",
+        "description": "Que voir près de la Fontaine Saint-Michel : une boucle d'une heure, un itinéraire de deux heures et un parcours d'une demi-journée dans le Quartier latin, vers Notre-Dame, la Sainte-Chapelle, le Panthéon et le Jardin du Luxembourg.",
+        "h1": "Que faire près de la Fontaine Saint-Michel",
+        "updated": "Dernière mise à jour : octobre 2026",
+        "lead": "La Fontaine Saint-Michel se trouve au point de rencontre du Quartier latin, de l'Île de la Cité et des quais de Seine, ce qui en fait un point de départ particulièrement efficace. Voici trois itinéraires prêts à parcourir, de longueur croissante.",
+        "sections": [
+          {
+            "heading": "Itinéraire 1 h : fontaine, fleuve et cathédrale",
+            "content": "Partez de la Fontaine Saint-Michel, franchissez le Pont Saint-Michel vers l'Île de la Cité, découvrez la façade occidentale et les abords de Notre-Dame de Paris (à environ 5 minutes), puis revenez par le Petit Pont et les étals des bouquinistes. Terminez par un café rue de la Huchette. Comptez environ 1 heure à rythme tranquille."
+          },
+          {
+            "heading": "Itinéraire 2 h : Sainte-Chapelle et le quartier médiéval",
+            "content": "Suivez la boucle d'une heure, puis poursuivez sur l'Île de la Cité vers la Sainte-Chapelle et la Conciergerie (billetterie payante à horaire, vendue par le Centre des Monuments Nationaux). Revenez sur la Rive gauche et remontez la Rue de la Huchette et la Rue Saint-Séverin jusqu'à la Place de la Sorbonne. Comptez environ 2 heures hors visites intérieures."
+          },
+          {
+            "heading": "Demi-journée : Panthéon et Luxembourg",
+            "content": "Depuis la Place de la Sorbonne, poursuivez par la Rue Saint-Jacques ou la Rue Soufflot jusqu'au Panthéon (environ 12 minutes depuis la fontaine), puis redescendez vers le Jardin du Luxembourg (15 à 20 minutes depuis la fontaine) pour la fontaine Médicis, le verger et le bassin. Prévoyez trois à quatre heures avec les pauses."
+          },
+          {
+            "heading": "Option en soirée",
+            "content": "La fontaine est éclairée à la nuit tombée et la place reste animée. Une courte boucle en soirée longe le Quai Saint-Michel et le Quai de Montebello pour les reflets de Notre-Dame sur le fleuve, puis revient vers la place pour l'élévation éclairée du monument."
+          }
+        ],
+        "faq": [
+          {
+            "question": "Que voir près de la Fontaine Saint-Michel ?",
+            "answer": "Notre-Dame de Paris (environ 5 minutes), la Sainte-Chapelle et la Conciergerie (environ 10), la Sorbonne (3), le Panthéon (12) et le Jardin du Luxembourg (15 à 20)."
+          },
+          {
+            "question": "Combien de temps prévoir autour de la Fontaine Saint-Michel ?",
+            "answer": "Comptez au moins une heure pour la fontaine, la place et la promenade sur la berge ; deux heures en ajoutant la Sainte-Chapelle ; une demi-journée pour le Panthéon et le Jardin du Luxembourg."
+          },
+          {
+            "question": "Le quartier se visite-t-il à pied ?",
+            "answer": "Oui — le cœur du Quartier latin est plat et compact, et presque tout ce qui est cité ici se trouve à moins de 20 minutes de marche de la place."
+          },
+          {
+            "question": "Y a-t-il des activités gratuites à proximité ?",
+            "answer": "La fontaine et la place, l'extérieur de Notre-Dame, les quais, les abords de la Sorbonne et les jardins du Luxembourg sont libres d'accès ; seules les visites intérieures de monuments sont payantes."
+          }
+        ]
+      }
+    }
   }
 }

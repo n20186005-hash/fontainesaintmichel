@@ -2,13 +2,16 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import {
+  BASE_URL,
+  HERO_IMAGE,
+  MAPS_SHARE_URL,
+  PARIS_CITY_URL,
+  buildAlternates,
+  localeUrl,
+} from '@/lib/seo';
 import type { Metadata } from 'next';
 
-const DOMAIN_NAME = 'fontainesaintmichel.com';
-const BASE_URL = `https://${DOMAIN_NAME}`;
-const HERO_IMAGE = `${BASE_URL}/gallery/fontainesaintmichel%20(1).jpg`;
-const MAPS_SHARE_URL = 'https://maps.app.goo.gl/34Ufnj4GUV4RybQx7';
-const GOVT_TOURISM_URL = 'https://www.visitparisregion.com/';
 const LATITUDE = 48.8532372;
 const LONGITUDE = 2.3437736;
 const POSTAL_CODE = '75005';
@@ -90,29 +93,14 @@ export async function generateMetadata({
   const messages = (await import(`@/messages/${locale}.json`)).default;
   const seo = SEO_DATA[locale as keyof typeof SEO_DATA] || SEO_DATA.en;
 
-  const zhUrl = `${BASE_URL}/`;
-  const enUrl = `${BASE_URL}/en`;
-  const frUrl = `${BASE_URL}/fr`;
-  const selfUrl = locale === 'zh' ? zhUrl : locale === 'en' ? enUrl : frUrl;
-
+  const selfUrl = localeUrl(locale);
   const ogLocale = locale === 'zh' ? 'zh_CN' : locale === 'en' ? 'en_US' : 'fr_FR';
 
   return {
     title: messages.meta.title,
     description: messages.meta.description,
     metadataBase: new URL(BASE_URL),
-    alternates: {
-      canonical: selfUrl,
-      languages: {
-        'zh-CN': zhUrl,
-        'en-US': enUrl,
-        'fr-FR': frUrl,
-        'zh': zhUrl,
-        'en': enUrl,
-        'fr': frUrl,
-        'x-default': frUrl,
-      },
-    },
+    alternates: buildAlternates(locale),
     openGraph: {
       title: messages.meta.title,
       description: messages.meta.description,
@@ -166,17 +154,41 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const seo = SEO_DATA[locale as keyof typeof SEO_DATA] || SEO_DATA.en;
   const langAttr = locale === 'zh' ? 'zh-CN' : locale === 'fr' ? 'fr' : 'en';
+  const pageUrl = localeUrl(locale);
 
-  const touristAttractionSchema = {
+  const webSiteSchema = {
     '@context': 'https://schema.org',
-    '@type': 'TouristAttraction',
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    url: `${BASE_URL}/`,
+    name: 'Fontaine Saint-Michel',
+    inLanguage: routing.locales,
+    publisher: { '@id': `${BASE_URL}/#attraction` },
+  };
+
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: (messages as any).meta?.title,
+    description: (messages as any).meta?.description,
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    about: { '@id': `${BASE_URL}/#attraction` },
+    inLanguage: langAttr,
+  };
+
+  const attractionSchema = {
+    '@context': 'https://schema.org',
+    '@type': ['TouristAttraction', 'LandmarksOrHistoricalBuildings'],
     '@id': `${BASE_URL}/#attraction`,
     name: seo.name,
     alternateName: seo.alternateName,
     description: seo.description,
-    url: BASE_URL,
+    url: `${BASE_URL}/`,
     image: [HERO_IMAGE],
     isAccessibleForFree: true,
+    publicAccess: true,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Pl. Saint-Michel',
@@ -191,7 +203,13 @@ export default async function LocaleLayout({
       longitude: LONGITUDE,
     },
     hasMap: MAPS_SHARE_URL,
-    sameAs: [MAPS_SHARE_URL, seo.govtTourism],
+    sameAs: [
+      MAPS_SHARE_URL,
+      PARIS_CITY_URL,
+      'https://fr.wikipedia.org/wiki/Fontaine_Saint-Michel',
+      'https://www.wikidata.org/wiki/Q3076727',
+      seo.govtTourism,
+    ],
   };
 
   const faqSchema = {
@@ -210,7 +228,6 @@ export default async function LocaleLayout({
   return (
     <html lang={langAttr} suppressHydrationWarning>
       <head>
-        <link rel="canonical" href={BASE_URL} />
         <meta property="og:image" content={HERO_IMAGE} />
         <meta property="og:image:alt" content={seo.ogImageAlt} />
         <meta property="og:image:width" content="1200" />
@@ -230,14 +247,20 @@ export default async function LocaleLayout({
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(touristAttractionSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(attractionSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossOrigin="anonymous" />
-        <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXX" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

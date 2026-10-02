@@ -28,6 +28,7 @@ export default function Reviews() {
     rating: number;
     text: string;
   }>;
+  const ratingNote = (messages?.reviews?.ratingNote || '') as string;
 
   return (
     <section id="reviews" className="section-padding">
@@ -47,7 +48,16 @@ export default function Reviews() {
           {t('declaration')}
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+        {ratingNote ? (
+          <p
+            className="text-sm font-medium mb-8"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            {ratingNote}
+          </p>
+        ) : null}
+
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8" hidden={items.length === 0}>
           {items.map((review, i) => (
             <div
               key={i}
@@ -90,7 +100,7 @@ export default function Reviews() {
         {/* More reviews link — arrow only */}
         <div className="flex justify-center">
           <a
-            href="https://maps.app.goo.gl/r1jfAjauKmSvUv77A"
+            href="https://maps.app.goo.gl/34Ufnj4GUV4RybQx7"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all"

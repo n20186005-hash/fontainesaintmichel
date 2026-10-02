@@ -21,7 +21,11 @@ export default function BasicInfo() {
           <InfoCard title={t('type')} value={t('typeValue')} />
           <InfoCard title={t('country')} value={t('countryValue')} />
           <InfoCard title={t('city')} value={t('cityValue')} />
-          <InfoCard title={t('googleRating')} value={t('googleRatingValue')} />
+          <InfoCard
+            title={t('googleRating')}
+            value={t('googleRatingValue')}
+            note={t('googleRatingNote')}
+          />
           <div className="md:col-span-2">
             <InfoCard title={t('address')} value={t('addressValue')} />
           </div>
@@ -31,7 +35,7 @@ export default function BasicInfo() {
   );
 }
 
-function InfoCard({ title, value }: { title: string; value: string }) {
+function InfoCard({ title, value, note }: { title: string; value: string; note?: string }) {
   return (
     <div
       className="rounded-xl p-5"
@@ -39,6 +43,9 @@ function InfoCard({ title, value }: { title: string; value: string }) {
     >
       <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>{title}</p>
       <p className="font-medium" style={{ color: 'var(--text-primary)' }}>{value}</p>
+      {note ? (
+        <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{note}</p>
+      ) : null}
     </div>
   );
 }
