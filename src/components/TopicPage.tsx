@@ -22,7 +22,9 @@ export default function TopicPage({ slug }: { slug: string }) {
   }
 
   const pageUrl = localeUrl(locale, topicPath(slug));
-  const related = (topic.related ?? []).filter((s) => s !== slug);
+  const related = (topic.related ?? []).filter(
+    (s) => s !== slug && topicLocales(s).includes(locale),
+  );
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

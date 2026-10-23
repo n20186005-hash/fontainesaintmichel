@@ -1799,9 +1799,10 @@ export function getTopic(slug: string): TopicLocales | undefined {
   return TOPICS[slug];
 }
 
-export function topicLocales(entry: TopicLocales): Array<'en' | 'fr' | 'zh'> {
+export function topicLocales(slug: string): Array<'en' | 'fr' | 'zh'> {
+  const entry = TOPICS[slug];
   const locales: Array<'en' | 'fr' | 'zh'> = ['en', 'fr'];
-  if (entry.zh) locales.push('zh');
+  if (entry?.zh) locales.push('zh');
   return locales;
 }
 

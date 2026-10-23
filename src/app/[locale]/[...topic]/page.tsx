@@ -10,7 +10,9 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    TOPIC_SLUGS.map((topic) => ({ locale, topic: topic.split('/') }))
+    TOPIC_SLUGS.filter((topic) => topicLocales(topic).includes(locale)).map(
+      (topic) => ({ locale, topic: topic.split('/') }),
+    )
   );
 }
 
@@ -28,13 +30,12 @@ export async function generateMetadata({
 
   const entry = getTopic(slug);
   if (!entry) return {};
-  if (locale !== 'zh' && !entry.zh && locale === 'zh') return {};
   const content = entry[locale as 'en' | 'fr' | 'zh'] ?? entry.en;
 
   return {
     title: content.title,
     description: content.description,
-    alternates: buildAlternates(locale, topicPath(slug), topicLocales(entry)),
+    alternates: buildAlternates(locale, topicPath(slug), topicLocales(slug)),
     robots: {
       index: true,
       follow: true,

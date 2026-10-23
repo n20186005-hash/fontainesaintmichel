@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   TOPIC_SLUGS.forEach((slug) => {
     const entry = getTopic(slug);
     if (!entry) return;
-    const locales = topicLocales(entry);
+    const locales = topicLocales(slug);
     locales.forEach((locale) => {
       entries.push({
         url: localeUrl(locale, topicPath(slug)),

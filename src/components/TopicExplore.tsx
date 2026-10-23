@@ -8,7 +8,7 @@ export default function TopicExplore() {
   const items = TOPIC_SLUGS.map((slug) => {
     const entry = getTopic(slug);
     if (!entry) return null;
-    const content = entry[locale] ?? (topicLocales(entry).includes('en') ? entry.en : undefined);
+    const content = entry[locale] ?? (topicLocales(slug).includes('en') ? entry.en : undefined);
     if (!content) return null;
     return { slug, nav: content.nav };
   }).filter(Boolean) as Array<{ slug: string; nav: string }>;

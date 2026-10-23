@@ -1,12 +1,21 @@
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { TOPIC_SLUGS } from '@/i18n/routing';
+import { getTopic, topicLocales } from '@/data/topics';
 
 export default function Footer() {
   const t = useTranslations('footer');
   const tt = useTranslations('topics');
   const locale = useLocale();
   const prefix = `/${locale}`;
+  const loc = locale as 'en' | 'fr' | 'zh';
+  const visibleItems = TOPIC_SLUGS.filter((slug) => topicLocales(slug).includes(loc))
+    .map((slug) => {
+      const entry = getTopic(slug);
+      const nav = entry?.[loc]?.nav ?? entry?.en?.nav;
+      return nav ? { slug, nav } : null;
+    })
+    .filter(Boolean) as Array<{ slug: string; nav: string }>;
 
   return (
     <footer
@@ -44,14 +53,14 @@ export default function Footer() {
             <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
               {tt('exploreTitle')}
             </p>
-            {TOPIC_SLUGS.map((slug) => (
+            {visibleItems.map(({ slug, nav }) => (
               <a
                 key={slug}
                 href={`${prefix}/${slug}`}
                 style={{ color: 'var(--text-secondary)' }}
                 className="hover:underline"
               >
-                {tt(`nav.${slug}`)}
+                {nav}
               </a>
             ))}
           </div>
