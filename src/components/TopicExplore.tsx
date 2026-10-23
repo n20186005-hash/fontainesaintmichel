@@ -1,9 +1,17 @@
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { TOPIC_SLUGS } from '@/i18n/routing';
+import { getTopic, topicLocales, topicPath } from '@/data/topics';
 
 export default function TopicExplore() {
-  const t = useTranslations('topics');
-  const locale = useLocale();
+  const locale = useLocale() as 'en' | 'fr' | 'zh';
+
+  const items = TOPIC_SLUGS.map((slug) => {
+    const entry = getTopic(slug);
+    if (!entry) return null;
+    const content = entry[locale] ?? (topicLocales(entry).includes('en') ? entry.en : undefined);
+    if (!content) return null;
+    return { slug, nav: content.nav };
+  }).filter(Boolean) as Array<{ slug: string; nav: string }>;
 
   return (
     <section id="guides" className="section-padding" style={{ background: 'var(--bg-secondary)' }}>
@@ -12,15 +20,15 @@ export default function TopicExplore() {
           className="font-display text-3xl sm:text-4xl font-semibold mb-3"
           style={{ color: 'var(--text-primary)' }}
         >
-          {t('exploreTitle')}
+          Visitor guides &amp; topics
         </h2>
         <div className="w-12 h-0.5 mb-6" style={{ background: 'var(--accent)' }} />
         <p className="text-sm mb-10 max-w-2xl" style={{ color: 'var(--text-muted)' }}>
-          {t('exploreLead')}
+          Practical guides, history, nearby sights and walking routes around Fontaine Saint-Michel.
         </p>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TOPIC_SLUGS.map((slug) => (
+          {items.map(({ slug, nav }) => (
             <li key={slug}>
               <a
                 href={`/${locale}/${slug}`}
@@ -35,7 +43,7 @@ export default function TopicExplore() {
                   className="font-medium flex items-center justify-between gap-2"
                   style={{ color: 'var(--text-primary)' }}
                 >
-                  {t(`nav.${slug}`)}
+                  {nav}
                   <svg
                     width="16"
                     height="16"

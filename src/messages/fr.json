@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Fontaine Saint-Michel à Paris – Histoire, Accès & Visite",
-    "description": "Découvrez la Fontaine Saint-Michel à Paris : histoire, architecture, restauration, accès, photos et conseils de visite au cœur du Quartier latin."
+    "title": "Fontaine Saint-Michel à Paris : visite, histoire et accès",
+    "description": "Fontaine Saint-Michel à Paris — fontaine murale gratuite sur la Place Saint-Michel. Préparez la visite : accès, histoire, état de restauration et balades du Quartier latin."
   },
   "seo": {
     "heroTitle": "Fontaine Saint-Michel (Paris)",
@@ -49,7 +49,7 @@
   "intro": {
     "title": "Découvrez la Fontaine Saint-Michel",
     "notice": "Note : Actuellement, en raison de réparations ou d'entretien partiels, il peut y avoir des palissades. Veuillez confirmer le dernier statut d'ouverture avant votre visite.",
-    "description": "S'élevant fièrement à l'intersection du Boulevard Saint-Michel et de la Place Saint-Michel, la Fontaine Saint-Michel est l'un des monuments les plus reconnaissables de Paris. Construite entre 1858 et 1860 sous la direction de l'architecte Gabriel Davioud lors de la massive rénovation urbaine du Paris de Haussmann.\n\nLe centre de la fontaine est orné de la impressionnante statue de l'archange Michel terrassant le diable, créée par le sculpteur Francisque Duret. La structure monumentale s'élève à 26 mètres de haut et presente quatre colonnes corinthiennes encadrant la niche centrale, avec deux figures allégoriques représentant la Loi et la Justice de chaque côté.\n\nSituée au cœur du Quartier Latin, la fontaine sert de point de rencontre populaire pour les Parisiens et les touristes depuis plus de 160 ans. Sa position stratégique relie le vibrant quartier étudiant de la Rive Gauche à l'historique Île de la Cité, faisant d'elle un monument essentiel du paysage culturel de Paris.\n\nLa fontaine est magnifiquement éclairée la nuit, créant une atmosphère magique sur la place Saint-Michel. L'accès est gratuit 24h/24 et 7j/7, ce qui en fait un lieu parfait pour l'exploration en journée et les promenades nocturnes dans les rues enchantées de Paris.",
+    "description": "S'élevant fièrement à l'intersection du Boulevard Saint-Michel et de la Place Saint-Michel, la Fontaine Saint-Michel est l'un des monuments les plus reconnaissables de Paris. Construite entre 1858 et 1860 sous la direction de l'architecte Gabriel Davioud lors de la massive rénovation urbaine du Paris de Haussmann.\n\nLe centre de la fontaine est orné de la impressionnante statue de l'archange Michel terrassant le diable, créée par le sculpteur Francisque Duret. La structure monumentale s'élève à 26 mètres de haut et presente quatre colonnes corinthiennes encadrant la niche centrale, avec deux dragons ailés d'Henri Alfred Jacquemart à la base de la niche et quatre statues des vertus cardinales (Prudence, Force, Justice, Tempérance) au pied des colonnes.\n\nSituée au cœur du Quartier Latin, la fontaine sert de point de rencontre populaire pour les Parisiens et les touristes depuis plus de 160 ans. Sa position stratégique relie le vibrant quartier étudiant de la Rive Gauche à l'historique Île de la Cité, faisant d'elle un monument essentiel du paysage culturel de Paris.\n\nLa fontaine est magnifiquement éclairée la nuit, créant une atmosphère magique sur la place Saint-Michel. L'accès est gratuit 24h/24 et 7j/7, ce qui en fait un lieu parfait pour l'exploration en journée et les promenades nocturnes dans les rues enchantées de Paris.",
     "visitGuide": {
       "title": "Conseils de Visite",
       "items": [
@@ -80,7 +80,7 @@
       {
         "id": "architecture",
         "title": "Importance Architecturale",
-        "content": "S'élevant à 26 mètres de haut, la Fontaine Saint-Michel est un chef-d'œuvre de l'architecture du Second Empire. La structure présente quatre majestueuses colonnes corinthiennes qui encadrent la niche centrale. Les colonnes en marbre rouge contrastent magnifiquement avec la façade en pierre blanche, créant un impact visuel frappant.\n\nLa niche centrale abrite le groupe sculptural dramatique de l'archange Michel terrassant le diable, sculpté par Francisque Duret. Deux figures allégoriques représentant la Loi et la Justice encadrent le groupe central. Le bassin de la fontaine recueille l'eau de quatre gargouilles en forme de monstres marins."
+        "content": "S'élevant à 26 mètres de haut, la Fontaine Saint-Michel est un chef-d'œuvre de l'architecture du Second Empire. La structure présente quatre majestueuses colonnes corinthiennes qui encadrent la niche centrale. Les colonnes en marbre rouge contrastent magnifiquement avec la façade en pierre blanche, créant un impact visuel frappant.\n\nLa niche centrale abrite le groupe sculptural dramatique de l'archange Michel terrassant le diable, sculpté par Francisque Duret. Deux dragons ailés d'Henri Alfred Jacquemart se trouvent à la base de la niche, et quatre statues des vertus cardinales — Prudence, Force, Justice et Tempérance — au pied des colonnes. Le bassin de la fontaine recueille l'eau de quatre gargouilles en forme de monstres marins."
       },
       {
         "id": "location",
@@ -471,39 +471,99 @@
         "name": "Regroupement Cathédrale & Île de la Cité",
         "walking": "5–10 min à pied",
         "items": [
-          { "name": "Cathédrale Notre-Dame de Paris", "desc": "Cathédrale gothique sur l'Île de la Cité ; le pourtour extérieur est intégralement visitable ; la visite publique intérieure a repris en décembre 2024 après le programme de restauration post-incendie.", "type": "Monument / Patrimoine religieux" },
-          { "name": "Sainte-Chapelle", "desc": "Chapelle palatine royale réputée pour ses vitraux à rosaces du XIIIe siècle ; entrée payante avec horaire calé ; le billet combiné coupe-file avec la Conciergerie est souvent commercialisé par les canaux officiels du CMN.", "type": "Monument classé UNESCO" },
-          { "name": "Conciergerie / Palais de Justice", "desc": "Ancien palais royal médiéval et prison révolutionnaire ; fait partie du complexe toujours actif du Palais de Justice de Paris ; visitable via la billetterie du Centre des Monuments Nationaux.", "type": "Musée / Patrimoine judiciaire" },
-          { "name": "Pont Neuf & Square du Vert-Galant", "desc": "Pont le plus ancien de Paris (1607) et extrémité aval de l'Île de la Cité avec des platanes centenaires et une promenade publique.", "type": "Pont / Parc urbain" }
+          {
+            "name": "Cathédrale Notre-Dame de Paris",
+            "desc": "Cathédrale gothique sur l'Île de la Cité ; le pourtour extérieur est intégralement visitable ; la visite publique intérieure a repris en décembre 2024 après le programme de restauration post-incendie.",
+            "type": "Monument / Patrimoine religieux"
+          },
+          {
+            "name": "Sainte-Chapelle",
+            "desc": "Chapelle palatine royale réputée pour ses vitraux à rosaces du XIIIe siècle ; entrée payante avec horaire calé ; le billet combiné coupe-file avec la Conciergerie est souvent commercialisé par les canaux officiels du CMN.",
+            "type": "Monument classé UNESCO"
+          },
+          {
+            "name": "Conciergerie / Palais de Justice",
+            "desc": "Ancien palais royal médiéval et prison révolutionnaire ; fait partie du complexe toujours actif du Palais de Justice de Paris ; visitable via la billetterie du Centre des Monuments Nationaux.",
+            "type": "Musée / Patrimoine judiciaire"
+          },
+          {
+            "name": "Pont Neuf & Square du Vert-Galant",
+            "desc": "Pont le plus ancien de Paris (1607) et extrémité aval de l'Île de la Cité avec des platanes centenaires et une promenade publique.",
+            "type": "Pont / Parc urbain"
+          }
         ]
       },
       {
         "name": "Quartier Latin (Universités & Patrimoine littéraire)",
         "walking": "2–12 min à pied",
         "items": [
-          { "name": "Campus de l'Université de la Sorbonne (Cour d'honneur, Chapelle Sainte-Ursule)", "desc": "Siège historique de l'Université de Paris ; la cour centrale et la façade sont visibles depuis la Place de la Sorbonne ; journées Portes Ouvertes occasionnelles selon le calendrier universitaire.", "type": "Patrimoine académique" },
-          { "name": "Panthéon", "desc": "Mausolée néoclassique sur la Montagne Sainte-Geneviève abritant les restes de Voltaire, Rousseau, Marie Curie, Victor Hugo, Joséphine Baker et d'autres personnalités ; billet payant CMN.", "type": "Monument / Mausolée" },
-          { "name": "Bibliothèque Sainte-Geneviève", "desc": "Salle de lecture fer et verre conçue par Henri Labrouste (1850) ; consultable avec carte de lecteur ; la photographie extérieure est librement autorisée.", "type": "Bibliothèque / Patrimoine culturel" },
-          { "name": "Musée de Cluny (Musée National du Moyen Âge)", "desc": "Thermes de Cluny (thermes romains) + Hôtel de Cluny, hébergeant la tenture de La Dame à la licorne. Billet payant ; gratuit le premier dimanche du mois.", "type": "Musée de France" }
+          {
+            "name": "Campus de l'Université de la Sorbonne (Cour d'honneur, Chapelle Sainte-Ursule)",
+            "desc": "Siège historique de l'Université de Paris ; la cour centrale et la façade sont visibles depuis la Place de la Sorbonne ; journées Portes Ouvertes occasionnelles selon le calendrier universitaire.",
+            "type": "Patrimoine académique"
+          },
+          {
+            "name": "Panthéon",
+            "desc": "Mausolée néoclassique sur la Montagne Sainte-Geneviève abritant les restes de Voltaire, Rousseau, Marie Curie, Victor Hugo, Joséphine Baker et d'autres personnalités ; billet payant CMN.",
+            "type": "Monument / Mausolée"
+          },
+          {
+            "name": "Bibliothèque Sainte-Geneviève",
+            "desc": "Salle de lecture fer et verre conçue par Henri Labrouste (1850) ; consultable avec carte de lecteur ; la photographie extérieure est librement autorisée.",
+            "type": "Bibliothèque / Patrimoine culturel"
+          },
+          {
+            "name": "Musée de Cluny (Musée National du Moyen Âge)",
+            "desc": "Thermes de Cluny (thermes romains) + Hôtel de Cluny, hébergeant la tenture de La Dame à la licorne. Billet payant ; gratuit le premier dimanche du mois.",
+            "type": "Musée de France"
+          }
         ]
       },
       {
         "name": "Jardins & Parcs",
         "walking": "10–18 min à pied",
         "items": [
-          { "name": "Jardin du Luxembourg", "desc": "Parc public de 60 hectares du Second Empire sous gestion du Sénat ; Fontaine Médicis, bateaux à voile miniatures, roseraie, échecs en plein air ; accès général gratuit.", "type": "Parc public / Jardin" },
-          { "name": "Square René-Viviani (vue sur Notre-Dame)", "desc": "Petit jardin public surélevé immédiatement derrière Notre-Dame, célèbre pour le plus vieux robinier de Paris (planté en 1601).", "type": "Jardin public / Belvédère" },
-          { "name": "Jardin des Plantes", "desc": "Jardin botanique du MNHN (Muséum National d'Histoire Naturelle) ; inclut la Grande Galerie de l'Évolution (payant), le Jardin alpin et la roseraie.", "type": "Jardin botanique / Complexe muséal" },
-          { "name": "Promenade plantée (branche Bastille)", "desc": "Parc linéaire surélevé du Viaduc des Arts ; env. 20 min à pied depuis la Fontaine Saint-Michel via Rue Saint-Antoine.", "type": "Parc linéaire / Promenade urbaine" }
+          {
+            "name": "Jardin du Luxembourg",
+            "desc": "Parc public de 60 hectares du Second Empire sous gestion du Sénat ; Fontaine Médicis, bateaux à voile miniatures, roseraie, échecs en plein air ; accès général gratuit.",
+            "type": "Parc public / Jardin"
+          },
+          {
+            "name": "Square René-Viviani (vue sur Notre-Dame)",
+            "desc": "Petit jardin public surélevé immédiatement derrière Notre-Dame, célèbre pour le plus vieux robinier de Paris (planté en 1601).",
+            "type": "Jardin public / Belvédère"
+          },
+          {
+            "name": "Jardin des Plantes",
+            "desc": "Jardin botanique du MNHN (Muséum National d'Histoire Naturelle) ; inclut la Grande Galerie de l'Évolution (payant), le Jardin alpin et la roseraie.",
+            "type": "Jardin botanique / Complexe muséal"
+          },
+          {
+            "name": "Promenade plantée (branche Bastille)",
+            "desc": "Parc linéaire surélevé du Viaduc des Arts ; env. 20 min à pied depuis la Fontaine Saint-Michel via Rue Saint-Antoine.",
+            "type": "Parc linéaire / Promenade urbaine"
+          }
         ]
       },
       {
         "name": "Librairies, Bibliothèques & Lieux littéraires",
         "walking": "3–10 min à pied",
         "items": [
-          { "name": "Rue de la Bûcherie — bande de librairies anglophones", "desc": "Librairies anglophones indépendantes et généralistes regroupées sur la berge rive gauche entre Petit Pont et Pont Saint-Michel.", "type": "Commerce de détail (librairie)" },
-          { "name": "Odéon-Théâtre de l'Europe / Passage de l'Odéon", "desc": "Institution théâtrale et passage couvert attenant, historiquement associé au milieu littéraire parisien de l'entre-deux-guerres (ancien emplacement de la librairie Shakespeare and Company).", "type": "Spectacle vivant / Lieu littéraire" },
-          { "name": "Place Maubert & libraires Rue des Écoles", "desc": "Étalages de livres d'occasion (type bouquinistes) et librairies académiques regroupés autour de l'historique marché Place Maubert.", "type": "Commerce (livres d'occasion & académiques)" }
+          {
+            "name": "Rue de la Bûcherie — bande de librairies anglophones",
+            "desc": "Librairies anglophones indépendantes et généralistes regroupées sur la berge rive gauche entre Petit Pont et Pont Saint-Michel.",
+            "type": "Commerce de détail (librairie)"
+          },
+          {
+            "name": "Odéon-Théâtre de l'Europe / Passage de l'Odéon",
+            "desc": "Institution théâtrale et passage couvert attenant, historiquement associé au milieu littéraire parisien de l'entre-deux-guerres (ancien emplacement de la librairie Shakespeare and Company).",
+            "type": "Spectacle vivant / Lieu littéraire"
+          },
+          {
+            "name": "Place Maubert & libraires Rue des Écoles",
+            "desc": "Étalages de livres d'occasion (type bouquinistes) et librairies académiques regroupés autour de l'historique marché Place Maubert.",
+            "type": "Commerce (livres d'occasion & académiques)"
+          }
         ]
       }
     ]
@@ -738,5 +798,9 @@
         ]
       }
     }
+  },
+  "editorial": {
+    "title": "À propos de ce guide",
+    "text": "Ce guide visiteur de la Fontaine Saint-Michel est indépendant et non commercial. Le contenu est tiré de sources officielles (Ville de Paris, RATP, Notre-Dame de Paris) et de documents de référence, et a été revu en octobre 2026. Pour signaler une erreur : corrections@fontainesaintmichel.com."
   }
 }

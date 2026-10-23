@@ -1,6 +1,6 @@
-import { useTranslations, useMessages, useLocale } from 'next-intl';
-import { TOPIC_SLUGS } from '@/i18n/routing';
+import { useLocale } from 'next-intl';
 import { BASE_URL, localeUrl } from '@/lib/seo';
+import { getTopic, topicLocales, topicPath } from '@/data/topics';
 
 type TopicContent = {
   h1: string;
@@ -8,28 +8,21 @@ type TopicContent = {
   lead: string;
   sections: Array<{ heading: string; content: string }>;
   faq: Array<{ question: string; answer: string }>;
+  nav: string;
+  related?: string[];
 };
 
 export default function TopicPage({ slug }: { slug: string }) {
-  const locale = useLocale();
-  const t = useTranslations('topics');
-  const ht = useTranslations('header');
-  const messages = useMessages() as any;
-  const topic: TopicContent | undefined = messages?.topics?.items?.[slug];
-  const homeHref = `/${locale}`;
+  const locale = useLocale() as 'en' | 'fr' | 'zh';
+  const entry = getTopic(slug);
+  const topic: TopicContent | undefined = entry?.[locale] ?? entry?.en;
 
   if (!topic) {
-    return (
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-24">
-        <a href={homeHref} className="text-sm" style={{ color: 'var(--accent)' }}>
-          {ht('backToHome')}
-        </a>
-      </div>
-    );
+    return null;
   }
 
-  const pageUrl = localeUrl(locale, `/${slug}`);
-  const related = TOPIC_SLUGS.filter((s) => s !== slug);
+  const pageUrl = localeUrl(locale, topicPath(slug));
+  const related = (topic.related ?? []).filter((s) => s !== slug);
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -38,7 +31,7 @@ export default function TopicPage({ slug }: { slug: string }) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: t('breadcrumbHome'),
+        name: 'Fontaine Saint-Michel',
         item: localeUrl(locale),
       },
       {
@@ -71,7 +64,7 @@ export default function TopicPage({ slug }: { slug: string }) {
     dateModified: '2026-10-01',
     isPartOf: { '@id': `${BASE_URL}/#website` },
     about: { '@id': `${BASE_URL}/#attraction` },
-    publisher: { '@id': `${BASE_URL}/#attraction` },
+    publisher: { '@id': `${BASE_URL}/#organization` },
   };
 
   return (
@@ -91,8 +84,8 @@ export default function TopicPage({ slug }: { slug: string }) {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
         <nav aria-label="breadcrumb" className="text-xs mb-6" style={{ color: 'var(--text-muted)' }}>
-          <a href={homeHref} className="hover:underline" style={{ color: 'var(--accent)' }}>
-            {t('breadcrumbHome')}
+          <a href={`/${locale}`} className="hover:underline" style={{ color: 'var(--accent)' }}>
+            Fontaine Saint-Michel
           </a>
           <span className="mx-2">/</span>
           <span>{topic.h1}</span>
@@ -138,7 +131,7 @@ export default function TopicPage({ slug }: { slug: string }) {
               className="font-display text-xl sm:text-2xl font-semibold mb-6"
               style={{ color: 'var(--text-primary)' }}
             >
-              {t('faqTitle')}
+              FAQs
             </h2>
             <div className="space-y-4">
               {topic.faq.map((item, i) => (
@@ -168,31 +161,38 @@ export default function TopicPage({ slug }: { slug: string }) {
           </section>
         )}
 
-        <section className="mt-14">
-          <h2
-            className="font-display text-xl sm:text-2xl font-semibold mb-5"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            {t('relatedTitle')}
-          </h2>
-          <ul className="space-y-3">
-            {related.map((s) => (
-              <li key={s}>
-                <a
-                  href={`/${locale}/${s}`}
-                  className="hover:underline"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  {t(`nav.${s}`)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {related.length > 0 && (
+          <section className="mt-14">
+            <h2
+              className="font-display text-xl sm:text-2xl font-semibold mb-5"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Related guides
+            </h2>
+            <ul className="space-y-3">
+              {related.map((s) => {
+                const relEntry = getTopic(s);
+                const relContent = relEntry?.[locale] ?? relEntry?.en;
+                if (!relContent) return null;
+                return (
+                  <li key={s}>
+                    <a
+                      href={`/${locale}/${s}`}
+                      className="hover:underline"
+                      style={{ color: 'var(--accent)' }}
+                    >
+                      {relContent.nav}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
 
         <div className="mt-14 pt-8" style={{ borderTop: '1px solid var(--border-color)' }}>
           <a
-            href={homeHref}
+            href={`/${locale}`}
             className="inline-flex items-center gap-2 text-sm font-medium"
             style={{ color: 'var(--accent)' }}
           >
@@ -200,7 +200,7 @@ export default function TopicPage({ slug }: { slug: string }) {
               <line x1="19" y1="12" x2="5" y2="12" />
               <polyline points="12 19 5 12 12 5" />
             </svg>
-            {ht('backToHome')}
+            Back to Fontaine Saint-Michel
           </a>
         </div>
       </div>

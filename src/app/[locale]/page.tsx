@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Header from '@/components/Header';
 import NoticeBanner from '@/components/NoticeBanner';
 import Hero from '@/components/Hero';
@@ -28,6 +28,7 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const editorial = await getTranslations('editorial');
 
   return (
     <>
@@ -37,6 +38,20 @@ export default async function HomePage({
         <NoticeBanner />
         <RestorationUpdate />
         <Intro />
+        <section className="section-padding" style={{ background: 'var(--bg-secondary)' }}>
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2
+              className="font-display text-2xl sm:text-3xl font-semibold mb-3"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              {editorial('title')}
+            </h2>
+            <div className="w-12 h-0.5 mb-5" style={{ background: 'var(--accent)' }} />
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {editorial('text')}
+            </p>
+          </div>
+        </section>
         <BasicInfo />
         <HoursSection />
         <TicketsSection />

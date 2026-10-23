@@ -6,7 +6,6 @@ import {
   BASE_URL,
   HERO_IMAGE,
   MAPS_SHARE_URL,
-  PARIS_CITY_URL,
   buildAlternates,
   localeUrl,
 } from '@/lib/seo';
@@ -163,7 +162,18 @@ export default async function LocaleLayout({
     url: `${BASE_URL}/`,
     name: 'Fontaine Saint-Michel',
     inLanguage: routing.locales,
-    publisher: { '@id': `${BASE_URL}/#attraction` },
+    publisher: { '@id': `${BASE_URL}/#organization` },
+  };
+
+  // The editorial team that runs this non-commercial visitor guide (distinct from the monument itself).
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${BASE_URL}/#organization`,
+    name: 'Fontaine Saint-Michel Guide',
+    url: BASE_URL,
+    description:
+      'An independent, non-commercial visitor guide to Fontaine Saint-Michel in Paris, compiled from official and reference sources.',
   };
 
   const webPageSchema = {
@@ -205,10 +215,8 @@ export default async function LocaleLayout({
     hasMap: MAPS_SHARE_URL,
     sameAs: [
       MAPS_SHARE_URL,
-      PARIS_CITY_URL,
       'https://fr.wikipedia.org/wiki/Fontaine_Saint-Michel',
       'https://www.wikidata.org/wiki/Q3076727',
-      seo.govtTourism,
     ],
   };
 
@@ -252,6 +260,10 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <script
           type="application/ld+json"

@@ -19,20 +19,25 @@ export function localeUrl(locale: string, path = ''): string {
 }
 
 /** hreflang map for a given path; x-default always points at the English version. */
-export function buildLanguageAlternates(path = ''): Record<string, string> {
+export function buildLanguageAlternates(path = '', locales?: string[]): Record<string, string> {
   const languages: Record<string, string> = {};
-  routing.locales.forEach((locale) => {
+  const list = locales ?? routing.locales;
+  list.forEach((locale) => {
     languages[HREFLANG_MAP[locale] ?? locale] = localeUrl(locale, path);
   });
-  languages['x-default'] = localeUrl(DEFAULT_LOCALE, path);
+  // x-default points at English when English exists, otherwise the first available locale.
+  const xDefault = list.includes(DEFAULT_LOCALE) ? DEFAULT_LOCALE : list[0];
+  if (xDefault) {
+    languages['x-default'] = localeUrl(xDefault, path);
+  }
   return languages;
 }
 
 /** Metadata alternates block shared by every indexable page. */
-export function buildAlternates(locale: string, path = '') {
+export function buildAlternates(locale: string, path = '', locales?: string[]) {
   return {
     canonical: localeUrl(locale, path),
-    languages: buildLanguageAlternates(path),
+    languages: buildLanguageAlternates(path, locales),
   };
 }
 
