@@ -1,6 +1,7 @@
 import { useLocale } from 'next-intl';
 import { BASE_URL, localeUrl } from '@/lib/seo';
 import { getTopic, topicLocales, topicPath } from '@/data/topics';
+import { getNearbyPlace, nearbyCopy, nearbyMapQuery, NEARBY_PLACES } from '@/data/nearby-directory';
 
 type TopicContent = {
   h1: string;
@@ -22,6 +23,10 @@ export default function TopicPage({ slug }: { slug: string }) {
   }
 
   const pageUrl = localeUrl(locale, topicPath(slug));
+  const nearbyPlace = getNearbyPlace(slug);
+  const nearbyText = nearbyCopy(locale);
+  const mapQuery = nearbyMapQuery(slug);
+  const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Fontaine Saint-Michel, Paris')}&destination=${encodeURIComponent(mapQuery)}&travelmode=walking`;
   const related = (topic.related ?? []).filter(
     (s) => s !== slug && topicLocales(s).includes(locale),
   );
@@ -111,6 +116,46 @@ export default function TopicPage({ slug }: { slug: string }) {
           {topic.lead}
         </p>
 
+        {(nearbyPlace || slug === 'nearby') && (
+          <div className="space-y-5 mb-12">
+            <section className="rounded-xl p-5 sm:p-6" style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)' }}>
+              <h2 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>{nearbyText.manager}</h2>
+              {nearbyPlace?.operator ? (
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {nearbyPlace.operator.name[locale]} · <a href={nearbyPlace.operator.url} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--accent)' }}>{nearbyText.verified}</a>
+                </p>
+              ) : <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{nearbyText.pending}</p>}
+            </section>
+
+            <section>
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                <h2 className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{nearbyText.walk}</h2>
+                <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="text-sm underline" style={{ color: 'var(--accent)' }}>{nearbyText.map}</a>
+              </div>
+              <iframe title={`${topic.h1} map`} src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-64 rounded-xl" style={{ border: '1px solid var(--border-color)' }} />
+            </section>
+
+            <section className="rounded-xl p-5 sm:p-6" aria-label={nearbyText.image} style={{ background: 'linear-gradient(135deg, var(--bg-secondary), var(--card-bg))', border: '1px dashed var(--border-color)' }}>
+              <h2 className="font-display text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{nearbyText.image}</h2>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{nearbyText.imageNote}</p>
+            </section>
+            {slug !== 'nearby' && <a href={`/${locale}/nearby`} className="inline-block text-sm underline" style={{ color: 'var(--accent)' }}>{nearbyText.directory}</a>}
+          </div>
+        )}
+
+        {slug === 'nearby' && (
+          <section className="mb-14" aria-label={nearbyText.directory}>
+            <h2 className="font-display text-2xl font-semibold mb-5" style={{ color: 'var(--text-primary)' }}>{nearbyText.directory}</h2>
+            <ul className="grid sm:grid-cols-2 gap-3">
+              {NEARBY_PLACES.map((place) => (
+                <li key={place.slug}>
+                  <a href={`/${locale}/nearby/${place.slug}`} className="block rounded-lg p-4 hover:underline" style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--accent)' }}>{place.name[locale]}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <div className="space-y-10">
           {(topic.sections || []).map((section, i) => (
             <section key={i}>
@@ -133,7 +178,7 @@ export default function TopicPage({ slug }: { slug: string }) {
               className="font-display text-xl sm:text-2xl font-semibold mb-6"
               style={{ color: 'var(--text-primary)' }}
             >
-              FAQs
+              {nearbyText.faqTitle}
             </h2>
             <div className="space-y-4">
               {topic.faq.map((item, i) => (
@@ -169,7 +214,7 @@ export default function TopicPage({ slug }: { slug: string }) {
               className="font-display text-xl sm:text-2xl font-semibold mb-5"
               style={{ color: 'var(--text-primary)' }}
             >
-              Related guides
+              {nearbyText.relatedTitle}
             </h2>
             <ul className="space-y-3">
               {related.map((s) => {
@@ -202,7 +247,7 @@ export default function TopicPage({ slug }: { slug: string }) {
               <line x1="19" y1="12" x2="5" y2="12" />
               <polyline points="12 19 5 12 12 5" />
             </svg>
-            Back to Fontaine Saint-Michel
+            {nearbyText.back}
           </a>
         </div>
       </div>

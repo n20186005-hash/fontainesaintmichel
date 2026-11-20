@@ -1,9 +1,11 @@
 import { useLocale } from 'next-intl';
 import { TOPIC_SLUGS } from '@/i18n/routing';
 import { getTopic, topicLocales, topicPath } from '@/data/topics';
+import { nearbyCopy } from '@/data/nearby-directory';
 
 export default function TopicExplore() {
   const locale = useLocale() as 'en' | 'fr' | 'zh';
+  const nearbyText = nearbyCopy(locale);
 
   const items = TOPIC_SLUGS.map((slug) => {
     const entry = getTopic(slug);
@@ -20,12 +22,16 @@ export default function TopicExplore() {
           className="font-display text-3xl sm:text-4xl font-semibold mb-3"
           style={{ color: 'var(--text-primary)' }}
         >
-          Visitor guides &amp; topics
+          {nearbyText.guideHeading}
         </h2>
         <div className="w-12 h-0.5 mb-6" style={{ background: 'var(--accent)' }} />
         <p className="text-sm mb-10 max-w-2xl" style={{ color: 'var(--text-muted)' }}>
-          Practical guides, history, nearby sights and walking routes around Fontaine Saint-Michel.
+          {nearbyText.guideDescription}
         </p>
+
+        <a href={`/${locale}/nearby`} className="inline-flex rounded-xl px-5 py-4 mb-8 font-semibold hover:underline" style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--accent)' }}>
+          {nearbyText.directory}
+        </a>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(({ slug, nav }) => (

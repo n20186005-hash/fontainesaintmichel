@@ -1,2158 +1,50 @@
-import LEGACY_TOPICS from './legacy-topics';
-
-export type TopicSection = { heading: string; content: string };
-export type TopicFaq = { question: string; answer: string };
-export type TopicContent = {
-  title: string;
-  description: string;
-  h1: string;
-  updated: string;
-  lead: string;
-  sections: TopicSection[];
-  faq: TopicFaq[];
-  nav: string;
-  related?: string[];
-};
-export type TopicLocales = { en: TopicContent; fr: TopicContent; zh?: TopicContent };
-
-/** Canonical order of all 40 topic slugs (5 repaired pages + 35 new). */
-export const ALL_TOPIC_SLUGS: string[] = [
-  'history',
-  'restoration',
-  'how-to-get-there',
-  'place-saint-michel',
-  'things-to-do-near-fontaine-saint-michel',
-  'from-charles-de-gaulle-airport',
-  'from-orly-airport',
-  'accessibility',
-  'visiting-with-children',
-  'visitor-guide',
-  'public-toilets-and-facilities',
-  'architecture',
-  'sculptures-and-symbolism',
-  'archangel-michael',
-  'dragons-and-chimeras',
-  'gabriel-davioud',
-  'haussmann-paris',
-  'inscriptions',
-  'historic-photos',
-  'nearby/notre-dame',
-  'nearby/sainte-chapelle',
-  'nearby/musee-de-cluny',
-  'nearby/shakespeare-and-company',
-  'nearby/saint-severin',
-  'nearby/sorbonne',
-  'nearby/pantheon',
-  'nearby/luxembourg-gardens',
-  'walks/30-minute-walk',
-  'walks/latin-quarter-two-hours',
-  'walks/half-day-itinerary',
-  'walks/notre-dame-ile-de-la-cite',
-  'walks/seine-bookstalls',
-  'walks/saint-germain',
-  'walks/free-things-to-do',
-  'photos',
-  'at-night',
-  'where-to-eat',
-  'where-to-stay',
-  'saint-michel-vs-mont-saint-michel',
-  'walks/paris-fountains',
-  'from-beauvais-airport',
-  'from-the-city-center',
-  'travel-faq',
-  'autumn-events',
-  'spring-events',
-];
-
-export const RATP_LINE4_NOTE =
-  'MÃ©tro line 4 â€” Saint-Michel station is closed for modernisation works from 14 September to 19 December 2026; trains do not stop there. Use the RER B/C station Saint-Michelâ€“Notre-Dame, a separate station at the foot of the square, or MÃ©tro line 10 at Clunyâ€“La Sorbonne. Check live status at ratp.fr.';
-
-const NEW_TOPICS: Record<string, TopicLocales> = {
-  'from-charles-de-gaulle-airport': {
-    en: {
-      title: 'From Charles de Gaulle Airport to Fontaine Saint-Michel â€“ CDG to Saint-Michel Fountain',
-      description:
-        'Step-by-step from CDG to Fontaine Saint-Michel: RER B to Saint-Michelâ€“Notre-Dame, luggage and ticket tips, and the short walk to Place Saint-Michel, 75005 Paris.',
-      h1: 'From Charles de Gaulle (CDG) to Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The simplest public-transport link from Paris Charles de Gaulle Airport to the fountain is the RER B regional train, which stops at Saint-Michelâ€“Notre-Dame right beside Place Saint-Michel.',
-      sections: [
-        { heading: 'Take the RER B', content: 'Follow signs for RER B / Paris by train inside CDG (Terminal 1 via the CDGVAL shuttle, Terminals 2 and 3 on foot). Board a southbound RER B towards Saint-RÃ©my-lÃ¨s-Chevreuse or Robinson â€” not a CDG-branch train heading north.' },
-        { heading: 'Ride and exit', content: 'Stay on the train for roughly 35â€“45 minutes to Saint-Michel â€“ Notre-Dame. Follow the "Sortie Place Saint-Michel" signs and you are at the fountain; the RER B/C platforms are at the foot of the square.' },
-        { heading: 'Ticket and luggage', content: 'Buy a Paris regional ticket (Ãle-de-France / Navigo Easy or a valid pass) before boarding; there is no onboard purchase. Trains have space for suitcases but avoid rush hours (08:00â€“10:00, 17:00â€“19:00) when they are crowded.' },
-        { heading: 'Alternatives and the line 4 closure', content: 'A taxi or ride-hail takes about 45â€“60 minutes and costs far more; choose it mainly with heavy luggage or late arrivals. Note the MÃ©tro line 4 Saint-Michel station is closed for works from 14 September to 19 December 2026, but the RER station beside the fountain is unaffected â€” see ratp.fr for live status.' },
-        { heading: 'Check before you travel', content: 'Confirm current fares and any service changes on the official Ãle-de-France MobilitÃ©s / RATP pages; this guide reflects information available in October 2026.' },
-      ],
-      faq: [
-        { question: 'How do I get from CDG to Fontaine Saint-Michel?', answer: 'Take the RER B to Saint-Michelâ€“Notre-Dame, then exit to Place Saint-Michel; the fountain is at the station exit.' },
-        { question: 'How long is the trip?', answer: 'About 45â€“60 minutes including walking, depending on your terminal and connections.' },
-        { question: 'Can I use the MÃ©tro instead?', answer: 'The MÃ©tro line 4 Saint-Michel station is closed for renovation 14 Sepâ€“19 Dec 2026; use the RER B/C station at the square instead.' },
-        { question: 'Is there a direct train from the airport?', answer: 'Yes â€” the RER B runs direct from CDG to Saint-Michelâ€“Notre-Dame with no change.' },
-      ],
-      nav: 'From CDG airport',
-      related: ['how-to-get-there', 'from-orly-airport', 'restoration', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'De lâ€™aÃ©roport Charles de Gaulle Ã  la Fontaine Saint-Michel â€“ CDG vers la fontaine',
-      description:
-        'Ã‰tape par Ã©tape de CDG Ã  la Fontaine Saint-Michel : RER B jusquâ€™Ã  Saint-Michelâ€“Notre-Dame, conseils bagages et billets, et la marche vers la Place Saint-Michel, 75005 Paris.',
-      h1: 'De Charles de Gaulle (CDG) Ã  la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le plus simple pour rejoindre la fontaine depuis lâ€™aÃ©roport Paris Charles de Gaulle est le RER B, qui sâ€™arrÃªte Ã  Saint-Michelâ€“Notre-Dame, juste Ã  cÃ´tÃ© de la Place Saint-Michel.',
-      sections: [
-        { heading: 'Prendre le RER B', content: 'Suivez la signalÃ©tique RER B / Paris par le train Ã  CDG (terminal 1 via la navette CDGVAL, terminaux 2 et 3 Ã  pied). Montez dans un RER B en direction de Saint-RÃ©my-lÃ¨s-Chevreuse ou Robinson â€” pas un train de la branche CDG vers le nord.' },
-        { heading: 'Trajet et sortie', content: 'Restez environ 35â€“45 min jusquâ€™Ã  Saint-Michel â€“ Notre-Dame. Suivez Â« Sortie Place Saint-Michel Â» : la fontaine est sur la place, aux pieds de la gare RER B/C.' },
-        { heading: 'Billet et bagages', content: 'Achetez un billet Ãle-de-France (Navigo Easy ou passe valide) avant de monter ; aucun achat Ã  bord. Les trains acceptent les valises, mais Ã©vitez les heures de pointe (08:00â€“10:00, 17:00â€“19:00).' },
-        { heading: 'Alternatives et fermeture ligne 4', content: 'Un taxi ou VTC met 45â€“60 min pour un coÃ»t bien plus Ã©levÃ© ; Ã  rÃ©server surtout avec beaucoup de bagages ou une arrivÃ©e tardive. La station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e pour travaux du 14 septembre au 19 dÃ©cembre 2026, mais la gare RER attenante Ã  la place ne lâ€™est pas â€” voir ratp.fr.' },
-        { heading: 'VÃ©rifiez avant de partir', content: 'Confirmez tarifs et perturbations sur les pages officielles Ãle-de-France MobilitÃ©s / RATP ; ce guide reflÃ¨te les informations dâ€™octobre 2026.' },
-      ],
-      faq: [
-        { question: 'Comment aller de CDG Ã  la Fontaine Saint-Michel ?', answer: 'RER B jusquâ€™Ã  Saint-Michelâ€“Notre-Dame, sortie Place Saint-Michel ; la fontaine est Ã  la sortie.' },
-        { question: 'Combien de temps dure le trajet ?', answer: 'Environ 45â€“60 min avec la marche, selon le terminal.' },
-        { question: 'Puis-je prendre le mÃ©tro ?', answer: 'La station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 ; utilisez la gare RER B/C de la place.' },
-        { question: 'Y a-t-il un train direct depuis lâ€™aÃ©roport ?', answer: 'Oui â€” le RER B relie CDG Ã  Saint-Michelâ€“Notre-Dame sans correspondance.' },
-      ],
-      nav: 'Depuis CDG',
-      related: ['how-to-get-there', 'from-orly-airport', 'restoration', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'ä»æˆ´é«˜ä¹æœºåœºåˆ°åœ£ç±³æ­‡å°”å–·æ³‰ï¼ˆCDG â†’ åœ£ç±³æ­‡å°”ï¼‰',
-      description: 'ä»å·´é»æˆ´é«˜ä¹æœºåœºåˆ°åœ£ç±³æ­‡å°”å–·æ³‰çš„åˆ†æ­¥æŒ‡å—ï¼šRER B è‡³ Saint-Michelâ€“Notre-Dameã€è¡Œæä¸è´­ç¥¨æç¤ºï¼Œä»¥åŠæ­¥è¡Œåˆ°åœ£ç±³æ­‡å°”å¹¿åœºçš„è·¯çº¿ã€‚',
-      h1: 'ä»æˆ´é«˜ä¹æœºåœºï¼ˆCDGï¼‰åˆ°åœ£ç±³æ­‡å°”å–·æ³‰',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'ä»æˆ´é«˜ä¹æœºåœºå‰å¾€å–·æ³‰ï¼Œæœ€ç®€ä¾¿çš„å…¬å…±äº¤é€šæ˜¯ RER B åŒºåŸŸå¿«é“ï¼Œåœé ç´§é‚»åœ£ç±³æ­‡å°”å¹¿åœºçš„ Saint-Michelâ€“Notre-Dame ç«™ã€‚',
-      sections: [
-        { heading: 'æ­ä¹˜ RER B', content: 'åœ¨ CDG èˆªç«™æ¥¼å†…è·Ÿéšã€ŒRER B / Paris by trainã€æŒ‡ç¤ºï¼ˆ1 å·èˆªç«™æ¥¼éœ€å…ˆä¹˜ CDGVAL æ‘†æ¸¡ï¼Œ2ã€3 å·èˆªç«™æ¥¼æ­¥è¡Œå¯è¾¾ï¼‰ã€‚æ­ä¹˜å¾€ Saint-RÃ©my-lÃ¨s-Chevreuse æˆ– Robinson æ–¹å‘çš„å—è¡Œ RER Bï¼Œä¸è¦ç™»ä¸Šå¾€åŒ—è¡Œé©¶çš„ CDG æ”¯çº¿åˆ—è½¦ã€‚' },
-        { heading: 'è½¦ç¨‹ä¸å‡ºç«™', content: 'ä¹˜è½¦çº¦ 35â€“45 åˆ†é’ŸæŠµè¾¾ Saint-Michel â€“ Notre-Dameã€‚è·Ÿéšã€ŒSortie Place Saint-Michelã€å‡ºç«™å³å¯åˆ°è¾¾å–·æ³‰ï¼›RER B/C ç«™å°å°±åœ¨å¹¿åœºè„šä¸‹ã€‚' },
-        { heading: 'è½¦ç¥¨ä¸è¡Œæ', content: 'ä¸Šè½¦å‰è´­ä¹°å·´é»åŒºåŸŸè½¦ç¥¨ï¼ˆÃle-de-France / Navigo Easy æˆ–æœ‰æ•ˆé€šç¥¨ï¼‰ï¼Œè½¦ä¸Šä¸èƒ½è´­ç¥¨ã€‚åˆ—è½¦å¯æ”¾è¡Œæï¼Œä½†è¯·é¿å¼€é«˜å³°æ—¶æ®µï¼ˆ08:00â€“10:00ã€17:00â€“19:00ï¼‰ã€‚' },
-        { heading: 'æ›¿ä»£æ–¹å¼ä¸ 4 å·çº¿åœè¿', content: 'å‡ºç§Ÿè½¦æˆ–ç½‘çº¦è½¦çº¦ 45â€“60 åˆ†é’Ÿä¸”è´¹ç”¨æ›´é«˜ï¼Œä¸»è¦åœ¨è¡Œæå¤šæˆ–æ·±å¤œæŠµè¾¾æ—¶è€ƒè™‘ã€‚åœ°é“ 4 å·çº¿ Saint-Michel ç«™å› æ”¹é€ äº 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­ï¼Œä½†å¹¿åœºæ—çš„ RER ç«™ä¸å—å½±å“â€”â€”å®æ—¶çŠ¶æ€è§ ratp.frã€‚' },
-        { heading: 'å‡ºå‘å‰æ ¸å¯¹', content: 'è¯·åœ¨ Ãle-de-France MobilitÃ©s / RATP å®˜æ–¹é¡µé¢ç¡®è®¤æœ€æ–°ç¥¨ä»·ä¸è¿è¥å˜åŒ–ï¼›æœ¬æŒ‡å—åŸºäº 2026 å¹´ 10 æœˆçš„ä¿¡æ¯ã€‚' },
-      ],
-      faq: [
-        { question: 'å¦‚ä½•ä» CDG åˆ°åœ£ç±³æ­‡å°”å–·æ³‰ï¼Ÿ', answer: 'æ­ä¹˜ RER B è‡³ Saint-Michelâ€“Notre-Dameï¼Œå‡ºç«™å³è¾¾åœ£ç±³æ­‡å°”å¹¿åœºï¼Œå–·æ³‰å°±åœ¨ç«™å£ã€‚' },
-        { question: 'è½¦ç¨‹å¤šä¹…ï¼Ÿ', answer: 'å«æ­¥è¡Œçº¦ 45â€“60 åˆ†é’Ÿï¼Œè§†èˆªç«™æ¥¼ä¸æ¢ä¹˜è€Œå®šã€‚' },
-        { question: 'å¯ä»¥ååœ°é“å—ï¼Ÿ', answer: 'åœ°é“ 4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­æ”¹é€ ï¼Œè¯·æ”¹ä¹˜å¹¿åœºæ—çš„ RER B/C ç«™ã€‚' },
-        { question: 'æœ‰ä»æœºåœºç›´è¾¾çš„åˆ—è½¦å—ï¼Ÿ', answer: 'æœ‰â€”â€”RER B ä» CDG ç›´è¾¾ Saint-Michelâ€“Notre-Dameï¼Œæ— éœ€æ¢ä¹˜ã€‚' },
-      ],
-      nav: 'ä»æˆ´é«˜ä¹æœºåœº',
-      related: ['how-to-get-there', 'from-orly-airport', 'restoration', 'place-saint-michel'],
-    },
-  },
-  'from-orly-airport': {
-    en: {
-      title: 'From Orly Airport to Fontaine Saint-Michel â€“ Orly to Saint-Michel Paris',
-      description:
-        'Compare routes from Orly to Fontaine Saint-Michel: Orlyval + RER B, tram + MÃ©tro, and taxi, with transfer tips and the walk to Place Saint-Michel.',
-      h1: 'From Orly (ORY) to Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Orly has no direct RER stop, so the usual public route chains Orlyval to the RER B, or a tram to a MÃ©tro line, then a short walk to the square.',
-      sections: [
-        { heading: 'Orlyval + RER B (fastest rail)', content: 'From Orly South or West take the Orlyval automated shuttle to Antony, then change to a southbound RER B towards Saint-RÃ©my-lÃ¨s-Chevreuse or Robinson to Saint-Michelâ€“Notre-Dame. Total time is about 50â€“70 minutes.' },
-        { heading: 'Tram + MÃ©tro', content: 'Tramway T7 from Orly to Villejuifâ€“Louis Aragon connects to MÃ©tro line 7, then change towards the centre; this is slower than Orlyval+RER B but useful if Orlyval is disrupted. Plan the change with a map app before travel.' },
-        { heading: 'Ticket and luggage', content: 'Orlyval requires its own ticket in addition to the Ãle-de-France RER/MÃ©tro ticket; buy both before boarding. Allow extra time with suitcases, and avoid rush-hour trains.' },
-        { heading: 'Taxi and the line 4 note', content: 'A taxi or ride-hail takes about 30â€“45 minutes and costs more. Remember the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026; the RER B/C station at the square is the reliable drop-off and arrival point â€” see ratp.fr.' },
-      ],
-      faq: [
-        { question: 'What is the easiest way from Orly to the fountain?', answer: 'Orlyval to Antony, then RER B to Saint-Michelâ€“Notre-Dame; the fountain is at the exit.' },
-        { question: 'How long does it take?', answer: 'About 50â€“70 minutes by rail including the Orlyval change, depending on connections.' },
-        { question: 'Is there a direct train from Orly?', answer: 'No â€” Orly has no direct RER stop, so you change at Antony (Orlyval) or use a tram + MÃ©tro combination.' },
-      ],
-      nav: 'From Orly airport',
-      related: ['how-to-get-there', 'from-charles-de-gaulle-airport', 'restoration', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'De lâ€™aÃ©roport dâ€™Orly Ã  la Fontaine Saint-Michel â€“ Orly vers Paris',
-      description:
-        'Comparez les itinÃ©raires dâ€™Orly Ã  la Fontaine Saint-Michel : Orlyval + RER B, tramway + mÃ©tro et taxi, avec conseils de correspondance et la marche vers la Place Saint-Michel.',
-      h1: 'Dâ€™Orly (ORY) Ã  la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Orly nâ€™a pas de gare RER directe : lâ€™itinÃ©raire habituel enchaÃ®ne Orlyval et RER B, ou un tramway puis une ligne de mÃ©tro, puis une courte marche jusquâ€™Ã  la place.',
-      sections: [
-        { heading: 'Orlyval + RER B (plus rapide)', content: 'Depuis Orly Sud ou Ouest, prenez lâ€™Orlyval jusquâ€™Ã  Antony, puis correspondance avec un RER B vers Saint-RÃ©my-lÃ¨s-Chevreuse ou Robinson jusquâ€™Ã  Saint-Michelâ€“Notre-Dame. Comptez environ 50â€“70 min.' },
-        { heading: 'Tramway + mÃ©tro', content: 'Le tramway T7 dâ€™Orly Ã  Villejuifâ€“Louis Aragon rejoint la ligne 7 du mÃ©tro ; plus lent que Orlyval+RER B, mais utile en cas de perturbation de lâ€™Orlyval. PrÃ©voyez la correspondance avec une appli de plan.' },
-        { heading: 'Billet et bagages', content: 'Lâ€™Orlyval nÃ©cessite un billet propre en plus du billet RER/mÃ©tro Ãle-de-France ; achetez les deux avant de monter. PrÃ©voyez du temps avec les valises et Ã©vitez les heures de pointe.' },
-        { heading: 'Taxi et note ligne 4', content: 'Un taxi ou VTC met 30â€“45 min pour un coÃ»t supÃ©rieur. La station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 ; la gare RER B/C de la place est le point dâ€™arrivÃ©e sÃ»r â€” voir ratp.fr.' },
-      ],
-      faq: [
-        { question: 'Quel est le plus simple depuis Orly ?', answer: 'Orlyval jusquâ€™Ã  Antony, puis RER B jusquâ€™Ã  Saint-Michelâ€“Notre-Dame ; la fontaine est Ã  la sortie.' },
-        { question: 'Combien de temps cela prend-il ?', answer: 'Environ 50â€“70 min par le rail avec la correspondance Orlyval, selon les liaisons.' },
-        { question: 'Y a-t-il un train direct depuis Orly ?', answer: 'Non â€” Orly nâ€™a pas de gare RER directe ; on change Ã  Antony (Orlyval) ou par tramway + mÃ©tro.' },
-      ],
-      nav: 'Depuis Orly',
-      related: ['how-to-get-there', 'from-charles-de-gaulle-airport', 'restoration', 'place-saint-michel'],
-    },
-  },
-  accessibility: {
-    en: {
-      title: 'Fontaine Saint-Michel Accessibility â€“ Wheelchair Access & Viewing',
-      description:
-        'Step-free access, surfaces, where to view the fountain from a wheelchair, and how to check lift status for the RER at Place Saint-Michel, 75005 Paris.',
-      h1: 'Accessibility at Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountain sits on an open, mostly flat public square, so the monument itself is viewable without steps; the main variable is the step-free status of the transport links.',
-      sections: [
-        { heading: 'The square and viewing', content: 'Place Saint-Michel is paved and level with the surrounding pavements, so the fountain can be viewed and photographed from the boulevard edge and the square without climbing. The monument is a wall fountain against a building, so there is no interior to enter.' },
-        { heading: 'RER step-free access', content: 'RER B/C Saint-Michelâ€“Notre-Dame has step-free access but lift availability changes; check the official RATP / Ãle-de-France MobilitÃ©s "accessibility" status before travelling. The MÃ©tro line 10 Clunyâ€“La Sorbonne entrance is also an option a few minutes away.' },
-        { heading: 'Getting there by car', content: 'Dropping off by car is easiest on Boulevard Saint-Michel or Quai Saint-Michel; note the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026, so rely on the RER or line 10. Blue badge parking is limited in the central Latin Quarter â€” verify a nearby space in advance.' },
-        { heading: 'What to expect', content: 'Crowds peak midday and early evening; mornings are calmer for wheelchair users. Benches line the boulevard for rests. Assistance from station staff can be arranged through the operatorsâ€™ accessibility services.' },
-      ],
-      faq: [
-        { question: 'Is Fontaine Saint-Michel wheelchair accessible?', answer: 'Yes â€” the square is flat and step-free, and the fountain is viewed from outside; only the transport links vary in lift availability.' },
-        { question: 'Is the RER station step-free?', answer: 'RER B/C Saint-Michelâ€“Notre-Dame has step-free access, but check live lift status on the RATP accessibility page before you travel.' },
-        { question: 'Can I drive close to the fountain?', answer: 'Yes, drop-off is possible on the boulevard or quay; dedicated disabled parking is limited, so confirm a space in advance.' },
-      ],
-      nav: 'Accessibility',
-      related: ['how-to-get-there', 'visitor-guide', 'public-toilets-and-facilities', 'restoration'],
-    },
-    fr: {
-      title: 'AccessibilitÃ© de la Fontaine Saint-Michel â€“ accÃ¨s PMR et vue',
-      description:
-        'AccÃ¨s sans marches, revÃªtements, oÃ¹ voir la fontaine en fauteuil, et vÃ©rification des ascenseurs du RER sur la Place Saint-Michel, 75005 Paris.',
-      h1: 'AccessibilitÃ© Ã  la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La fontaine se trouve sur une place publique majoritairement plane : le monument se voit sans marches ; la variable principale est lâ€™accessibilitÃ© sans marches des transports.',
-      sections: [
-        { heading: 'La place et la vue', content: 'La Place Saint-Michel est pavÃ©e et de niveau avec les trottoirs : la fontaine se voit et se photographie depuis le boulevard et la place, sans gravir dâ€™escalier. Câ€™est une fontaine-murale, il nâ€™y a pas dâ€™intÃ©rieur Ã  visiter.' },
-        { heading: 'AccÃ¨s sans marches du RER', content: 'Le RER B/C Saint-Michelâ€“Notre-Dame est accessible sans marches, mais les ascenseurs varient ; vÃ©rifiez lâ€™Ã©tat Â« accessibilitÃ© Â» officiel RATP / Ãle-de-France MobilitÃ©s avant de partir. La ligne 10 Clunyâ€“La Sorbonne, Ã  quelques minutes, est une autre option.' },
-        { heading: 'Y accÃ©der en voiture', content: 'La descente en voiture est facile boulevard Saint-Michel ou quai Saint-Michel ; la station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026, privilÃ©giez le RER ou la ligne 10. Les places PMR sont rares dans le Quartier latin â€” vÃ©rifiez Ã  lâ€™avance.' },
-        { heading: 'Ce Ã  quoi sâ€™attendre', content: 'Le plus de monde est Ã  midi et en dÃ©but de soirÃ©e ; les matinÃ©es sont plus calmes. Des bancs bordent le boulevard pour se reposer. Une aide en gare est possible via les services dâ€™accessibilitÃ© des opÃ©rateurs.' },
-      ],
-      faq: [
-        { question: 'La Fontaine Saint-Michel est-elle accessible en fauteuil ?', answer: 'Oui â€” la place est plane et sans marches, et la fontaine se voit de lâ€™extÃ©rieur ; seuls les transports varient en ascenseurs.' },
-        { question: 'La gare RER est-elle sans marches ?', answer: 'Le RER B/C Saint-Michelâ€“Notre-Dame est accessible sans marches, mais vÃ©rifiez lâ€™Ã©tat des ascenseurs sur la page accessibilitÃ© RATP.' },
-        { question: 'Puis-je me garer prÃ¨s de la fontaine ?', answer: 'Oui, la descente est possible boulevard ou quai ; les places PMR sont limitÃ©es, confirmez-en une Ã  lâ€™avance.' },
-      ],
-      nav: 'AccessibilitÃ©',
-      related: ['how-to-get-there', 'visitor-guide', 'public-toilets-and-facilities', 'restoration'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰æ— éšœç¢æŒ‡å—ï¼ˆè½®æ¤…ä¸è§‚èµï¼‰',
-      description: 'åœ£ç±³æ­‡å°”å¹¿åœºçš„æ— éšœç¢é€šé“ã€è·¯é¢ã€è½®æ¤…è§‚èµä½ç½®ï¼Œä»¥åŠå¦‚ä½•æŸ¥è¯¢ RER ç”µæ¢¯çŠ¶æ€ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰çš„æ— éšœç¢',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å–·æ³‰ä½äºåŸºæœ¬å¹³å¦çš„å¼€æ”¾å…¬å…±å¹¿åœºï¼Œæœ¬èº«æ— éœ€å°é˜¶å³å¯è§‚èµï¼›å˜é‡ä¸»è¦åœ¨äºäº¤é€šæ¥é©³çš„æ— éšœç¢çŠ¶å†µã€‚',
-      sections: [
-        { heading: 'å¹¿åœºä¸è§‚èµ', content: 'åœ£ç±³æ­‡å°”å¹¿åœºä¸ºé“ºè£…åœ°é¢ï¼Œä¸å‘¨è¾¹äººè¡Œé“é½å¹³ï¼›å¯åœ¨å¤§é“è¾¹ç¼˜ä¸å¹¿åœºä¸Šæ— éšœç¢è§‚èµã€æ‹æ‘„å–·æ³‰ã€‚å®ƒæ˜¯è´´å¢™å¼å–·æ³‰ï¼Œæ²¡æœ‰å®¤å†…ç©ºé—´å¯è¿›å…¥ã€‚' },
-        { heading: 'RER æ— éšœç¢', content: 'RER B/C çš„ Saint-Michelâ€“Notre-Dame ç«™è®¾æœ‰æ— éšœç¢é€šé“ï¼Œä½†ç”µæ¢¯çŠ¶æ€ä¼šå˜åŒ–ï¼›å‡ºå‘å‰è¯·åœ¨ RATP / Ãle-de-France MobilitÃ©s çš„ã€Œæ— éšœç¢ã€é¡µé¢æŸ¥è¯¢ã€‚æ­¥è¡Œå‡ åˆ†é’Ÿå¤–çš„åœ°é“ 10 å·çº¿ Clunyâ€“La Sorbonne ä¹Ÿæ˜¯å¤‡é€‰ã€‚' },
-        { heading: 'è‡ªé©¾åˆ°è¾¾', content: 'åœ£ç±³æ­‡å°”å¤§é“æˆ–åœ£ç±³æ­‡å°”å ¤å²¸å¯å°±è¿‘ä¸‹è½¦ï¼›åœ°é“ 4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­æ”¹é€ ï¼Œè¯·ä¾èµ– RER æˆ– 10 å·çº¿ã€‚æ‹‰ä¸åŒºä¸­å¿ƒæ®‹ç–¾äººè½¦ä½æœ‰é™ï¼Œè¯·æå‰ç¡®è®¤ã€‚' },
-        { heading: 'æ³¨æ„äº‹é¡¹', content: 'ä¸­åˆä¸å‚æ™šäººæµæœ€å¯†é›†ï¼Œä¸Šåˆè¾ƒå®‰é™ï¼›å¤§é“æ²¿çº¿æœ‰é•¿æ¤…å¯ä¼‘æ¯ã€‚å¯é€šè¿‡è¿è¥å•†æ— éšœç¢æœåŠ¡é¢„çº¦è½¦ç«™ååŠ©ã€‚' },
-      ],
-      faq: [
-        { question: 'åœ£ç±³æ­‡å°”å–·æ³‰å¯¹è½®æ¤…å‹å¥½å—ï¼Ÿ', answer: 'å‹å¥½â€”â€”å¹¿åœºå¹³å¦æ— å°é˜¶ï¼Œå–·æ³‰åœ¨å®¤å¤–å³å¯è§‚èµï¼›ä»…äº¤é€šæ¥é©³çš„ç”µæ¢¯çŠ¶æ€ä¼šæœ‰å˜åŒ–ã€‚' },
-        { question: 'RER ç«™æœ‰æ— éšœç¢å—ï¼Ÿ', answer: 'RER B/C çš„ Saint-Michelâ€“Notre-Dame ç«™å¯æ— éšœç¢é€šè¡Œï¼Œä½†è¯·å‡ºå‘å‰åœ¨ RATP æ— éšœç¢é¡µé¢æŸ¥è¯¢ç”µæ¢¯å®æ—¶çŠ¶æ€ã€‚' },
-        { question: 'å¯ä»¥å¼€è½¦é è¿‘å–·æ³‰å—ï¼Ÿ', answer: 'å¯ä»¥ï¼Œå¤§é“æˆ–å ¤å²¸å¯å°±è¿‘ä¸‹è½¦ï¼›ä¸“ç”¨æ®‹ç–¾äººè½¦ä½æœ‰é™ï¼Œè¯·æå‰ç¡®è®¤ã€‚' },
-      ],
-      nav: 'æ— éšœç¢',
-      related: ['how-to-get-there', 'visitor-guide', 'public-toilets-and-facilities', 'restoration'],
-    },
-  },
-  'visiting-with-children': {
-    en: {
-      title: 'Visiting Fontaine Saint-Michel with Children â€“ Family Tips',
-      description:
-        'A kid-friendly plan for the fountain: statue-spotting games, pushchair routes, rest points and nearby family stops around Place Saint-Michel, 75005 Paris.',
-      h1: 'Visiting Fontaine Saint-Michel with children',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountain is a free, open-air monument that works well as a first stop with children: it is easy to reach, safe to view from the square, and full of things to spot.',
-      sections: [
-        { heading: 'A statue-spotting game', content: 'Challenge children to find the archangel, the two winged dragons, and the four virtue statues (Prudence, Force, Justice, Temperance). The 26-metre faÃ§ade is like a picture book you read from the pavement.' },
-        { heading: 'Pushchair routes', content: 'The square and the riverside quays are flat and pushchair-friendly. Cross the Pont Saint-Michel to the Ãle de la CitÃ© for a short, buggy-smooth loop with river views.' },
-        { heading: 'Rest and refreshments', content: 'Benches line Boulevard Saint-Michel; the surrounding streets (Rue de la Huchette, Rue de la BÃ»cherie) have crÃªpe stands and cafÃ©s. Toilets are listed on our facilities page.' },
-        { heading: 'Nearby family stops', content: 'The Jardin du Luxembourg (about 15â€“20 minutesâ€™ walk) has a pond, orchard and playgrounds; the riverside bouquinistes are a gentle treasure-hunt for postcards and old books.' },
-      ],
-      faq: [
-        { question: 'Is the fountain good for young children?', answer: 'Yes â€” it is free, outdoors and viewed from a flat square, with a simple statue-spotting game to keep them engaged.' },
-        { question: 'Are pushchairs allowed?', answer: 'Yes â€” the square and quays are step-free and buggy-friendly; the short Ãle de la CitÃ© loop is smooth.' },
-        { question: 'Where can we rest nearby?', answer: 'Benches on the boulevard and cafÃ©s on the side streets; the Luxembourg Gardens further on have playgrounds and open space.' },
-      ],
-      nav: 'With children',
-      related: ['visitor-guide', 'public-toilets-and-facilities', 'nearby/luxembourg-gardens', 'walks/30-minute-walk'],
-    },
-    fr: {
-      title: 'Visiter la Fontaine Saint-Michel avec des enfants â€“ conseils famille',
-      description:
-        'Un plan adaptÃ© aux familles : jeu de repÃ©rage des statues, itinÃ©raire poussette, pauses et arrÃªts proches de la Place Saint-Michel, 75005 Paris.',
-      h1: 'Visiter la Fontaine Saint-Michel avec des enfants',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La fontaine est un monument gratuit en plein air, idÃ©al comme premiÃ¨re Ã©tape avec des enfants : facile dâ€™accÃ¨s, visible sans danger depuis la place, et riche en choses Ã  repÃ©rer.',
-      sections: [
-        { heading: 'Jeu de repÃ©rage des statues', content: 'Proposez aux enfants de trouver lâ€™archange, les deux dragons ailÃ©s et les quatre statues de vertus (Prudence, Force, Justice, TempÃ©rance). La faÃ§ade de 26 m est comme un album Ã  lire depuis le trottoir.' },
-        { heading: 'ItinÃ©raire poussette', content: 'La place et les quais sont plats et adaptÃ©s aux poussettes. Franchissez le Pont Saint-Michel vers lâ€™Ãle de la CitÃ© pour une courte boucle tout-terrain avec vue sur le fleuve.' },
-        { heading: 'Repos et rafraÃ®chissements', content: 'Des bancs bordent le boulevard Saint-Michel ; les rues voisines (rue de la Huchette, rue de la BÃ»cherie) ont des crÃªpes et des cafÃ©s. Les toilettes sont sur notre page Â« Ã©quipements Â».' },
-        { heading: 'ArrÃªts famille Ã  proximitÃ©', content: 'Le Jardin du Luxembourg (environ 15â€“20 min Ã  pied) offre un bassin, un verger et des aires de jeux ; les bouquinistes des quais sont une chasse aux trÃ©sors pour cartes postales et vieux livres.' },
-      ],
-      faq: [
-        { question: 'La fontaine convient-elle aux jeunes enfants ?', answer: 'Oui â€” gratuite, en plein air et visible depuis une place plane, avec un jeu de repÃ©rage des statues.' },
-        { question: 'Les poussettes sont-elles admises ?', answer: 'Oui â€” la place et les quais sont sans marches ; la courte boucle de lâ€™Ãle de la CitÃ© est lisse.' },
-        { question: 'OÃ¹ se reposer Ã  proximitÃ© ?', answer: 'Des bancs sur le boulevard et des cafÃ©s dans les rues voisines ; plus loin, le Luxembourg a des aires de jeux.' },
-      ],
-      nav: 'Avec enfants',
-      related: ['visitor-guide', 'public-toilets-and-facilities', 'nearby/luxembourg-gardens', 'walks/30-minute-walk'],
-    },
-  },
-  'visitor-guide': {
-    en: {
-      title: 'Fontaine Saint-Michel Visitor Guide â€“ Free Entry, Hours & How Long to Stay',
-      description:
-        'Is Fontaine Saint-Michel free? Opening hours, how long to spend, what you can see, and the difference between viewing the monument and the water feature.',
-      h1: 'Visitor guide to Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Fontaine Saint-Michel is a public monument on a public square: it is free to view at any hour, with no ticket office and no fixed opening times.',
-      sections: [
-        { heading: 'Free and always open', content: 'Because it is an open-air wall fountain on Place Saint-Michel, there is no entry fee and no closing time â€” you can walk up to it 24 hours a day, year-round. The square is a through-space, not a gated site.' },
-        { heading: 'How long to spend', content: 'Most visitors spend 10â€“20 minutes viewing the faÃ§ade and taking photos, plus more if they sit on the square or extend into the riverside walk. Allow 1â€“2 hours if you combine it with the nearby Latin Quarter streets.' },
-        { heading: 'What you can see', content: 'You view the full 26-metre elevation from the square: the central Archangel Michael group by Francisque Duret, the two winged dragons by Henri Alfred Jacquemart, and the four cardinal-virtue statues at the base. There is no interior to enter.' },
-        { heading: 'Viewing vs. the water feature', content: 'The monument is visible whenever you visit. The active water jets are a separate matter: after the 2025â€“2026 conservation works the fountain was unveiled again in August 2026 and the water feature was scheduled to restart in autumn 2026 â€” check the restoration page for the latest confirmed status.' },
-      ],
-      faq: [
-        { question: 'Is Fontaine Saint-Michel free to visit?', answer: 'Yes â€” it is a public fountain on a public square, free to view at any time with no ticket.' },
-        { question: 'What are the opening hours?', answer: 'There are no set hours; the square is accessible around the clock, every day of the year.' },
-        { question: 'How long should I plan for?', answer: 'About 15â€“30 minutes at the fountain, or 1â€“2 hours including the surrounding streets and river walk.' },
-        { question: 'Can I go inside the fountain?', answer: 'No â€” it is a wall fountain viewed from outside; there is no interior to enter.' },
-      ],
-      nav: 'Visitor guide',
-      related: ['restoration', 'how-to-get-there', 'photos', 'things-to-do-near-fontaine-saint-michel'],
-    },
-    fr: {
-      title: 'Guide visiteur de la Fontaine Saint-Michel â€“ gratuitÃ©, horaires et durÃ©e',
-      description:
-        'La Fontaine Saint-Michel est-elle gratuite ? Horaires, temps de visite, ce que lâ€™on voit, et la diffÃ©rence entre voir le monument et le jeu dâ€™eau.',
-      h1: 'Guide visiteur de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La Fontaine Saint-Michel est un monument public sur une place publique : elle se voit gratuitement Ã  toute heure, sans billetterie ni horaire fixe.',
-      sections: [
-        { heading: 'Gratuit et toujours ouvert', content: 'Fontaine-murale en plein air sur la Place Saint-Michel, elle est sans droit dâ€™entrÃ©e et sans fermeture : on peut sâ€™en approcher 24h/24, toute lâ€™annÃ©e. La place est un passage, pas un site clÃ´turÃ©.' },
-        { heading: 'Temps de visite', content: 'La plupart restent 10â€“20 min Ã  contempler la faÃ§ade et photographier, plus si lâ€™on sâ€™assoit ou que lâ€™on prolonge vers les quais. Comptez 1â€“2 h avec les rues du Quartier latin.' },
-        { heading: 'Ce que lâ€™on voit', content: 'On voit toute lâ€™Ã©lÃ©vation de 26 m depuis la place : le groupe central de lâ€™archange Michel par Francisque Duret, les deux dragons ailÃ©s dâ€™Henri Alfred Jacquemart, et les quatre statues des vertus cardinales Ã  la base. Pas dâ€™intÃ©rieur Ã  visiter.' },
-        { heading: 'Voir le monument et le jeu dâ€™eau', content: 'Le monument est visible Ã  toute visite. Les jets actifs sont un autre sujet : aprÃ¨s les travaux 2025â€“2026, la fontaine a Ã©tÃ© dÃ©voilÃ©e Ã  nouveau en aoÃ»t 2026 et le jeu dâ€™eau Ã©tait programmÃ© pour lâ€™automne 2026 â€” voyez la page Â« restauration Â» pour lâ€™Ã©tat confirmÃ©.' },
-      ],
-      faq: [
-        { question: 'La Fontaine Saint-Michel est-elle gratuite ?', answer: 'Oui â€” fontaine publique sur place publique, gratuite Ã  toute heure, sans billet.' },
-        { question: 'Quels sont les horaires ?', answer: 'Pas dâ€™horaire fixe ; la place est accessible en permanence, toute lâ€™annÃ©e.' },
-        { question: 'Combien de temps prÃ©voir ?', answer: 'Environ 15â€“30 min Ã  la fontaine, ou 1â€“2 h avec les rues et les quais.' },
-        { question: 'Peut-on entrer dans la fontaine ?', answer: 'Non â€” câ€™est une fontaine-murale vue de lâ€™extÃ©rieur ; pas dâ€™intÃ©rieur.' },
-      ],
-      nav: 'Guide visiteur',
-      related: ['restoration', 'how-to-get-there', 'photos', 'things-to-do-near-fontaine-saint-michel'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å‚è§‚æŒ‡å—ï¼ˆå…è´¹ã€å¼€æ”¾æ—¶é—´ä¸åœç•™å»ºè®®ï¼‰',
-      description: 'åœ£ç±³æ­‡å°”å–·æ³‰æ˜¯å¦å…è´¹ï¼Ÿå¼€æ”¾æ—¶é—´ã€å»ºè®®åœç•™æ—¶é•¿ã€å¯è§‚çœ‹åˆ°ä»€ä¹ˆï¼Œä»¥åŠè§‚èµå–·æ³‰ä¸å–·æ°´çš„åŒºåˆ«ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰å‚è§‚æŒ‡å—',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'åœ£ç±³æ­‡å°”å–·æ³‰æ˜¯å…¬å…±å¹¿åœºä¸Šçš„å…¬å…±çºªå¿µç¢‘ï¼šå…¨å¤©å…è´¹è§‚èµï¼Œæ— å”®ç¥¨å¤„ï¼Œä¹Ÿæ— å›ºå®šå¼€æ”¾æ—¶é—´ã€‚',
-      sections: [
-        { heading: 'å…è´¹ä¸”å…¨å¤©å¼€æ”¾', content: 'ä½œä¸ºåœ£ç±³æ­‡å°”å¹¿åœºä¸Šçš„éœ²å¤©è´´å¢™å–·æ³‰ï¼Œå®ƒä¸è®¾é—¨ç¥¨ã€ä¸è®¾å…³é—­æ—¶é—´â€”â€”å…¨å¹´æ¯å¤© 24 å°æ—¶éƒ½å¯èµ°è¿‘è§‚èµã€‚å¹¿åœºæ˜¯é€šè¡Œç©ºé—´ï¼Œå¹¶éå°é—­æ™¯ç‚¹ã€‚' },
-        { heading: 'å»ºè®®åœç•™', content: 'å¤šæ•°æ¸¸å®¢èŠ± 10â€“20 åˆ†é’Ÿè§‚çœ‹ç«‹é¢å¹¶æ‹ç…§ï¼›è‹¥åœ¨å¹¿åœºåä¸‹æˆ–é¡ºå»¶è‡³æ²³ç•”æ­¥è¡Œåˆ™æ›´ä¹…ã€‚è‹¥ç»“åˆå‘¨è¾¹æ‹‰ä¸åŒºè¡—å··ï¼Œå¯é¢„ç•™ 1â€“2 å°æ—¶ã€‚' },
-        { heading: 'å¯è§‚çœ‹åˆ°ä»€ä¹ˆ', content: 'ä»å¹¿åœºå¯çœ‹åˆ°å®Œæ•´çš„ 26 ç±³ç«‹é¢ï¼šä¸­å¤®å¼—æœ—è¥¿æ–¯å…‹Â·è¿ªé›·æ‰€ä½œå¤§å¤©ä½¿ç±³æ­‡å°”ç¾¤é›•ã€äº¨åˆ©Â·é˜¿å°”å¼—é›·å¾·Â·é›…å…‹é©¬å°”æ‰€ä½œåŒç¿¼é¾™ï¼Œä»¥åŠæŸ±è„šå››å°Šæ¢å¾·é›•åƒã€‚æ²¡æœ‰å®¤å†…ç©ºé—´å¯è¿›å…¥ã€‚' },
-        { heading: 'è§‚èµä¸å–·æ°´', content: 'æ— è®ºä½•æ—¶é€ è®¿éƒ½èƒ½çœ‹åˆ°çºªå¿µç¢‘ã€‚å–·æ°´è£…ç½®å¦å½“åˆ«è®ºï¼š2025â€“2026 å¹´ä¿®å¤åï¼Œå–·æ³‰äº 2026 å¹´ 8 æœˆå†æ¬¡æ­å¹•ï¼Œå–·æ°´è£…ç½®åŸè®¡åˆ’ 2026 å¹´ç§‹å­£æ¢å¤ï¼›æœ€æ–°ç¡®è®¤çŠ¶æ€è¯·è§ã€Œä¿®å¤ã€é¡µé¢ã€‚' },
-      ],
-      faq: [
-        { question: 'åœ£ç±³æ­‡å°”å–·æ³‰å…è´¹å—ï¼Ÿ', answer: 'å…è´¹â€”â€”å®ƒæ˜¯å…¬å…±å¹¿åœºä¸Šçš„å…¬å…±å–·æ³‰ï¼Œéšæ—¶å¯å…è´¹è§‚èµï¼Œæ— éœ€é—¨ç¥¨ã€‚' },
-        { question: 'å¼€æ”¾æ—¶é—´æ˜¯ä»€ä¹ˆï¼Ÿ', answer: 'æ— å›ºå®šæ—¶é—´ï¼›å¹¿åœºå…¨å¹´å…¨å¤©å€™å¯è¿›å…¥ã€‚' },
-        { question: 'å»ºè®®é¢„ç•™å¤šä¹…ï¼Ÿ', answer: 'å–·æ³‰å¤„çº¦ 15â€“30 åˆ†é’Ÿï¼›å«å‘¨è¾¹è¡—å··ä¸æ²³å ¤æ­¥è¡Œçº¦ 1â€“2 å°æ—¶ã€‚' },
-        { question: 'å¯ä»¥è¿›å…¥å–·æ³‰å†…éƒ¨å—ï¼Ÿ', answer: 'ä¸å¯ä»¥â€”â€”å®ƒæ˜¯ä»å¤–éƒ¨è§‚èµçš„è´´å¢™å–·æ³‰ï¼Œæ²¡æœ‰å®¤å†…ç©ºé—´ã€‚' },
-      ],
-      nav: 'å‚è§‚æŒ‡å—',
-      related: ['restoration', 'how-to-get-there', 'photos', 'things-to-do-near-fontaine-saint-michel'],
-    },
-  },
-  'public-toilets-and-facilities': {
-    en: {
-      title: 'Toilets & Facilities near Fontaine Saint-Michel â€“ Saint-Michel Paris',
-      description:
-        'Public toilets, drinking water, seating and baby-change near the fountain, with verified locations around Place Saint-Michel, 75005 Paris (checked October 2026).',
-      h1: 'Public toilets and facilities near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountain itself has no facilities (it is a monument), but public toilets, water fountains and seating are within a short walk on the square and boulevard.',
-      sections: [
-        { heading: 'Public toilets (sanisettes)', content: 'Paris operates self-cleaning public toilets (sanisettes) at several points around the Latin Quarter. The nearest are typically on the boulevards near the square and along the Seine quays; locations rotate with maintenance, so check the map screen on the official Paris toilet finder before relying on one.' },
-        { heading: 'Drinking water', content: 'Free public water fountains (including some "Wall of Water" points) appear along the Seine quays and in nearby gardens; bring a bottle and refill rather than buying plastic. Verify the nearest point on the day with the cityâ€™s fountain map.' },
-        { heading: 'Seating and shade', content: 'Benches line Boulevard Saint-Michel and the square edges; the riverside quays offer rail seating with shade in places. For a greener rest, the Jardin du Luxembourg is about 15â€“20 minutes away.' },
-        { heading: 'Baby change and accessibility', content: 'Some sanisettes include baby-change; step-free access varies by unit. Check the official finder for the facilities at each location, and see our accessibility page for the step-free RER route.' },
-        { heading: 'Verify before you go', content: 'This list reflects facilities known in October 2026. Because public units are maintained and relocated, always confirm the live location on the official Paris "toilettes publiques" map.' },
-      ],
-      faq: [
-        { question: 'Are there toilets at the fountain?', answer: 'No â€” the fountain is a monument, but public sanisettes are a short walk away on the boulevard and quays; check the official map for live locations.' },
-        { question: 'Is there free drinking water nearby?', answer: 'Yes â€” public water fountains sit along the Seine quays and in nearby gardens; confirm the nearest on the city map.' },
-        { question: 'Where can I sit with children?', answer: 'Benches line the boulevard and square; the Luxembourg Gardens further on have lawns, a pond and playgrounds.' },
-      ],
-      nav: 'Toilets & facilities',
-      related: ['accessibility', 'visiting-with-children', 'visitor-guide', 'nearby/luxembourg-gardens'],
-    },
-    fr: {
-      title: 'Toilettes et Ã©quipements prÃ¨s de la Fontaine Saint-Michel â€“ Paris',
-      description:
-        'Toilettes publiques, eau potable, assises et table Ã  langer prÃ¨s de la fontaine, autour de la Place Saint-Michel, 75005 Paris (vÃ©rifiÃ© en octobre 2026).',
-      h1: 'Toilettes publiques et Ã©quipements prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La fontaine nâ€™a pas dâ€™Ã©quipements (câ€™est un monument), mais toilettes, fontaines et bancs sont Ã  quelques pas sur la place et le boulevard.',
-      sections: [
-        { heading: 'Toilettes publiques (sanisettes)', content: 'Paris gÃ¨re des toilettes automatiques (sanisettes) Ã  plusieurs endroits du Quartier latin. Les plus proches sont gÃ©nÃ©ralement sur les boulevards prÃ¨s de la place et le long des quais ; les emplacements Ã©voluent, vÃ©rifiez la carte officielle Â« toilettes Â» avant de compter dessus.' },
-        { heading: 'Eau potable', content: 'Des fontaines publiques gratuites (dont des Â« murs dâ€™eau Â») longent les quais et les jardins voisins ; emportez une gourde. Confirmez le point le plus proche sur la carte de la ville le jour J.' },
-        { heading: 'Assises et ombre', content: 'Des bancs bordent le boulevard Saint-Michel et les bords de la place ; les quais offrent des assises avec parfois de lâ€™ombre. Pour un repos plus vert, le Jardin du Luxembourg est Ã  environ 15â€“20 min.' },
-        { heading: 'Table Ã  langer et accessibilitÃ©', content: 'Certaines sanisettes ont une table Ã  langer ; lâ€™accÃ¨s sans marches varie. VÃ©rifiez sur lâ€™annuaire officiel et voir notre page accessibilitÃ© pour le RER sans marches.' },
-        { heading: 'VÃ©rifiez avant de partir', content: 'Cette liste reflÃ¨te les Ã©quipements connus en octobre 2026 ; comme les unitÃ©s publiques sont entretenues et dÃ©placÃ©es, confirmez toujours lâ€™emplacement sur la carte officielle Â« toilettes publiques Â».' },
-      ],
-      faq: [
-        { question: 'Y a-t-il des toilettes Ã  la fontaine ?', answer: 'Non â€” la fontaine est un monument, mais des sanisettes sont Ã  quelques pas sur le boulevard et les quais ; voyez la carte officielle.' },
-        { question: 'Y a-t-il de lâ€™eau potable gratuite ?', answer: 'Oui â€” des fontaines publiques longent les quais et les jardins ; confirmez la plus proche sur la carte.' },
-        { question: 'OÃ¹ mâ€™asseoir avec des enfants ?', answer: 'Des bancs bordent le boulevard et la place ; plus loin, le Luxembourg a pelouses, bassin et aires de jeux.' },
-      ],
-      nav: 'Toilettes',
-      related: ['accessibility', 'visiting-with-children', 'visitor-guide', 'nearby/luxembourg-gardens'],
-    },
-  },
-  architecture: {
-    en: {
-      title: 'Fontaine Saint-Michel Architecture â€“ FaÃ§ade, Columns & Materials',
-      description:
-        'How the 26-metre wall fountain is built: the triumphal-arch layout, red-marble Corinthian columns, niche, basins and the materials used by Gabriel Davioud.',
-      h1: 'The architecture of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Fontaine Saint-Michel is a "wall fountain" â€” a monumental stone screen about 26 metres high and 15 metres wide, designed by Gabriel Davioud as a decorative end to Rue Danton.',
-      sections: [
-        { heading: 'A triumphal-arch plan', content: 'The faÃ§ade reads like a reduced triumphal arch: a wide base, a central niche framed by columns, and an attic storey above. It was conceived to close the perspective of Rue Danton and to mask the bare gable of the block behind it.' },
-        { heading: 'Columns and niche', content: 'Four red-marble Corinthian columns rise around the central niche that holds the Archangel Michael group. Above, an entablature and attic carry the monumentâ€™s upper decoration and the original imperial emblem (later replaced by the city coat of arms).' },
-        { heading: 'Materials', content: 'The body is Saint-Maximin limestone, chosen for its pale, even grain; the columns are red marble. The 2025â€“2026 conservation cleaned the limestone, treated the red marble and renewed the cast-iron water spouts and the recirculation basin.' },
-        { heading: 'Water and basins', content: 'Water is drawn up and returned through a recirculation circuit; four spouts feed the lower basin. The basin and ironwork were refurbished in the recent campaign so the feature can run again.' },
-      ],
-      faq: [
-        { question: 'What style is the fountain?', answer: 'It is a Second Empire wall fountain in a triumphal-arch idiom, about 26 m high, by Gabriel Davioud.' },
-        { question: 'What is it made of?', answer: 'Saint-Maximin limestone for the body and red marble for the columns, with cast-iron spouts and a recirculation basin.' },
-        { question: 'Why is it called a wall fountain?', answer: 'Because it is built against a building as a decorative screen, not as a free-standing basin in the middle of a square.' },
-      ],
-      nav: 'Architecture',
-      related: ['history', 'sculptures-and-symbolism', 'gabriel-davioud', 'haussmann-paris'],
-    },
-    fr: {
-      title: 'Architecture de la Fontaine Saint-Michel â€“ faÃ§ade, colonnes et matÃ©riaux',
-      description:
-        'Comment est construit ce mur de 26 m : plan en arc de triomphe, colonnes corinthiennes en marbre rouge, niche, bassins et matÃ©riaux de Gabriel Davioud.',
-      h1: 'Lâ€™architecture de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La Fontaine Saint-Michel est une Â« fontaine-murale Â» : un Ã©cran de pierre monumental dâ€™environ 26 m de haut et 15 m de large, conÃ§u par Gabriel Davioud pour fermer la perspective de la rue Danton.',
-      sections: [
-        { heading: 'Un plan en arc de triomphe', content: 'La faÃ§ade se lit comme un arc de triomphe rÃ©duit : une base large, une niche centrale encadrÃ©e de colonnes, et un Ã©tage dâ€™attique. Elle ferme la perspective de la rue Danton et masque le pignon nu de lâ€™immeuble derriÃ¨re.' },
-        { heading: 'Colonnes et niche', content: 'Quatre colonnes corinthiennes en marbre rouge encadrent la niche centrale qui abrite le groupe de lâ€™archange Michel. Au-dessus, un entablement et un attique portent la dÃ©coration haute et lâ€™emblÃ¨me impÃ©rial dâ€™origine (remplacÃ© ensuite par les armes de la ville).' },
-        { heading: 'MatÃ©riaux', content: 'Le corps est en calcaire de Saint-Maximin, Ã  grain clair et rÃ©gulier ; les colonnes en marbre rouge. La campagne 2025â€“2026 a nettoyÃ© le calcaire, traitÃ© le marbre rouge et renouvelÃ© les bouches de fonte et le bassin de recirculation.' },
-        { heading: 'Eau et bassins', content: 'Lâ€™eau monte et revient par un circuit de recirculation ; quatre bouches alimentent le bassin bas. Bassin et ferronnerie ont Ã©tÃ© refaits pour que le jeu dâ€™eau puisse reprendre.' },
-      ],
-      faq: [
-        { question: 'Quel est le style de la fontaine ?', answer: 'Fontaine-murale du Second Empire, en forme dâ€™arc de triomphe, environ 26 m de haut, par Gabriel Davioud.' },
-        { question: 'En quoi est-elle faite ?', answer: 'Calcaire de Saint-Maximin pour le corps, marbre rouge pour les colonnes, avec bouches de fonte et bassin de recirculation.' },
-        { question: 'Pourquoi "fontaine-murale" ?', answer: 'Car elle est construite contre un immeuble comme Ã©cran dÃ©coratif, non comme un bassin isolÃ© au milieu dâ€™une place.' },
-      ],
-      nav: 'Architecture',
-      related: ['history', 'sculptures-and-symbolism', 'gabriel-davioud', 'haussmann-paris'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å»ºç­‘è§£è¯»ï¼ˆç«‹é¢ã€æŸ±å¼ä¸ææ–™ï¼‰',
-      description: 'è¿™åº§çº¦ 26 ç±³é«˜çš„è´´å¢™å–·æ³‰å¦‚ä½•å»ºæˆï¼šå‡¯æ—‹é—¨å¼å¸ƒå±€ã€çº¢è‰²å¤§ç†çŸ³ç§‘æ—æ–¯æŸ±ã€å£é¾›ã€æ°´æ± ï¼Œä»¥åŠè¾¾ç»´ä¹Œå¾·æ‰€ç”¨çš„ææ–™ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰çš„å»ºç­‘',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'åœ£ç±³æ­‡å°”å–·æ³‰æ˜¯ä¸€åº§ã€Œè´´å¢™å–·æ³‰ã€â€”â€”çº¦ 26 ç±³é«˜ã€15 ç±³å®½çš„çºªå¿µç¢‘å¼çŸ³å±ï¼Œç”±åŠ å¸ƒé‡ŒåŸƒå°”Â·è¾¾ç»´ä¹Œå¾·è®¾è®¡ï¼Œä½œä¸º Rue Danton è¡—é“å°½ç«¯çš„è£…é¥°æ”¶å°¾ã€‚',
-      sections: [
-        { heading: 'å‡¯æ—‹é—¨å¼å¸ƒå±€', content: 'ç«‹é¢å¦‚åŒç¼©å°çš„å‡¯æ—‹é—¨ï¼šå®½åšåº•åº§ã€ç”±ç«‹æŸ±å›´åˆçš„ä¸­å¤®å£é¾›ï¼Œä»¥åŠä¸Šæ–¹çš„é¡¶å±‚ã€‚å®ƒæ—¨åœ¨æ”¶æŸ Rue Danton çš„è§†çº¿ï¼Œå¹¶é®æ©åæ–¹å»ºç­‘çš„ç§ƒå±±å¢™ã€‚' },
-        { heading: 'æŸ±åˆ—ä¸å£é¾›', content: 'å››æ ¹çº¢è‰²å¤§ç†çŸ³ç§‘æ—æ–¯æŸ±ç¯ç»•ä¸­å¤®å£é¾›ï¼Œå†…ç½®å¤§å¤©ä½¿ç±³æ­‡å°”ç¾¤é›•ã€‚å…¶ä¸Šæªéƒ¨ä¸é¡¶å±‚æ‰¿è½½ä¸Šéƒ¨è£…é¥°ï¼Œä»¥åŠæœ€åˆçš„å¸å›½å¾½è®°ï¼ˆåè¢«åŸå¸‚å¾½ç« å–ä»£ï¼‰ã€‚' },
-        { heading: 'ææ–™', content: 'ä¸»ä½“ä¸ºåœ£é©¬å…‹è¥¿æ›¼ï¼ˆSaint-Maximinï¼‰çŸ³ç°å²©ï¼Œçº¹ç†æµ…æ·¡å‡åŒ€ï¼›æŸ±èº«ä¸ºçº¢è‰²å¤§ç†çŸ³ã€‚2025â€“2026 å¹´ä¿®å¤æ¸…æ´—äº†çŸ³ç°å²©ã€å¤„ç†çº¢è‰²å¤§ç†çŸ³ï¼Œå¹¶æ›´æ–°äº†é“¸é“å–·å£ä¸å¾ªç¯æ°´æ± ã€‚' },
-        { heading: 'æ°´ä¸æ°´æ± ', content: 'æ°´ç»å¾ªç¯å›è·¯æå‡å¹¶å›æµï¼›å››ä¸ªå–·å£æ³¨å…¥ä¸‹å±‚æ°´æ± ã€‚æ°´æ± ä¸é“ä»¶å·²åœ¨è¿‘æœŸå·¥ç¨‹ä¸­ç¿»ä¿®ï¼Œä½¿å–·æ³‰å¾—ä»¥é‡æ–°è¿è¡Œã€‚' },
-      ],
-      faq: [
-        { question: 'å–·æ³‰æ˜¯ä»€ä¹ˆé£æ ¼ï¼Ÿ', answer: 'ç¬¬äºŒå¸å›½è´´å¢™å–·æ³‰ï¼Œå‡¯æ—‹é—¨è¯­æ±‡ï¼Œçº¦ 26 ç±³é«˜ï¼Œå‡ºè‡ªè¾¾ç»´ä¹Œå¾·ã€‚' },
-        { question: 'ç”±ä»€ä¹ˆå»ºæˆï¼Ÿ', answer: 'ä¸»ä½“ä¸ºåœ£é©¬å…‹è¥¿æ›¼çŸ³ç°å²©ï¼ŒæŸ±èº«ä¸ºçº¢è‰²å¤§ç†çŸ³ï¼Œé…é“¸é“å–·å£ä¸å¾ªç¯æ°´æ± ã€‚' },
-        { question: 'ä¸ºä½•ç§°ä¸ºè´´å¢™å–·æ³‰ï¼Ÿ', answer: 'å› ä¸ºå®ƒè´´é™„å»ºç­‘ä½œä¸ºè£…é¥°å±ï¼Œè€Œéç«‹äºå¹¿åœºä¸­å¤®çš„ç‹¬ç«‹æ°´æ± ã€‚' },
-      ],
-      nav: 'å»ºç­‘',
-      related: ['history', 'sculptures-and-symbolism', 'gabriel-davioud', 'haussmann-paris'],
-    },
-  },
-  'sculptures-and-symbolism': {
-    en: {
-      title: 'Fontaine Saint-Michel Sculptures & Symbolism â€“ Statues Meaning',
-      description:
-        'An index of every statue: the central Archangel Michael, the two winged dragons, and the four cardinal-virtue figures, with their sculptors and meanings.',
-      h1: 'Sculptures and symbolism of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The monumentâ€™s sculpture was spread across nine artists. The programme sets the Archangel Michael at the centre, two dragons at the niche base, and four cardinal-virtue statues at the foot of the columns.',
-      sections: [
-        { heading: 'Central group: Archangel Michael', content: 'The dramatic group of the Archangel Michael overcoming the devil is by Francisque-Joseph Duret. It crowns the niche and gives the fountain its name and theme.' },
-        { heading: 'The two winged dragons', content: 'At the base of the central niche, two winged dragons (chimÃ¨res) are by Henri Alfred Jacquemart. They frame the lower basin and are a favourite detail for photographers.' },
-        { heading: 'Four cardinal virtues', content: 'At the foot of the columns stand four statues of the cardinal virtues: Prudence (serpent and mirror, by Jean-Auguste Barre), Force (club, by Claude-Jean Guillaume), Justice (scales and rod, by Louis-Valentin Robert) and Temperance (bridle, by Charles-Alphonse GumÃ©ry).' },
-        { heading: 'Other carved work', content: 'The rock beneath Michael is by FÃ©lix Saupin; low reliefs and foliage are by Marie-NoÃ©mi Cadiot (NoÃ©mi Constant); further reliefs with the city arms are by Auguste-Hyacinthe Debay. The full group was restored in the 2025â€“2026 campaign.' },
-      ],
-      faq: [
-        { question: 'Who sculpted the central statue?', answer: 'Francisque-Joseph Duret made the Archangel Michael group; the two dragons are by Henri Alfred Jacquemart.' },
-        { question: 'What do the four statues represent?', answer: 'The four cardinal virtues â€” Prudence, Force, Justice and Temperance â€” each by a different 19th-century sculptor.' },
-        { question: 'Why a dragon?', answer: 'The dragon is the devil whom Michael defeats; two winged dragons sit at the niche base as part of the victory scene.' },
-      ],
-      nav: 'Sculptures',
-      related: ['archangel-michael', 'dragons-and-chimeras', 'architecture', 'history'],
-    },
-    fr: {
-      title: 'Sculptures et symbolisme de la Fontaine Saint-Michel â€“ signification',
-      description:
-        'Index de chaque statue : lâ€™archange Michel au centre, les deux dragons ailÃ©s et les quatre vertus cardinales, avec sculpteurs et sens.',
-      h1: 'Sculptures et symbolisme de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La sculpture du monument a mobilisÃ© neuf artistes. Le programme place lâ€™archange Michel au centre, deux dragons Ã  la base de la niche, et quatre statues de vertus cardinales au pied des colonnes.',
-      sections: [
-        { heading: 'Groupe central : lâ€™archange Michel', content: 'Le groupe spectaculaire de lâ€™archange Michel terrassant le dÃ©mon est de Francisque-Joseph Duret. Il couronne la niche et donne son nom et son thÃ¨me Ã  la fontaine.' },
-        { heading: 'Les deux dragons ailÃ©s', content: 'Ã€ la base de la niche centrale, deux dragons ailÃ©s (chimÃ¨res) sont dâ€™Henri Alfred Jacquemart. Ils encadrent le bassin bas et sont un dÃ©tail prisÃ© des photographes.' },
-        { heading: 'Les quatre vertus cardinales', content: 'Au pied des colonnes, quatre statues des vertus cardinales : la Prudence (serpent et miroir, Jean-Auguste Barre), la Force (massue, Claude-Jean Guillaume), la Justice (balance et verge, Louis-Valentin Robert) et la TempÃ©rance (bride, Charles-Alphonse GumÃ©ry).' },
-        { heading: 'Autres sculptures', content: 'Le rocher sous Michel est de FÃ©lix Saupin ; bas-reliefs et feuillages de Marie-NoÃ©mi Cadiot (NoÃ©mi Constant) ; dâ€™autres reliefs aux armes de la ville par Auguste-Hyacinthe Debay. Lâ€™ensemble a Ã©tÃ© restaurÃ© en 2025â€“2026.' },
-      ],
-      faq: [
-        { question: 'Qui a sculptÃ© la statue centrale ?', answer: 'Francisque-Joseph Duret a fait le groupe de lâ€™archange Michel ; les deux dragons sont dâ€™Henri Alfred Jacquemart.' },
-        { question: 'Que reprÃ©sentent les quatre statues ?', answer: 'Les quatre vertus cardinales â€” Prudence, Force, Justice et TempÃ©rance â€” chacune par un sculpteur diffÃ©rent du XIXe siÃ¨cle.' },
-        { question: 'Pourquoi un dragon ?', answer: 'Le dragon est le dÃ©mon que Michel terrasse ; deux dragons ailÃ©s bordent la niche dans la scÃ¨ne de victoire.' },
-      ],
-      nav: 'Sculptures',
-      related: ['archangel-michael', 'dragons-and-chimeras', 'architecture', 'history'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰é›•åƒä¸å¯“æ„ï¼ˆé›•åƒå«ä¹‰ï¼‰',
-      description: 'é€åº§é›•åƒç´¢å¼•ï¼šä¸­å¤®å¤§å¤©ä½¿ç±³æ­‡å°”ã€åŒç¿¼é¾™ï¼Œä»¥åŠå››å°Šæ¢å¾·é›•åƒï¼Œå«é›•å¡‘å®¶ä¸å¯“æ„ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰çš„é›•åƒä¸å¯“æ„',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'çºªå¿µç¢‘çš„é›•å¡‘ç”±ä¹ä½è‰ºæœ¯å®¶å…±åŒå®Œæˆã€‚æ„å›¾ä¸­ï¼šä¸­å¤®ä¸ºå¤§å¤©ä½¿ç±³æ­‡å°”ï¼Œå£é¾›åŸºåº§ä¸ºåŒç¿¼é¾™ï¼ŒæŸ±è„šä¸ºå››å°Šæ¢å¾·é›•åƒã€‚',
-      sections: [
-        { heading: 'ä¸­å¤®ç¾¤é›•ï¼šå¤§å¤©ä½¿ç±³æ­‡å°”', content: 'ã€Œå¤§å¤©ä½¿ç±³æ­‡å°”åˆ¶æœé­”é¬¼ã€ç¾¤é›•å‡ºè‡ªå¼—æœ—è¥¿æ–¯å…‹-çº¦ç‘Ÿå¤«Â·è¿ªé›·ï¼ˆFrancisque-Joseph Duretï¼‰ï¼Œä½äºå£é¾›é¡¶ç«¯ï¼Œä¹Ÿæ˜¯å–·æ³‰åç§°ä¸ä¸»é¢˜çš„ç”±æ¥ã€‚' },
-        { heading: 'åŒç¿¼é¾™', content: 'ä¸­å¤®å£é¾›åŸºåº§ä¸¤ä¾§çš„æœ‰ç¿¼é¾™ï¼ˆchimÃ¨resï¼‰å‡ºè‡ªäº¨åˆ©Â·é˜¿å°”å¼—é›·å¾·Â·é›…å…‹é©¬å°”ï¼ˆHenri Alfred Jacquemartï¼‰ï¼Œæ¡†ä½ä¸‹å±‚æ°´æ± ï¼Œæ˜¯æ‘„å½±å¸ˆçš„é’Ÿçˆ±ç»†èŠ‚ã€‚' },
-        { heading: 'å››æ¢å¾·', content: 'æŸ±è„šå››å°Šé›•åƒä»£è¡¨å››æ¢å¾·ï¼šå®¡æ…ï¼ˆæŒè›‡ä¸é•œï¼ŒJean-Auguste Barre ä½œï¼‰ã€åŠ›é‡ï¼ˆæŒæ£æ£’ï¼ŒClaude-Jean Guillaume ä½œï¼‰ã€æ­£ä¹‰ï¼ˆæŒå¤©å¹³ä¸æ–ï¼ŒLouis-Valentin Robert ä½œï¼‰ã€èŠ‚åˆ¶ï¼ˆæŒç¼°ç»³ï¼ŒCharles-Alphonse GumÃ©ry ä½œï¼‰ã€‚' },
-        { heading: 'å…¶ä»–é›•åˆ»', content: 'ç±³æ­‡å°”è„šä¸‹çš„å²©çŸ³å‡ºè‡ª FÃ©lix Saupinï¼›æµ…æµ®é›•ä¸å¶é¥°å‡ºè‡ª Marie-NoÃ©mi Cadiotï¼ˆNoÃ©mi Constantï¼‰ï¼›å¸¦åŸå¸‚å¾½ç« çš„æµ…æµ®é›•å‡ºè‡ª Auguste-Hyacinthe Debayã€‚æ•´ç»„åœ¨ 2025â€“2026 å¹´å·¥ç¨‹ä¸­ä¿®å¤ã€‚' },
-      ],
-      faq: [
-        { question: 'ä¸­å¤®é›•åƒæ˜¯è°é›•åˆ»çš„ï¼Ÿ', answer: 'å¼—æœ—è¥¿æ–¯å…‹-çº¦ç‘Ÿå¤«Â·è¿ªé›·ä½œå¤§å¤©ä½¿ç±³æ­‡å°”ç¾¤é›•ï¼›åŒç¿¼é¾™å‡ºè‡ªäº¨åˆ©Â·é˜¿å°”å¼—é›·å¾·Â·é›…å…‹é©¬å°”ã€‚' },
-        { question: 'å››å°Šé›•åƒä»£è¡¨ä»€ä¹ˆï¼Ÿ', answer: 'å››æ¢å¾·â€”â€”å®¡æ…ã€åŠ›é‡ã€æ­£ä¹‰ã€èŠ‚åˆ¶ï¼Œå„ç”±ä¸€ä½ 19 ä¸–çºªé›•å¡‘å®¶å®Œæˆã€‚' },
-        { question: 'ä¸ºä½•æœ‰é¾™ï¼Ÿ', answer: 'é¾™å³ç±³æ­‡å°”æ‰€åˆ¶æœçš„é­”é¬¼ï¼›ä¸¤åªç¿¼é¾™ä½äºå£é¾›åŸºåº§ï¼Œå±äºèƒœåˆ©åœºæ™¯çš„ä¸€éƒ¨åˆ†ã€‚' },
-      ],
-      nav: 'é›•åƒ',
-      related: ['archangel-michael', 'dragons-and-chimeras', 'architecture', 'history'],
-    },
-  },
-  'archangel-michael': {
-    en: {
-      title: 'The Archangel Michael Statue at Fontaine Saint-Michel â€“ Who & Why',
-      description:
-        'Who the central statue depicts, the story it tells, its sculptor Francisque Duret, and why the fountain bears Saint Michaelâ€™s name.',
-      h1: 'The Archangel Michael at Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The centrepiece is the Archangel Michael overcoming the devil â€” a victory-of-good-over-evil scene that gave the fountain, the square and the boulevard their name.',
-      sections: [
-        { heading: 'The story shown', content: 'Michael, leader of the heavenly army, is shown defeating the devil in the form of a dragon. The subject suited a monument placed under the Second Empire and aligned with the feast of the Assumption (15 August), the patronal feast of Michael.' },
-        { heading: 'The sculptor', content: 'The group is by Francisque-Joseph Duret (1804â€“1865), a leading academic sculptor of the period. An earlier 1856 design had proposed a "Peace" figure and an 1858 variant a Napoleon statue, before Michael was chosen after public objection.' },
-        { heading: 'Where it sits', content: 'The group crowns the central niche, above the two winged dragons by Henri Alfred Jacquemart and the four virtue statues. From the square you read it from the pavement up â€” about 26 metres of faÃ§ade.' },
-        { heading: 'Why "Saint-Michel"', content: 'The name comes from the historic Saint-Michel chapel on the Ãle de la CitÃ© and the boulevard named for it; the fountain and square inherit the dedication through the boulevard.' },
-      ],
-      faq: [
-        { question: 'Who is the statue at the fountain?', answer: 'The Archangel Michael defeating the devil, by Francisque-Joseph Duret.' },
-        { question: 'Why is it called Saint-Michel?', answer: 'After the Saint-Michel chapel and boulevard; the fountain and square take the name from the boulevard.' },
-        { question: 'When was the group made?', answer: 'It was carved for the 1858â€“1860 fountain and unveiled at the 1860 inauguration.' },
-      ],
-      nav: 'Archangel Michael',
-      related: ['sculptures-and-symbolism', 'dragons-and-chimeras', 'history', 'gabriel-davioud'],
-    },
-    fr: {
-      title: 'La statue de lâ€™archange Michel Ã  la Fontaine Saint-Michel â€“ qui et pourquoi',
-      description:
-        'Qui reprÃ©sente la statue centrale, lâ€™histoire racontÃ©e, son sculpteur Francisque Duret, et pourquoi la fontaine porte le nom de saint Michel.',
-      h1: 'Lâ€™archange Michel Ã  la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La piÃ¨ce maÃ®tresse est lâ€™archange Michel terrassant le dÃ©mon â€” scÃ¨ne de la victoire du bien sur le mal qui a donnÃ© son nom Ã  la fontaine, Ã  la place et au boulevard.',
-      sections: [
-        { heading: 'Lâ€™histoire montrÃ©e', content: 'Michel, chef de lâ€™armÃ©e cÃ©leste, terrasse le dÃ©mon sous forme de dragon. Le sujet convenait Ã  un monument du Second Empire, alignÃ© sur la fÃªte de lâ€™Assomption (15 aoÃ»t), fÃªte patronale de Michel.' },
-        { heading: 'Le sculpteur', content: 'Le groupe est de Francisque-Joseph Duret (1804â€“1865). Un projet de 1856 proposait une Â« Paix Â», et une variante de 1858 un NapolÃ©on, avant que Michel soit choisi aprÃ¨s objection du public.' },
-        { heading: 'OÃ¹ il se trouve', content: 'Le groupe couronne la niche centrale, au-dessus des deux dragons ailÃ©s dâ€™Henri Alfred Jacquemart et des quatre statues de vertus. Depuis la place, on le lit de bas en haut â€” environ 26 m de faÃ§ade.' },
-        { heading: 'Pourquoi Â« Saint-Michel Â»', content: 'Le nom vient de la chapelle Saint-Michel de lâ€™Ãle de la CitÃ© et du boulevard qui en porte le nom ; la fontaine et la place hÃ©ritent de la dÃ©dicace par le boulevard.' },
-      ],
-      faq: [
-        { question: 'Qui est la statue de la fontaine ?', answer: 'Lâ€™archange Michel terrassant le dÃ©mon, par Francisque-Joseph Duret.' },
-        { question: 'Pourquoi Â« Saint-Michel Â» ?', answer: 'Du nom de la chapelle et du boulevard Saint-Michel ; la fontaine et la place le tiennent du boulevard.' },
-        { question: 'Quand le groupe a-t-il Ã©tÃ© fait ?', answer: 'TaillÃ© pour la fontaine de 1858â€“1860 et dÃ©voilÃ© Ã  lâ€™inauguration de 1860.' },
-      ],
-      nav: 'Archange Michel',
-      related: ['sculptures-and-symbolism', 'dragons-and-chimeras', 'history', 'gabriel-davioud'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰ä¸­å¤®å¤§å¤©ä½¿ç±³æ­‡å°”é›•åƒ',
-      description: 'ä¸­å¤®é›•åƒæç»˜è°ã€è®²è¿°ä»€ä¹ˆæ•…äº‹ã€é›•å¡‘å®¶å¼—æœ—è¥¿æ–¯å…‹Â·è¿ªé›·ï¼Œä»¥åŠå–·æ³‰ä¸ºä½•åä¸ºåœ£ç±³æ­‡å°”ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰çš„å¤§å¤©ä½¿ç±³æ­‡å°”',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'æ ¸å¿ƒæ˜¯å¤§å¤©ä½¿ç±³æ­‡å°”åˆ¶æœé­”é¬¼â€”â€”å–„æ¶ç›¸äº‰çš„åœºæ™¯ï¼Œä¹Ÿèµ‹äºˆäº†å–·æ³‰ã€å¹¿åœºä¸å¤§é“ä»¥åœ£ç±³æ­‡å°”ä¹‹åã€‚',
-      sections: [
-        { heading: 'æ‰€è¡¨ç°çš„æ•…äº‹', content: 'ç±³æ­‡å°”ä½œä¸ºå¤©å†›ç»Ÿå¸…ï¼Œå‡»è´¥åŒ–ä½œé¾™çš„é­”é¬¼ã€‚è¯¥é¢˜æå¥‘åˆç¬¬äºŒå¸å›½æ—¶æœŸçš„çºªå¿µç¢‘ï¼Œå¹¶ä¸åœ£æ¯å‡å¤©èŠ‚ï¼ˆ8 æœˆ 15 æ—¥ï¼Œç±³æ­‡å°”çš„ä¸»ä¿åº†æ—¥ï¼‰ç›¸å‘¼åº”ã€‚' },
-        { heading: 'é›•å¡‘å®¶', content: 'ç¾¤é›•å‡ºè‡ªå¼—æœ—è¥¿æ–¯å…‹-çº¦ç‘Ÿå¤«Â·è¿ªé›·ï¼ˆFrancisque-Joseph Duretï¼Œ1804â€“1865ï¼‰ã€‚1856 å¹´çš„æ–¹æ¡ˆæ›¾æ‹Ÿç”¨ã€Œå’Œå¹³ã€åƒï¼Œ1858 å¹´åˆæ‹Ÿç”¨æ‹¿ç ´ä»‘åƒï¼Œåå› å…¬ä¼—åå¯¹æ”¹å›ç±³æ­‡å°”ã€‚' },
-        { heading: 'æ‰€åœ¨ä½ç½®', content: 'ç¾¤é›•ä½äºä¸­å¤®å£é¾›é¡¶ç«¯ï¼Œä¹‹ä¸Šä¸ºäº¨åˆ©Â·é˜¿å°”å¼—é›·å¾·Â·é›…å…‹é©¬å°”çš„åŒç¿¼é¾™ä¸å››å°Šç¾å¾·é›•åƒã€‚ä»å¹¿åœºç”±ä¸‹å¾€ä¸Šçœ‹ï¼Œçº¦ 26 ç±³ç«‹é¢å°½æ”¶çœ¼åº•ã€‚' },
-        { heading: 'ä¸ºä½•ç§°åœ£ç±³æ­‡å°”', content: 'åç§°æºè‡ªåŸå²›ä¸Šçš„åœ£ç±³æ­‡å°”å°å ‚åŠä»¥å…¶å‘½åçš„å¤§é“ï¼›å–·æ³‰ä¸å¹¿åœºé€šè¿‡å¤§é“ç»§æ‰¿æ­¤åã€‚' },
-      ],
-      faq: [
-        { question: 'å–·æ³‰çš„é›•åƒæ˜¯è°ï¼Ÿ', answer: 'å¤§å¤©ä½¿ç±³æ­‡å°”åˆ¶æœé­”é¬¼ï¼Œç”±å¼—æœ—è¥¿æ–¯å…‹-çº¦ç‘Ÿå¤«Â·è¿ªé›·æ‰€ä½œã€‚' },
-        { question: 'ä¸ºä½•å«åœ£ç±³æ­‡å°”ï¼Ÿ', answer: 'å–è‡ªåœ£ç±³æ­‡å°”å°å ‚ä¸å¤§é“ï¼›å–·æ³‰ä¸å¹¿åœºå› å¤§é“è€Œå¾—åã€‚' },
-        { question: 'ç¾¤é›•ä½•æ—¶å®Œæˆï¼Ÿ', answer: 'ä¸º 1858â€“1860 å¹´å–·æ³‰é›•åˆ»ï¼Œå¹¶åœ¨ 1860 å¹´æ­å¹•æ—¶äº®ç›¸ã€‚' },
-      ],
-      nav: 'å¤§å¤©ä½¿ç±³æ­‡å°”',
-      related: ['sculptures-and-symbolism', 'dragons-and-chimeras', 'history', 'gabriel-davioud'],
-    },
-  },
-  'dragons-and-chimeras': {
-    en: {
-      title: 'The Dragons of Fontaine Saint-Michel â€“ Winged Chimeras',
-      description:
-        'Identify the two winged dragons at the niche base, their sculptor Henri Alfred Jacquemart, what they symbolise, and the best angles to photograph them.',
-      h1: 'The dragons and chimeras of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Two winged dragons (chimÃ¨res) crouch at the base of the central niche, flanking the lower basin â€” easy to miss but among the most photogenic details.',
-      sections: [
-        { heading: 'Where they are', content: 'Look low, at the foot of the central niche: one dragon on each side of the lower basin. They sit below the Archangel Michael group and above the four virtue statues.' },
-        { heading: 'The sculptor', content: 'Both dragons are by Henri Alfred Jacquemart, one of the nine sculptors on the monument. Their scaly, wing-spreading forms contrast with the calm classical columns.' },
-        { heading: 'What they mean', content: 'The dragons are the devilâ€™s form in the victory scene â€” Michael defeats the dragon above, while the creatures at the base complete the narrative of the triumph of good. They are "chimeras" in the decorative sense: composite, imaginary beasts.' },
-        { heading: 'Photographing them', content: 'From the square, a low angle with a wide lens captures a dragon with the upper faÃ§ade behind it. Early morning side-light defines the scales; see our photos page for full shooting tips.' },
-      ],
-      faq: [
-        { question: 'Who made the dragons?', answer: 'Henri Alfred Jacquemart sculpted both winged dragons at the niche base.' },
-        { question: 'Are they dragons or chimeras?', answer: 'They are winged dragon forms; "chimera" is used here in the decorative sense of a composite imaginary beast.' },
-        { question: 'Why are there dragons?', answer: 'They represent the devil Michael defeats; they complete the victory scene at the base of the niche.' },
-      ],
-      nav: 'Dragons',
-      related: ['sculptures-and-symbolism', 'archangel-michael', 'photos', 'architecture'],
-    },
-    fr: {
-      title: 'Les dragons de la Fontaine Saint-Michel â€“ chimÃ¨res ailÃ©es',
-      description:
-        'RepÃ©rez les deux dragons ailÃ©s Ã  la base de la niche, leur sculpteur Henri Alfred Jacquemart, leur sens, et les meilleurs angles pour les photographier.',
-      h1: 'Les dragons et chimÃ¨res de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Deux dragons ailÃ©s (chimÃ¨res) se blottissent Ã  la base de la niche centrale, encadrant le bassin bas â€” faciles Ã  manquer mais parmi les dÃ©tails les plus photogÃ©niques.',
-      sections: [
-        { heading: 'OÃ¹ ils se trouvent', content: 'Regardez en bas, au pied de la niche centrale : un dragon de chaque cÃ´tÃ© du bassin bas. Ils sont sous le groupe de lâ€™archange Michel et au-dessus des quatre statues de vertus.' },
-        { heading: 'Le sculpteur', content: 'Les deux dragons sont dâ€™Henri Alfred Jacquemart, lâ€™un des neuf sculpteurs du monument. Leurs formes Ã©cailleuses et dÃ©ployÃ©es contrastent avec les colonnes classiques calmes.' },
-        { heading: 'Ce quâ€™ils signifient', content: 'Les dragons sont la forme du dÃ©mon dans la scÃ¨ne de victoire â€” Michel terrasse le dragon plus haut, tandis que les crÃ©atures Ã  la base achÃ¨vent le rÃ©cit du triomphe du bien. Ce sont des Â« chimÃ¨res Â» au sens dÃ©coratif : bÃªtes imaginaires composites.' },
-        { heading: 'Les photographier', content: 'Depuis la place, un angle bas avec un grand-angle capture un dragon avec la faÃ§ade haute derriÃ¨re. La lumiÃ¨re rasante du matin rÃ©vÃ¨le les Ã©cailles ; voir notre page Â« photos Â» pour le reste.' },
-      ],
-      faq: [
-        { question: 'Qui a fait les dragons ?', answer: 'Henri Alfred Jacquemart a sculptÃ© les deux dragons ailÃ©s Ã  la base de la niche.' },
-        { question: 'Dragons ou chimÃ¨res ?', answer: 'Ce sont des formes de dragons ailÃ©s ; Â« chimÃ¨re Â» est ici au sens dÃ©coratif de bÃªte imaginaire composite.' },
-        { question: 'Pourquoi des dragons ?', answer: 'Ils reprÃ©sentent le dÃ©mon que Michel terrasse ; ils achÃ¨vent la scÃ¨ne de victoire Ã  la base de la niche.' },
-      ],
-      nav: 'Dragons',
-      related: ['sculptures-and-symbolism', 'archangel-michael', 'photos', 'architecture'],
-    },
-  },
-  'gabriel-davioud': {
-    en: {
-      title: 'Gabriel Davioud & Fontaine Saint-Michel â€“ The Architect',
-      description:
-        'Who designed the fountain: Gabriel Davioud, Haussmannâ€™s architect, and his other Paris works connected to the monument.',
-      h1: 'Gabriel Davioud, architect of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountainâ€™s architecture is by Gabriel Davioud (1824â€“1881), the Second Empire architect most associated with Paris street furniture and public fountains.',
-      sections: [
-        { heading: 'Davioud and Haussmann', content: 'As architect for the Service des Promenades et Plantations under Baron Haussmann, Davioud designed kiosks, theatres, gates and fountains that still shape the look of Paris â€” including the Fontaine Saint-Michel (1858â€“1860).' },
-        { heading: 'His other fountains', content: 'Davioud also worked on the great Haussmannian fountains of the ChÃ¢telet and the Observatoire, and the fonts of the boulevards. The Saint-Michel fountain is generally cited as the last of the major Second Empire fountains completed.' },
-        { heading: 'Style and craft', content: 'He favoured clear, classical faÃ§ades with rich sculptural programmes, using pale limestone and coloured marble â€” the same language seen across the rebuilt boulevards of the Left Bank.' },
-      ],
-      faq: [
-        { question: 'Who designed the fountain?', answer: 'Gabriel Davioud, Haussmannâ€™s architect for public works, designed it in 1858â€“1860.' },
-        { question: 'Did he design other Paris fountains?', answer: 'Yes â€” including the ChÃ¢telet and Observatoire fountains and many boulevard fonts.' },
-        { question: 'When did Davioud live?', answer: 'He lived 1824â€“1881.' },
-      ],
-      nav: 'Gabriel Davioud',
-      related: ['history', 'architecture', 'haussmann-paris', 'sculptures-and-symbolism'],
-    },
-    fr: {
-      title: 'Gabriel Davioud et la Fontaine Saint-Michel â€“ lâ€™architecte',
-      description:
-        'Qui a conÃ§u la fontaine : Gabriel Davioud, architecte dâ€™Haussmann, et ses autres Å“uvres parisiennes liÃ©es au monument.',
-      h1: 'Gabriel Davioud, architecte de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Lâ€™architecture de la fontaine est de Gabriel Davioud (1824â€“1881), lâ€™architecte du Second Empire le plus liÃ© au mobilier urbain et aux fontaines de Paris.',
-      sections: [
-        { heading: 'Davioud et Haussmann', content: 'Architecte du Service des Promenades et Plantations sous le baron Haussmann, Davioud a dessinÃ© kiosques, thÃ©Ã¢tres, grilles et fontaines qui faÃ§onnent encore Paris â€” dont la Fontaine Saint-Michel (1858â€“1860).' },
-        { heading: 'Ses autres fontaines', content: 'Davioud a aussi travaillÃ© aux grandes fontaines haussmanniennes du ChÃ¢telet et de lâ€™Observatoire, et aux fontaines des boulevards. La fontaine Saint-Michel est gÃ©nÃ©ralement citÃ©e comme la derniÃ¨re des grandes fontaines du Second Empire achevÃ©es.' },
-        { heading: 'Style et savoir-faire', content: 'Il aimait les faÃ§ades classiques nettes Ã  riche programme sculptÃ©, en calcaire clair et marbre colorÃ© â€” le mÃªme langage que sur les boulevards reconstruits de la Rive gauche.' },
-      ],
-      faq: [
-        { question: 'Qui a conÃ§u la fontaine ?', answer: 'Gabriel Davioud, architecte des travaux publics dâ€™Haussmann, lâ€™a conÃ§ue en 1858â€“1860.' },
-        { question: 'A-t-il dessinÃ© dâ€™autres fontaines ?', answer: 'Oui â€” dont les fontaines du ChÃ¢telet et de lâ€™Observatoire et nombre de fontaines de boulevard.' },
-        { question: 'Quand Davioud a-t-il vÃ©cu ?', answer: 'Il a vÃ©cu de 1824 Ã  1881.' },
-      ],
-      nav: 'Gabriel Davioud',
-      related: ['history', 'architecture', 'haussmann-paris', 'sculptures-and-symbolism'],
-    },
-  },
-  'haussmann-paris': {
-    en: {
-      title: 'Fontaine Saint-Michel & Haussmannâ€™s Paris â€“ Urban Context',
-      description:
-        'Why the fountain exists: Haussmannâ€™s rebuilding of Paris, the new boulevards, and how the square and fountain fit the plan.',
-      h1: 'Fontaine Saint-Michel in Haussmannâ€™s Paris',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountain was a piece of urban theatre: a monumental screen placed where Haussmannâ€™s new Boulevard Saint-Michel met the old Left Bank street grid.',
-      sections: [
-        { heading: 'A new boulevard', content: 'Under Baron Haussmann, Paris cut wide, straight boulevards to improve circulation and surveillance. Boulevard Saint-Michel (opened in the 1850sâ€“60s) needed a strong focal point at its entrance to the Latin Quarter.' },
-        { heading: 'Closing a view', content: 'The fountain was built as a wall fountain to mask the bare gable of the block behind Rue Danton and to give the boulevard a decorated terminus â€” a typical Haussmannian move of turning infrastructure into spectacle.' },
-        { heading: 'Square and city', content: 'Place Saint-Michel was laid out with the boulevard as a Hygia-geometric crossroads. The fountain, the bridge to the Ãle de la CitÃ© and the quays were knit into one continuous public space.' },
-      ],
-      faq: [
-        { question: 'Why was the fountain built?', answer: 'As a Haussmannian monument to close the view of Rue Danton and anchor the new Boulevard Saint-Michel.' },
-        { question: 'When was the boulevard made?', answer: 'Boulevard Saint-Michel was opened in the 1850sâ€“1860s under Haussmann.' },
-        { question: 'Is it typical of Haussmannâ€™s style?', answer: 'Yes â€” a classical, monumental public work that doubles as urban infrastructure and decoration.' },
-      ],
-      nav: 'Haussmann Paris',
-      related: ['history', 'gabriel-davioud', 'place-saint-michel', 'architecture'],
-    },
-    fr: {
-      title: 'La Fontaine Saint-Michel et le Paris dâ€™Haussmann â€“ contexte urbain',
-      description:
-        'Pourquoi la fontaine existe : la reconstruction de Paris par Haussmann, les nouveaux boulevards, et la place de la place et de la fontaine dans le plan.',
-      h1: 'La Fontaine Saint-Michel dans le Paris dâ€™Haussmann',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La fontaine Ã©tait un morceau de thÃ©Ã¢tre urbain : un Ã©cran monumental lÃ  oÃ¹ le nouveau boulevard Saint-Michel dâ€™Haussmann rencontrait la trame ancienne de la Rive gauche.',
-      sections: [
-        { heading: 'Un nouveau boulevard', content: 'Sous le baron Haussmann, Paris a percÃ© de larges boulevards droits pour la circulation et la surveillance. Le boulevard Saint-Michel (ouvert dans les annÃ©es 1850â€“60) avait besoin dâ€™un point focal Ã  lâ€™entrÃ©e du Quartier latin.' },
-        { heading: 'Fermer une vue', content: 'La fontaine a Ã©tÃ© construite en fontaine-murale pour masquer le pignon nu de lâ€™immeuble derriÃ¨re la rue Danton et donner au boulevard une terminaison dÃ©corÃ©e â€” geste haussmannien typique dâ€™infrastructure spectacle.' },
-        { heading: 'Place et ville', content: 'La Place Saint-Michel a Ã©tÃ© tracÃ©e avec le boulevard en carrefour gÃ©omÃ©trique. La fontaine, le pont vers lâ€™Ãle de la CitÃ© et les quais forment un espace public continu.' },
-      ],
-      faq: [
-        { question: 'Pourquoi la fontaine a-t-elle Ã©tÃ© construite ?', answer: 'Monument haussmannien pour fermer la vue de la rue Danton et ancrer le nouveau boulevard Saint-Michel.' },
-        { question: 'Quand le boulevard a-t-il Ã©tÃ© percÃ© ?', answer: 'Le boulevard Saint-Michel a Ã©tÃ© ouvert dans les annÃ©es 1850â€“1860 sous Haussmann.' },
-        { question: 'Est-ce typique du style Haussmann ?', answer: 'Oui â€” une Å“uvre publique classique et monumentale, Ã  la fois infrastructure et dÃ©cor.' },
-      ],
-      nav: 'Paris dâ€™Haussmann',
-      related: ['history', 'gabriel-davioud', 'place-saint-michel', 'architecture'],
-    },
-  },
-  inscriptions: {
-    en: {
-      title: 'Inscriptions on Fontaine Saint-Michel â€“ Text & Translation',
-      description:
-        'What is written on the fountain: the dedication, dates and any carved text, with a plain reading and short translation.',
-      h1: 'The inscriptions of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The monument carries carved lettering rather than a long inscription â€” mainly the dedication to Saint Michael and the construction date, readable from the square.',
-      sections: [
-        { heading: 'What to look for', content: 'On the faÃ§ade you will find the dates 1858 and 1860 (the start and the inauguration of the works) and the dedication to Saint Michael, picked out in the stone. Bring binoculars or a zoom lens; the lettering is high on the elevation.' },
-        { heading: 'A reading', content: 'The key carved facts are the construction span "1858â€“1860" and the 15 August 1860 inauguration, aligned with the feast of the Assumption and Michaelâ€™s patronal day. Later repairs added the city coat of arms in place of the original imperial emblem.' },
-        { heading: 'Accuracy note', content: 'Because the text is high and weathered, transcriptions vary between sources. Treat any single reading as indicative; the dates above are the ones consistently cited by the Ville de Paris and reference histories.' },
-      ],
-      faq: [
-        { question: 'What is written on the fountain?', answer: 'Mainly the dates 1858â€“1860 and the dedication to Saint Michael, carved high on the faÃ§ade.' },
-        { question: 'Is there a long Latin inscription?', answer: 'No â€” the lettering is limited to dates and the dedication, not a long text.' },
-        { question: 'Can I read it from the square?', answer: 'The dates are legible with effort; a zoom lens or binoculars helps for the higher text.' },
-      ],
-      nav: 'Inscriptions',
-      related: ['architecture', 'history', 'sculptures-and-symbolism', 'historic-photos'],
-    },
-    fr: {
-      title: 'Inscriptions de la Fontaine Saint-Michel â€“ texte et traduction',
-      description:
-        'Ce qui est Ã©crit sur la fontaine : dÃ©dicace, dates et textes gravÃ©s, avec lecture et courte traduction.',
-      h1: 'Les inscriptions de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le monument porte des lettres gravÃ©es plutÃ´t quâ€™une longue inscription â€” surtout la dÃ©dicace Ã  saint Michel et la date, lisibles depuis la place.',
-      sections: [
-        { heading: 'Que chercher', content: 'Sur la faÃ§ade figurent les dates 1858 et 1860 (dÃ©but et inauguration des travaux) et la dÃ©dicace Ã  saint Michel, inscrites dans la pierre. Emportez des jumelles ou un zoom ; les lettres sont hautes.' },
-        { heading: 'Lecture', content: 'Les faits gravÃ©s clÃ©s sont la pÃ©riode Â« 1858â€“1860 Â» et lâ€™inauguration du 15 aoÃ»t 1860, alignÃ©e sur la fÃªte de lâ€™Assomption et la fÃªte patronale de Michel. Les rÃ©parations ultÃ©rieures ont mis les armes de la ville Ã  la place de lâ€™emblÃ¨me impÃ©rial dâ€™origine.' },
-        { heading: 'Note de prÃ©cision', content: 'Comme le texte est haut et marquÃ©, les transcriptions varient. Toute lecture unique est indicative ; les dates ci-dessus sont celles citÃ©es par la Ville de Paris et les histoires de rÃ©fÃ©rence.' },
-      ],
-      faq: [
-        { question: 'Quâ€™Ã©crit-on sur la fontaine ?', answer: 'Surtout les dates 1858â€“1860 et la dÃ©dicace Ã  saint Michel, gravÃ©es en haut de la faÃ§ade.' },
-        { question: 'Y a-t-il une longue inscription latine ?', answer: 'Non â€” les lettres se limitent Ã  des dates et Ã  la dÃ©dicace, pas Ã  un long texte.' },
-        { question: 'Puis-je lire depuis la place ?', answer: 'Les dates se lisent avec effort ; un zoom ou des jumelles aident pour le haut.' },
-      ],
-      nav: 'Inscriptions',
-      related: ['architecture', 'history', 'sculptures-and-symbolism', 'historic-photos'],
-    },
-  },
-  'historic-photos': {
-    en: {
-      title: 'Historic Photos of Fontaine Saint-Michel â€“ Then & Now',
-      description:
-        'Old images of the fountain and how the monument has changed, with notes on sourcing clearly licensed historical pictures.',
-      h1: 'Historic photos of Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Because the fountain is a 19th-century public monument, a large body of historical photography exists â€” but reuse rights vary, so we point to clearly licensed sources.',
-      sections: [
-        { heading: 'Where the old images live', content: 'Archives such as Paris MusÃ©es (many municipal collections are free to reuse) and Wikimedia Commons hold 19th- and early-20th-century views of the fountain and the square. Always confirm the licence on the source page before reusing.' },
-        { heading: 'What changed', content: 'The main changes since 1860 are the 1862â€“63 replacement of the cornice decoration with NoÃ©mi Cadiotâ€™s scrolls and children, the loss of the lead imperial eagle in the 1871 Commune, and the later swap of the imperial arms for the city coat of arms. The 2025â€“2026 campaign cleaned and consolidated the whole elevation.' },
-        { heading: 'Then and now', content: 'A useful comparison pairs a 19th-century boulevard view with the same sightline today: the fountain is unchanged in outline, while the square, trams and dress have moved on. We add our own modern photos on the main gallery and photos page.' },
-      ],
-      faq: [
-        { question: 'Where can I find old photos?', answer: 'Paris MusÃ©es and Wikimedia Commons hold historical views; check each imageâ€™s licence before reuse.' },
-        { question: 'Has the fountain changed much?', answer: 'The outline is unchanged since 1860; the cornice decoration and the city arms were altered in the 19th century.' },
-        { question: 'Can I reuse the images here?', answer: 'We link to sources with clear licences; verify the specific licence on the original page.' },
-      ],
-      nav: 'Historic photos',
-      related: ['photos', 'history', 'architecture', 'inscriptions'],
-    },
-    fr: {
-      title: 'Photos anciennes de la Fontaine Saint-Michel â€“ hier et aujourdâ€™hui',
-      description:
-        'Vieux clichÃ©s de la fontaine et ce qui a changÃ©, avec des notes sur les sources clairement licenciÃ©es.',
-      h1: 'Photos anciennes de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Monument public du XIXe siÃ¨cle, la fontaine a gÃ©nÃ©rÃ© beaucoup de photographies historiques â€” mais les droits varient, nous renvoyons donc Ã  des sources clairement licenciÃ©es.',
-      sections: [
-        { heading: 'OÃ¹ sont les vieilles images', content: 'Des archives comme Paris MusÃ©es (beaucoup de fonds municipaux libres) et Wikimedia Commons conservent des vues des XIXe et dÃ©but XXe siÃ¨cles. Confirmez toujours la licence sur la page source.' },
-        { heading: 'Ce qui a changÃ©', content: 'Depuis 1860 : remplacement en 1862â€“63 de la dÃ©coration de corniche par les volutes et enfants de NoÃ©mi Cadiot, perte de lâ€™aigle impÃ©rial de plomb en 1871, puis Ã©change des armes impÃ©riales contre celles de la ville. La campagne 2025â€“2026 a nettoyÃ© lâ€™Ã©lÃ©vation.' },
-        { heading: 'Hier et aujourdâ€™hui', content: 'Utile : appairer une vue de boulevard du XIXe avec le mÃªme axe aujourdâ€™hui. Le contour est stable ; la place, les tramways et les costumes ont Ã©voluÃ©. Nos photos modernes sont sur la galerie et la page Â« photos Â».' },
-      ],
-      faq: [
-        { question: 'OÃ¹ trouver de vieilles photos ?', answer: 'Paris MusÃ©es et Wikimedia Commons ; vÃ©rifiez la licence de chaque image.' },
-        { question: 'La fontaine a-t-elle beaucoup changÃ© ?', answer: 'Le contour est stable depuis 1860 ; corniche et armes de la ville ont Ã©tÃ© modifiÃ©es au XIXe siÃ¨cle.' },
-        { question: 'Puis-je rÃ©utiliser les images ?', answer: 'Nous renvoyons Ã  des sources clairement licenciÃ©es ; vÃ©rifiez la licence sur la page dâ€™origine.' },
-      ],
-      nav: 'Photos anciennes',
-      related: ['photos', 'history', 'architecture', 'inscriptions'],
-    },
-  },
-  'nearby/notre-dame': {
-    en: {
-      title: 'From Fontaine Saint-Michel to Notre-Dame â€“ Walk & Visit',
-      description:
-        'The short walk from the fountain to Notre-Dame de Paris: crossing the Seine, viewing the faÃ§ade, and linking to the official interior-visit reservation.',
-      h1: 'From the fountain to Notre-Dame de Paris',
-      updated: 'Last updated: October 2026',
-      lead: 'Notre-Dame de Paris is about a 5-minute walk from the fountain across the Pont Saint-Michel â€” the most obvious first extension of any visit.',
-      sections: [
-        { heading: 'The walk', content: 'From Place Saint-Michel cross the Pont Saint-Michel to the Ãle de la CitÃ©, then follow the parvis to the west faÃ§ade of Notre-Dame. The route is flat and about 400â€“500 metres.' },
-        { heading: 'Visiting Notre-Dame', content: 'Notre-Dame reopened to visitors in December 2024 after the restoration following the 2019 fire. Entry to the cathedral is free, but timed interior visiting is managed through the official reservation system â€” check notredamedeparis.fr before you go.' },
-        { heading: 'Combine with the fountain', content: 'A natural loop is fountain â†’ Pont Saint-Michel â†’ Notre-Dame parvis â†’ Petit Pont back to the riverside bookstalls. Allow extra time if you enter the cathedral.' },
-      ],
-      faq: [
-        { question: 'How far is Notre-Dame from the fountain?', answer: 'About 5 minutes on foot (400â€“500 m) across the Pont Saint-Michel.' },
-        { question: 'Is Notre-Dame open again?', answer: 'Yes â€” it reopened to visitors in December 2024; interior visiting uses the official reservation system.' },
-        { question: 'Do I need a ticket for Notre-Dame?', answer: 'Entry is free, but book the timed interior visit on the official Notre-Dame site.' },
-      ],
-      nav: 'To Notre-Dame',
-      related: ['things-to-do-near-fontaine-saint-michel', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel Ã  Notre-Dame â€“ marche et visite',
-      description:
-        'La courte marche de la fontaine Ã  Notre-Dame de Paris : traverser la Seine, voir la faÃ§ade, et le lien vers la rÃ©servation officielle.',
-      h1: 'De la fontaine Ã  Notre-Dame de Paris',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Notre-Dame de Paris est Ã  environ 5 min Ã  pied de la fontaine, par le Pont Saint-Michel â€” la premiÃ¨re extension Ã©vidente de toute visite.',
-      sections: [
-        { heading: 'La marche', content: 'Depuis la Place Saint-Michel, franchissez le Pont Saint-Michel vers lâ€™Ãle de la CitÃ©, puis le parvis jusquâ€™Ã  la faÃ§ade ouest de Notre-Dame. ItinÃ©raire plat dâ€™environ 400â€“500 m.' },
-        { heading: 'Visiter Notre-Dame', content: 'Notre-Dame a rouvert au public en dÃ©cembre 2024 aprÃ¨s la restauration suivant lâ€™incendie de 2019. Lâ€™entrÃ©e est gratuite, mais la visite intÃ©rieure est gÃ©rÃ©e par rÃ©servation officielle â€” voyez notredamedeparis.fr avant de partir.' },
-        { heading: 'Combiner avec la fontaine', content: 'Boucle naturelle : fontaine â†’ Pont Saint-Michel â†’ parvis Notre-Dame â†’ Petit Pont vers les bouquinistes. PrÃ©voyez du temps si vous entrez dans la cathÃ©drale.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance Notre-Dame est-elle de la fontaine ?', answer: 'Environ 5 min Ã  pied (400â€“500 m) par le Pont Saint-Michel.' },
-        { question: 'Notre-Dame est-elle rouverte ?', answer: 'Oui â€” rouverte en dÃ©cembre 2024 ; la visite intÃ©rieure use la rÃ©servation officielle.' },
-        { question: 'Faut-il un billet pour Notre-Dame ?', answer: 'Lâ€™entrÃ©e est gratuite, mais rÃ©servez la visite intÃ©rieure sur le site officiel.' },
-      ],
-      nav: 'Vers Notre-Dame',
-      related: ['things-to-do-near-fontaine-saint-michel', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'ä»åœ£ç±³æ­‡å°”å–·æ³‰åˆ°å·´é»åœ£æ¯é™¢ï¼ˆæ­¥è¡Œä¸å‚è§‚ï¼‰',
-      description: 'ä»å–·æ³‰åˆ°å·´é»åœ£æ¯é™¢çš„çŸ­é€”æ­¥è¡Œï¼šè¿‡å¡çº³æ²³ã€è§‚çœ‹ç«‹é¢ï¼Œå¹¶é“¾æ¥å®˜æ–¹å®¤å†…å‚è§‚é¢„çº¦ã€‚',
-      h1: 'ä»å–·æ³‰åˆ°å·´é»åœ£æ¯é™¢',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å·´é»åœ£æ¯é™¢è·å–·æ³‰æ­¥è¡Œçº¦ 5 åˆ†é’Ÿï¼Œç»åœ£ç±³æ­‡å°”æ¡¥å³å¯åˆ°è¾¾â€”â€”æ˜¯æœ€è‡ªç„¶çš„ç¬¬ä¸€å»¶ä¼¸è·¯çº¿ã€‚',
-      sections: [
-        { heading: 'æ­¥è¡Œ', content: 'ä»åœ£ç±³æ­‡å°”å¹¿åœºè¿‡åœ£ç±³æ­‡å°”æ¡¥ï¼ˆPont Saint-Michelï¼‰åˆ°åŸå²›ï¼Œå†æ²¿å¹¿åœºå‰å¾€åœ£æ¯é™¢è¥¿ç«‹é¢ã€‚è·¯çº¿å¹³å¦ï¼Œçº¦ 400â€“500 ç±³ã€‚' },
-        { heading: 'å‚è§‚åœ£æ¯é™¢', content: 'åœ£æ¯é™¢åœ¨ 2019 å¹´ç«ç¾åçš„ä¿®å¤å®Œæˆåï¼Œå·²äº 2024 å¹´ 12 æœˆé‡æ–°å¯¹å…¬ä¼—å¼€æ”¾ã€‚å…¥å†…å…è´¹ï¼Œä½†å®¤å†…å‚è§‚é€šè¿‡å®˜æ–¹é¢„çº¦ç³»ç»Ÿç®¡ç†â€”â€”å‡ºå‘å‰è¯·æŸ¥çœ‹ notredamedeparis.frã€‚' },
-        { heading: 'ä¸å–·æ³‰ä¸²è”', content: 'è‡ªç„¶ç¯çº¿ï¼šå–·æ³‰ â†’ åœ£ç±³æ­‡å°”æ¡¥ â†’ åœ£æ¯é™¢å¹¿åœº â†’ å°æ¡¥å›åˆ°æ²³ç•”æ—§ä¹¦æ‘Šã€‚è‹¥è¿›å…¥æ•™å ‚è¯·é¢„ç•™é¢å¤–æ—¶é—´ã€‚' },
-      ],
-      faq: [
-        { question: 'åœ£æ¯é™¢ç¦»å–·æ³‰å¤šè¿œï¼Ÿ', answer: 'æ­¥è¡Œçº¦ 5 åˆ†é’Ÿï¼ˆ400â€“500 ç±³ï¼‰ï¼Œç»åœ£ç±³æ­‡å°”æ¡¥ã€‚' },
-        { question: 'åœ£æ¯é™¢é‡æ–°å¼€æ”¾äº†å—ï¼Ÿ', answer: 'æ˜¯çš„â€”â€”2024 å¹´ 12 æœˆé‡æ–°å¼€æ”¾ï¼›å®¤å†…å‚è§‚ä½¿ç”¨å®˜æ–¹é¢„çº¦ç³»ç»Ÿã€‚' },
-        { question: 'éœ€è¦åœ£æ¯é™¢é—¨ç¥¨å—ï¼Ÿ', answer: 'å…¥å†…å…è´¹ï¼Œä½†è¯·åœ¨åœ£æ¯é™¢å®˜ç½‘é¢„çº¦å®šæ—¶å®¤å†…å‚è§‚ã€‚' },
-      ],
-      nav: 'å‰å¾€åœ£æ¯é™¢',
-      related: ['things-to-do-near-fontaine-saint-michel', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle', 'place-saint-michel'],
-    },
-  },
-  'nearby/sainte-chapelle': {
-    en: {
-      title: 'From Fontaine Saint-Michel to Sainte-Chapelle â€“ Walk & Tickets',
-      description:
-        'The walk from the fountain to Sainte-Chapelle on the Ãle de la CitÃ©, security, tickets and how to fit it into a half-day.',
-      h1: 'From the fountain to Sainte-Chapelle',
-      updated: 'Last updated: October 2026',
-      lead: 'Sainte-Chapelle, famous for its 15-metre stained-glass windows, is about a 10-minute walk from the fountain on the Ãle de la CitÃ©.',
-      sections: [
-        { heading: 'The walk', content: 'Cross the Pont Saint-Michel, skirt the Notre-Dame parvis, and follow the quai to the Boulevard du Palais and the Sainte-Chapelle / Conciergerie entrance. The route is flat and well signposted.' },
-        { heading: 'Tickets and security', content: 'Sainte-Chapelle is managed by the Centre des Monuments Nationaux and needs a timed ticket; allow time for airport-style security. Book online to skip the longest queues, especially in spring and summer.' },
-        { heading: 'Fitting it in', content: 'Pair it with Notre-Dame and the riverside walk for a half-day Ãle de la CitÃ© loop; see our half-day itinerary for timing. The upper chapelâ€™s glass is best in bright, midday light.' },
-      ],
-      faq: [
-        { question: 'How far is Sainte-Chapelle from the fountain?', answer: 'About 10 minutes on foot on the Ãle de la CitÃ©.' },
-        { question: 'Do I need a ticket?', answer: 'Yes â€” timed tickets via the Centre des Monuments Nationaux, with security screening.' },
-        { question: 'When is the light best?', answer: 'Midday on a clear day, when the stained glass reads most vividly.' },
-      ],
-      nav: 'To Sainte-Chapelle',
-      related: ['nearby/notre-dame', 'walks/half-day-itinerary', 'walks/notre-dame-ile-de-la-cite', 'things-to-do-near-fontaine-saint-michel'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel Ã  la Sainte-Chapelle â€“ marche et billets',
-      description:
-        'La marche de la fontaine Ã  la Sainte-Chapelle sur lâ€™Ãle de la CitÃ©, sÃ©curitÃ©, billets et comment lâ€™insÃ©rer dans une demi-journÃ©e.',
-      h1: 'De la fontaine Ã  la Sainte-Chapelle',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La Sainte-Chapelle, cÃ©lÃ¨bre pour ses vitraux de 15 m, est Ã  environ 10 min Ã  pied de la fontaine, sur lâ€™Ãle de la CitÃ©.',
-      sections: [
-        { heading: 'La marche', content: 'Franchissez le Pont Saint-Michel, longez le parvis de Notre-Dame, puis le quai jusquâ€™au Boulevard du Palais et lâ€™entrÃ©e Sainte-Chapelle / Conciergerie. ItinÃ©raire plat et flÃ©chÃ©.' },
-        { heading: 'Billets et sÃ©curitÃ©', content: 'La Sainte-Chapelle est gÃ©rÃ©e par le Centre des Monuments Nationaux et demande un billet datÃ© ; prÃ©voyez le contrÃ´le de sÃ©curitÃ©. RÃ©servez en ligne pour Ã©viter les plus longues files.' },
-        { heading: 'Lâ€™insÃ©rer', content: 'Associez-la Ã  Notre-Dame et Ã  la promenade des quais pour une demi-journÃ©e sur lâ€™Ãle de la CitÃ© ; voir notre itinÃ©raire demi-journÃ©e. La verriÃ¨re haute est meilleure en pleine lumiÃ¨re de midi.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance la Sainte-Chapelle est-elle de la fontaine ?', answer: 'Environ 10 min Ã  pied sur lâ€™Ãle de la CitÃ©.' },
-        { question: 'Faut-il un billet ?', answer: 'Oui â€” billet datÃ© via le Centre des Monuments Nationaux, avec contrÃ´le.' },
-        { question: 'Quelle est la meilleure lumiÃ¨re ?', answer: 'Midi par beau temps, quand les vitraux sont les plus vifs.' },
-      ],
-      nav: 'Vers Sainte-Chapelle',
-      related: ['nearby/notre-dame', 'walks/half-day-itinerary', 'walks/notre-dame-ile-de-la-cite', 'things-to-do-near-fontaine-saint-michel'],
-    },
-  },
-  'nearby/musee-de-cluny': {
-    en: {
-      title: 'From Fontaine Saint-Michel to the MusÃ©e de Cluny â€“ Route & Visit',
-      description:
-        'The walk from the fountain to the MusÃ©e de Cluny (MusÃ©e national du Moyen Ã‚ge), what it holds, and how to pair it with the Latin Quarter.',
-      h1: 'From the fountain to the MusÃ©e de Cluny',
-      updated: 'Last updated: October 2026',
-      lead: 'The MusÃ©e de Cluny, Franceâ€™s national museum of the Middle Ages, sits about 10â€“12 minutesâ€™ walk from the fountain in the heart of the Latin Quarter.',
-      sections: [
-        { heading: 'The walk', content: 'Head up Boulevard Saint-Michel or via Rue des Ã‰coles to 28 Rue du Sommerard. The route passes the Sorbonne and the medieval street grid the fountain was built to decorate.' },
-        { heading: 'What to see', content: 'The museum holds the Lady and the Unicorn tapestries, medieval sculpture and the remains of the Gallo-Roman baths (thermae) beneath it. It is a calm, cool counterpoint to the busy square.' },
-        { heading: 'Pairing it', content: 'Combine Cluny with the Sorbonne, Saint-SÃ©verin and the boulevard bookshops for a medieval-themed half-day; the nearby Jardin du Luxembourg is a short continuation.' },
-      ],
-      faq: [
-        { question: 'How far is the MusÃ©e de Cluny?', answer: 'About 10â€“12 minutes on foot from the fountain.' },
-        { question: 'What is it known for?', answer: 'The Lady and the Unicorn tapestries and the Gallo-Roman baths.' },
-        { question: 'Is it worth a visit from the fountain?', answer: 'Yes â€” it is close, cool and quiet, with world-class medieval collections.' },
-      ],
-      nav: 'To Cluny Museum',
-      related: ['nearby/sorbonne', 'nearby/saint-severin', 'walks/half-day-itinerary', 'nearby/luxembourg-gardens'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel au MusÃ©e de Cluny â€“ itinÃ©raire et visite',
-      description:
-        'La marche de la fontaine au MusÃ©e de Cluny (MusÃ©e national du Moyen Ã‚ge), ce quâ€™il contient, et comment le coupler au Quartier latin.',
-      h1: 'De la fontaine au MusÃ©e de Cluny',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le MusÃ©e de Cluny, musÃ©e national du Moyen Ã‚ge, est Ã  environ 10â€“12 min Ã  pied de la fontaine, au cÅ“ur du Quartier latin.',
-      sections: [
-        { heading: 'La marche', content: 'Remontez le boulevard Saint-Michel ou par la rue des Ã‰coles jusquâ€™au 28 rue du Sommerard. Lâ€™itinÃ©raire passe la Sorbonne et la trame mÃ©diÃ©vale que la fontaine dÃ©corait.' },
-        { heading: 'Que voir', content: 'Le musÃ©e abrite la Dame Ã  la licorne, la sculpture mÃ©diÃ©vale et les thermes gallo-romains sous lâ€™Ã©difice. Contrepoint calme et frais Ã  la place animÃ©e.' },
-        { heading: 'Le coupler', content: 'Associez Cluny Ã  la Sorbonne, Saint-SÃ©verin et aux librairies du boulevard pour une demi-journÃ©e mÃ©diÃ©vale ; le Jardin du Luxembourg prolonge Ã  pied.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance le MusÃ©e de Cluny ?', answer: 'Environ 10â€“12 min Ã  pied de la fontaine.' },
-        { question: 'Par quoi est-il connu ?', answer: 'La Dame Ã  la licorne et les thermes gallo-romains.' },
-        { question: 'En vaut-il la visite depuis la fontaine ?', answer: 'Oui â€” proche, frais et calme, avec des collections mÃ©diÃ©vales de premier plan.' },
-      ],
-      nav: 'Vers Cluny',
-      related: ['nearby/sorbonne', 'nearby/saint-severin', 'walks/half-day-itinerary', 'nearby/luxembourg-gardens'],
-    },
-  },
-  'nearby/shakespeare-and-company': {
-    en: {
-      title: 'From Fontaine Saint-Michel to Shakespeare and Company â€“ Walk & Books',
-      description:
-        'The walk from the fountain to the Shakespeare and Company bookshop, its literary setting, and nearby English-book stops.',
-      h1: 'From the fountain to Shakespeare and Company',
-      updated: 'Last updated: October 2026',
-      lead: 'The famous English-language bookshop Shakespeare and Company sits across the river from the fountain, about a 10-minute walk via the Petit Pont.',
-      sections: [
-        { heading: 'The walk', content: 'From the square take the Petit Pont across the Seine to the quai de Montebello, then a few steps to 37 Rue de la BÃ»cherie, facing Notre-Dame. The route is flat and scenic.' },
-        { heading: 'The bookshop', content: 'Shakespeare and Company is an independent English-bookshop with a literary history tied to Joyce, Hemingway and the Lost Generation. The exterior and window tables are freely visible; inside browsing is welcome during opening hours.' },
-        { heading: 'Literary neighbours', content: 'Pair it with the riverside bouquinistes and the Ãle de la CitÃ© for a book-themed loop; the fountainâ€™s own Rue de la Huchette and Rue de la BÃ»cherie bookshops extend the theme on the Left Bank.' },
-      ],
-      faq: [
-        { question: 'How far is Shakespeare and Company?', answer: 'About 10 minutes on foot across the Petit Pont.' },
-        { question: 'Can I go inside?', answer: 'Yes â€” browsing is welcome in opening hours; the exterior and window tables are always visible.' },
-        { question: 'Is it free?', answer: 'Browsing is free; only purchases cost.' },
-      ],
-      nav: 'To Shakespeare & Co',
-      related: ['walks/seine-bookstalls', 'nearby/notre-dame', 'nearby/saint-severin', 'walks/saint-germain'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel Ã  Shakespeare and Company â€“ marche et livres',
-      description:
-        'La marche de la fontaine Ã  la librairie Shakespeare and Company, son cadre littÃ©raire, et les arrÃªts de livres en anglais Ã  proximitÃ©.',
-      h1: 'De la fontaine Ã  Shakespeare and Company',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La cÃ©lÃ¨bre librairie anglophone Shakespeare and Company se trouve de lâ€™autre cÃ´tÃ© du fleuve, Ã  environ 10 min Ã  pied par le Petit Pont.',
-      sections: [
-        { heading: 'La marche', content: 'Depuis la place, prenez le Petit Pont jusquâ€™au quai de Montebello, puis quelques pas au 37 rue de la BÃ»cherie, face Ã  Notre-Dame. ItinÃ©raire plat et pittoresque.' },
-        { heading: 'La librairie', content: 'Shakespeare and Company est une librairie anglophone indÃ©pendante liÃ©e Ã  Joyce, Hemingway et la Â« GÃ©nÃ©ration perdue Â». Lâ€™extÃ©rieur et les tables de devanture se voient librement ; la consultation est welcome aux heures dâ€™ouverture.' },
-        { heading: 'Voisins littÃ©raires', content: 'Associez-la aux bouquinistes des quais et Ã  lâ€™Ãle de la CitÃ© pour une boucle livre ; les librairies de la rue de la Huchette et de la BÃ»cherie prolongent le thÃ¨me rive gauche.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance Shakespeare and Company ?', answer: 'Environ 10 min Ã  pied par le Petit Pont.' },
-        { question: 'Peut-on entrer ?', answer: 'Oui â€” la consultation est welcome aux heures dâ€™ouverture ; lâ€™extÃ©rieur et les tables se voient toujours.' },
-        { question: 'Est-ce gratuit ?', answer: 'La consultation est gratuite ; seuls les achats sont payants.' },
-      ],
-      nav: 'Vers Shakespeare',
-      related: ['walks/seine-bookstalls', 'nearby/notre-dame', 'nearby/saint-severin', 'walks/saint-germain'],
-    },
-  },
-  'nearby/saint-severin': {
-    en: {
-      title: 'From Fontaine Saint-Michel to Saint-SÃ©verin â€“ Walk & Church',
-      description:
-        'The short walk from the fountain to the Church of Saint-SÃ©verin, its Gothic features, and visiting etiquette.',
-      h1: 'From the fountain to Saint-SÃ©verin',
-      updated: 'Last updated: October 2026',
-      lead: 'The Church of Saint-SÃ©verin, a gem of Flamboyant Gothic, is about a 5-minute walk from the fountain in the medieval Latin Quarter.',
-      sections: [
-        { heading: 'The walk', content: 'From the square climb Rue de la Huchette and Rue Saint-SÃ©verin into the old street grid. The church stands at 3 Rue des PrÃªtres-Saint-SÃ©verin.' },
-        { heading: 'What to see', content: 'Look for the twisted pillar in the nave, the double ambulatory and the 18th-century organ. It is one of the oldest parish churches on the Left Bank, with a calm interior away from the square.' },
-        { heading: 'Visiting etiquette', content: 'The church is free to enter for prayer and quiet visits during opening hours; dress modestly and keep voices low. Services may limit interior access at times.' },
-      ],
-      faq: [
-        { question: 'How far is Saint-SÃ©verin?', answer: 'About 5 minutes on foot from the fountain.' },
-        { question: 'Is it free to enter?', answer: 'Yes â€” free for prayer and quiet visits in opening hours.' },
-        { question: 'What is it famous for?', answer: 'Its Flamboyant Gothic nave, the twisted pillar and the double ambulatory.' },
-      ],
-      nav: 'To Saint-SÃ©verin',
-      related: ['nearby/sorbonne', 'nearby/musee-de-cluny', 'walks/latin-quarter-two-hours', 'visiting-with-children'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel Ã  Saint-SÃ©verin â€“ marche et Ã©glise',
-      description:
-        'La courte marche de la fontaine Ã  lâ€™Ã©glise Saint-SÃ©verin, ses traits gothiques, et lâ€™Ã©tiquette de visite.',
-      h1: 'De la fontaine Ã  Saint-SÃ©verin',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Lâ€™Ã©glise Saint-SÃ©verin, joyau du gothique flamboyant, est Ã  environ 5 min Ã  pied de la fontaine, dans le Quartier latin mÃ©diÃ©val.',
-      sections: [
-        { heading: 'La marche', content: 'Depuis la place, montez la rue de la Huchette et la rue Saint-SÃ©verin dans la vieille trame. Lâ€™Ã©glise est au 3 rue des PrÃªtres-Saint-SÃ©verin.' },
-        { heading: 'Que voir', content: 'Cherchez la colonne torsadÃ©e de la nef, le double dÃ©ambulatoire et lâ€™orgue du XVIIIe siÃ¨cle. Lâ€™une des plus anciennes paroisses rive gauche, avec un intÃ©rieur calme loin de la place.' },
-        { heading: 'Ã‰tiquette', content: 'EntrÃ©e gratuite pour la priÃ¨re et la visite calme aux heures dâ€™ouverture ; tenue modeste et voix basses. Les offices peuvent limiter lâ€™accÃ¨s.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance Saint-SÃ©verin ?', answer: 'Environ 5 min Ã  pied de la fontaine.' },
-        { question: 'Lâ€™entrÃ©e est-elle gratuite ?', answer: 'Oui â€” gratuite pour la priÃ¨re et la visite calme aux heures dâ€™ouverture.' },
-        { question: 'Par quoi est-elle cÃ©lÃ¨bre ?', answer: 'Sa nef gothique flamboyante, la colonne torsadÃ©e et le double dÃ©ambulatoire.' },
-      ],
-      nav: 'Vers Saint-SÃ©verin',
-      related: ['nearby/sorbonne', 'nearby/musee-de-cluny', 'walks/latin-quarter-two-hours', 'visiting-with-children'],
-    },
-  },
-  'nearby/sorbonne': {
-    en: {
-      title: 'From Fontaine Saint-Michel to the Sorbonne â€“ Walk & Quarter',
-      description:
-        'The walk from the fountain into the Sorbonne quarter: what is publicly viewable, campus access limits, and the Latin Quarter streets around it.',
-      h1: 'From the fountain to the Sorbonne',
-      updated: 'Last updated: October 2026',
-      lead: 'The Sorbonne and its quarter are about a 5â€“10 minute walk from the fountain â€” more a district to wander than a single sight to enter.',
-      sections: [
-        { heading: 'The walk', content: 'Climb Rue Saint-Jacques or Rue des Ã‰coles from the square to the Place de la Sorbonne. The streets here are the historic heart of the Latin Quarterâ€™s student life.' },
-        { heading: 'What you can see', content: 'The Sorbonne chapel and the faÃ§ades around the Place de la Sorbonne are visible from outside; the university interior is generally not open to casual visitors. The surrounding streets, bookshops and cafÃ©s are the real draw.' },
-        { heading: 'Make the most of it', content: 'Pair the quarter with Saint-SÃ©verin, the MusÃ©e de Cluny and the boulevard bookshops for a student-and-medieval themed loop; the PanthÃ©on is a further climb up Rue Soufflot.' },
-      ],
-      faq: [
-        { question: 'How far is the Sorbonne?', answer: 'About 5â€“10 minutes on foot from the fountain.' },
-        { question: 'Can I go inside the Sorbonne?', answer: 'Generally no for casual visitors; you view the chapels and faÃ§ades from outside and enjoy the quarter.' },
-        { question: 'What is the area known for?', answer: 'Historic student life, bookshops, cafÃ©s and medieval streets.' },
-      ],
-      nav: 'To the Sorbonne',
-      related: ['nearby/saint-severin', 'nearby/musee-de-cluny', 'nearby/pantheon', 'walks/latin-quarter-two-hours'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel Ã  la Sorbonne â€“ marche et quartier',
-      description:
-        'La marche de la fontaine au quartier de la Sorbonne : ce qui se voit, limites dâ€™accÃ¨s au campus, et les rues du Quartier latin.',
-      h1: 'De la fontaine Ã  la Sorbonne',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La Sorbonne et son quartier sont Ã  environ 5â€“10 min Ã  pied de la fontaine â€” plus un quartier Ã  arpenter quâ€™un seul site Ã  entrer.',
-      sections: [
-        { heading: 'La marche', content: 'Montez la rue Saint-Jacques ou la rue des Ã‰coles depuis la place jusquâ€™Ã  la Place de la Sorbonne. Ces rues sont le cÅ“ur historique de la vie Ã©tudiante du Quartier latin.' },
-        { heading: 'Ce que lâ€™on voit', content: 'La chapelle et les faÃ§ades autour de la place se voient de lâ€™extÃ©rieur ; lâ€™intÃ©rieur de lâ€™universitÃ© nâ€™est gÃ©nÃ©ralement pas ouvert au passageant. Les rues, librairies et cafÃ©s sont lâ€™attrait.' },
-        { heading: 'En profiter', content: 'Associez le quartier Ã  Saint-SÃ©verin, au MusÃ©e de Cluny et aux librairies du boulevard pour une boucle Ã©tudiante et mÃ©diÃ©vale ; le PanthÃ©on poursuit par la rue Soufflot.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance la Sorbonne ?', answer: 'Environ 5â€“10 min Ã  pied de la fontaine.' },
-        { question: 'Peut-on entrer Ã  la Sorbonne ?', answer: 'GÃ©nÃ©ralement non pour le visiteur occasionnel ; on voit chapelles et faÃ§ades de lâ€™extÃ©rieur.' },
-        { question: 'Par quoi le quartier est-il connu ?', answer: 'Vie Ã©tudiante historique, librairies, cafÃ©s et rues mÃ©diÃ©vales.' },
-      ],
-      nav: 'Vers la Sorbonne',
-      related: ['nearby/saint-severin', 'nearby/musee-de-cluny', 'nearby/pantheon', 'walks/latin-quarter-two-hours'],
-    },
-  },
-  'nearby/pantheon': {
-    en: {
-      title: 'From Fontaine Saint-Michel to the PanthÃ©on â€“ Walk & Visit',
-      description:
-        'The walk from the fountain up to the PanthÃ©on: the climb, the view, tickets and what is buried there.',
-      h1: 'From the fountain to the PanthÃ©on',
-      updated: 'Last updated: October 2026',
-      lead: 'The PanthÃ©on crowns the hill of the Latin Quarter about 12 minutesâ€™ walk (uphill) from the fountain.',
-      sections: [
-        { heading: 'The walk and the climb', content: 'From Place Saint-Michel go up Rue Saint-Jacques or Rue Soufflot to the Place du PanthÃ©on. The last stretch rises gently; the view back down the boulevard to the fountain is worth the stop.' },
-        { heading: 'Tickets and what is inside', content: 'The PanthÃ©on is a paid monument (Centre des Monuments Nationaux) holding the tombs of Voltaire, Rousseau, Victor Hugo, Marie Curie and others. Book a timed ticket in peak season.' },
-        { heading: 'Combine it', content: 'Pair it with the Sorbonne and the Luxembourg Gardens for a half-day; the fountain is the natural downhill start. The dome and the crypt are the highlights.' },
-      ],
-      faq: [
-        { question: 'How far is the PanthÃ©on?', answer: 'About 12 minutes on foot uphill from the fountain.' },
-        { question: 'Is it free?', answer: 'No â€” it is a paid monument; timed tickets help in peak season.' },
-        { question: 'Who is buried there?', answer: 'Voltaire, Rousseau, Victor Hugo, Marie Curie and other figures of France.' },
-      ],
-      nav: 'To the PanthÃ©on',
-      related: ['nearby/sorbonne', 'nearby/luxembourg-gardens', 'walks/half-day-itinerary', 'walks/latin-quarter-two-hours'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel au PanthÃ©on â€“ marche et visite',
-      description:
-        'La marche de la fontaine jusquâ€™au PanthÃ©on : la montÃ©e, la vue, les billets et qui y repose.',
-      h1: 'De la fontaine au PanthÃ©on',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le PanthÃ©on couronne la colline du Quartier latin, Ã  environ 12 min Ã  pied (en montÃ©e) de la fontaine.',
-      sections: [
-        { heading: 'La marche et la montÃ©e', content: 'Depuis la Place Saint-Michel, montez la rue Saint-Jacques ou la rue Soufflot jusquâ€™Ã  la Place du PanthÃ©on. La derniÃ¨re partie monte doucement ; la vue en retour vers la fontaine vaut lâ€™arrÃªt.' },
-        { heading: 'Billets et intÃ©rieur', content: 'Le PanthÃ©on est un monument payant (Centre des Monuments Nationaux) abritant les tombes de Voltaire, Rousseau, Victor Hugo, Marie Curie et dâ€™autres. RÃ©servez un billet datÃ© en saison.' },
-        { heading: 'Le combiner', content: 'Associez-le Ã  la Sorbonne et au Jardin du Luxembourg pour une demi-journÃ©e ; la fontaine est le point de dÃ©part naturel en descente. DÃ´me et crypte sont les temps forts.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance le PanthÃ©on ?', answer: 'Environ 12 min Ã  pied en montÃ©e depuis la fontaine.' },
-        { question: 'Est-ce gratuit ?', answer: 'Non â€” monument payant ; billet datÃ© utile en saison.' },
-        { question: 'Qui y repose ?', answer: 'Voltaire, Rousseau, Victor Hugo, Marie Curie et dâ€™autres figures de France.' },
-      ],
-      nav: 'Vers le PanthÃ©on',
-      related: ['nearby/sorbonne', 'nearby/luxembourg-gardens', 'walks/half-day-itinerary', 'walks/latin-quarter-two-hours'],
-    },
-  },
-  'nearby/luxembourg-gardens': {
-    en: {
-      title: 'From Fontaine Saint-Michel to the Luxembourg Gardens â€“ Walk & Rest',
-      description:
-        'The walk from the fountain to the Jardin du Luxembourg: entrances, the Medici Fountain, playgrounds and a calm rest stop.',
-      h1: 'From the fountain to the Luxembourg Gardens',
-      updated: 'Last updated: October 2026',
-      lead: 'The Jardin du Luxembourg is about 15â€“20 minutesâ€™ walk from the fountain â€” a green, calm counterpoint to the busy square.',
-      sections: [
-        { heading: 'Which entrance', content: 'From Place Saint-Michel the easiest gate is the lower entrance on Rue de MÃ©dicis / Rue Guillaume Apollinaire; the main southern entrance on Rue de Vaugirard is a longer walk. Pick the gate by how much of the boulevard you want to keep.' },
-        { heading: 'What to see', content: 'The Medici Fountain, the central basin, the orchard and the bee house are highlights. The gardens are free to enter; some paid activities (pontoon boats, puppet theatre, tennis) run in season.' },
-        { heading: 'Rest and families', content: 'Benches, lawns (some open) and a playground make it ideal for a break. It pairs naturally with the Sorbonne and PanthÃ©on for a half-day Latin Quarter walk.' },
-      ],
-      faq: [
-        { question: 'How far are the Luxembourg Gardens?', answer: 'About 15â€“20 minutes on foot from the fountain.' },
-        { question: 'Is entry free?', answer: 'Yes â€” the gardens are free; some activities inside are paid in season.' },
-        { question: 'What should I see?', answer: 'The Medici Fountain, the central basin, the orchard and the bee house.' },
-      ],
-      nav: 'To Luxembourg Gardens',
-      related: ['nearby/sorbonne', 'nearby/pantheon', 'walks/half-day-itinerary', 'visiting-with-children'],
-    },
-    fr: {
-      title: 'De la Fontaine Saint-Michel au Jardin du Luxembourg â€“ marche et repos',
-      description:
-        'La marche de la fontaine au Jardin du Luxembourg : entrÃ©es, la fontaine MÃ©dicis, aires de jeux et une pause calme.',
-      h1: 'De la fontaine au Jardin du Luxembourg',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le Jardin du Luxembourg est Ã  environ 15â€“20 min Ã  pied de la fontaine â€” un contrepoint vert et calme Ã  la place animÃ©e.',
-      sections: [
-        { heading: 'Quelle entrÃ©e', content: 'Depuis la Place Saint-Michel, la grille la plus facile est lâ€™entrÃ©e basse rue de MÃ©dicis / rue Guillaume Apollinaire ; lâ€™entrÃ©e sud rue de Vaugirard est plus longue. Choisissez selon le boulevard Ã  garder.' },
-        { heading: 'Que voir', content: 'La fontaine MÃ©dicis, le bassin central, le verger et la ruche sont les temps forts. Le jardin est gratuit ; quelques activitÃ©s payantes (barques, marionnettes, tennis) en saison.' },
-        { heading: 'Repos et familles', content: 'Bancs, pelouses (parfois ouvertes) et aire de jeux en font une pause idÃ©ale. Il sâ€™associe Ã  la Sorbonne et au PanthÃ©on pour une demi-journÃ©e.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance le Jardin du Luxembourg ?', answer: 'Environ 15â€“20 min Ã  pied de la fontaine.' },
-        { question: 'Lâ€™entrÃ©e est-elle gratuite ?', answer: 'Oui â€” le jardin est gratuit ; quelques activitÃ©s payantes en saison.' },
-        { question: 'Que faut-il voir ?', answer: 'La fontaine MÃ©dicis, le bassin central, le verger et la ruche.' },
-      ],
-      nav: 'Vers le Luxembourg',
-      related: ['nearby/sorbonne', 'nearby/pantheon', 'walks/half-day-itinerary', 'visiting-with-children'],
-    },
-  },
-  'walks/30-minute-walk': {
-    en: {
-      title: 'A 30-Minute Walk Around Fontaine Saint-Michel â€“ Short Route',
-      description:
-        'A tight loop from the fountain taking in the square, the river and a bookstall stretch â€” for short stays and connections.',
-      h1: 'A 30-minute walk around Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'If you only have half an hour, this flat loop covers the fountain, the Seine and the riverside bookstalls without losing your bearings.',
-      sections: [
-        { heading: 'The loop', content: 'Start at the fountain on Place Saint-Michel â†’ cross to the Pont Saint-Michel parapet for a river view â†’ walk the Quai de Montebello bookstalls for 5 minutes â†’ return via the Petit Pont to the square. About 30 minutes, almost entirely flat.' },
-        { heading: 'Why it works', content: 'It gives you the monument, a bridge view of Notre-Dame, and the bouquinistes in one compact, signposted circuit â€” ideal between metro connections or before a reservation.' },
-        { heading: 'Add-ons if time allows', content: 'With 10 more minutes, detour into Rue de la Huchette for its cafÃ©s, or extend the quay toward the Ãle de la CitÃ©. See our 2-hour route for the fuller Latin Quarter.' },
-      ],
-      faq: [
-        { question: 'Can I see the fountain in 30 minutes?', answer: 'Yes â€” this loop takes in the monument, the river and the bookstalls in about half an hour.' },
-        { question: 'Is it flat?', answer: 'Almost entirely; the route stays on the square and the quays.' },
-        { question: 'What if I have more time?', answer: 'Add Rue de la Huchette or extend toward the Ãle de la CitÃ©; our 2-hour walk covers more.' },
-      ],
-      nav: '30-min walk',
-      related: ['walks/latin-quarter-two-hours', 'nearby/notre-dame', 'walks/seine-bookstalls', 'visitor-guide'],
-    },
-    fr: {
-      title: 'Une promenade de 30 minutes autour de la Fontaine Saint-Michel',
-      description:
-        'Une boucle serrÃ©e depuis la fontaine : la place, la Seine et les bouquinistes â€” pour les courts sÃ©jours.',
-      h1: 'Une promenade de 30 minutes autour de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Si vous nâ€™avez quâ€™une demi-heure, cette boucle plate couvre la fontaine, la Seine et les bouquinistes sans vous perdre.',
-      sections: [
-        { heading: 'La boucle', content: 'DÃ©part Ã  la fontaine sur la Place Saint-Michel â†’ parapet du Pont Saint-Michel pour la vue â†’ quai de Montebello et ses bouquinistes 5 min â†’ retour par le Petit Pont. Environ 30 min, presque plat.' },
-        { heading: 'Pourquoi Ã§a marche', content: 'Monument, vue sur Notre-Dame depuis un pont et bouquinistes dans un circuit compact et flÃ©chÃ© â€” idÃ©al entre deux mÃ©tros ou avant une rÃ©servation.' },
-        { heading: 'Si le temps le permet', content: 'Avec 10 min de plus, dÃ©tour par la rue de la Huchette, ou prolongez le quai vers lâ€™Ãle de la CitÃ©. Notre route 2 h couvre plus.' },
-      ],
-      faq: [
-        { question: 'Peut-on voir la fontaine en 30 min ?', answer: 'Oui â€” cette boucle prend le monument, la Seine et les bouquinistes en une demi-heure.' },
-        { question: 'Est-ce plat ?', answer: 'Presque entiÃ¨rement ; la route reste sur la place et les quais.' },
-        { question: 'Et si jâ€™ai plus de temps ?', answer: 'Ajoutez la rue de la Huchette ou prolongez vers lâ€™Ãle de la CitÃ© ; notre marche 2 h en dit plus.' },
-      ],
-      nav: 'Marche 30 min',
-      related: ['walks/latin-quarter-two-hours', 'nearby/notre-dame', 'walks/seine-bookstalls', 'visitor-guide'],
-    },
-  },
-  'walks/latin-quarter-two-hours': {
-    en: {
-      title: 'A 2-Hour Latin Quarter Walking Tour from the Fountain',
-      description:
-        'A concentrated Latin Quarter route from the fountain with timed stops: the square, Notre-Dame approaches, Sainte-Chapelle area, medieval streets and the Sorbonne.',
-      h1: 'A 2-hour Latin Quarter walk from the fountain',
-      updated: 'Last updated: October 2026',
-      lead: 'This two-hour route stays in the dense core around the fountain â€” more stops than the 30-minute loop, but no paid interior visits required.',
-      sections: [
-        { heading: 'Timing the stops', content: '0:00 Fountain & square (15 min) â†’ 0:15 Pont Saint-Michel + Notre-Dame parvis view (20 min) â†’ 0:35 Quai bookstalls (15 min) â†’ 0:50 Rue de la Huchette & Saint-SÃ©verin (25 min) â†’ 1:15 Sorbonne quarter & boulevard bookshops (30 min) â†’ 1:45 back to the square. About 2 hours at an easy pace.' },
-        { heading: 'What makes it "Latin Quarter"', content: 'The route threads the medieval street grid the fountain was built to ornament: student streets, old churches and bookshops rather than grand avenues.' },
-        { heading: 'If you want an interior', content: 'To add Sainte-Chapelle or the MusÃ©e de Cluny, switch to our half-day itinerary, which budgets timed tickets and security.' },
-      ],
-      faq: [
-        { question: 'What does the 2-hour walk cover?', answer: 'The fountain, the Notre-Dame parvis view, the bookstalls, Saint-SÃ©verin and the Sorbonne quarter.' },
-        { question: 'Are tickets needed?', answer: 'No â€” it stays outdoors; interiors are optional on the half-day route.' },
-        { question: 'How is it different from the 30-min loop?', answer: 'More stops and more of the medieval core, but still no paid entries.' },
-      ],
-      nav: '2-hour walk',
-      related: ['walks/30-minute-walk', 'walks/half-day-itinerary', 'nearby/saint-severin', 'nearby/sorbonne'],
-    },
-    fr: {
-      title: 'Une visite Ã  pied du Quartier latin de 2 h depuis la fontaine',
-      description:
-        'ItinÃ©raire concentrÃ© du Quartier latin depuis la fontaine, avec arrÃªts chronomÃ©trÃ©s : place, abords de Notre-Dame, Sainte-Chapelle, rues mÃ©diÃ©vales et Sorbonne.',
-      h1: 'Une marche de 2 h dans le Quartier latin depuis la fontaine',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Cet itinÃ©raire de deux heures reste dans le cÅ“ur dense autour de la fontaine â€” plus dâ€™arrÃªts que la boucle 30 min, sans visite payante.',
-      sections: [
-        { heading: 'ChronomÃ©trer', content: '0:00 Fontaine et place (15 min) â†’ 0:15 Pont Saint-Michel + vue du parvis (20 min) â†’ 0:35 Bouquinistes du quai (15 min) â†’ 0:50 rue de la Huchette et Saint-SÃ©verin (25 min) â†’ 1:15 Quartier Sorbonne et librairies (30 min) â†’ 1:45 retour place. Environ 2 h.' },
-        { heading: 'Pourquoi Â« Quartier latin Â»', content: 'Lâ€™itinÃ©raire suit la trame mÃ©diÃ©vale que la fontaine ornait : rues Ã©tudiantes, vieilles Ã©glises et librairies plutÃ´t que grands axes.' },
-        { heading: 'Si vous voulez un intÃ©rieur', content: 'Pour ajouter Sainte-Chapelle ou le MusÃ©e de Cluny, passez Ã  notre demi-journÃ©e, qui budgÃ©tise billets et sÃ©curitÃ©.' },
-      ],
-      faq: [
-        { question: 'Que couvre la marche 2 h ?', answer: 'La fontaine, la vue du parvis Notre-Dame, les bouquinistes, Saint-SÃ©verin et le quartier Sorbonne.' },
-        { question: 'Faut-il des billets ?', answer: 'Non â€” tout est en extÃ©rieur ; les intÃ©rieurs sont optionnels en demi-journÃ©e.' },
-        { question: 'En quoi diffÃ¨re-t-elle de la boucle 30 min ?', answer: 'Plus dâ€™arrÃªts et plus du cÅ“ur mÃ©diÃ©val, sans entrÃ©es payantes.' },
-      ],
-      nav: 'Marche 2 h',
-      related: ['walks/30-minute-walk', 'walks/half-day-itinerary', 'nearby/saint-severin', 'nearby/sorbonne'],
-    },
-  },
-  'walks/half-day-itinerary': {
-    en: {
-      title: 'A Half-Day Itinerary from Fontaine Saint-Michel',
-      description:
-        'A half-day Latin Quarter plan from the fountain that includes one paid interior (Sainte-Chapelle or the MusÃ©e de Cluny) plus free stops.',
-      h1: 'A half-day itinerary from Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'This plan budgets about four hours and includes one timed interior visit, so it goes further than the 2-hour outdoor route.',
-      sections: [
-        { heading: 'The plan', content: '0:00 Fountain & square â†’ 0:30 Pont Saint-Michel to Notre-Dame parvis (exterior) â†’ 1:00 Sainte-Chapelle timed ticket (or MusÃ©e de Cluny) â†’ 2:30 Saint-SÃ©verin & medieval streets â†’ 3:15 Sorbonne quarter â†’ 3:45 Jardin du Luxembourg for a rest. Allow buffer for security and queues.' },
-        { heading: 'Paid vs free', content: 'Only the one interior (Sainte-Chapelle / Cluny) is paid; the fountain, Notre-Dame exterior, streets, Saint-SÃ©verin and the Luxembourg Gardens are free. Book the interior ticket in advance.' },
-        { heading: 'Why not the 2-hour route', content: 'The 2-hour walk is outdoors only; choose this half-day when you want a major collection or the stained glass without a full-day commitment.' },
-      ],
-      faq: [
-        { question: 'What is in the half-day plan?', answer: 'The fountain, Notre-Dame exterior, one timed interior (Sainte-Chapelle or Cluny), Saint-SÃ©verin, the Sorbonne and the Luxembourg Gardens.' },
-        { question: 'How long does it take?', answer: 'About four hours with a buffer for tickets and security.' },
-        { question: 'Is only one thing paid?', answer: 'Yes â€” just the one interior; the rest is free to view.' },
-      ],
-      nav: 'Half-day plan',
-      related: ['walks/latin-quarter-two-hours', 'nearby/sainte-chapelle', 'nearby/musee-de-cluny', 'nearby/luxembourg-gardens'],
-    },
-    fr: {
-      title: 'Une demi-journÃ©e depuis la Fontaine Saint-Michel',
-      description:
-        'Un plan Quartier latin dâ€™une demi-journÃ©e depuis la fontaine, avec une visite intÃ©rieure payante (Sainte-Chapelle ou MusÃ©e de Cluny) et des arrÃªts gratuits.',
-      h1: 'Une demi-journÃ©e depuis la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Ce plan prÃ©voit environ quatre heures et inclut une visite intÃ©rieure datÃ©e, allant plus loin que la route extÃ©rieure de 2 h.',
-      sections: [
-        { heading: 'Le plan', content: '0:00 Fontaine et place â†’ 0:30 Pont Saint-Michel vers le parvis Notre-Dame (extÃ©rieur) â†’ 1:00 billet datÃ© Sainte-Chapelle (ou MusÃ©e de Cluny) â†’ 2:30 Saint-SÃ©verin et rues mÃ©diÃ©vales â†’ 3:15 Quartier Sorbonne â†’ 3:45 Jardin du Luxembourg. PrÃ©voyez une marge pour sÃ©curitÃ© et files.' },
-        { heading: 'Payant ou gratuit', content: 'Une seule intÃ©rieure (Sainte-Chapelle / Cluny) est payante ; la fontaine, lâ€™extÃ©rieur Notre-Dame, les rues, Saint-SÃ©verin et le Luxembourg sont gratuits. RÃ©servez lâ€™intÃ©rieure Ã  lâ€™avance.' },
-        { heading: 'Pourquoi pas la route 2 h', content: 'La marche 2 h est en extÃ©rieur seulement ; choisissez cette demi-journÃ©e si vous voulez une grande collection ou les vitraux sans la journÃ©e entiÃ¨re.' },
-      ],
-      faq: [
-        { question: 'Que contient la demi-journÃ©e ?', answer: 'La fontaine, lâ€™extÃ©rieur Notre-Dame, une intÃ©rieure datÃ©e (Sainte-Chapelle ou Cluny), Saint-SÃ©verin, la Sorbonne et le Luxembourg.' },
-        { question: 'Combien de temps ?', answer: 'Environ quatre heures avec marge pour billets et sÃ©curitÃ©.' },
-        { question: 'Une seule chose payante ?', answer: 'Oui â€” une seule intÃ©rieure ; le reste est gratuit.' },
-      ],
-      nav: 'Demi-journÃ©e',
-      related: ['walks/latin-quarter-two-hours', 'nearby/sainte-chapelle', 'nearby/musee-de-cluny', 'nearby/luxembourg-gardens'],
-    },
-  },
-  'walks/notre-dame-ile-de-la-cite': {
-    en: {
-      title: 'Fontaine Saint-Michel to Notre-Dame Walking Route â€“ Ãle de la CitÃ©',
-      description:
-        'A walking route across to the Ãle de la CitÃ©: bridges, island sights and how to link the cathedral reservation.',
-      h1: 'A walking route to Notre-Dame and the Ãle de la CitÃ©',
-      updated: 'Last updated: October 2026',
-      lead: 'This route uses the Pont Saint-Michel and Petit Pont to turn the fountain and Notre-Dame into one island circuit.',
-      sections: [
-        { heading: 'The crossing', content: 'From the square take the Pont Saint-Michel onto the Ãle de la CitÃ©, circle the Notre-Dame parvis (exterior), then return via the Petit Pont. Flat, about 1 km round trip.' },
-        { heading: 'Island add-ons', content: 'If time allows, the flower market (MarchÃ© aux Fleurs) and the Memorial des Martyrs de la DÃ©portation sit nearby; Sainte-Chapelle is a short walk along the quai (timed ticket).' },
-        { heading: 'Linking the reservation', content: 'Notre-Dame reopened in December 2024; book the timed interior visit on notredamedeparis.fr and time your crossing around it.' },
-      ],
-      faq: [
-        { question: 'How do I walk to Notre-Dame from the fountain?', answer: 'Pont Saint-Michel onto the island, view the parvis, return via the Petit Pont â€” about 1 km.' },
-        { question: 'Can I walk the whole island?', answer: 'Yes â€” the route can extend to the flower market and the DÃ©portation memorial.' },
-        { question: 'Do I need to book Notre-Dame?', answer: 'Entry is free but the interior uses the official timed reservation.' },
-      ],
-      nav: 'Ãle de la CitÃ© walk',
-      related: ['nearby/notre-dame', 'nearby/sainte-chapelle', 'walks/30-minute-walk', 'things-to-do-near-fontaine-saint-michel'],
-    },
-    fr: {
-      title: 'ItinÃ©raire Ã  pied Fontaine Saint-Michel â€“ Notre-Dame â€“ Ãle de la CitÃ©',
-      description:
-        'Un itinÃ©raire vers lâ€™Ãle de la CitÃ© : ponts, sites de lâ€™Ã®le et lien avec la rÃ©servation de la cathÃ©drale.',
-      h1: 'ItinÃ©raire Ã  pied vers Notre-Dame et lâ€™Ãle de la CitÃ©',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Cet itinÃ©raire utilise le Pont Saint-Michel et le Petit Pont pour faire de la fontaine et Notre-Dame une seule boucle insulaire.',
-      sections: [
-        { heading: 'La traversÃ©e', content: 'Depuis la place, le Pont Saint-Michel vers lâ€™Ãle de la CitÃ©, le parvis Notre-Dame (extÃ©rieur), retour par le Petit Pont. Plat, environ 1 km aller-retour.' },
-        { heading: 'Ajouts sur lâ€™Ã®le', content: 'Si le temps le permet, le MarchÃ© aux Fleurs et le MÃ©morial des Martyrs de la DÃ©portation sont proches ; la Sainte-Chapelle est Ã  quelques pas le long du quai (billet datÃ©).' },
-        { heading: 'Lien rÃ©servation', content: 'Notre-Dame a rouvert en dÃ©cembre 2024 ; rÃ©servez la visite intÃ©rieure sur notredamedeparis.fr et caliez la traversÃ©e.' },
-      ],
-      faq: [
-        { question: 'Comment aller Ã  Notre-Dame Ã  pied depuis la fontaine ?', answer: 'Pont Saint-Michel vers lâ€™Ã®le, parvis, retour Petit Pont â€” environ 1 km.' },
-        { question: 'Peut-on faire toute lâ€™Ã®le ?', answer: 'Oui â€” jusquâ€™au marchÃ© aux fleurs et au MÃ©morial de la DÃ©portation.' },
-        { question: 'Faut-il rÃ©server Notre-Dame ?', answer: 'EntrÃ©e gratuite mais visite intÃ©rieure sur rÃ©servation officielle datÃ©e.' },
-      ],
-      nav: 'Marche Ãle de la CitÃ©',
-      related: ['nearby/notre-dame', 'nearby/sainte-chapelle', 'walks/30-minute-walk', 'things-to-do-near-fontaine-saint-michel'],
-    },
-  },
-  'walks/seine-bookstalls': {
-    en: {
-      title: 'A Seine Bookstalls Walk from Fontaine Saint-Michel',
-      description:
-        'A riverside walk from the fountain along the bouquinistes: where they are, what to browse, and the best photo spots.',
-      h1: 'A Seine bookstalls walk from the fountain',
-      updated: 'Last updated: October 2026',
-      lead: 'The green bouquinistes boxes along the Seine are a short step from the square â€” a flat, photographic walk with old books, postcards and prints.',
-      sections: [
-        { heading: 'Where they are', content: 'From Place Saint-Michel the boxes line the Quai de Montebello (right bank side opposite) and the Quai Saint-Michel / Quai de la Tournelle. Cross the Pont Saint-Michel or Petit Pont to reach them.' },
-        { heading: 'What to browse', content: 'Expect second-hand books, vintage postcards, prints and small antiques. Hours vary by vendor; mornings and late afternoons are best, and some close in poor weather.' },
-        { heading: 'Photo spots', content: 'The bookstalls with Notre-Dame behind them are the classic shot; the Pont Saint-Michel parapet gives a clean river-and-cathedral frame. See our photos page for more.' },
-      ],
-      faq: [
-        { question: 'Where are the bookstalls from the fountain?', answer: 'Along the Quai de Montebello and Quai Saint-Michel, a short bridge crossing away.' },
-        { question: 'What can I buy?', answer: 'Old books, postcards, prints and small antiques; hours vary by vendor.' },
-        { question: 'When is the light best?', answer: 'Mornings and late afternoons; some boxes close in bad weather.' },
-      ],
-      nav: 'Bookstalls walk',
-      related: ['photos', 'nearby/shakespeare-and-company', 'walks/30-minute-walk', 'at-night'],
-    },
-    fr: {
-      title: 'Une promenade des bouquinistes de la Seine depuis la Fontaine Saint-Michel',
-      description:
-        'Une marche des quais depuis la fontaine le long des bouquinistes : oÃ¹ ils sont, quoi regarder, et les meilleurs spots photo.',
-      h1: 'Une promenade des bouquinistes depuis la fontaine',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Les boÃ®tes vertes des bouquinistes bordent la Seine Ã  deux pas de la place â€” une marche plate et photogÃ©nique avec livres anciens, cartes et estampes.',
-      sections: [
-        { heading: 'OÃ¹ ils sont', content: 'Depuis la Place Saint-Michel, les boÃ®tes longent le quai de Montebello et le quai Saint-Michel / quai de la Tournelle. Franchissez le Pont Saint-Michel ou le Petit Pont.' },
-        { heading: 'Que regarder', content: 'Livres dâ€™occasion, cartes postales vintage, estampes et petits objets. Horaires variables ; matins et fins dâ€™aprÃ¨s-midi sont meilleurs, certains ferment par mauvais temps.' },
-        { heading: 'Spots photo', content: 'Les bouquinistes avec Notre-Dame derriÃ¨re : le clichÃ© classique ; le parapet du Pont Saint-Michel cadre bien fleuve et cathÃ©drale. Voir notre page Â« photos Â».' },
-      ],
-      faq: [
-        { question: 'OÃ¹ sont les bouquinistes depuis la fontaine ?', answer: 'Le long du quai de Montebello et du quai Saint-Michel, Ã  un pont.' },
-        { question: 'Que peut-on acheter ?', answer: 'Livres anciens, cartes, estampes et petits objets ; horaires variables.' },
-        { question: 'Quelle lumiÃ¨re ?', answer: 'Matins et fins dâ€™aprÃ¨s-midi ; certaines boÃ®tes ferment par mauvais temps.' },
-      ],
-      nav: 'Marche bouquinistes',
-      related: ['photos', 'nearby/shakespeare-and-company', 'walks/30-minute-walk', 'at-night'],
-    },
-  },
-  'walks/saint-germain': {
-    en: {
-      title: 'A Saint-Germain-des-PrÃ©s Walk from Fontaine Saint-Michel',
-      description:
-        'A literary walk from the fountain across to Saint-Germain: cafÃ©s, bookshops and the abbey church, with rest stops.',
-      h1: 'A Saint-Germain-des-PrÃ©s walk from the fountain',
-      updated: 'Last updated: October 2026',
-      lead: 'Saint-Germain-des-PrÃ©s, the historic literary quarter across the river, is about a 15â€“20 minute walk from the fountain via the Pont Saint-Michel and the boulevards.',
-      sections: [
-        { heading: 'The route', content: 'From the square cross the Pont Saint-Michel, continue along the Quai des Grands-Augustins and up Rue de Buci / Rue de Seine to the Ã‰glise Saint-Germain-des-PrÃ©s and its cafÃ©-lined square.' },
-        { heading: 'Literary stops', content: 'The quarter is known for the CafÃ© de Flore and Les Deux Magots, historic bookshops and the abbey church â€” a calm contrast to the fountainâ€™s bustle. Allow time for a cafÃ© terrace.' },
-        { heading: 'Rest and return', content: 'Benches and terraces line the route; return the same way or via the Pont Neuf for a different river view. Pair it with the bookstalls walk.' },
-      ],
-      faq: [
-        { question: 'How far is Saint-Germain from the fountain?', answer: 'About 15â€“20 minutes on foot across the Pont Saint-Michel.' },
-        { question: 'What is it known for?', answer: 'Literary cafÃ©s, bookshops and the abbey church of Saint-Germain-des-PrÃ©s.' },
-        { question: 'Is it worth the walk?', answer: 'Yes â€” a calm, historic quarter with a different feel from the Latin Quarter core.' },
-      ],
-      nav: 'Saint-Germain walk',
-      related: ['nearby/shakespeare-and-company', 'walks/seine-bookstalls', 'walks/saint-germain', 'things-to-do-near-fontaine-saint-michel'],
-    },
-    fr: {
-      title: 'Une promenade Saint-Germain-des-PrÃ©s depuis la Fontaine Saint-Michel',
-      description:
-        'Une marche littÃ©raire depuis la fontaine vers Saint-Germain : cafÃ©s, librairies et abbaye, avec pauses.',
-      h1: 'Une promenade Saint-Germain-des-PrÃ©s depuis la fontaine',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Saint-Germain-des-PrÃ©s, le quartier littÃ©raire dâ€™en face, est Ã  environ 15â€“20 min Ã  pied de la fontaine par le Pont Saint-Michel.',
-      sections: [
-        { heading: 'Lâ€™itinÃ©raire', content: 'Depuis la place, le Pont Saint-Michel, le quai des Grands-Augustins puis la rue de Buci / rue de Seine jusquâ€™Ã  lâ€™Ã©glise Saint-Germain-des-PrÃ©s et sa place cafÃ©s.' },
-        { heading: 'ArrÃªts littÃ©raires', content: 'Le quartier est connu pour le CafÃ© de Flore et Les Deux Magots, ses librairies et lâ€™abbaye â€” contraste calme avec la place. PrÃ©voyez une terrasse.' },
-        { heading: 'Repos et retour', content: 'Bancs et terrasses jalonnent le trajet ; retour par le mÃªme chemin ou le Pont Neuf pour une autre vue. Ã€ coupler avec la marche des bouquinistes.' },
-      ],
-      faq: [
-        { question: 'Ã€ quelle distance Saint-Germain de la fontaine ?', answer: 'Environ 15â€“20 min Ã  pied par le Pont Saint-Michel.' },
-        { question: 'Par quoi est-il connu ?', answer: 'CafÃ©s littÃ©raires, librairies et lâ€™abbaye Saint-Germain-des-PrÃ©s.' },
-        { question: 'La marche en vaut-elle la peine ?', answer: 'Oui â€” quartier calme et historique, autre ambiance que le cÅ“ur du Quartier latin.' },
-      ],
-      nav: 'Marche Saint-Germain',
-      related: ['nearby/shakespeare-and-company', 'walks/seine-bookstalls', 'things-to-do-near-fontaine-saint-michel', 'walks/30-minute-walk'],
-    },
-  },
-  'walks/free-things-to-do': {
-    en: {
-      title: 'Free Things to Do Near Fontaine Saint-Michel â€“ Paris',
-      description:
-        'What is free around the fountain versus what needs a ticket: the monument, squares, exteriors, quays, gardens and churches.',
-      h1: 'Free things to do near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Much of what makes the area worth visiting is free â€” the fountain, the river, the squares and most church exteriors cost nothing.',
-      sections: [
-        { heading: 'Always free', content: 'The fountain and Place Saint-Michel, the Seine quays and bookstalls (browsing), the exterior of Notre-Dame (reopened Dec 2024; interior via free reservation), the riverside walk, and the Jardin du Luxembourg gardens.' },
-        { heading: 'Free with limits', content: 'Saint-SÃ©verin and the Sorbonne chapels are free to enter for quiet visits in opening hours. The PanthÃ©on and Sainte-Chapelle are paid; the MusÃ©e de Cluny is paid.' },
-        { heading: 'Paid only if you choose', content: 'Timed interior visits (Notre-Dame reservation, Sainte-Chapelle, Cluny, PanthÃ©on) and in-garden activities (pontoon boats, tennis) are the main costs. Everything else on our walks is free to view.' },
-      ],
-      faq: [
-        { question: 'What is free near the fountain?', answer: 'The fountain, the square, the quays, Notre-Dame exterior, the bookstalls and the Luxembourg Gardens are free.' },
-        { question: 'Are the churches free?', answer: 'Saint-SÃ©verin is free to enter; Notre-Dame interior is free but reservation-only. Sainte-Chapelle and the PanthÃ©on are paid.' },
-        { question: 'Do I need tickets for anything free?', answer: 'Only Notre-Dameâ€™s interior needs a free reservation; the rest is open.' },
-      ],
-      nav: 'Free things',
-      related: ['visitor-guide', 'nearby/notre-dame', 'nearby/saint-severin', 'walks/30-minute-walk'],
-    },
-    fr: {
-      title: 'Choses gratuites prÃ¨s de la Fontaine Saint-Michel â€“ Paris',
-      description:
-        'Ce qui est gratuit autour de la fontaine et ce qui demande un billet : monument, places, extÃ©rieurs, quais, jardins et Ã©glises.',
-      h1: 'Choses gratuites prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Une bonne part de lâ€™intÃ©rÃªt du quartier est gratuite â€” la fontaine, la Seine, les places et la plupart des extÃ©rieurs dâ€™Ã©glises ne coÃ»tent rien.',
-      sections: [
-        { heading: 'Toujours gratuit', content: 'La fontaine et la Place Saint-Michel, les quais et les bouquinistes (voir), lâ€™extÃ©rieur de Notre-Dame (rouverte dÃ©c. 2024 ; intÃ©rieur sur rÃ©servation gratuite), la promenade des quais et le Jardin du Luxembourg.' },
-        { heading: 'Gratuit avec limites', content: 'Saint-SÃ©verin et les chapelles de la Sorbonne sont libres dâ€™accÃ¨s en visite calme aux heures dâ€™ouverture. Le PanthÃ©on et la Sainte-Chapelle sont payants ; le MusÃ©e de Cluny est payant.' },
-        { heading: 'Payant si vous le souhaitez', content: 'Les visites intÃ©rieures datÃ©es (Notre-Dame, Sainte-Chapelle, Cluny, PanthÃ©on) et les activitÃ©s du jardin (barques, tennis) sont les principaux coÃ»ts. Le reste de nos marches est gratuit.' },
-      ],
-      faq: [
-        { question: 'Quâ€™y a-t-il de gratuit prÃ¨s de la fontaine ?', answer: 'La fontaine, la place, les quais, lâ€™extÃ©rieur Notre-Dame, les bouquinistes et le Luxembourg sont gratuits.' },
-        { question: 'Les Ã©glises sont-elles gratuites ?', answer: 'Saint-SÃ©verin est libre ; lâ€™intÃ©rieur Notre-Dame est gratuit sur rÃ©servation. Sainte-Chapelle et le PanthÃ©on sont payants.' },
-        { question: 'Faut-il des billets pour le gratuit ?', answer: 'Seul lâ€™intÃ©rieur Notre-Dame demande une rÃ©servation gratuite ; le reste est ouvert.' },
-      ],
-      nav: 'Gratuit',
-      related: ['visitor-guide', 'nearby/notre-dame', 'nearby/saint-severin', 'walks/30-minute-walk'],
-    },
-  },
-  photos: {
-    en: {
-      title: 'Fontaine Saint-Michel Photos â€“ Spots, Angles & Tips',
-      description:
-        'Where to photograph the fountain: sightlines from the square and the bridges, the best light, and how to handle crowds.',
-      h1: 'Photographing Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The 26-metre faÃ§ade reads best from straight on, across the square or a bridge â€” and it is lit after dark, so it photographs day or night.',
-      sections: [
-        { heading: 'Shooting from the square', content: 'Stand in the middle of Place Saint-Michel for a centred, full-faÃ§ade frame. A wide lens (16â€“24 mm) takes in the whole elevation; a short telephoto isolates the Archangel Michael group high up.' },
-        { heading: 'Bridges and river', content: 'The Pont Saint-Michel parapet frames the fountain with the boulevard; from the Quai de Montebello the bookstalls sit in front of Notre-Dame, a different subject. Cross to the opposite bank for a three-quarter view.' },
-        { heading: 'Light and crowds', content: 'Side-light in the morning defines the sculpture; the floodlit faÃ§ade after dusk is the night shot. Crowds peak midday â€” shoot early or late for clean frames, and be mindful of people in the square.' },
-        { heading: 'Detail shots', content: 'The two winged dragons at the niche base and the four virtue statues reward a zoom. See our dragons page for identifying them.' },
-      ],
-      faq: [
-        { question: 'Where is the best photo spot?', answer: 'Centred on Place Saint-Michel for the full faÃ§ade; the Pont Saint-Michel for a framed view.' },
-        { question: 'Is it lit at night?', answer: 'Yes â€” the faÃ§ade is floodlit, making it a strong night subject.' },
-        { question: 'How do I avoid crowds?', answer: 'Shoot early morning or late evening; use a longer lens to isolate details.' },
-      ],
-      nav: 'Photos',
-      related: ['at-night', 'dragons-and-chimeras', 'walks/seine-bookstalls', 'visitor-guide'],
-    },
-    fr: {
-      title: 'Photos de la Fontaine Saint-Michel â€“ spots, angles et conseils',
-      description:
-        'OÃ¹ photographier la fontaine : axes depuis la place et les ponts, la meilleure lumiÃ¨re, et la gestion de la foule.',
-      h1: 'Photographier la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La faÃ§ade de 26 m se lit bien de face, depuis la place ou un pont â€” et elle est Ã©clairÃ©e la nuit, donc photogÃ©nique jour et nuit.',
-      sections: [
-        { heading: 'Depuis la place', content: 'Placez-vous au centre de la Place Saint-Michel pour un cadre frontal de toute la faÃ§ade. Un grand-angle (16â€“24 mm) prend lâ€™Ã©lÃ©vation ; un court tÃ©lÃ© isole le groupe de lâ€™archange en haut.' },
-        { heading: 'Ponts et Seine', content: 'Le parapet du Pont Saint-Michel cadre la fontaine avec le boulevard ; depuis le quai de Montebello, les bouquinistes devant Notre-Dame, un autre sujet. Passez rive opposÃ©e pour une vue de trois quarts.' },
-        { heading: 'LumiÃ¨re et foule', content: 'La lumiÃ¨re rasante du matin rÃ©vÃ¨le la sculpture ; la faÃ§ade Ã©clairÃ©e le soir est la photo de nuit. Foule Ã  midi â€” photographez tÃ´t ou tard, et respectez les passants.' },
-        { heading: 'DÃ©tails', content: 'Les deux dragons ailÃ©s Ã  la base et les quatre vertus se prÃªtent au zoom. Voir notre page Â« dragons Â».' },
-      ],
-      faq: [
-        { question: 'Quel est le meilleur spot ?', answer: 'CentrÃ© sur la Place Saint-Michel pour la faÃ§ade ; le Pont Saint-Michel pour un cadrage.' },
-        { question: 'Est-elle Ã©clairÃ©e la nuit ?', answer: 'Oui â€” faÃ§ade Ã©clairÃ©e, sujet de nuit fort.' },
-        { question: 'Comment Ã©viter la foule ?', answer: 'TÃ´t le matin ou tard le soir ; un tÃ©lÃ© pour isoler les dÃ©tails.' },
-      ],
-      nav: 'Photos',
-      related: ['at-night', 'dragons-and-chimeras', 'walks/seine-bookstalls', 'visitor-guide'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰æ‘„å½±æŒ‡å—ï¼ˆæœºä½ã€è§’åº¦ä¸æŠ€å·§ï¼‰',
-      description: 'åœ¨å“ªé‡Œæ‹æ‘„å–·æ³‰ï¼šä»å¹¿åœºä¸æ¡¥æ¢çš„è§†çº¿ã€æœ€ä½³å…‰çº¿ï¼Œä»¥åŠå¦‚ä½•å¤„ç†äººæµã€‚',
-      h1: 'æ‹æ‘„åœ£ç±³æ­‡å°”å–·æ³‰',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: '26 ç±³ç«‹é¢ä»æ­£å‰æ–¹ï¼ˆå¹¿åœºæˆ–æ¡¥ä¸Šï¼‰è§‚çœ‹æ•ˆæœæœ€ä½³ï¼›å…¥å¤œåæœ‰ç…§æ˜ï¼Œå› æ­¤ç™½å¤©ä¸å¤œæ™šéƒ½é€‚åˆæ‹æ‘„ã€‚',
-      sections: [
-        { heading: 'å¹¿åœºæ‹æ‘„', content: 'ç«™åœ¨åœ£ç±³æ­‡å°”å¹¿åœºä¸­å¤®å¯è·å¾—å±…ä¸­çš„å®Œæ•´ç«‹é¢æ„å›¾ã€‚å¹¿è§’ï¼ˆ16â€“24mmï¼‰èƒ½çº³å…¥æ•´åº§ç«‹é¢ï¼›ä¸­é•¿ç„¦å¯å•ç‹¬çªå‡ºé«˜å¤„çš„ç±³æ­‡å°”ç¾¤é›•ã€‚' },
-        { heading: 'æ¡¥æ¢ä¸æ²³æ™¯', content: 'åœ£ç±³æ­‡å°”æ¡¥çš„æ æ†å¯æŠŠå–·æ³‰ä¸å¤§é“åŒæ¡†ï¼›ä»è’™ç‰¹è´æ´›å ¤å²¸çœ‹ï¼Œæ—§ä¹¦æ‘Šä½äºåœ£æ¯é™¢å‰æ–¹ï¼Œæ˜¯å¦ä¸€ä¸»é¢˜ã€‚è¿‡åˆ°å¯¹å²¸å¯å–å¾—å››åˆ†ä¹‹ä¸‰è§†è§’ã€‚' },
-        { heading: 'å…‰çº¿ä¸äººæµ', content: 'ä¸Šåˆçš„ä¾§å…‰å‹¾å‹’é›•å¡‘ç»†èŠ‚ï¼›å‚æ™šäº®ç¯åçš„ç«‹é¢æ˜¯å¤œæ™¯ä½³ä½œã€‚ä¸­åˆäººæµæœ€å¯†â€”â€”æ¸…æ™¨æˆ–å‚æ™šæ‹æ‘„æ›´å¹²å‡€ï¼Œå¹¶è¯·æ³¨æ„å¹¿åœºä¸Šçš„è¡Œäººã€‚' },
-        { heading: 'ç»†èŠ‚', content: 'å£é¾›åŸºåº§çš„åŒç¿¼é¾™ä¸å››å°Šç¾å¾·é›•åƒå€¼å¾—ç”¨é•¿ç„¦ç‰¹å†™ã€‚è¯†åˆ«æ–¹æ³•è§ã€ŒåŒç¿¼é¾™ã€é¡µé¢ã€‚' },
-      ],
-      faq: [
-        { question: 'æœ€ä½³æ‹æ‘„ç‚¹åœ¨å“ªé‡Œï¼Ÿ', answer: 'åœ£ç±³æ­‡å°”å¹¿åœºä¸­å¤®æ‹å®Œæ•´ç«‹é¢ï¼›åœ£ç±³æ­‡å°”æ¡¥å¯å–å¾—æ¡†æ™¯ã€‚' },
-        { question: 'å¤œé—´æœ‰ç…§æ˜å—ï¼Ÿ', answer: 'æœ‰â€”â€”ç«‹é¢æœ‰æ³›å…‰ç…§æ˜ï¼Œæ˜¯å¾ˆå¥½çš„å¤œæ™¯é¢˜æã€‚' },
-        { question: 'å¦‚ä½•é¿å¼€äººæµï¼Ÿ', answer: 'æ¸…æ™¨æˆ–å‚æ™šæ‹æ‘„ï¼›ç”¨è¾ƒé•¿ç„¦æ®µçªå‡ºç»†èŠ‚ã€‚' },
-      ],
-      nav: 'æ‘„å½±',
-      related: ['at-night', 'dragons-and-chimeras', 'walks/seine-bookstalls', 'visitor-guide'],
-    },
-  },
-  'at-night': {
-    en: {
-      title: 'Fontaine Saint-Michel at Night â€“ Night Visit & Photos',
-      description:
-        'What the fountain looks like after dark, the lighting, a safe night walk, and where to photograph the lit faÃ§ade.',
-      h1: 'Fontaine Saint-Michel at night',
-      updated: 'Last updated: October 2026',
-      lead: 'After dark the fountain is floodlit and the square stays lively, making it one of the easier Paris monuments to enjoy in the evening.',
-      sections: [
-        { heading: 'The lighting', content: 'Uplights pick out the columns, the Archangel Michael group and the dragons; the 26-metre faÃ§ade reads clearly against the night sky. The effect is strongest after full dusk.' },
-        { heading: 'A night walk', content: 'A short evening loop runs along the Quai Saint-Michel and Quai de Montebello for reflections of Notre-Dame on the river, then back to the lit square. The area is busy and well-lit, generally fine on foot.' },
-        { heading: 'Night photos', content: 'A tripod or a steady phone on a parapet helps in low light. Frame the lit faÃ§ade from the centre of the square, or capture the river reflections from the Pont Saint-Michel. See our photos page for angles.' },
-        { heading: 'Getting back', content: 'The RER B/C Saint-Michelâ€“Notre-Dame and MÃ©tro line 10 Clunyâ€“La Sorbonne run late; note the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026 â€” use the RER or line 10.' },
-      ],
-      faq: [
-        { question: 'Is the fountain lit at night?', answer: 'Yes â€” it is floodlit after dark and the square stays busy.' },
-        { question: 'Is it safe to visit at night?', answer: 'The area is well-lit and frequented; standard city caution applies as anywhere.' },
-        { question: 'How do I get back late?', answer: 'RER B/C and MÃ©tro line 10 run late; avoid the closed line 4 Saint-Michel station and use the RER or line 10.' },
-      ],
-      nav: 'At night',
-      related: ['photos', 'walks/seine-bookstalls', 'how-to-get-there', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'La Fontaine Saint-Michel la nuit â€“ visite et photos',
-      description:
-        'Ce que donne la fontaine aprÃ¨s la tombÃ©e de la nuit, lâ€™Ã©clairage, une marche nocturne sÃ»re, et oÃ¹ photographier la faÃ§ade Ã©clairÃ©e.',
-      h1: 'La Fontaine Saint-Michel la nuit',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'AprÃ¨s la tombÃ©e de la nuit, la fontaine est Ã©clairÃ©e et la place reste animÃ©e, ce qui en fait un des monuments parisiens faciles Ã  voir le soir.',
-      sections: [
-        { heading: 'Lâ€™Ã©clairage', content: 'Des projecteurs soulignent les colonnes, le groupe de lâ€™archange et les dragons ; la faÃ§ade de 26 m se lit nettement contre le ciel. Lâ€™effet est maximal aprÃ¨s la pleine nuit.' },
-        { heading: 'Une marche nocturne', content: 'Une courte boucle le long du quai Saint-Michel et du quai de Montebello donne les reflets de Notre-Dame sur la Seine, puis retour Ã  la place Ã©clairÃ©e. Zone animÃ©e et Ã©clairÃ©e, gÃ©nÃ©ralement sÃ»re Ã  pied.' },
-        { heading: 'Photos de nuit', content: 'Un trÃ©pied ou un tÃ©lÃ©phone posÃ© sur un parapet aide en basse lumiÃ¨re. Cadrez la faÃ§ade Ã©clairÃ©e depuis le centre de la place, ou les reflets depuis le Pont Saint-Michel. Voir notre page Â« photos Â».' },
-        { heading: 'Le retour', content: 'Le RER B/C Saint-Michelâ€“Notre-Dame et la ligne 10 Clunyâ€“La Sorbonne roulent tard ; la station ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 â€” utilisez le RER ou la ligne 10.' },
-      ],
-      faq: [
-        { question: 'La fontaine est-elle Ã©clairÃ©e la nuit ?', answer: 'Oui â€” Ã©clairÃ©e aprÃ¨s la tombÃ©e de la nuit, la place reste animÃ©e.' },
-        { question: 'Est-ce sÃ»r la nuit ?', answer: 'Zone Ã©clairÃ©e et frÃ©quentÃ©e ; prudence urbaine habituelle.' },
-        { question: 'Comment rentrer tard ?', answer: 'RER B/C et ligne 10 roulent tard ; Ã©vitez la ligne 4 fermÃ©e et utilisez le RER ou la ligne 10.' },
-      ],
-      nav: 'La nuit',
-      related: ['photos', 'walks/seine-bookstalls', 'how-to-get-there', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å¤œé—´æ¸¸è§ˆï¼ˆå¤œæ™¯ä¸æ‘„å½±ï¼‰',
-      description: 'å–·æ³‰å…¥å¤œåçš„æ ·å­ã€ç…§æ˜ã€å®‰å…¨çš„å¤œèµ°è·¯çº¿ï¼Œä»¥åŠåœ¨å“ªé‡Œæ‹æ‘„äº®ç¯ç«‹é¢ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰çš„å¤œæ™š',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å…¥å¤œåå–·æ³‰æœ‰æ³›å…‰ç…§æ˜ï¼Œå¹¿åœºä¾ç„¶çƒ­é—¹ï¼Œæ˜¯å·´é»è¾ƒæ˜“åœ¨æ™šé—´æ¬£èµçš„çºªå¿µç¢‘ä¹‹ä¸€ã€‚',
-      sections: [
-        { heading: 'ç…§æ˜', content: 'åº•éƒ¨æŠ•å…‰ç…§äº®æŸ±åˆ—ã€ç±³æ­‡å°”ç¾¤é›•ä¸åŒç¿¼é¾™ï¼›26 ç±³ç«‹é¢åœ¨å¤œç©ºä¸­æ¸…æ™°å¯è¾¨ã€‚æ—¥è½åå…¨é»‘æ—¶æ•ˆæœæœ€ä½³ã€‚' },
-        { heading: 'å¤œèµ°è·¯çº¿', content: 'çŸ­ç¨‹å¤œèµ°æ²¿åœ£ç±³æ­‡å°”å ¤å²¸ä¸è’™ç‰¹è´æ´›å ¤å²¸ï¼Œå¯æ‹åœ£æ¯é™¢åœ¨æ²³é¢çš„å€’å½±ï¼Œå†å›åˆ°äº®ç¯çš„å¹¿åœºã€‚åŒºåŸŸç…§æ˜å……è¶³ã€äººæµä¸æ–­ï¼Œæ­¥è¡Œæ€»ä½“å®‰å…¨ã€‚' },
-        { heading: 'å¤œé—´æ‘„å½±', content: 'ä¸‰è„šæ¶æˆ–å°†æ‰‹æœºç¨³æ”¾åœ¨æ æ†æœ‰åŠ©äºä½å…‰æ‹æ‘„ã€‚ä»å¹¿åœºä¸­å¤®æ¡†ä½äº®ç¯ç«‹é¢ï¼Œæˆ–ä»åœ£ç±³æ­‡å°”æ¡¥æ•æ‰æ²³é¢å€’å½±ã€‚è§’åº¦è§ã€Œæ‘„å½±ã€é¡µé¢ã€‚' },
-        { heading: 'è¿”ç¨‹', content: 'RER B/C ä¸åœ°é“ 10 å·çº¿ Clunyâ€“La Sorbonne è¿è¥è‡³è¾ƒæ™šï¼›åœ°é“ 4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­â€”â€”è¯·ä¹˜ RER æˆ– 10 å·çº¿ã€‚' },
-      ],
-      faq: [
-        { question: 'å–·æ³‰å¤œé—´æœ‰ç…§æ˜å—ï¼Ÿ', answer: 'æœ‰â€”â€”æ—¥è½åæ³›å…‰ç…§æ˜ï¼Œå¹¿åœºä»çƒ­é—¹ã€‚' },
-        { question: 'å¤œé—´å‚è§‚å®‰å…¨å—ï¼Ÿ', answer: 'åŒºåŸŸç…§æ˜å……è¶³ã€äººæµä¸æ–­ï¼›ä¸ä»»ä½•åŸå¸‚ä¸€æ ·ä¿æŒåŸºæœ¬æ³¨æ„ã€‚' },
-        { question: 'æ·±å¤œå¦‚ä½•è¿”ç¨‹ï¼Ÿ', answer: 'RER B/C ä¸åœ°é“ 10 å·çº¿è¿è¥è¾ƒæ™šï¼›é¿å¼€å…³é—­çš„ 4 å·çº¿ Saint-Michel ç«™ï¼Œæ”¹ä¹˜ RER æˆ– 10 å·çº¿ã€‚' },
-      ],
-      nav: 'å¤œæ¸¸',
-      related: ['photos', 'walks/seine-bookstalls', 'how-to-get-there', 'place-saint-michel'],
-    },
-  },
-  'where-to-eat': {
-    en: {
-      title: 'Where to Eat Near Fontaine Saint-Michel â€“ By Area & Budget',
-      description:
-        'Eating around the fountain by neighbourhood and budget: the squareâ€™s surrounds, the Latin Quarter streets, and the river side, with a verification date.',
-      h1: 'Where to eat near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026 (prices and openings change â€” verify on the day)',
-      lead: 'The fountain sits in the middle of Parisâ€™s densest restaurant cluster, so choice is wide â€” from crÃªpe stands to formal bistros â€” within a few minutesâ€™ walk.',
-      sections: [
-        { heading: 'Around the square', content: 'Rue de la Huchette and the streets just off the square are busy and tourist-centric, with crÃªperies, pizza and kebab stands at lower prices and quick turnover. Good for a fast, cheap bite between sights.' },
-        { heading: 'Latin Quarter side streets', content: 'A few minutes into Rue des Ã‰coles, Rue de la Harpe and the Sorbonne area you find more bistros and brasseries at mid-range prices, often with terraces. Booking helps in the evening.' },
-        { heading: 'River and Saint-Germain', content: 'Towards the Quai des Grands-Augustins and Saint-Germain-des-PrÃ©s, prices rise and the cafÃ©s (Flore, Les Deux Magots) are as much about the setting as the food. Cross the Pont Saint-Michel for this quieter, pricier quarter.' },
-        { heading: 'Practical notes', content: 'Menus and opening hours shift seasonally; check current reviews and the venueâ€™s own page before you commit. The square itself has no seated table with a fountain view â€” the view is from the pavement.' },
-      ],
-      faq: [
-        { question: 'Where is the cheapest food?', answer: 'The crÃªpe and kebab stands on Rue de la Huchette by the square are the quick, low-cost option.' },
-        { question: 'Where are the best bistros?', answer: 'The Latin Quarter side streets and Saint-Germain-des-PrÃ©s have more sit-down bistros; book in the evening.' },
-        { question: 'Is there a view restaurant?', answer: 'No seated terrace overlooks the fountain; the monument is viewed from the pavement and bridges.' },
-      ],
-      nav: 'Where to eat',
-      related: ['where-to-stay', 'walks/saint-germain', 'visitor-guide', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'OÃ¹ manger prÃ¨s de la Fontaine Saint-Michel â€“ par quartier et budget',
-      description:
-        'Manger autour de la fontaine par quartier et budget : alentours de la place, rues du Quartier latin, et le bord de Seine, avec date de vÃ©rification.',
-      h1: 'OÃ¹ manger prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026 (prix et ouvertures varient â€” vÃ©rifiez le jour)',
-      lead: 'La fontaine se trouve au cÅ“ur du quartier le plus dense en restaurants de Paris : crÃªperies comme bistrots, Ã  quelques minutes.',
-      sections: [
-        { heading: 'Autour de la place', content: 'La rue de la Huchette et les rues proches sont animÃ©es et touristiques, avec crÃªperies, pizzas et kebabs Ã  petits prix et fort turnover. Pratique pour une bouchÃ©e rapide.' },
-        { heading: 'Rues du Quartier latin', content: 'Quelques minutes dans la rue des Ã‰coles, rue de la Harpe et le quartier Sorbonne : plus de bistrots et brasseries Ã  prix moyens, souvent en terrasse. RÃ©server le soir.' },
-        { heading: 'Seine et Saint-Germain', content: 'Vers le quai des Grands-Augustins et Saint-Germain-des-PrÃ©s, les prix montent et les cafÃ©s (Flore, Les Deux Magots) valent autant pour le cadre. traversez le Pont Saint-Michel pour ce quartier plus calme et plus cher.' },
-        { heading: 'Notes pratiques', content: 'Menus et horaires varient ; vÃ©rifiez avis rÃ©cents et page du lieu. Aucune terrasse assise ne donne sur la fontaine â€” la vue est depuis le trottoir.' },
-      ],
-      faq: [
-        { question: 'OÃ¹ est la nourriture la moins chÃ¨re ?', answer: 'Les crÃªpes et kebabs de la rue de la Huchette, prÃ¨s de la place.' },
-        { question: 'OÃ¹ sont les meilleurs bistrots ?', answer: 'Les rues du Quartier latin et Saint-Germain-des-PrÃ©s ; rÃ©servez le soir.' },
-        { question: 'Y a-t-il un restaurant avec vue ?', answer: 'Aucune terrasse assise ne donne sur la fontaine ; le monument se voit du trottoir et des ponts.' },
-      ],
-      nav: 'OÃ¹ manger',
-      related: ['where-to-stay', 'walks/saint-germain', 'visitor-guide', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹ç”¨é¤ï¼ˆæŒ‰åŒºåŸŸä¸é¢„ç®—ï¼‰',
-      description: 'æŒ‰è¡—åŒºä¸é¢„ç®—åœ¨å–·æ³‰å‘¨è¾¹ç”¨é¤ï¼šå¹¿åœºå‘¨è¾¹ã€æ‹‰ä¸åŒºè¡—å··ä¸æ²³å²¸ä¸€ä¾§ï¼Œå¹¶æ ‡æ³¨æ ¸å®æ—¥æœŸã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹å“ªé‡Œåƒ',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆï¼ˆä»·æ ¼ä¸è¥ä¸šçŠ¶æ€ä¼šå˜ï¼Œè¯·å½“å¤©æ ¸å®ï¼‰',
-      lead: 'å–·æ³‰ä½äºå·´é»é¤å…æœ€å¯†é›†çš„åœ°å¸¦ï¼Œå‡ åˆ†é’Ÿå†…é€‰æ‹©æå¹¿â€”â€”ä»å¯ä¸½é¥¼æ‘Šåˆ°æ­£å¼å°é…’é¦†çš†æœ‰ã€‚',
-      sections: [
-        { heading: 'å¹¿åœºå‘¨è¾¹', content: 'å± å®°åœºè¡—ï¼ˆRue de la Huchetteï¼‰åŠå¹¿åœºæ—è¡—å··çƒ­é—¹ä¸”åæ¸¸å®¢å‘ï¼Œæœ‰å¯ä¸½é¥¼ã€æŠ«è¨ä¸çƒ¤è‚‰ä¸²æ‘Šä½ï¼Œä»·æ ¼ä½ã€ç¿»å°å¿«ï¼Œé€‚åˆæ™¯ç‚¹é—´çš„å¿«æ·ä¸€é¤ã€‚' },
-        { heading: 'æ‹‰ä¸åŒºè¡—å··', content: 'å¾€ Ã‰coles è¡—ã€Harpe è¡—ä¸ç´¢é‚¦ä¸€å¸¦æ­¥è¡Œå‡ åˆ†é’Ÿï¼Œæœ‰æ›´å¤šä¸­ç­‰ä»·ä½çš„å°é…’é¦†ä¸å•¤é…’åº—ï¼Œå¸¸è®¾éœ²å°ã€‚æ™šä¸Šå»ºè®®é¢„çº¦ã€‚' },
-        { heading: 'æ²³ç•”ä¸åœ£æ—¥è€³æ›¼', content: 'å¾€ Grands-Augustins å ¤å²¸ä¸åœ£æ—¥è€³æ›¼-å¾·-æ™®é›·ï¼Œä»·æ ¼åé«˜ï¼Œå’–å•¡é¦†ï¼ˆFloreã€åŒå¶ï¼‰å–çš„æ›´å¤šæ˜¯æ°›å›´ã€‚è¿‡åœ£ç±³æ­‡å°”æ¡¥å³è¾¾è¿™ä¸ªæ›´å®‰é™ä¹Ÿæ›´è´µçš„è¡—åŒºã€‚' },
-        { heading: 'å®ç”¨æç¤º', content: 'èœå•ä¸è¥ä¸šæ—¶é—´éšå­£èŠ‚å˜åŒ–ï¼›å†³å®šå‰è¯·æŸ¥çœ‹è¿‘æœŸè¯„ä»·ä¸åº—å®¶é¡µé¢ã€‚å¹¿åœºæœ¬èº«æ²¡æœ‰èƒ½çœ‹å–·æ³‰çš„åå¸­éœ²å°â€”â€”æ™¯è§‚æ¥è‡ªäººè¡Œé“ä¸æ¡¥æ¢ã€‚' },
-      ],
-      faq: [
-        { question: 'æœ€ä¾¿å®œçš„é£Ÿç‰©åœ¨å“ªé‡Œï¼Ÿ', answer: 'å¹¿åœºæ—å± å®°åœºè¡—çš„å¯ä¸½é¥¼ä¸çƒ¤è‚‰ä¸²æ‘Šä½æ˜¯å¿«æ·ä½ä»·çš„é€‰é¡¹ã€‚' },
-        { question: 'æœ€å¥½çš„å°é…’é¦†åœ¨å“ªé‡Œï¼Ÿ', answer: 'æ‹‰ä¸åŒºè¡—å··ä¸åœ£æ—¥è€³æ›¼-å¾·-æ™®é›·æœ‰æ›´å¤šå ‚é£Ÿå°é…’é¦†ï¼›æ™šä¸Šè¯·é¢„çº¦ã€‚' },
-        { question: 'æœ‰æ™¯è§‚é¤å…å—ï¼Ÿ', answer: 'æ²¡æœ‰æ­£å¯¹å–·æ³‰çš„åå¸­éœ²å°ï¼›çºªå¿µç¢‘éœ€ä»äººè¡Œé“ä¸æ¡¥æ¢è§‚èµã€‚' },
-      ],
-      nav: 'å‘¨è¾¹ç”¨é¤',
-      related: ['where-to-stay', 'walks/saint-germain', 'visitor-guide', 'place-saint-michel'],
-    },
-  },
-  'where-to-stay': {
-    en: {
-      title: 'Where to Stay Near Fontaine Saint-Michel â€“ Areas Compared',
-      description:
-        'Staying near the fountain: the Latin Quarter, Saint-Germain and the islands compared for transport, noise and walkability.',
-      h1: 'Where to stay near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Staying within a few minutes of the fountain puts you in the Latin Quarter or Saint-Germain â€” central, walkable, but with trade-offs in noise and price.',
-      sections: [
-        { heading: 'Latin Quarter (closest)', content: 'Hotels around the square and Rue Saint-Jacques are the shortest walk to the fountain and the RER. Expect street noise at night and tourist pricing; upper floors and courtyard rooms are quieter.' },
-        { heading: 'Saint-Germain-des-PrÃ©s', content: 'A few minutes across the Pont Saint-Michel, this quarter is calmer and more upmarket, with more boutique hotels. Slightly longer walk but a different, quieter feel.' },
-        { heading: 'Ãle de la CitÃ© / Ãle Saint-Louis', content: 'Just across the bridges, these islands are peaceful at night but have few hotels and higher prices; the fountain is a 5â€“10 minute walk away.' },
-        { heading: 'Transport trade-off', content: 'All three put the RER B/C Saint-Michelâ€“Notre-Dame within reach. Remember the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026, so rely on the RER or line 10 for late moves.' },
-      ],
-      faq: [
-        { question: 'Is it noisy near the fountain?', answer: 'The square is busy late; choose upper or courtyard rooms for quiet.' },
-        { question: 'Which area is calmest?', answer: 'Saint-Germain-des-PrÃ©s and the islands are quieter than the square itself.' },
-        { question: 'Is transport easy from here?', answer: 'Yes â€” RER B/C and MÃ©tro line 10 are close; avoid the closed line 4 Saint-Michel station.' },
-      ],
-      nav: 'Where to stay',
-      related: ['where-to-eat', 'how-to-get-there', 'place-saint-michel', 'at-night'],
-    },
-    fr: {
-      title: 'OÃ¹ dormir prÃ¨s de la Fontaine Saint-Michel â€“ quartiers comparÃ©s',
-      description:
-        'Loger prÃ¨s de la fontaine : Quartier latin, Saint-Germain et Ã®les comparÃ©s pour transport, bruit et marche.',
-      h1: 'OÃ¹ dormir prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Loger Ã  quelques minutes de la fontaine place au Quartier latin ou Ã  Saint-Germain â€” central, piÃ©ton, mais avec bruits et prix.',
-      sections: [
-        { heading: 'Quartier latin (le plus proche)', content: 'HÃ´tels autour de la place et rue Saint-Jacques : la plus courte marche vers la fontaine et le RER. Bruits de rue le soir et prix touristiques ; Ã©tages supÃ©rieurs et cours plus calmes.' },
-        { heading: 'Saint-Germain-des-PrÃ©s', content: 'Quelques minutes par le Pont Saint-Michel, quartier plus calme et haut de gamme, plus de boutiques-hÃ´tels. Marche un peu plus longue mais ambiance diffÃ©rente.' },
-        { heading: 'Ãle de la CitÃ© / Saint-Louis', content: 'Juste de lâ€™autre cÃ´tÃ© des ponts, Ã®les paisibles la nuit mais peu dâ€™hÃ´tels et prix Ã©levÃ©s ; la fontaine est Ã  5â€“10 min.' },
-        { heading: 'Compromis transport', content: 'Les trois donnent le RER B/C Saint-Michelâ€“Notre-Dame Ã  portÃ©e. La station ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 ; comptez sur le RER ou la ligne 10.' },
-      ],
-      faq: [
-        { question: 'Est-ce bruyant prÃ¨s de la fontaine ?', answer: 'La place est animÃ©e tard ; prÃ©fÃ©rez Ã©tages supÃ©rieurs ou cours.' },
-        { question: 'Quel quartier est le plus calme ?', answer: 'Saint-Germain-des-PrÃ©s et les Ã®les sont plus calmes que la place.' },
-        { question: 'Le transport est-il facile ?', answer: 'Oui â€” RER B/C et ligne 10 proches ; Ã©vitez la ligne 4 fermÃ©e.' },
-      ],
-      nav: 'OÃ¹ dormir',
-      related: ['where-to-eat', 'how-to-get-there', 'place-saint-michel', 'at-night'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹ä½å®¿ï¼ˆåŒºåŸŸæ¯”è¾ƒï¼‰',
-      description: 'ä½åœ¨å–·æ³‰é™„è¿‘ï¼šæ‹‰ä¸åŒºã€åœ£æ—¥è€³æ›¼ä¸åŸå²›åœ¨äº¤é€šã€å™ªéŸ³ä¸æ­¥è¡Œä¾¿åˆ©æ€§ä¸Šçš„æ¯”è¾ƒã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹å“ªé‡Œä½',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'ä½åœ¨å–·æ³‰å‡ åˆ†é’ŸèŒƒå›´å†…ï¼Œå³ä½äºæ‹‰ä¸åŒºæˆ–åœ£æ—¥è€³æ›¼â€”â€”ä¸­å¿ƒã€å¯æ­¥è¡Œï¼Œä½†åœ¨å™ªéŸ³ä¸ä»·æ ¼ä¸Šéœ€æƒè¡¡ã€‚',
-      sections: [
-        { heading: 'æ‹‰ä¸åŒºï¼ˆæœ€è¿‘ï¼‰', content: 'å¹¿åœºå‘¨è¾¹ä¸ Saint-Jacques è¡—çš„é…’åº—ç¦»å–·æ³‰ä¸ RER æœ€è¿‘ã€‚å¤œæ™šè¡—é“æœ‰å™ªéŸ³ã€åæ¸¸å®¢ä»·ï¼›é«˜æ¥¼å±‚æˆ–åº­é™¢æˆ¿æ›´å®‰é™ã€‚' },
-        { heading: 'åœ£æ—¥è€³æ›¼-å¾·-æ™®é›·', content: 'è¿‡åœ£ç±³æ­‡å°”æ¡¥å‡ åˆ†é’Ÿå³è¾¾ï¼Œè¡—åŒºæ›´å®‰é™ã€æ›´é«˜æ¡£ï¼Œç²¾å“é…’åº—æ›´å¤šã€‚æ­¥è¡Œç¨è¿œï¼Œä½†æ°›å›´ä¸åŒã€‚' },
-        { heading: 'åŸå²› / åœ£è·¯æ˜“å²›', content: 'è¿‡æ¡¥å³è¾¾ï¼Œå¤œæ™šå®‰é™ä½†é…’åº—å°‘ã€ä»·æ ¼é«˜ï¼›å–·æ³‰æ­¥è¡Œçº¦ 5â€“10 åˆ†é’Ÿã€‚' },
-        { heading: 'äº¤é€šæƒè¡¡', content: 'ä¸‰è€…éƒ½é è¿‘ RER B/C çš„ Saint-Michelâ€“Notre-Dameã€‚è¯·è®°ä½åœ°é“ 4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­ï¼Œæ™šé—´è¯·ä¾èµ– RER æˆ– 10 å·çº¿ã€‚' },
-      ],
-      faq: [
-        { question: 'å–·æ³‰é™„è¿‘åµå—ï¼Ÿ', answer: 'å¹¿åœºå…¥å¤œçƒ­é—¹ï¼›é€‰é«˜æ¥¼å±‚æˆ–åº­é™¢æˆ¿æ›´å®‰é™ã€‚' },
-        { question: 'å“ªä¸ªåŒºåŸŸæœ€å®‰é™ï¼Ÿ', answer: 'åœ£æ—¥è€³æ›¼-å¾·-æ™®é›·ä¸åŸå²›æ¯”å¹¿åœºæœ¬èº«æ›´å®‰é™ã€‚' },
-        { question: 'äº¤é€šæ–¹ä¾¿å—ï¼Ÿ', answer: 'æ–¹ä¾¿â€”â€”RER B/C ä¸åœ°é“ 10 å·çº¿è¿‘åœ¨å’«å°ºï¼›é¿å¼€å…³é—­çš„ 4 å·çº¿ Saint-Michel ç«™ã€‚' },
-      ],
-      nav: 'å‘¨è¾¹ä½å®¿',
-      related: ['where-to-eat', 'how-to-get-there', 'place-saint-michel', 'at-night'],
-    },
-  },
-  'saint-michel-vs-mont-saint-michel': {
-    en: {
-      title: 'Saint-Michel Paris vs Mont Saint-Michel â€“ Whatâ€™s the Difference',
-      description:
-        'The two very different "Saint Michel" sites in France: a Paris fountain and the Normandy island abbey, with distance, type and trip planning.',
-      h1: 'Saint-Michel in Paris vs Mont Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'They share a name but are not the same place: one is a Paris fountain on the Left Bank, the other a tidal-island abbey in Normandy about 360 km away.',
-      sections: [
-        { heading: 'Two different places', content: 'Fontaine Saint-Michel is a 19th-century public fountain on Place Saint-Michel in Paris â€” free, in the city, reached by MÃ©tro/RER. Mont Saint-Michel is a medieval abbey village on a tidal island in Manche, Normandy, and is a UNESCO site.' },
-        { heading: 'Distance and trip type', content: 'The fountain is a 5-minute walk from Notre-Dame. Mont Saint-Michel is roughly a 3.5â€“4.5 hour train + shuttle trip from Paris, or a long drive; it needs a full day or an overnight stay, not a city stroll.' },
-        { heading: 'Which to plan', content: 'If you are in Paris for the fountain, Mont Saint-Michel is a separate Normandy trip. Donâ€™t confuse the two when booking transport or hotels â€” search "Mont Saint-Michel" specifically for the abbey.' },
-      ],
-      faq: [
-        { question: 'Are they the same place?', answer: 'No â€” one is a Paris fountain, the other a Normandy island abbey about 360 km away.' },
-        { question: 'How far is Mont Saint-Michel from Paris?', answer: 'About 360 km; roughly 3.5â€“4.5 hours by train and shuttle, or a long drive.' },
-        { question: 'Can I see both in one day?', answer: 'The Paris fountain yes; Mont Saint-Michel needs its own full-day or overnight trip from Paris.' },
-      ],
-      nav: 'Paris vs Mont',
-      related: ['history', 'place-saint-michel', 'visitor-guide', 'how-to-get-there'],
-    },
-    fr: {
-      title: 'Saint-Michel Ã  Paris vs Mont Saint-Michel â€“ quelle diffÃ©rence',
-      description:
-        'Les deux sites Â« Saint Michel Â» trÃ¨s diffÃ©rents : une fontaine parisienne et lâ€™abbaye normande, avec distance, type et organisation.',
-      h1: 'Saint-Michel Ã  Paris vs Mont Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Ils partagent un nom mais ne sont pas le mÃªme lieu : une fontaine parisienne rive gauche, et une abbaye sur Ã®le Ã  marÃ©e en Normandie, Ã  environ 360 km.',
-      sections: [
-        { heading: 'Deux lieux diffÃ©rents', content: 'La Fontaine Saint-Michel est une fontaine publique du XIXe siÃ¨cle sur la Place Saint-Michel Ã  Paris â€” gratuite, en ville, en MÃ©tro/RER. Le Mont Saint-Michel est un village abbatial mÃ©diÃ©val sur Ã®le Ã  marÃ©e dans la Manche, site UNESCO.' },
-        { heading: 'Distance et type', content: 'La fontaine est Ã  5 min de Notre-Dame. Le Mont Saint-Michel est Ã  environ 3,5â€“4,5 h train + navette depuis Paris, ou longue route ; il faut une journÃ©e ou une nuit, pas une flÃ¢nerie urbaine.' },
-        { heading: 'Que prÃ©voir', content: 'Si vous Ãªtes Ã  Paris pour la fontaine, le Mont est un autre voyage en Normandie. Ne confondez pas les deux en rÃ©servant ; cherchez Â« Mont Saint-Michel Â» pour lâ€™abbaye.' },
-      ],
-      faq: [
-        { question: 'Est-ce le mÃªme lieu ?', answer: 'Non â€” une fontaine parisienne, et une abbaye normande Ã  environ 360 km.' },
-        { question: 'Ã€ quelle distance le Mont de Paris ?', answer: 'Environ 360 km ; 3,5â€“4,5 h train + navette, ou longue route.' },
-        { question: 'Peut-on voir les deux en un jour ?', answer: 'La fontaine oui ; le Mont demande sa propre journÃ©e ou nuit depuis Paris.' },
-      ],
-      nav: 'Paris vs Mont',
-      related: ['history', 'place-saint-michel', 'visitor-guide', 'how-to-get-there'],
-    },
-  },
-  'walks/paris-fountains': {
-    en: {
-      title: 'A Paris Fountains Walking Tour â€“ Fontaine Saint-Michel & Beyond',
-      description:
-        'A fountain-themed route linking Fontaine Saint-Michel with other Paris fountains: the ChÃ¢telet and Observatoire fountains, the Palais-Royal and the Tuileries, with timings.',
-      h1: 'A Paris fountains walking tour',
-      updated: 'Last updated: October 2026',
-      lead: 'If you like the Saint-Michel fountain, a fountain trail connects it to other Davioud and Haussmannian fountains across the Left Bank and beyond.',
-      sections: [
-        { heading: 'The trail', content: 'Start at Fontaine Saint-Michel â†’ north to the Place du ChÃ¢telet fountains (also Davioud/Haussmann) â†’ cross to the Right Bank and the Palais-Royal gardens â†’ west to the Tuileries and the Louvre fountains. About 3â€“4 km, mostly flat.' },
-        { heading: 'Why these fountains', content: 'The ChÃ¢telet and Observatoire fountains share the same Second Empire programme as Saint-Michel; the Palais-Royal and Tuileries show earlier and later royal fountain design. Together they tell the story of Paris water as spectacle.' },
-        { heading: 'Timing and themes', content: 'Allow half a day with stops; the Observatoire fountain is a longer southern extension. Each stop is free to view. Pair the northern part with the Louvre if you want an interior.' },
-      ],
-      faq: [
-        { question: 'Which fountains are on the trail?', answer: 'Saint-Michel, the ChÃ¢telet fountains, Palais-Royal, the Tuileries and (further) the Observatoire fountain.' },
-        { question: 'How long is the walk?', answer: 'About 3â€“4 km, half a day with stops; mostly flat.' },
-        { question: 'Are they all free?', answer: 'Yes â€” all the fountains on the trail are free to view from outside.' },
-      ],
-      nav: 'Paris fountains',
-      related: ['gabriel-davioud', 'haussmann-paris', 'walks/half-day-itinerary', 'photos'],
-    },
-    fr: {
-      title: 'Une visite des fontaines de Paris â€“ Fontaine Saint-Michel et au-delÃ ',
-      description:
-        'Un itinÃ©raire des fontaines liant la Fontaine Saint-Michel Ã  dâ€™autres : ChÃ¢telet, Observatoire, Palais-Royal et Tuileries, avec durÃ©es.',
-      h1: 'Une visite des fontaines de Paris',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Si la fontaine Saint-Michel vous plaÃ®t, un circuit des fontaines la relie Ã  dâ€™autres fontaines de Davioud et dâ€™Haussmann rive gauche et au-delÃ .',
-      sections: [
-        { heading: 'Le circuit', content: 'DÃ©part Fontaine Saint-Michel â†’ nord vers les fontaines de la Place du ChÃ¢telet (aussi Davioud/Haussmann) â†’ rive droite et jardins du Palais-Royal â†’ ouest vers les Tuileries et le Louvre. Environ 3â€“4 km, plutÃ´t plat.' },
-        { heading: 'Pourquoi ces fontaines', content: 'Les fontaines du ChÃ¢telet et de lâ€™Observatoire partagent le mÃªme programme du Second Empire que Saint-Michel ; Palais-Royal et Tuileries montrent des fontaines royales antÃ©rieures et postÃ©rieures. Ensemble, lâ€™histoire de lâ€™eau spectaculaire Ã  Paris.' },
-        { heading: 'DurÃ©e et thÃ¨mes', content: 'Comptez une demi-journÃ©e avec arrÃªts ; lâ€™Observatoire est un prolongement sud. Chaque arrÃªt est gratuit. Associez la partie nord au Louvre pour un intÃ©rieur.' },
-      ],
-      faq: [
-        { question: 'Quelles fontaines sur le circuit ?', answer: 'Saint-Michel, les fontaines du ChÃ¢telet, Palais-Royal, les Tuileries et (plus loin) lâ€™Observatoire.' },
-        { question: 'Longueur de la marche ?', answer: 'Environ 3â€“4 km, demi-journÃ©e avec arrÃªts ; plutÃ´t plat.' },
-        { question: 'Toutes gratuites ?', answer: 'Oui â€” toutes les fontaines du circuit se voient gratuitement.' },
-      ],
-      nav: 'Fontaines de Paris',
-      related: ['gabriel-davioud', 'haussmann-paris', 'walks/half-day-itinerary', 'photos'],
-    },
-  },
-  'from-beauvais-airport': {
-    en: {
-      title: 'From Beauvais Airport to Fontaine Saint-Michel â€“ BVA to Saint-Michel Paris',
-      description:
-        'Budget-airline travellers: the Beauvais shuttle to Paris, then RER to Saint-Michelâ€“Notre-Dame, with timings and the walk to Place Saint-Michel, 75005 Paris.',
-      h1: 'From Beauvais (BVA) to Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'Paris Beauvais Airport (BVA) is about 85 km north of the city and has no train station, so the standard route is the official airport shuttle bus into Paris, then the RER to Saint-Michelâ€“Notre-Dame beside the square.',
-      sections: [
-        { heading: 'Take the airport shuttle bus', content: 'Most Ryanair and budget flights use BVA. The official Paris Beauvais Airport Shuttle (Le Bus) runs to Porte Maillot (Pershing terminal) in about 1h15â€“1h30; book it with your flight and allow buffer time. There is no direct train from the airport.' },
-        { heading: 'Porte Maillot to the fountain', content: 'At Porte Maillot take MÃ©tro line 1 (direction ChÃ¢teau de Vincennes) to ChÃ¢telet, then change to a southbound RER B or to RER C to Saint-Michelâ€“Notre-Dame; the fountain is a short walk from the station exit.' },
-        { heading: 'Ticket and luggage', content: 'The shuttle needs its own ticket (bought online or at the airport); in Paris you then need a separate Ãle-de-France MÃ©tro/RER ticket (Navigo Easy or a valid pass). Trains have room for suitcases but avoid rush hours.' },
-        { heading: 'Taxi and the line 4 closure', content: 'A taxi or ride-hail from BVA costs roughly â‚¬150â€“200 and takes 1h30â€“2h; it is rarely worth it. Note the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026, so rely on the RER B/C station at the square â€” see ratp.fr.' },
-        { heading: 'Verify before you travel', content: 'Confirm the current shuttle timetable and fares on the official Beauvais airport site and RATP/Ãle-de-France MobilitÃ©s pages; this guide reflects information available in October 2026.' },
-      ],
-      faq: [
-        { question: 'How do I get from Beauvais to Fontaine Saint-Michel?', answer: 'Take the official shuttle bus to Porte Maillot, then MÃ©tro line 1 to ChÃ¢telet and RER B/C to Saint-Michelâ€“Notre-Dame; the fountain is at the exit.' },
-        { question: 'How long does the trip take?', answer: 'About 2 to 2h30 in total, including the shuttle and the MÃ©tro/RER connection.' },
-        { question: 'Is there a train from Beauvais airport?', answer: 'No â€” BVA has no train station; the shuttle bus is the standard public link into Paris.' },
-        { question: 'Can I use the MÃ©tro line 4?', answer: 'The line 4 Saint-Michel station is closed for renovation 14 Sepâ€“19 Dec 2026; use the RER B/C station beside the fountain instead.' },
-      ],
-      nav: 'From Beauvais airport',
-      related: ['from-charles-de-gaulle-airport', 'from-orly-airport', 'how-to-get-there', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'De lâ€™aÃ©roport de Beauvais Ã  la Fontaine Saint-Michel â€“ BVA vers Paris',
-      description:
-        'Voyageurs low-cost : navette Beauvais vers Paris, puis RER jusquâ€™Ã  Saint-Michelâ€“Notre-Dame, avec durÃ©es et la marche vers la Place Saint-Michel, 75005 Paris.',
-      h1: 'De Beauvais (BVA) Ã  la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Lâ€™aÃ©roport de Paris Beauvais (BVA) est Ã  environ 85 km au nord de Paris et nâ€™a pas de gare : lâ€™itinÃ©raire habituel est la navette officielle jusquâ€™Ã  Paris, puis le RER jusquâ€™Ã  Saint-Michelâ€“Notre-Dame, Ã  cÃ´tÃ© de la place.',
-      sections: [
-        { heading: 'Prendre la navette aÃ©roport', content: 'La plupart des vols low-cost et Ryanair utilisent BVA. La navette officielle Paris Beauvais (Le Bus) rejoint la Porte Maillot (terminal Pershing) en environ 1h15â€“1h30 ; rÃ©servez-la avec votre vol et prÃ©voyez une marge. Aucun train direct depuis lâ€™aÃ©roport.' },
-        { heading: 'Porte Maillot vers la fontaine', content: 'Ã€ la Porte Maillot, prenez le mÃ©tro ligne 1 (direction ChÃ¢teau de Vincennes) jusquâ€™Ã  ChÃ¢telet, puis correspondance avec un RER B vers le sud ou le RER C jusquâ€™Ã  Saint-Michelâ€“Notre-Dame ; la fontaine est Ã  quelques pas de la sortie.' },
-        { heading: 'Billet et bagages', content: 'La navette a son propre billet (en ligne ou Ã  lâ€™aÃ©roport) ; Ã  Paris, il faut ensuite un billet Ãle-de-France sÃ©parÃ© (Navigo Easy ou passe valide). Les trains acceptent les valises, mais Ã©vitez les heures de pointe.' },
-        { heading: 'Taxi et fermeture ligne 4', content: 'Un taxi ou VTC depuis BVA coÃ»te environ 150â€“200 â‚¬ pour 1h30â€“2h ; peu rentable. La station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e pour travaux du 14 sept. au 19 dÃ©c. 2026 : privilÃ©giez la gare RER B/C de la place â€” voir ratp.fr.' },
-        { heading: 'VÃ©rifiez avant de partir', content: 'Confirmez horaires et tarifs de la navette sur le site officiel de Beauvais et les pages RATP / Ãle-de-France MobilitÃ©s ; ce guide reflÃ¨te les infos dâ€™octobre 2026.' },
-      ],
-      faq: [
-        { question: 'Comment aller de Beauvais Ã  la Fontaine Saint-Michel ?', answer: 'Navette officielle jusquâ€™Ã  la Porte Maillot, mÃ©tro ligne 1 jusquâ€™Ã  ChÃ¢telet puis RER B/C jusquâ€™Ã  Saint-Michelâ€“Notre-Dame ; la fontaine est Ã  la sortie.' },
-        { question: 'Combien de temps dure le trajet ?', answer: 'Environ 2 Ã  2h30 au total, navette et correspondance comprises.' },
-        { question: 'Y a-t-il un train depuis Beauvais ?', answer: 'Non â€” BVA nâ€™a pas de gare ; la navette est la liaison publique habituelle vers Paris.' },
-        { question: 'Puis-je prendre la ligne 4 ?', answer: 'La station ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 ; utilisez la gare RER B/C attenante.' },
-      ],
-      nav: 'Depuis Beauvais',
-      related: ['from-charles-de-gaulle-airport', 'from-orly-airport', 'how-to-get-there', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'ä»åšéŸ¦æœºåœºåˆ°åœ£ç±³æ­‡å°”å–·æ³‰ï¼ˆBVA â†’ åœ£ç±³æ­‡å°”ï¼‰',
-      description: 'å»‰ä»·èˆªç©ºæ—…å®¢æŒ‡å—ï¼šåšéŸ¦æœºåœºç­è½¦è¿›å·´é»ï¼Œå†è½¬ RER è‡³ Saint-Michelâ€“Notre-Dameï¼Œå«æ—¶é•¿ä¸æ­¥è¡Œåˆ°åœ£ç±³æ­‡å°”å¹¿åœºçš„è·¯çº¿ã€‚',
-      h1: 'ä»åšéŸ¦æœºåœºï¼ˆBVAï¼‰åˆ°åœ£ç±³æ­‡å°”å–·æ³‰',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å·´é»åšéŸ¦æœºåœºï¼ˆBVAï¼‰ä½äºå¸‚åŒºä»¥åŒ—çº¦ 85 å…¬é‡Œï¼Œæ²¡æœ‰ç«è½¦ç«™ï¼Œå› æ­¤é€šå¸¸è·¯çº¿æ˜¯å…ˆä¹˜å®˜æ–¹æœºåœºç­è½¦è¿›å·´é»ï¼Œå†è½¬ RER åˆ°ç´§é‚»å¹¿åœºçš„ Saint-Michelâ€“Notre-Dame ç«™ã€‚',
-      sections: [
-        { heading: 'æ­ä¹˜æœºåœºç­è½¦', content: 'å¤šæ•°ç‘å®‰èˆªç©ºä¸å»‰ä»·èˆªç­ä½¿ç”¨ BVAã€‚å®˜æ–¹ã€Œå·´é»åšéŸ¦æœºåœºç­è½¦ï¼ˆLe Busï¼‰ã€çº¦ 1 å°æ—¶ 15 åˆ†â€“1 å°æ—¶ 30 åˆ†åˆ°è¾¾ Porte Maillotï¼ˆPershing ç»ˆç‚¹ç«™ï¼‰ï¼›è¯·ä¸æœºç¥¨ä¸€å¹¶é¢„è®¢å¹¶é¢„ç•™ç¼“å†²ã€‚æœºåœºæ²¡æœ‰ç›´è¾¾åˆ—è½¦ã€‚' },
-        { heading: 'ä» Porte Maillot åˆ°å–·æ³‰', content: 'åœ¨ Porte Maillot ä¹˜åœ°é“ 1 å·çº¿ï¼ˆå¾€ ChÃ¢teau de Vincennes æ–¹å‘ï¼‰åˆ° ChÃ¢teletï¼Œå†æ¢ä¹˜å—è¡Œ RER B æˆ– RER C è‡³ Saint-Michelâ€“Notre-Dameï¼›å–·æ³‰è·å‡ºç«™å£ä»…æ•°æ­¥ä¹‹é¥ã€‚' },
-        { heading: 'è½¦ç¥¨ä¸è¡Œæ', content: 'ç­è½¦éœ€å•ç‹¬è´­ç¥¨ï¼ˆçº¿ä¸Šæˆ–æœºåœºè´­ä¹°ï¼‰ï¼›åœ¨å·´é»è¿˜éœ€å¦è´­åŒºåŸŸè½¦ç¥¨ï¼ˆNavigo Easy æˆ–æœ‰æ•ˆé€šç¥¨ï¼‰ã€‚åˆ—è½¦å¯æ”¾è¡Œæï¼Œä½†è¯·é¿å¼€é«˜å³°æ—¶æ®µã€‚' },
-        { heading: 'å‡ºç§Ÿè½¦ä¸ 4 å·çº¿åœè¿', content: 'ä» BVA æ‰“è½¦æˆ–ç½‘çº¦è½¦çº¦ 150â€“200 æ¬§å…ƒã€è€—æ—¶ 1.5â€“2 å°æ—¶ï¼Œé€šå¸¸å¹¶ä¸åˆ’ç®—ã€‚åœ°é“ 4 å·çº¿ Saint-Michel ç«™å› æ”¹é€ äº 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­ï¼Œè¯·æ”¹ä¹˜å¹¿åœºæ—çš„ RER B/C ç«™â€”â€”å®æ—¶çŠ¶æ€è§ ratp.frã€‚' },
-        { heading: 'å‡ºå‘å‰æ ¸å¯¹', content: 'è¯·åœ¨åšéŸ¦æœºåœºå®˜ç½‘ä¸ RATP / Ãle-de-France MobilitÃ©s é¡µé¢ç¡®è®¤ç­è½¦æ—¶åˆ»ä¸ç¥¨ä»·ï¼›æœ¬æŒ‡å—åŸºäº 2026 å¹´ 10 æœˆçš„ä¿¡æ¯ã€‚' },
-      ],
-      faq: [
-        { question: 'å¦‚ä½•ä»åšéŸ¦åˆ°åœ£ç±³æ­‡å°”å–·æ³‰ï¼Ÿ', answer: 'ä¹˜å®˜æ–¹ç­è½¦åˆ° Porte Maillotï¼Œè½¬åœ°é“ 1 å·çº¿åˆ° ChÃ¢teletï¼Œå†ä¹˜ RER B/C è‡³ Saint-Michelâ€“Notre-Dameï¼Œå–·æ³‰å°±åœ¨å‡ºç«™å£ã€‚' },
-        { question: 'è½¦ç¨‹å¤šä¹…ï¼Ÿ', answer: 'å«ç­è½¦ä¸åœ°é“/RER æ¢ä¹˜ï¼Œæ€»è®¡çº¦ 2â€“2.5 å°æ—¶ã€‚' },
-        { question: 'åšéŸ¦æœºåœºæœ‰ç«è½¦å—ï¼Ÿ', answer: 'æ²¡æœ‰â€”â€”BVA æ— ç«è½¦ç«™ï¼Œç­è½¦æ˜¯è¿›å·´é»çš„å¸¸è§„å…¬å…±äº¤é€šæ–¹å¼ã€‚' },
-        { question: 'å¯ä»¥ååœ°é“ 4 å·çº¿å—ï¼Ÿ', answer: '4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­æ”¹é€ ï¼Œè¯·æ”¹ä¹˜å¹¿åœºæ—çš„ RER B/C ç«™ã€‚' },
-      ],
-      nav: 'ä»åšéŸ¦æœºåœº',
-      related: ['from-charles-de-gaulle-airport', 'from-orly-airport', 'how-to-get-there', 'place-saint-michel'],
-    },
-  },
-  'from-the-city-center': {
-    en: {
-      title: 'From Central Paris & Train Stations to Fontaine Saint-Michel',
-      description: 'How to reach Fontaine Saint-Michel from the main Paris stations (Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare) and central districts via RER B/C and MÃ©tro.',
-      h1: 'From central Paris and the train stations',
-      updated: 'Last updated: October 2026',
-      lead: 'The fountain sits in the heart of the Left Bank, so most central journeys end at the RER B/C station Saint-Michelâ€“Notre-Dame, a few steps from the square â€” or on a short walk from Ãle de la CitÃ©.',
-      sections: [
-        { heading: 'The easiest link: RER B/C', content: 'Saint-Michelâ€“Notre-Dame is served by both RER B and RER C. From almost anywhere central, ride the RER to that station; the fountain is at the exit on Place Saint-Michel.' },
-        { heading: 'From Gare du Nord & Gare de lâ€™Est', content: 'Both stations sit on RER B. Board a southbound RER B (towards Saint-RÃ©my-lÃ¨s-Chevreuse or Robinson) and ride to Saint-Michelâ€“Notre-Dame â€” no change needed, about 10â€“15 minutes.' },
-        { heading: 'From Gare de Lyon & Montparnasse', content: 'From Gare de Lyon take RER A to ChÃ¢teletâ€“Les Halles, then RER B or C to Saint-Michelâ€“Notre-Dame; from Montparnasse use RER C (nearby stations) or a short MÃ©tro trip, since the MÃ©tro line 4 Saint-Michel station is closed for works until 19 December 2026.' },
-        { heading: 'On foot from the centre', content: 'The fountain is about a 10-minute walk from ChÃ¢telet, 15 minutes from Notre-Dame and the Ãle de la CitÃ©, and 20 minutes along the Seine from the Louvre area â€” pleasant if you are already strolling the Right Bank.' },
-        { heading: 'Line 4 closure and tips', content: 'The MÃ©tro line 4 Saint-Michel station is closed 14 Sepâ€“19 Dec 2026; use the RER B/C station or MÃ©tro line 10 at Clunyâ€“La Sorbonne instead. Check live status at ratp.fr before travelling.' },
-      ],
-      faq: [
-        { question: 'How do I get from Gare du Nord to the fountain?', answer: 'Take a southbound RER B directly to Saint-Michelâ€“Notre-Dame; the fountain is at the station exit, about 10â€“15 minutes.' },
-        { question: 'Can I walk from central Paris?', answer: 'Yes â€” it is roughly a 10â€“20 minute walk from ChÃ¢telet, Notre-Dame or the Louvre along the Seine.' },
-        { question: 'Which MÃ©tro line reaches the square?', answer: 'The line 4 Saint-Michel station is closed until 19 Dec 2026; use RER B/C or MÃ©tro line 10 at Clunyâ€“La Sorbonne.' },
-        { question: 'Is the fountain central?', answer: 'Yes â€” it is on Place Saint-Michel in the Latin Quarter, a short RER ride or walk from the main stations and islands.' },
-      ],
-      nav: 'From the city centre',
-      related: ['how-to-get-there', 'from-charles-de-gaulle-airport', 'from-orly-airport', 'place-saint-michel'],
-    },
-    fr: {
-      title: 'Du centre de Paris et des gares Ã  la Fontaine Saint-Michel',
-      description: 'Comment rejoindre la Fontaine Saint-Michel depuis les grandes gares parisiennes (Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare) et les quartiers centraux par RER B/C et mÃ©tro.',
-      h1: 'Du centre de Paris et des gares',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'La fontaine se trouve en plein cÅ“ur de la Rive gauche : la plupart des trajets se terminent Ã  la gare RER B/C Saint-Michelâ€“Notre-Dame, Ã  deux pas de la place, ou aprÃ¨s une courte marche depuis lâ€™Ãle de la CitÃ©.',
-      sections: [
-        { heading: 'Le plus simple : RER B/C', content: 'Saint-Michelâ€“Notre-Dame est desservie par le RER B et le RER C. Depuis presque tout le centre, prenez le RER jusquâ€™Ã  cette gare ; la fontaine est Ã  la sortie sur la Place Saint-Michel.' },
-        { heading: 'Depuis Gare du Nord et Gare de lâ€™Est', content: 'Ces deux gares sont sur le RER B. Montez dans un RER B vers le sud (Saint-RÃ©my-lÃ¨s-Chevreuse ou Robinson) jusquâ€™Ã  Saint-Michelâ€“Notre-Dame : sans correspondance, environ 10â€“15 min.' },
-        { heading: 'Depuis Gare de Lyon et Montparnasse', content: 'Depuis Gare de Lyon, RER A jusquâ€™Ã  ChÃ¢teletâ€“Les Halles puis RER B ou C vers Saint-Michelâ€“Notre-Dame ; depuis Montparnasse, utilisez le RER C (gares proches) ou un court trajet de mÃ©tro, car la station ligne 4 Saint-Michel est fermÃ©e jusquâ€™au 19 dÃ©c. 2026.' },
-        { heading: 'Ã€ pied depuis le centre', content: 'La fontaine est Ã  environ 10 min de ChÃ¢telet, 15 min de Notre-Dame et de lâ€™Ãle de la CitÃ©, et 20 min le long de la Seine depuis le Louvre â€” agrÃ©able si vous flÃ¢nez dÃ©jÃ  sur la Rive droite.' },
-        { heading: 'Fermeture ligne 4 et conseils', content: 'La station de mÃ©tro ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026 ; prÃ©fÃ©rez le RER B/C ou le mÃ©tro ligne 10 Ã  Clunyâ€“La Sorbonne. VÃ©rifiez sur ratp.fr avant de partir.' },
-      ],
-      faq: [
-        { question: 'Comment aller de la Gare du Nord Ã  la fontaine ?', answer: 'RER B vers le sud jusquâ€™Ã  Saint-Michelâ€“Notre-Dame ; la fontaine est Ã  la sortie, environ 10â€“15 min.' },
-        { question: 'Peut-on y aller Ã  pied du centre ?', answer: 'Oui â€” environ 10â€“20 min de ChÃ¢telet, Notre-Dame ou le Louvre le long de la Seine.' },
-        { question: 'Quelle ligne de mÃ©tro rejoint la place ?', answer: 'La station ligne 4 Saint-Michel est fermÃ©e jusquâ€™au 19 dÃ©c. 2026 ; utilisez le RER B/C ou le mÃ©tro ligne 10 Ã  Clunyâ€“La Sorbonne.' },
-        { question: 'La fontaine est-elle centrale ?', answer: 'Oui â€” sur la Place Saint-Michel, dans le Quartier latin, Ã  un court RER ou Ã  pied des grandes gares et des Ã®les.' },
-      ],
-      nav: 'Depuis le centre',
-      related: ['how-to-get-there', 'from-charles-de-gaulle-airport', 'from-orly-airport', 'place-saint-michel'],
-    },
-    zh: {
-      title: 'ä»å·´é»å¸‚ä¸­å¿ƒä¸ç«è½¦ç«™åˆ°åœ£ç±³æ­‡å°”å–·æ³‰',
-      description: 'ä»å·´é»ä¸»è¦ç«è½¦ç«™ï¼ˆåŒ—ç«™ã€é‡Œæ˜‚ç«™ã€è’™å¸•çº³æ–¯ã€åœ£æ‹‰æ‰å°”ï¼‰åŠä¸­å¿ƒåŸåŒºï¼Œç» RER B/C ä¸åœ°é“å‰å¾€åœ£ç±³æ­‡å°”å–·æ³‰ã€‚',
-      h1: 'ä»å·´é»å¸‚ä¸­å¿ƒä¸ç«è½¦ç«™',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å–·æ³‰ä½äºå·¦å²¸æ ¸å¿ƒåœ°å¸¦ï¼Œå› æ­¤å¤šæ•°å¸‚ä¸­å¿ƒè¡Œç¨‹éƒ½ç»ˆåˆ°ç´§é‚»å¹¿åœºçš„ RER B/C ç«™ Saint-Michelâ€“Notre-Dameï¼Œæˆ–æ­¥è¡Œè‡ªè¥¿å²±å²›æŠµè¾¾ã€‚',
-      sections: [
-        { heading: 'æœ€ä¾¿æ·ï¼šRER B/C', content: 'Saint-Michelâ€“Notre-Dame åŒæ—¶ç”± RER B ä¸ RER C æœåŠ¡ã€‚ä»å¸‚åŒºå‡ ä¹ä»»ä½•åœ°æ–¹éƒ½å¯ä¹˜ RER åˆ°è¯¥ç«™ï¼›å–·æ³‰å°±åœ¨åœ£ç±³æ­‡å°”å¹¿åœºçš„ç«™å£ã€‚' },
-        { heading: 'ä»åŒ—ç«™ä¸ä¸œç«™', content: 'ä¸¤ç«™éƒ½åœ¨ RER B çº¿ä¸Šã€‚æ­ä¹˜å—è¡Œ RER Bï¼ˆå¾€ Saint-RÃ©my-lÃ¨s-Chevreuse æˆ– Robinson æ–¹å‘ï¼‰ç›´è¾¾ Saint-Michelâ€“Notre-Dameï¼Œæ— éœ€æ¢ä¹˜ï¼Œçº¦ 10â€“15 åˆ†é’Ÿã€‚' },
-        { heading: 'ä»é‡Œæ˜‚ç«™ä¸è’™å¸•çº³æ–¯', content: 'ä»é‡Œæ˜‚ç«™ä¹˜ RER A åˆ° ChÃ¢teletâ€“Les Hallesï¼Œå†æ¢ä¹˜ RER B/C è‡³ Saint-Michelâ€“Notre-Dameï¼›ä»è’™å¸•çº³æ–¯å¯ä¹˜é‚»è¿‘çš„ RER C æˆ–çŸ­é€”åœ°é“ï¼Œå› åœ°é“ 4 å·çº¿ Saint-Michel ç«™æ”¹é€ å…³é—­è‡³ 2026 å¹´ 12 æœˆ 19 æ—¥ã€‚' },
-        { heading: 'å¸‚ä¸­å¿ƒæ­¥è¡Œå¯è¾¾', content: 'å–·æ³‰è· ChÃ¢telet çº¦ 10 åˆ†é’Ÿæ­¥è¡Œã€è·å·´é»åœ£æ¯é™¢ä¸è¥¿å²±å²›çº¦ 15 åˆ†é’Ÿã€æ²¿å¡çº³æ²³ä»å¢æµ®å®«ä¸€å¸¦çº¦ 20 åˆ†é’Ÿâ€”â€”è‹¥ä½ å·²åœ¨å³å²¸æ•£æ­¥ï¼Œååˆ†æƒ¬æ„ã€‚' },
-        { heading: '4 å·çº¿åœè¿ä¸æç¤º', content: 'åœ°é“ 4 å·çº¿ Saint-Michel ç«™ 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­ï¼›è¯·æ”¹ä¹˜ RER B/C ç«™æˆ– Clunyâ€“La Sorbonne çš„åœ°é“ 10 å·çº¿ã€‚å‡ºè¡Œå‰è¯·æŸ¥ ratp.fr å®æ—¶çŠ¶æ€ã€‚' },
-      ],
-      faq: [
-        { question: 'ä»åŒ—ç«™æ€ä¹ˆåˆ°å–·æ³‰ï¼Ÿ', answer: 'ä¹˜å—è¡Œ RER B ç›´è¾¾ Saint-Michelâ€“Notre-Dameï¼Œå–·æ³‰å°±åœ¨ç«™å£ï¼Œçº¦ 10â€“15 åˆ†é’Ÿã€‚' },
-        { question: 'å¯ä»¥æ­¥è¡Œä»å¸‚ä¸­å¿ƒè¿‡å»å—ï¼Ÿ', answer: 'å¯ä»¥â€”â€”æ²¿å¡çº³æ²³ä» ChÃ¢teletã€å·´é»åœ£æ¯é™¢æˆ–å¢æµ®å®«æ­¥è¡Œçº¦ 10â€“20 åˆ†é’Ÿã€‚' },
-        { question: 'å“ªæ¡åœ°é“çº¿åˆ°å¹¿åœºï¼Ÿ', answer: '4 å·çº¿ Saint-Michel ç«™å…³é—­è‡³ 2026 å¹´ 12 æœˆ 19 æ—¥ï¼›è¯·ä¹˜ RER B/C æˆ– Clunyâ€“La Sorbonne çš„åœ°é“ 10 å·çº¿ã€‚' },
-        { question: 'å–·æ³‰åœ¨å¸‚ä¸­å¿ƒå—ï¼Ÿ', answer: 'æ˜¯çš„â€”â€”ä½äºæ‹‰ä¸åŒºåœ£ç±³æ­‡å°”å¹¿åœºï¼Œè·ä¸»è¦ç«è½¦ç«™ä¸å²›å±¿ä»…çŸ­é€” RER æˆ–æ­¥è¡Œã€‚' },
-      ],
-      nav: 'ä»å¸‚ä¸­å¿ƒ',
-      related: ['how-to-get-there', 'from-charles-de-gaulle-airport', 'from-orly-airport', 'place-saint-michel'],
-    },
-  },
-  'travel-faq': {
-    en: {
-      title: 'Fontaine Saint-Michel Travel FAQ â€“ Getting There, Tickets, Safety & Best Time',
-      description: 'Quick answers for visiting Fontaine Saint-Michel: how to get there, is it free, best time to visit, tickets, nearby facilities and safety tips for the 75005 Paris monument.',
-      h1: 'Fontaine Saint-Michel travel FAQ',
-      updated: 'Last updated: October 2026',
-      lead: 'A compact FAQ covering the practical questions travellers ask before visiting the fountain on Place Saint-Michel â€” transport, cost, timing, facilities and staying safe.',
-      sections: [
-        { heading: 'Getting there', content: 'The monument is beside the RER B/C station Saint-Michelâ€“Notre-Dame, in the Latin Quarter. From CDG take the RER B direct; from Orly use Orlyval + RER B; from Beauvais take the shuttle to Porte Maillot then MÃ©tro/RER. Note the MÃ©tro line 4 Saint-Michel station is closed for works 14 Sepâ€“19 Dec 2026.' },
-        { heading: 'Cost and opening', content: 'The fountain is a public monument on a public square: free to view, with no ticket office and no set opening hours â€” you can visit at any time, day or night.' },
-        { heading: 'Tickets and payment', content: 'In Paris use a single Ãle-de-France ticket, a Navigo Easy card, a Navigo pass or contactless payment for MÃ©tro/RER. Buy before boarding; there is no onboard purchase on trains.' },
-        { heading: 'Best time to visit', content: 'Mornings and evenings are calmer and best for photos; the square is lit at night. Spring and autumn are pleasant for walking the surrounding Latin Quarter and riverbanks.' },
-        { heading: 'Facilities and safety', content: 'There are no toilets at the monument, but public sanisettes and water fountains are a short walk away. Watch for pickpockets on busy RER trains and around the square, and keep bags zipped.' },
-      ],
-      faq: [
-        { question: 'How do I get to Fontaine Saint-Michel?', answer: 'Ride the RER B or C to Saint-Michelâ€“Notre-Dame; the fountain is at the station exit. From CDG the RER B runs direct.' },
-        { question: 'Is the fountain free to visit?', answer: 'Yes â€” it is a public fountain on a public square, free to view at any hour with no ticket.' },
-        { question: 'What is the best time to go?', answer: 'Early morning or evening for fewer crowds and good light; the square is lit after dark.' },
-        { question: 'Is it safe around the fountain?', answer: 'The area is generally safe, but mind pickpockets on crowded RER trains and on the busy square; keep valuables secure.' },
-      ],
-      nav: 'Travel FAQ',
-      related: ['how-to-get-there', 'visitor-guide', 'accessibility', 'public-toilets-and-facilities'],
-    },
-    fr: {
-      title: 'FAQ voyage Fontaine Saint-Michel â€“ accÃ¨s, billets, sÃ©curitÃ© et meilleure pÃ©riode',
-      description: 'RÃ©ponses rapides pour visiter la Fontaine Saint-Michel : y aller, gratuitÃ©, meilleure pÃ©riode, billets, Ã©quipements et conseils de sÃ©curitÃ© pour le monument du 75005 Paris.',
-      h1: 'FAQ voyage Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Une FAQ compacte sur les questions pratiques avant de visiter la fontaine de la Place Saint-Michel : transport, prix, horaires, Ã©quipements et sÃ©curitÃ©.',
-      sections: [
-        { heading: 'Y aller', content: 'Le monument est Ã  cÃ´tÃ© de la gare RER B/C Saint-Michelâ€“Notre-Dame, dans le Quartier latin. Depuis CDG, RER B direct ; depuis Orly, Orlyval + RER B ; depuis Beauvais, navette jusquâ€™Ã  la Porte Maillot puis mÃ©tro/RER. La station ligne 4 Saint-Michel est fermÃ©e du 14 sept. au 19 dÃ©c. 2026.' },
-        { heading: 'Prix et horaires', content: 'La fontaine est un monument public sur place publique : gratuite Ã  voir, sans billetterie ni horaire fixe â€” visitable Ã  toute heure, jour et nuit.' },
-        { heading: 'Billets et paiement', content: 'Ã€ Paris, un billet Ãle-de-France, une carte Navigo Easy, un passe Navigo ou le sans-contact suffisent pour mÃ©tro/RER. Achetez avant de monter ; aucun achat Ã  bord.' },
-        { heading: 'Meilleure pÃ©riode', content: 'MatinÃ©es et soirÃ©es sont plus calmes et idÃ©ales pour les photos ; la place est Ã©clairÃ©e la nuit. Printemps et automne sont agrÃ©ables pour flÃ¢ner dans le Quartier latin et le long de la Seine.' },
-        { heading: 'Ã‰quipements et sÃ©curitÃ©', content: 'Pas de toilettes au monument, mais des sanisettes et fontaines publiques sont Ã  quelques pas. MÃ©fiez-vous des pickpockets dans les RER bondÃ©s et sur la place ; sacs fermÃ©s.' },
-      ],
-      faq: [
-        { question: 'Comment aller Ã  la Fontaine Saint-Michel ?', answer: 'RER B ou C jusquâ€™Ã  Saint-Michelâ€“Notre-Dame ; la fontaine est Ã  la sortie. Depuis CDG, le RER B est direct.' },
-        { question: 'La fontaine est-elle gratuite ?', answer: 'Oui â€” fontaine publique sur place publique, gratuite Ã  toute heure, sans billet.' },
-        { question: 'Quelle est la meilleure pÃ©riode ?', answer: 'TÃ´t le matin ou en soirÃ©e pour moins de monde et une belle lumiÃ¨re ; la place est illuminÃ©e la nuit.' },
-        { question: 'Est-ce sÃ»r autour de la fontaine ?', answer: 'La zone est globalement sÃ»re, mais attention aux pickpockets dans les RER bondÃ©s et sur la place ; sÃ©curisez vos affaires.' },
-      ],
-      nav: 'FAQ voyage',
-      related: ['how-to-get-there', 'visitor-guide', 'accessibility', 'public-toilets-and-facilities'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰æ—…è¡Œ FAQï¼ˆäº¤é€šã€é—¨ç¥¨ã€å®‰å…¨ä¸æœ€ä½³æ—¶æ®µï¼‰',
-      description: 'å‚è§‚åœ£ç±³æ­‡å°”å–·æ³‰çš„å¸¸è§é—®é¢˜ï¼šå¦‚ä½•åˆ°è¾¾ã€æ˜¯å¦å…è´¹ã€æœ€ä½³æ—¶æ®µã€è½¦ç¥¨ã€å‘¨è¾¹è®¾æ–½ä¸å®‰å…¨æç¤ºã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰æ—…è¡Œ FAQ',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'ä¸€ä»½ç²¾ç®€çš„æ—…è¡Œé—®ç­”ï¼Œæ¶µç›–é€ è®¿åœ£ç±³æ­‡å°”å¹¿åœºå–·æ³‰å‰çš„å®é™…é—®é¢˜ï¼šäº¤é€šã€è´¹ç”¨ã€æ—¶é—´ã€è®¾æ–½ä¸å®‰å…¨ã€‚',
-      sections: [
-        { heading: 'å¦‚ä½•åˆ°è¾¾', content: 'çºªå¿µç¢‘ç´§é‚»æ‹‰ä¸åŒºçš„ RER B/C ç«™ Saint-Michelâ€“Notre-Dameã€‚ä» CDG ä¹˜ RER B ç›´è¾¾ï¼›ä» Orly ä¹˜ Orlyval è½¬ RER Bï¼›ä»åšéŸ¦ä¹˜ç­è½¦åˆ° Porte Maillot å†è½¬åœ°é“/RERã€‚åœ°é“ 4 å·çº¿ Saint-Michel ç«™å› æ”¹é€ äº 2026 å¹´ 9 æœˆ 14 æ—¥è‡³ 12 æœˆ 19 æ—¥å…³é—­ã€‚' },
-        { heading: 'è´¹ç”¨ä¸å¼€æ”¾', content: 'å–·æ³‰æ˜¯å…¬å…±å¹¿åœºä¸Šçš„å…¬å…±çºªå¿µç¢‘ï¼šå…è´¹è§‚èµï¼Œæ— å”®ç¥¨å¤„ï¼Œä¹Ÿæ— å›ºå®šå¼€æ”¾æ—¶é—´â€”â€”ä»»ä½•æ—¶é—´ï¼ˆç™½å¤©æˆ–å¤œæ™šï¼‰éƒ½å¯å‚è§‚ã€‚' },
-        { heading: 'è½¦ç¥¨ä¸æ”¯ä»˜', content: 'åœ¨å·´é»ä¹˜åœ°é“/RERï¼Œä½¿ç”¨å•ç¨‹åŒºåŸŸè½¦ç¥¨ã€Navigo Easy å¡ã€Navigo é€šç¥¨æˆ–é“¶è¡Œå¡éæ¥è§¦æ”¯ä»˜å‡å¯ã€‚è¯·ä¸Šè½¦å‰è´­ç¥¨ï¼›åˆ—è½¦ä¸Šä¸å”®è½¦ç¥¨ã€‚' },
-        { heading: 'æœ€ä½³æ—¶æ®µ', content: 'æ¸…æ™¨ä¸å‚æ™šäººå°‘ä¸”å…‰çº¿å¥½ï¼Œé€‚åˆæ‹ç…§ï¼›å¹¿åœºå¤œé—´æœ‰ç¯å…‰ã€‚æ˜¥ã€ç§‹ä¸¤å­£åœ¨å‘¨è¾¹æ‹‰ä¸åŒºä¸æ²³å ¤æ•£æ­¥æœ€ä¸ºæƒ¬æ„ã€‚' },
-        { heading: 'è®¾æ–½ä¸å®‰å…¨', content: 'çºªå¿µç¢‘å¤„æ— å•æ‰€ï¼Œä½†æ­¥è¡Œä¸è¿œå³æœ‰å…¬å…± sanisette ä¸é¥®æ°´å–·æ³‰ã€‚ç¹å¿™çš„ RER è½¦å¢ä¸å¹¿åœºä¸Šæ³¨æ„é˜²ç›—ï¼ŒåŒ…è¢‹æ‹‰å¥½ã€‚' },
-      ],
-      faq: [
-        { question: 'æ€ä¹ˆå»åœ£ç±³æ­‡å°”å–·æ³‰ï¼Ÿ', answer: 'ä¹˜ RER B æˆ– C åˆ° Saint-Michelâ€“Notre-Dameï¼Œå–·æ³‰å°±åœ¨ç«™å£ï¼›ä» CDG ä¹˜ RER B å¯ç›´è¾¾ã€‚' },
-        { question: 'å–·æ³‰å…è´¹å—ï¼Ÿ', answer: 'å…è´¹â€”â€”å®ƒæ˜¯å…¬å…±å¹¿åœºä¸Šçš„å…¬å…±å–·æ³‰ï¼Œéšæ—¶å¯å…è´¹è§‚èµï¼Œæ— éœ€é—¨ç¥¨ã€‚' },
-        { question: 'ä»€ä¹ˆæ—¶é—´å»æœ€å¥½ï¼Ÿ', answer: 'æ¸…æ™¨æˆ–å‚æ™šäººå°‘ã€å…‰çº¿å¥½ï¼›å…¥å¤œåå¹¿åœºæœ‰ç…§æ˜ã€‚' },
-        { question: 'å–·æ³‰å‘¨è¾¹å®‰å…¨å—ï¼Ÿ', answer: 'æ•´ä½“å®‰å…¨ï¼Œä½†åœ¨æ‹¥æŒ¤çš„ RER è½¦å¢ä¸ç¹å¿™å¹¿åœºä¸Šæ³¨æ„é˜²ç›—ï¼Œè´µé‡ç‰©å“å¦¥å–„ä¿ç®¡ã€‚' },
-      ],
-      nav: 'æ—…è¡Œ FAQ',
-      related: ['how-to-get-there', 'visitor-guide', 'accessibility', 'public-toilets-and-facilities'],
-    },
-  },
-  'autumn-events': {
-    en: {
-      title: 'Autumn Events near Fontaine Saint-Michel â€“ Paris in the Fall',
-      description: 'Seasonal events around the fountain from September to November: Saint Michaelâ€™s Day, Nuit Blanche, Festival dâ€™Automne, Heritage Days and autumn light for photography.',
-      h1: 'Autumn events near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'The Latin Quarter and Ãle de la CitÃ© around the fountain host several autumn happenings â€” from the patron feast of the fountain to all-night art â€” that pair well with a visit.',
-      sections: [
-        { heading: 'Saint Michaelâ€™s Day (29 September)', content: 'The fountain is dedicated to the Archangel Michael, whose feast day is 29 September. While there is no ticketed event at the monument, the date is a natural moment to appreciate the Archangel Michael group by Davioud and the name of the square.' },
-        { heading: 'Nuit Blanche (October)', content: 'The Paris all-night arts festival usually falls on the first Saturday of October, with installations and performances across the Latin Quarter and Ãle de la CitÃ© â€” often within walking distance of the fountain. Check the city programme for the exact date.' },
-        { heading: 'Festival dâ€™Automne (Sepâ€“Dec)', content: 'This long-running festival brings concerts, theatre and dance to venues near the centre, including spaces a short walk from the square. Programmes are released in advance on the festival site.' },
-        { heading: 'European Heritage Days (September)', content: 'On a weekend in mid-September, normally closed monuments and buildings open to the public; nearby sites such as Sainte-Chapelle and the PanthÃ©on join, making it a good time to combine with the fountain.' },
-        { heading: 'Autumn light and the water feature', content: 'Low autumn sun makes the limestone faÃ§ade glow, and the restored water feature was scheduled to return in autumn 2026 after the conservation works â€” see the restoration page for the latest confirmed status. Verify all dates on official sites before travelling.' },
-      ],
-      faq: [
-        { question: 'Are there events at the fountain in autumn?', answer: 'The monument itself has no ticketed events, but Saint Michaelâ€™s Day (29 Sep), Nuit Blanche and nearby Heritage Days and Festival dâ€™Automne make autumn lively around it.' },
-        { question: 'When is Nuit Blanche?', answer: 'Usually the first Saturday of October; confirm the exact date on the Paris events calendar.' },
-        { question: 'Is the fountain lit at night?', answer: 'Yes â€” the square is illuminated after dark; see our at-night page for the evening atmosphere.' },
-        { question: 'Is autumn good for photos?', answer: 'Yes â€” the low autumn sun and the returning water feature make it a strong season for photography.' },
-      ],
-      nav: 'Autumn events',
-      related: ['at-night', 'restoration', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle'],
-    },
-    fr: {
-      title: 'Ã‰vÃ©nements dâ€™automne prÃ¨s de la Fontaine Saint-Michel â€“ Paris en automne',
-      description: 'Ã‰vÃ©nements saisonniers autour de la fontaine de septembre Ã  novembre : Saint-Michel, Nuit Blanche, Festival dâ€™automne, JournÃ©es du Patrimoine et lumiÃ¨re automnale.',
-      h1: 'Ã‰vÃ©nements dâ€™automne prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Le Quartier latin et lâ€™Ãle de la CitÃ© autour de la fontaine accueillent plusieurs rendez-vous dâ€™automne â€” de la fÃªte du saint patron Ã  lâ€™art toute la nuit â€” qui sâ€™associent bien Ã  une visite.',
-      sections: [
-        { heading: 'Saint-Michel (29 septembre)', content: 'La fontaine est dÃ©diÃ©e Ã  lâ€™archange Michel, dont la fÃªte tombe le 29 septembre. Aucun Ã©vÃ©nement payant au monument, mais la date invite Ã  contempler le groupe de lâ€™archange de Davioud et le nom de la place.' },
-        { heading: 'Nuit Blanche (octobre)', content: 'La nuit blanche des arts de Paris a lieu gÃ©nÃ©ralement le premier samedi dâ€™octobre, avec installations et performances dans le Quartier latin et lâ€™Ãle de la CitÃ©, souvent Ã  pied de la fontaine. VÃ©rifiez le programme officiel pour la date.' },
-        { heading: 'Festival dâ€™automne (sepâ€“dÃ©c)', content: 'Ce festival historique propose concerts, thÃ©Ã¢tre et danse dans des lieux proches du centre, parfois Ã  quelques pas de la place. Les programmes sont publiÃ©s Ã  lâ€™avance.' },
-        { heading: 'JournÃ©es du Patrimoine (septembre)', content: 'Un week-end mi-septembre, des monuments habituellement fermÃ©s ouvrent ; la Sainte-Chapelle et le PanthÃ©on participent, ce qui combine bien avec la fontaine.' },
-        { heading: 'LumiÃ¨re dâ€™automne et jeu dâ€™eau', content: 'Le soleil bas de lâ€™automne fait resplendir la faÃ§ade de calcaire, et le jeu dâ€™eau restaurÃ© Ã©tait programmÃ© pour lâ€™automne 2026 aprÃ¨s les travaux â€” voyez la page restauration. VÃ©rifiez les dates sur les sites officiels.' },
-      ],
-      faq: [
-        { question: 'Y a-t-il des Ã©vÃ©nements Ã  la fontaine en automne ?', answer: 'Le monument nâ€™a pas dâ€™Ã©vÃ©nement payant, mais la Saint-Michel (29 sep), la Nuit Blanche et les JournÃ©es du Patrimoine Ã  proximitÃ© rendent lâ€™automne animÃ©.' },
-        { question: 'Quand a lieu la Nuit Blanche ?', answer: 'GÃ©nÃ©ralement le premier samedi dâ€™octobre ; confirmez la date au calendrier officiel de Paris.' },
-        { question: 'La fontaine est-elle illuminÃ©e la nuit ?', answer: 'Oui â€” la place est Ã©clairÃ©e aprÃ¨s la tombÃ©e de la nuit ; voir notre page Â« de nuit Â».' },
-        { question: 'Lâ€™automne est-il bon pour les photos ?', answer: 'Oui â€” le soleil bas et le retour du jeu dâ€™eau en font une belle saison.' },
-      ],
-      nav: 'Ã‰vÃ©nements dâ€™automne',
-      related: ['at-night', 'restoration', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹ç§‹å­£æ´»åŠ¨ï¼ˆå·´é»ä¹‹ç§‹ï¼‰',
-      description: '9 æœˆè‡³ 11 æœˆå–·æ³‰å‘¨è¾¹çš„å­£èŠ‚æ€§æ´»åŠ¨ï¼šåœ£ç±³æ­‡å°”èŠ‚ã€ç™½å¤œã€ç§‹å­£è‰ºæœ¯èŠ‚ã€æ¬§æ´²é—äº§æ—¥ä¸ç§‹å­£æ‘„å½±å…‰çº¿ã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹ç§‹å­£æ´»åŠ¨',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'å–·æ³‰å‘¨è¾¹çš„æ‹‰ä¸åŒºä¸è¥¿å²±å²›åœ¨ç§‹å­£æœ‰å¤šåœºæ´»åŠ¨â€”â€”ä»å–·æ³‰çš„ä¸»ä¿åœ£äººåº†æ—¥åˆ°å¤§å¤œè‰ºæœ¯èŠ‚â€”â€”ä¸å‚è§‚ç›¸å¾—ç›Šå½°ã€‚',
-      sections: [
-        { heading: 'åœ£ç±³æ­‡å°”èŠ‚ï¼ˆ9 æœˆ 29 æ—¥ï¼‰', content: 'å–·æ³‰çŒ®ç»™å¤§å¤©ä½¿ç±³æ­‡å°”ï¼Œå…¶åº†æ—¥ä¸º 9 æœˆ 29 æ—¥ã€‚çºªå¿µç¢‘æœ¬èº«ä¸è®¾å”®ç¥¨æ´»åŠ¨ï¼Œä½†è¿™ä¸€å¤©æ­£é€‚åˆæ¬£èµè¾¾ç»´ä¹Œæ‰€ä½œå¤§å¤©ä½¿ç±³æ­‡å°”ç¾¤é›•ï¼Œä»¥åŠå¹¿åœºçš„åŒåç”±æ¥ã€‚' },
-        { heading: 'ç™½å¤œï¼ˆNuit Blancheï¼Œ10 æœˆï¼‰', content: 'å·´é»é€šå®µè‰ºæœ¯èŠ‚é€šå¸¸åœ¨ 10 æœˆç¬¬ä¸€ä¸ªå‘¨å…­ä¸¾è¡Œï¼Œæ‹‰ä¸åŒºä¸è¥¿å²±å²›éå¸ƒè£…ç½®ä¸æ¼”å‡ºï¼Œå¾€å¾€è·å–·æ³‰æ­¥è¡Œå¯è¾¾ã€‚ç¡®åˆ‡æ—¥æœŸè¯·æŸ¥å¸‚æ”¿åºœèŠ‚ç›®å•ã€‚' },
-        { heading: 'ç§‹å­£è‰ºæœ¯èŠ‚ï¼ˆ9â€“12 æœˆï¼‰', content: 'è¿™ä¸€å†å²æ‚ ä¹…çš„èŠ‚åº†å¸¦æ¥éŸ³ä¹ä¼šã€æˆå‰§ä¸èˆè¹ˆï¼Œåœºé¦†å¤šä½äºå¸‚ä¸­å¿ƒï¼Œéƒ¨åˆ†è·å¹¿åœºä»…æ•°æ­¥ä¹‹é¥ï¼›èŠ‚ç›®å•ä¼šæå‰åœ¨å®˜ç½‘å‘å¸ƒã€‚' },
-        { heading: 'æ¬§æ´²é—äº§æ—¥ï¼ˆ9 æœˆï¼‰', content: '9 æœˆä¸­æ—¬çš„æŸä¸ªå‘¨æœ«ï¼Œå¹³æ—¶å…³é—­çš„çºªå¿µå»ºç­‘å‘å…¬ä¼—å¼€æ”¾ï¼›é‚»è¿‘çš„åœ£ç¤¼æ‹œå ‚ä¸å…ˆè´¤ç¥ å‡å‚ä¸ï¼Œé€‚å®œä¸å–·æ³‰ä¸€å¹¶æ¸¸è§ˆã€‚' },
-        { heading: 'ç§‹æ—¥å…‰çº¿ä¸å–·æ°´', content: 'ä½æ–œçš„ç§‹æ—¥é˜³å…‰ä»¤çŸ³ç°å²©ç«‹é¢ç† ç† ç”Ÿè¾‰ï¼›ä¿®å¤åçš„å–·æ°´è£…ç½®åŸè®¡åˆ’ 2026 å¹´ç§‹å­£åœ¨å…»æŠ¤å·¥ç¨‹åæ¢å¤â€”â€”æœ€æ–°ç¡®è®¤çŠ¶æ€è§ã€Œä¿®å¤ã€é¡µé¢ã€‚å‡ºè¡Œå‰è¯·åœ¨å®˜ç½‘æ ¸å®æ‰€æœ‰æ—¥æœŸã€‚' },
-      ],
-      faq: [
-        { question: 'ç§‹å­£å–·æ³‰æœ‰æ´»åŠ¨å—ï¼Ÿ', answer: 'çºªå¿µç¢‘æœ¬èº«ä¸è®¾å”®ç¥¨æ´»åŠ¨ï¼Œä½†åœ£ç±³æ­‡å°”èŠ‚ï¼ˆ9/29ï¼‰ã€ç™½å¤œåŠå‘¨è¾¹çš„é—äº§æ—¥ä¸ç§‹å­£è‰ºæœ¯èŠ‚è®©ç§‹å­£æ ¼å¤–çƒ­é—¹ã€‚' },
-        { question: 'ç™½å¤œæ˜¯ä»€ä¹ˆæ—¶å€™ï¼Ÿ', answer: 'é€šå¸¸åœ¨ 10 æœˆç¬¬ä¸€ä¸ªå‘¨å…­ï¼›ç¡®åˆ‡æ—¥æœŸè¯·æŸ¥å·´é»æ´»åŠ¨æ—¥å†ã€‚' },
-        { question: 'å–·æ³‰å¤œé—´æœ‰ç¯å…‰å—ï¼Ÿ', answer: 'æœ‰â€”â€”å…¥å¤œåå¹¿åœºæœ‰ç…§æ˜ï¼›å¤œæ™šæ°›å›´è§ã€Œå¤œé—´ã€é¡µé¢ã€‚' },
-        { question: 'ç§‹å­£é€‚åˆæ‹ç…§å—ï¼Ÿ', answer: 'é€‚åˆâ€”â€”ä½æ–œç§‹é˜³ä¸æ¢å¤å–·æ°´çš„è£…ç½®ï¼Œä½¿å…¶æˆä¸ºä¸é”™çš„æ‘„å½±å­£èŠ‚ã€‚' },
-      ],
-      nav: 'ç§‹å­£æ´»åŠ¨',
-      related: ['at-night', 'restoration', 'walks/notre-dame-ile-de-la-cite', 'nearby/sainte-chapelle'],
-    },
-  },
-  'spring-events': {
-    en: {
-      title: 'Spring Events near Fontaine Saint-Michel â€“ Paris in the Spring',
-      description: 'Seasonal events around the fountain from March to June: FÃªte de la Musique, Nuit des MusÃ©es, the Paris Marathon, garden blooms and long riverbank evenings.',
-      h1: 'Spring events near Fontaine Saint-Michel',
-      updated: 'Last updated: October 2026',
-      lead: 'As days lengthen, the Latin Quarter and Seine around the fountain fill with free music, late-opening museums and blossom â€” a lively season to visit Place Saint-Michel.',
-      sections: [
-        { heading: 'FÃªte de la Musique (21 June)', content: 'On the summer solstice, free concerts spill across the Latin Quarter and Ãle de la CitÃ©; the streets around the fountain often host live music late into the evening. It is free and open to all.' },
-        { heading: 'Nuit des MusÃ©es (May)', content: 'On one Saturday in May, museums across Paris â€” including ones a short walk from the square such as the Cluny Museum â€” stay open late into the night with free entry.' },
-        { heading: 'Paris Marathon (April)', content: 'The marathon course runs along the Seine and past the islands; nearby quays and bridges can be busy or partially closed on race morning, so plan your arrival via the RER B/C.' },
-        { heading: 'Spring in the gardens', content: 'The Jardin du Luxembourg, about 15â€“20 minutes away, is at its best in spring with chestnut blooms and deckchairs; a pleasant add-on to a fountain visit.' },
-        { heading: 'Longer days by the river', content: 'With extended daylight, the Seine bookstalls and riverbank walks are at their easiest; combine the fountain with a sunset stroll. Verify all dates on official event sites before travelling.' },
-      ],
-      faq: [
-        { question: 'Are there events at the fountain in spring?', answer: 'The monument has no ticketed events, but FÃªte de la Musique, Nuit des MusÃ©es and the Paris Marathon make spring lively nearby.' },
-        { question: 'When is FÃªte de la Musique?', answer: 'Every 21 June, with free music across the city; the Latin Quarter around the fountain joins in.' },
-        { question: 'Are museums open late in spring?', answer: 'Yes â€” Nuit des MusÃ©es in May opens many museums, including the Cluny Museum near the square, into the night.' },
-        { question: 'Is spring good for walking?', answer: 'Yes â€” longer daylight, garden blooms and easy riverbank strolls make it a great season around the fountain.' },
-      ],
-      nav: 'Spring events',
-      related: ['at-night', 'nearby/musee-de-cluny', 'walks/seine-bookstalls', 'nearby/luxembourg-gardens'],
-    },
-    fr: {
-      title: 'Ã‰vÃ©nements de printemps prÃ¨s de la Fontaine Saint-Michel â€“ Paris au printemps',
-      description: 'Ã‰vÃ©nements saisonniers autour de la fontaine de mars Ã  juin : FÃªte de la Musique, Nuit des MusÃ©es, Marathon de Paris, floraisons et longues soirÃ©es prÃ¨s de la Seine.',
-      h1: 'Ã‰vÃ©nements de printemps prÃ¨s de la Fontaine Saint-Michel',
-      updated: 'DerniÃ¨re mise Ã  jour : octobre 2026',
-      lead: 'Avec les jours qui rallongent, le Quartier latin et la Seine autour de la fontaine se remplissent de musique gratuite, de musÃ©es ouverts tard et de fleurs â€” une saison animÃ©e pour la Place Saint-Michel.',
-      sections: [
-        { heading: 'FÃªte de la Musique (21 juin)', content: 'Au solstice dâ€™Ã©tÃ©, des concerts gratuits envahissent le Quartier latin et lâ€™Ãle de la CitÃ© ; les rues autour de la fontaine accueillent souvent de la musique live en soirÃ©e. Câ€™est gratuit et ouvert Ã  tous.' },
-        { heading: 'Nuit des MusÃ©es (mai)', content: 'Un samedi de mai, les musÃ©es de Paris â€” dont le MusÃ©e de Cluny, Ã  quelques pas de la place â€” restent ouverts tard, entrÃ©e gratuite.' },
-        { heading: 'Marathon de Paris (avril)', content: 'Le parcours du marathon longe la Seine et les Ã®les ; les quais et ponts proches peuvent Ãªtre chargÃ©s ou fermÃ©s le matin de la course, prÃ©voyez lâ€™arrivÃ©e par le RER B/C.' },
-        { heading: 'Le printemps dans les jardins', content: 'Le Jardin du Luxembourg, Ã  environ 15â€“20 min, est superbe au printemps avec ses marronniers et ses chaises ; une belle extension Ã  la visite de la fontaine.' },
-        { heading: 'JournÃ©es plus longues prÃ¨s du fleuve', content: 'Avec la lumiÃ¨re prolongÃ©e, les bouquinistes et la promenade des quais sont aisÃ©s ; associez la fontaine Ã  une flÃ¢nerie au coucher du soleil. VÃ©rifiez les dates sur les sites officiels.' },
-      ],
-      faq: [
-        { question: 'Y a-t-il des Ã©vÃ©nements Ã  la fontaine au printemps ?', answer: 'Le monument nâ€™a pas dâ€™Ã©vÃ©nement payant, mais la FÃªte de la Musique, la Nuit des MusÃ©es et le Marathon de Paris animent le printemps alentour.' },
-        { question: 'Quand a lieu la FÃªte de la Musique ?', answer: 'Chaque 21 juin, musique gratuite dans tout Paris ; le Quartier latin autour de la fontaine participe.' },
-        { question: 'Les musÃ©es ouvrent-ils tard au printemps ?', answer: 'Oui â€” la Nuit des MusÃ©es en mai ouvre tard de nombreux musÃ©es, dont Cluny prÃ¨s de la place.' },
-        { question: 'Le printemps est-il bon pour marcher ?', answer: 'Oui â€” journÃ©es plus longues, floraisons et quais faciles en font une belle saison autour de la fontaine.' },
-      ],
-      nav: 'Ã‰vÃ©nements de printemps',
-      related: ['at-night', 'nearby/musee-de-cluny', 'walks/seine-bookstalls', 'nearby/luxembourg-gardens'],
-    },
-    zh: {
-      title: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹æ˜¥å­£æ´»åŠ¨ï¼ˆå·´é»ä¹‹æ˜¥ï¼‰',
-      description: '3 æœˆè‡³ 6 æœˆå–·æ³‰å‘¨è¾¹çš„å­£èŠ‚æ€§æ´»åŠ¨ï¼šéŸ³ä¹èŠ‚ã€åšç‰©é¦†ä¹‹å¤œã€å·´é»é©¬æ‹‰æ¾ã€èŠ±å›­èŠ±äº‹ä¸å¡çº³æ²³æ¼«é•¿å‚æ™šã€‚',
-      h1: 'åœ£ç±³æ­‡å°”å–·æ³‰å‘¨è¾¹æ˜¥å­£æ´»åŠ¨',
-      updated: 'æœ€åæ›´æ–°ï¼š2026 å¹´ 10 æœˆ',
-      lead: 'ç™½æ˜¼æ¸é•¿ï¼Œå–·æ³‰å‘¨è¾¹çš„æ‹‰ä¸åŒºä¸å¡çº³æ²³å……æ»¡å…è´¹éŸ³ä¹ã€æ·±å¤œå¼€æ”¾çš„åšç‰©é¦†ä¸é²œèŠ±â€”â€”æ˜¯é€ è®¿åœ£ç±³æ­‡å°”å¹¿åœºçš„çƒ­é—¹å­£èŠ‚ã€‚',
-      sections: [
-        { heading: 'éŸ³ä¹èŠ‚ï¼ˆ6 æœˆ 21 æ—¥ï¼‰', content: 'å¤è‡³ä¹‹æ—¥ï¼Œå…è´¹éŸ³ä¹ä¼šéå¸ƒæ‹‰ä¸åŒºä¸è¥¿å²±å²›ï¼›å–·æ³‰å‘¨è¾¹è¡—é“å¸¸å¸¸æ·±å¤œä»æœ‰ç°åœºéŸ³ä¹ã€‚æ´»åŠ¨å…è´¹ã€é¢å‘æ‰€æœ‰äººã€‚' },
-        { heading: 'åšç‰©é¦†ä¹‹å¤œï¼ˆ5 æœˆï¼‰', content: '5 æœˆæŸä¸ªå‘¨å…­ï¼Œå·´é»ä¼—å¤šåšç‰©é¦†â€”â€”åŒ…æ‹¬è·å¹¿åœºä¸è¿œçš„å…‹å•å°¼åšç‰©é¦†â€”â€”å»¶é•¿å¼€æ”¾è‡³æ·±å¤œå¹¶å…è´¹å…¥åœºã€‚' },
-        { heading: 'å·´é»é©¬æ‹‰æ¾ï¼ˆ4 æœˆï¼‰', content: 'é©¬æ‹‰æ¾è·¯çº¿æ²¿å¡çº³æ²³å¹¶ç»å²›å±¿ï¼›æ¯”èµ›å½“æ—¥æ¸…æ™¨é‚»è¿‘æ²³å ¤ä¸æ¡¥æ¢å¯èƒ½æ‹¥æŒ¤æˆ–å±€éƒ¨å°é—­ï¼Œå»ºè®®ç» RER B/C æŠµè¾¾ã€‚' },
-        { heading: 'èŠ±å›­ä¹‹æ˜¥', content: 'çº¦ 15â€“20 åˆ†é’Ÿå¤–çš„å¢æ£®å ¡èŠ±å›­æ˜¥å­£æœ€ç¾ï¼Œæ —æ ‘å¼€èŠ±ã€é•¿æ¤…éå¸ƒï¼Œæ˜¯å–·æ³‰ä¹‹è¡Œçš„æƒ¬æ„å»¶ä¼¸ã€‚' },
-        { heading: 'æ²³ç•”é•¿æ—¥', content: 'ç™½æ˜¼å»¶é•¿ï¼Œå¡çº³æ²³ä¹¦æ‘Šä¸æ²³å ¤æ¼«æ­¥æœ€ä¸ºè½»æ¾ï¼›å¯å°†å–·æ³‰ä¸è½æ—¥æ•£æ­¥ç»“åˆã€‚å‡ºè¡Œå‰è¯·åœ¨å®˜ç½‘æ ¸å®æ‰€æœ‰æ—¥æœŸã€‚' },
-      ],
-      faq: [
-        { question: 'æ˜¥å­£å–·æ³‰æœ‰æ´»åŠ¨å—ï¼Ÿ', answer: 'çºªå¿µç¢‘æœ¬èº«ä¸è®¾å”®ç¥¨æ´»åŠ¨ï¼Œä½†éŸ³ä¹èŠ‚ã€åšç‰©é¦†ä¹‹å¤œä¸å·´é»é©¬æ‹‰æ¾è®©å‘¨è¾¹æ˜¥å­£çƒ­é—¹éå‡¡ã€‚' },
-        { question: 'éŸ³ä¹èŠ‚æ˜¯ä»€ä¹ˆæ—¶å€™ï¼Ÿ', answer: 'æ¯å¹´ 6 æœˆ 21 æ—¥ï¼Œå…¨åŸå…è´¹éŸ³ä¹ï¼›å–·æ³‰å‘¨è¾¹çš„æ‹‰ä¸åŒºä¹Ÿä¼šå‚ä¸ã€‚' },
-        { question: 'æ˜¥å­£åšç‰©é¦†ä¼šæ·±å¤œå¼€æ”¾å—ï¼Ÿ', answer: 'ä¼šâ€”â€”5 æœˆçš„åšç‰©é¦†ä¹‹å¤œè®©ä¼—å¤šåšç‰©é¦†ï¼ˆå«é‚»è¿‘çš„å…‹å•å°¼åšç‰©é¦†ï¼‰å¼€æ”¾è‡³æ·±å¤œã€‚' },
-        { question: 'æ˜¥å­£é€‚åˆæ•£æ­¥å—ï¼Ÿ', answer: 'é€‚åˆâ€”â€”ç™½æ˜¼æ›´é•¿ã€èŠ±å›­èŠ±å¼€ã€æ²³å ¤æ˜“è¡Œï¼Œæ˜¯å–·æ³‰å‘¨è¾¹ä¸é”™çš„å­£èŠ‚ã€‚' },
-      ],
-      nav: 'æ˜¥å­£æ´»åŠ¨',
-      related: ['at-night', 'nearby/musee-de-cluny', 'walks/seine-bookstalls', 'nearby/luxembourg-gardens'],
-    },
-  },
-};
-
-export const TOPICS: Record<string, TopicLocales> = { ...LEGACY_TOPICS, ...NEW_TOPICS };
-
-export function getTopic(slug: string): TopicLocales | undefined {
-  return TOPICS[slug];
-}
-
-export function topicLocales(slug: string): Array<'en' | 'fr' | 'zh'> {
-  const entry = TOPICS[slug];
-  const locales: Array<'en' | 'fr' | 'zh'> = ['en', 'fr'];
-  if (entry?.zh) locales.push('zh');
-  return locales;
-}
-
-export function topicPath(slug: string): string {
-  return `/${slug}`;
-}
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíï]{ñ:-jZ.¶›­–)Ş³V–×÷'BÄTt5•õDõ”52g&öÒrâöÆVv7’×F÷–72s°¦–×÷'B²äT$%•õÄ4U2ÂäT$%•õ4ÅTu2ÂäT$%•õDõ”52Òg&öÒrâöæV&'’ÖF—&V7F÷'’s° ¦W‡÷'BG—RF÷–56V7F–öâÒ²†VF–æs¢7G&–æs²6öçFVçC¢7G&–ærÓ°¦W‡÷'BG—RF÷–4fÒ²VW7F–öã¢7G&–æs²ç7vW#¢7G&–ærÓ°¦W‡÷'BG—RF÷–46öçFVçBÒ°¢F—FÆS¢7G&–æs°¢FW67&—F–öã¢7G&–æs°¢ƒ¢7G&–æs°¢WFFVC¢7G&–æs°¢ÆVC¢7G&–æs°¢6V7F–öç3¢F÷–56V7F–öåµÓ°¢f¢F÷–4fµÓ°¢æc¢7G&–æs°¢&VÆFVCó¢7G&–æuµÓ°§Ó°¦W‡÷'BG—RF÷–4Æö6ÆW2Ò²Vã¢F÷–46öçFVçC²g#¢F÷–46öçFVçC²¦ƒó¢F÷–46öçFVçBÓ° ¢ò¢¢6æöæ–6Â÷&FW"öbW†—7F–ærF÷–2wV–FW2ÇW2F†RFVGWÆ–6FVB3×Æ6RæV&'’F—&V7F÷'’â¢ğ¦W‡÷'B6öç7BÄÅõDõ”5õ4ÅTu3¢7G&–æuµÒÒ°¢v†—7F÷'’rÀ¢w&W7F÷&F–öârÀ¢v†÷r×FòÖvWB×F†W&RrÀ¢wÆ6R×6–çBÖÖ–6†VÂrÀ¢wF†–æw2×FòÖFòÖæV"ÖföçF–æR×6–çBÖÖ–6†VÂrÀ¢vg&öÒÖ6†&ÆW2ÖFRÖvVÆÆRÖ—'÷'BrÀ¢vg&öÒÖ÷&Ç’Ö—'÷'BrÀ¢v66W76–&–Æ—G’rÀ¢wf—6—F–ær×v—F‚Ö6†–ÆG&VârÀ¢wf—6—F÷"ÖwV–FRrÀ¢wV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÀ¢v&6†—FV7GW&RrÀ¢w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÀ¢v&6†ævVÂÖÖ–6†VÂrÀ¢vG&vöç2ÖæBÖ6†–ÖW&2rÀ¢vv'&–VÂÖFf–÷VBrÀ¢v†W76Öæâ×&—2rÀ¢v–ç67&—F–öç2rÀ¢v†—7F÷&–2×†÷F÷2rÀ¢væV&'’öæ÷G&RÖFÖRrÀ¢væV&'’÷6–çFRÖ6†VÆÆRrÀ¢væV&'’ö×W6VRÖFRÖ6ÇVç’rÀ¢væV&'’÷6†¶W7V&RÖæBÖ6ö×ç’rÀ¢væV&'’÷6–çB×6WfW&–ârÀ¢væV&'’÷6÷&&öææRrÀ¢væV&'’÷çF†VöârÀ¢væV&'’öÇW†VÖ&÷W&rÖv&FVç2rÀ¢wvÆ·2ó3ÖÖ–çWFR×vÆ²rÀ¢wvÆ·2öÆF–â×V'FW"×GvòÖ†÷W'2rÀ¢wvÆ·2ö†ÆbÖF’Ö—F–æW&'’rÀ¢wvÆ·2öæ÷G&RÖFÖRÖ–ÆRÖFRÖÆÖ6—FRrÀ¢wvÆ·2÷6V–æRÖ&öö·7FÆÇ2rÀ¢wvÆ·2÷6–çBÖvW&Ö–ârÀ¢wvÆ·2ög&VR×F†–æw2×FòÖFòrÀ¢w†÷F÷2rÀ¢vBÖæ–v‡BrÀ¢wv†W&R×FòÖVBrÀ¢wv†W&R×Fò×7F’rÀ¢w6–çBÖÖ–6†VÂ×g2ÖÖöçB×6–çBÖÖ–6†VÂrÀ¢wvÆ·2÷&—2Öf÷VçF–ç2rÀ¢vg&öÒÖ&VWf—2Ö—'÷'BrÀ¢vg&öÒ×F†RÖ6—G’Ö6VçFW"rÀ¢wG&fVÂÖfrÀ¢vWGVÖâÖWfVçG2rÀ¢w7&–ærÖWfVçG2rÀ¢ââääT$%•õ4ÅTu2À¥Ó° ¦W‡÷'B6öç7B$EôÄ”äSEôäõDRĞ¢tÜ:—G&òÆ–æRB(	B6–çBÔÖ–6†VÂ7FF–öâ—26Æ÷6VBf÷"ÖöFW&æ—6F–öâv÷&·2g&öÒB6WFVÖ&W"Fò’FV6VÖ&W"##c²G&–ç2Fòæ÷B7F÷F†W&RâW6RF†R$U""ô27FF–öâ6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂ6W&FR7FF–öâBF†Rfö÷BöbF†R7V&RÂ÷"Ü:—G&òÆ–æRB6ÇVç(	4Æ6÷&&öææRâ6†V6²Æ—fR7FGW2B&Gæg"âs° ¦6öç7BäUuõDõ”53¢&V6÷&CÇ7G&–ærÂF÷–4Æö6ÆW3âÒ°¢vg&öÒÖ6†&ÆW2ÖFRÖvVÆÆRÖ—'÷'Bs¢°¢Vã¢°¢F—FÆS¢tg&öÒ6†&ÆW2FRvVÆÆR—'÷'BFòföçF–æR6–çBÔÖ–6†VÂ(	24DrFò6–çBÔÖ–6†VÂf÷VçF–ârÀ¢FW67&—F–öã ¢u7FWÖ'’×7FWg&öÒ4DrFòföçF–æR6–çBÔÖ–6†VÃ¢$U""Fò6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂÇVvvvRæBF–6¶WBF—2ÂæBF†R6†÷'BvÆ²FòÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢tg&öÒ6†&ÆW2FRvVÆÆR„4Dr’FòföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†R6–×ÆW7BV&Æ–2×G&ç7÷'BÆ–æ²g&öÒ&—26†&ÆW2FRvVÆÆR—'÷'BFòF†Rf÷VçF–â—2F†R$U""&Vv–öæÂG&–âÂv†–6‚7F÷2B6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖR&–v‡B&W6–FRÆ6R6–çBÔÖ–6†VÂârÀ¢6V7F–öç3¢°¢²†VF–æs¢uF¶RF†R$U""rÂ6öçFVçC¢tföÆÆ÷r6–vç2f÷"$U""ò&—2'’G&–â–ç6–FR4Dr…FW&Ö–æÂf–F†R4DudÂ6‡WGFÆRÂFW&Ö–æÇ2"æB2öâfö÷B’â&ö&B6÷WF†&÷VæB$U""F÷v&G26–çBÕ,:–×’ÖÌ:‡2Ô6†Wg&WW6R÷"&ö&–ç6öâ(	Bæ÷B4DrÖ'&æ6‚G&–â†VF–æræ÷'F‚ârÒÀ¢²†VF–æs¢u&–FRæBW†—BrÂ6öçFVçC¢u7F’öâF†RG&–âf÷"&÷Vv†Ç’3^(	3CRÖ–çWFW2Fò6–çBÔÖ–6†VÂ(	2æ÷G&RÔFÖRâföÆÆ÷rF†R%6÷'F–RÆ6R6–çBÔÖ–6†VÂ"6–vç2æB–÷R&RBF†Rf÷VçF–ã²F†R$U""ô2ÆFf÷&×2&RBF†Rfö÷BöbF†R7V&RârÒÀ¢²†VF–æs¢uF–6¶WBæBÇVvvvRrÂ6öçFVçC¢t'W’&—2&Vv–öæÂF–6¶WBŒ8æÆRÖFRÔg&æ6Ròæf–vòV7’÷"fÆ–B72’&Vf÷&R&ö&F–æs²F†W&R—2æòöæ&ö&BW&6†6RâG&–ç2†fR76Rf÷"7V—F66W2'WBfö–B'W6‚†÷W'2ƒƒ£(	3£Âs£(	3“£’v†VâF†W’&R7&÷vFVBârÒÀ¢²†VF–æs¢tÇFW&æF—fW2æBF†RÆ–æRB6Æ÷7W&RrÂ6öçFVçC¢tF†’÷"&–FRÖ†–ÂF¶W2&÷WBC^(	3cÖ–çWFW2æB6÷7G2f"Ö÷&S²6†ö÷6R—BÖ–æÇ’v—F‚†Vg’ÇVvvvR÷"ÆFR'&—fÇ2âæ÷FRF†RÜ:—G&òÆ–æRB6–çBÔÖ–6†VÂ7FF–öâ—26Æ÷6VBf÷"v÷&·2g&öÒB6WFVÖ&W"Fò’FV6VÖ&W"##bÂ'WBF†R$U"7FF–öâ&W6–FRF†Rf÷VçF–â—2VæffV7FVB(	B6VR&Gæg"f÷"Æ—fR7FGW2ârÒÀ¢²†VF–æs¢t6†V6²&Vf÷&R–÷RG&fVÂrÂ6öçFVçC¢t6öæf—&Ò7W'&VçBf&W2æBç’6W'f–6R6†ævW2öâF†Röff–6–Â8æÆRÖFRÔg&æ6RÖö&–Æ—L:—2ò$EvW3²F†—2wV–FR&VfÆV7G2–æf÷&ÖF–öâf–Æ&ÆR–âö7Fö&W"##bârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t†÷rFò’vWBg&öÒ4DrFòföçF–æR6–çBÔÖ–6†VÃòrÂç7vW#¢uF¶RF†R$U""Fò6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂF†VâW†—BFòÆ6R6–çBÔÖ–6†VÃ²F†Rf÷VçF–â—2BF†R7FF–öâW†—BârÒÀ¢²VW7F–öã¢t†÷rÆöær—2F†RG&—òrÂç7vW#¢t&÷WBC^(	3cÖ–çWFW2–æ6ÇVF–ærvÆ¶–ærÂFWVæF–æröâ–÷W"FW&Ö–æÂæB6öææV7F–öç2ârÒÀ¢²VW7F–öã¢t6â’W6RF†RÜ:—G&ò–ç7FVCòrÂç7vW#¢uF†RÜ:—G&òÆ–æRB6–çBÔÖ–6†VÂ7FF–öâ—26Æ÷6VBf÷"&Væ÷fF–öâB6W(	3’FV2##c²W6RF†R$U""ô27FF–öâBF†R7V&R–ç7FVBârÒÀ¢²VW7F–öã¢t—2F†W&RF—&V7BG&–âg&öÒF†R—'÷'CòrÂç7vW#¢u–W2(	BF†R$U""'Vç2F—&V7Bg&öÒ4DrFò6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRv—F‚æò6†ævRârÒÀ¢ÒÀ¢æc¢tg&öÒ4Dr—'÷'BrÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂvg&öÒÖ÷&Ç’Ö—'÷'BrÂw&W7F÷&F–öârÂwÆ6R×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tFRÎ(	–:—&÷÷'B6†&ÆW2FRvVÆÆR:ÆföçF–æR6–çBÔÖ–6†VÂ(	24DrfW'2ÆföçF–æRrÀ¢FW67&—F–öã ¢|8—FR":—FRFR4Dr:ÆföçF–æR6–çBÔÖ–6†VÂ¢$U""§W7^(	œ:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂ6öç6V–Ç2&vvW2WB&–ÆÆWG2ÂWBÆÖ&6†RfW'2ÆÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢tFR6†&ÆW2FRvVÆÆR„4Dr’:ÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆRÇW26–×ÆR÷W"&V¦ö–æG&RÆföçF–æRFWV—2Î(	–:—&÷÷'B&—26†&ÆW2FRvVÆÆRW7BÆR$U""ÂV’>(	–',:§FR:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂ§W7FR:<;GL:’FRÆÆ6R6–çBÔÖ–6†VÂârÀ¢6V7F–öç3¢°¢²†VF–æs¢u&VæG&RÆR$U""rÂ6öçFVçC¢u7V—fW¢Æ6–væÌ:—F—VR$U""ò&—2"ÆRG&–â:4Dr‡FW&Ö–æÂf–ÆæfWGFR4DudÂÂFW&Ö–æW‚"WB2:–VB’âÖöçFW¢Fç2Vâ$U""VâF—&V7F–öâFR6–çBÕ,:–×’ÖÌ:‡2Ô6†Wg&WW6R÷R&ö&–ç6öâ(	B2VâG&–âFRÆ'&æ6†R4DrfW'2ÆRæ÷&BârÒÀ¢²†VF–æs¢uG&¦WBWB6÷'F–RrÂ6öçFVçC¢u&W7FW¢Vçf—&öâ3^(	3CRÖ–â§W7^(	œ:6–çBÔÖ–6†VÂ(	2æ÷G&RÔFÖRâ7V—fW¢*²6÷'F–RÆ6R6–çBÔÖ–6†VÂ+²¢ÆföçF–æRW7B7W"ÆÆ6RÂW‚–VG2FRÆv&R$U""ô2ârÒÀ¢²†VF–æs¢t&–ÆÆWBWB&vvW2rÂ6öçFVçC¢t6†WFW¢Vâ&–ÆÆWB8æÆRÖFRÔg&æ6R„æf–vòV7’÷R76RfÆ–FR’fçBFRÖöçFW"²V7Vâ6†B:&÷&BâÆW2G&–ç266WFVçBÆW2fÆ—6W2ÂÖ—2:—f—FW¢ÆW2†WW&W2FRö–çFRƒƒ£(	3£Âs£(	3“£’ârÒÀ¢²†VF–æs¢tÇFW&æF—fW2WBfW&ÖWGW&RÆ–væRBrÂ6öçFVçC¢uVâF†’÷ReD2ÖWBC^(	3cÖ–â÷W"Vâ6ü;·B&–VâÇW2:–ÆWl:’²:,:—6W'fW"7W'F÷WBfV2&VV6÷WFR&vvW2÷RVæR'&—l:–RF&F—fRâÆ7FF–öâFRÜ:—G&òÆ–væRB6–çBÔÖ–6†VÂW7BfW&Ü:–R÷W"G&fW‚GRB6WFVÖ'&RR’L:–6VÖ'&R##bÂÖ—2Æv&R$U"GFVæçFR:ÆÆ6RæRÎ(	–W7B2(	Bfö—"&Gæg"ârÒÀ¢²†VF–æs¢ul:—&–f–W¢fçBFR'F—"rÂ6öçFVçC¢t6öæf—&ÖW¢F&–g2WBW'GW&&F–öç27W"ÆW2vW2öff–6–VÆÆW28æÆRÖFRÔg&æ6RÖö&–Æ—L:—2ò$E²6RwV–FR&VfÌ:‡FRÆW2–æf÷&ÖF–öç2N(	–ö7Fö'&R##bârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t6öÖÖVçBÆÆW"FR4Dr:ÆföçF–æR6–çBÔÖ–6†VÂòrÂç7vW#¢u$U""§W7^(	œ:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRÂ6÷'F–RÆ6R6–çBÔÖ–6†VÂ²ÆföçF–æRW7B:Æ6÷'F–RârÒÀ¢²VW7F–öã¢t6öÖ&–VâFRFV×2GW&RÆRG&¦WBòrÂç7vW#¢tVçf—&öâC^(	3cÖ–âfV2ÆÖ&6†RÂ6VÆöâÆRFW&Ö–æÂârÒÀ¢²VW7F–öã¢uV—2Ö¦R&VæG&RÆRÜ:—G&òòrÂç7vW#¢tÆ7FF–öâFRÜ:—G&òÆ–væRB6–çBÔÖ–6†VÂW7BfW&Ü:–RGRB6WBâR’L:–2â##b²WF–Æ—6W¢Æv&R$U""ô2FRÆÆ6RârÒÀ¢²VW7F–öã¢u’×BÖ–ÂVâG&–âF—&V7BFWV—2Î(	–:—&÷÷'BòrÂç7vW#¢t÷V’(	BÆR$U""&VÆ–R4Dr:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖR6ç26÷'&W7öæFæ6RârÒÀ¢ÒÀ¢æc¢tFWV—24DrrÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂvg&öÒÖ÷&Ç’Ö—'÷'BrÂw&W7F÷&F–öârÂwÆ6R×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~K¸îh‹Nš¹K™iË®YË®X‹YÊ>{>jØ~[	NYk~k8ûÈ„4Dr(i"YÊ>{>jØ~[	NûÈ’rÀ¢FW67&—F–öã¢~K¸î[{N›¸îh‹Nš¹K™iË®YË®X‹YÊ>{>jØ~[	NYk~k8y¨NXˆnjÚ^hÈ~XÙ~ûÉ¥$U""ˆ{26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖ^8ŠÎiØîKˆî‹JŞzZhùzK®ûÈÎKº^Xø®jÚ^ŠÎX‹YÊ>{>jØ~[	N[›şYË®y¨N‹zş{«ş8"rÀ¢ƒ¢~K¸îh‹Nš¹K™iË®YË®ûÈ„4D~ûÈX‹YÊ>{>jØ~[	NYk~k8’rÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~K¸îh‹Nš¹K™iË®YË®X˜Ş[èYk~k8ûÈÎiÈzèKëşy¨NXZÎX[KªN˜	®iŠò$U""XË®Yùş[ú¾™8ûÈÎXÎ™Ú{J~˜+¾YÊ>{>jØ~[	N[›şYË®y¨B6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRz¹8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~i
+ŞK™‚$U""rÂ6öçFVçC¢~YÊ‚4DrˆŠ®z¹j[ÎXh^‹yş™¨ş8Å$U""ò&—2'’G&–î8ŞhÈ~zK®ûÈƒXû~ˆŠ®z¹j[Î™ÈXXK™‚4DudÂinkŠûÈÃ.82Xû~ˆŠ®z¹j[ÎjÚ^ŠÎXúş‹ëîûÈ8.i
+ŞK™[è6–çBÕ,:–×’ÖÌ:‡2Ô6†Wg&WW6Rh‰b&ö&–ç6öâikY	y¨NXÙ~ŠÂ$U".ûÈÎKˆŞŠhy›¾Kˆ®[èXÉ~ŠÎš›ny¨B4DriJş{«şX‰~‹Ún8"rÒÀ¢²†VF–æs¢~‹Únzˆ¾KˆîX{®z¹’rÂ6öçFVçC¢~K™‹Ún{ªb3^(	3CRXˆn™)şh«^‹ëâ6–çBÔÖ–6†VÂ(	2æ÷G&RÔFÖ^8.‹yş™¨ş8Å6÷'F–RÆ6R6–çBÔÖ–6†VÎ8ŞX{®z¹XÛ>XúşX‹‹ëîYk~k8ûÉµ$U""ô2z¹Xû[YÊ[›şYË®ˆI®Kˆ¾8"rÒÀ¢²†VF–æs¢~‹ÚnzZKˆîŠÎiØârÂ6öçFVçC¢~Kˆ®‹ÚnX˜Ş‹JŞK›[{N›¸îXË®Yùş‹ÚnzZûÈŒ8æÆRÖFRÔg&æ6Ròæf–vòV7’h‰niÈiX˜	®zZûÈûÈÎ‹ÚnKˆ®KˆŞˆ;Ş‹JŞzZ8.X‰~‹ÚnXúşiKîŠÎiØîûÈÎKØnŠû~˜ş[Èš¹[;i{një^ûÈƒƒ£(	3£8s£(	3“£ûÈ8"rÒÀ¢²†VF–æs¢~i»şKº>ik[ÈşKˆâBXû~{«şXÎ‹ùrÂ6öçFVçC¢~X{®zyş‹Únh‰n{Ù{ªn‹Ún{ªbC^(	3cXˆn™)şK‰N‹KyJi»Nš¹ûÈÎK‹¾ŠhYÊŠÎiØîZI®h‰nk{ZIÎh«^‹ëîi{nˆ>‰™8.YË™8BXû~{«ò6–çBÔÖ–6†VÂz¹YºiK˜
+K¨â##b[›B’iÈ‚Biz^ˆ{2"iÈ‚’iz^X[>™zŞûÈÎKØn[›şYË®ixy¨B$U"z¹KˆŞXù~[ÛY8Ş(	N(	NZéîi{nx«nhŠx&Gæg.8"rÒÀ¢²†VF–æs¢~X{®XùX˜ŞjZû’rÂ6öçFVçC¢~Šû~YÊ‚8æÆRÖFRÔg&æ6RÖö&–Æ—L:—2ò$EZéikš^™Ú.zîŠêNiÈikzZK»~Kˆî‹ù‰
+^XùXÉnûÉ¾iÊÎhÈ~XÙ~Yû®K¨â##b[›BiÈy¨NKúhş8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~Zh.KÙ^K¸â4DrX‹YÊ>{>jØ~[	NYk~k8ûÉòrÂç7vW#¢~i
+ŞK™‚$U""ˆ{26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖ^ûÈÎX{®z¹XÛ>‹ëîYÊ>{>jØ~[	N[›şYË®ûÈÎYk~k8[YÊz¹Xú>8"rÒÀ¢²VW7F–öã¢~‹Únzˆ¾ZI®K˜^ûÉòrÂç7vW#¢~Y
+¾jÚ^ŠÎ{ªbC^(	3cXˆn™)şûÈÎŠxnˆŠ®z¹j[ÎKˆîhÚ.K™ˆÎZé®8"rÒÀ¢²VW7F–öã¢~XúşKº^YÙYË™8Y	~ûÉòrÂç7vW#¢~YË™8BXû~{«ò6–çBÔÖ–6†VÂz¹’##b[›B’iÈ‚Biz^ˆ{2"iÈ‚’iz^X[>™zŞiK˜
+ûÈÎŠû~iKK™[›şYË®ixy¨B$U""ô2z¹8"rÒÀ¢²VW7F–öã¢~iÈK¸îiË®YË®y»N‹ëîy¨NX‰~‹ÚnY	~ûÉòrÂç7vW#¢~iÈ(	N(	E$U""K¸â4Dry»N‹ëâ6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖ^ûÈÎiz™ÈhÚ.K™8"rÒÀ¢ÒÀ¢æc¢~K¸îh‹Nš¹K™iË®YË¢rÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂvg&öÒÖ÷&Ç’Ö—'÷'BrÂw&W7F÷&F–öârÂwÆ6R×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢ÒÀ¢vg&öÒÖ÷&Ç’Ö—'÷'Bs¢°¢Vã¢°¢F—FÆS¢tg&öÒ÷&Ç’—'÷'BFòföçF–æR6–çBÔÖ–6†VÂ(	2÷&Ç’Fò6–çBÔÖ–6†VÂ&—2rÀ¢FW67&—F–öã ¢t6ö×&R&÷WFW2g&öÒ÷&Ç’FòföçF–æR6–çBÔÖ–6†VÃ¢÷&Ç—fÂ²$U""ÂG&Ò²Ü:—G&òÂæBF†’Âv—F‚G&ç6fW"F—2æBF†RvÆ²FòÆ6R6–çBÔÖ–6†VÂârÀ¢ƒ¢tg&öÒ÷&Ç’„õ%’’FòföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢t÷&Ç’†2æòF—&V7B$U"7F÷Â6òF†RW7VÂV&Æ–2&÷WFR6†–ç2÷&Ç—fÂFòF†R$U""Â÷"G&ÒFòÜ:—G&òÆ–æRÂF†Vâ6†÷'BvÆ²FòF†R7V&RârÀ¢6V7F–öç3¢°¢²†VF–æs¢t÷&Ç—fÂ²$U""†f7FW7B&–Â’rÂ6öçFVçC¢tg&öÒ÷&Ç’6÷WF‚÷"vW7BF¶RF†R÷&Ç—fÂWFöÖFVB6‡WGFÆRFòçFöç’ÂF†Vâ6†ævRFò6÷WF†&÷VæB$U""F÷v&G26–çBÕ,:–×’ÖÌ:‡2Ô6†Wg&WW6R÷"&ö&–ç6öâFò6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRâF÷FÂF–ÖR—2&÷WBS(	3sÖ–çWFW2ârÒÀ¢²†VF–æs¢uG&Ò²Ü:—G&òrÂ6öçFVçC¢uG&×v’Crg&öÒ÷&Ç’Fòf–ÆÆV§V–n(	4Æ÷V—2&vöâ6öææV7G2FòÜ:—G&òÆ–æRrÂF†Vâ6†ævRF÷v&G2F†R6VçG&S²F†—2—26Æ÷vW"F†â÷&Ç—fÂµ$U""'WBW6VgVÂ–b÷&Ç—fÂ—2F—7'WFVBâÆâF†R6†ævRv—F‚Ö&Vf÷&RG&fVÂârÒÀ¢²†VF–æs¢uF–6¶WBæBÇVvvvRrÂ6öçFVçC¢t÷&Ç—fÂ&WV—&W2—G2÷vâF–6¶WB–âFF—F–öâFòF†R8æÆRÖFRÔg&æ6R$U"ôÜ:—G&òF–6¶WC²'W’&÷F‚&Vf÷&R&ö&F–ærâÆÆ÷rW‡G&F–ÖRv—F‚7V—F66W2ÂæBfö–B'W6‚Ö†÷W"G&–ç2ârÒÀ¢²†VF–æs¢uF†’æBF†RÆ–æRBæ÷FRrÂ6öçFVçC¢tF†’÷"&–FRÖ†–ÂF¶W2&÷WB3(	3CRÖ–çWFW2æB6÷7G2Ö÷&Râ&VÖVÖ&W"F†RÜ:—G&òÆ–æRB6–çBÔÖ–6†VÂ7FF–öâ—26Æ÷6VBf÷"v÷&·2B6W(	3’FV2##c²F†R$U""ô27FF–öâBF†R7V&R—2F†R&VÆ–&ÆRG&÷ÖöfbæB'&—fÂö–çB(	B6VR&Gæg"ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†B—2F†RV6–W7Bv’g&öÒ÷&Ç’FòF†Rf÷VçF–ãòrÂç7vW#¢t÷&Ç—fÂFòçFöç’ÂF†Vâ$U""Fò6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖS²F†Rf÷VçF–â—2BF†RW†—BârÒÀ¢²VW7F–öã¢t†÷rÆöærFöW2—BF¶SòrÂç7vW#¢t&÷WBS(	3sÖ–çWFW2'’&–Â–æ6ÇVF–ærF†R÷&Ç—fÂ6†ævRÂFWVæF–æröâ6öææV7F–öç2ârÒÀ¢²VW7F–öã¢t—2F†W&RF—&V7BG&–âg&öÒ÷&Ç“òrÂç7vW#¢tæò(	B÷&Ç’†2æòF—&V7B$U"7F÷Â6ò–÷R6†ævRBçFöç’„÷&Ç—fÂ’÷"W6RG&Ò²Ü:—G&ò6öÖ&–æF–öâârÒÀ¢ÒÀ¢æc¢tg&öÒ÷&Ç’—'÷'BrÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂvg&öÒÖ6†&ÆW2ÖFRÖvVÆÆRÖ—'÷'BrÂw&W7F÷&F–öârÂwÆ6R×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tFRÎ(	–:—&÷÷'BN(	”÷&Ç’:ÆföçF–æR6–çBÔÖ–6†VÂ(	2÷&Ç’fW'2&—2rÀ¢FW67&—F–öã ¢t6ö×&W¢ÆW2—F–ì:—&—&W2N(	”÷&Ç’:ÆföçF–æR6–çBÔÖ–6†VÂ¢÷&Ç—fÂ²$U""ÂG&×v’²Ü:—G&òWBF†’ÂfV26öç6V–Ç2FR6÷'&W7öæFæ6RWBÆÖ&6†RfW'2ÆÆ6R6–çBÔÖ–6†VÂârÀ¢ƒ¢tN(	”÷&Ç’„õ%’’:ÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢t÷&Ç’î(	–2FRv&R$U"F—&V7FR¢Î(	–—F–ì:—&—&R†&—GVVÂVæ6†:ææR÷&Ç—fÂWB$U""Â÷RVâG&×v’V—2VæRÆ–væRFRÜ:—G&òÂV—2VæR6÷W'FRÖ&6†R§W7^(	œ:ÆÆ6RârÀ¢6V7F–öç3¢°¢²†VF–æs¢t÷&Ç—fÂ²$U""‡ÇW2&–FR’rÂ6öçFVçC¢tFWV—2÷&Ç’7VB÷R÷VW7BÂ&VæW¢Î(	”÷&Ç—fÂ§W7^(	œ:çFöç’ÂV—26÷'&W7öæFæ6RfV2Vâ$U""fW'26–çBÕ,:–×’ÖÌ:‡2Ô6†Wg&WW6R÷R&ö&–ç6öâ§W7^(	œ:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRâ6ö×FW¢Vçf—&öâS(	3sÖ–âârÒÀ¢²†VF–æs¢uG&×v’²Ü:—G&òrÂ6öçFVçC¢tÆRG&×v’CrN(	”÷&Ç’:f–ÆÆV§V–n(	4Æ÷V—2&vöâ&V¦ö–çBÆÆ–væRrGRÜ:—G&ò²ÇW2ÆVçBVR÷&Ç—fÂµ$U""ÂÖ—2WF–ÆRVâ62FRW'GW&&F–öâFRÎ(	”÷&Ç—fÂâ,:—f÷–W¢Æ6÷'&W7öæFæ6RfV2VæRÆ’FRÆâârÒÀ¢²†VF–æs¢t&–ÆÆWBWB&vvW2rÂ6öçFVçC¢tÎ(	”÷&Ç—fÂì:–6W76—FRVâ&–ÆÆWB&÷&RVâÇW2GR&–ÆÆWB$U"öÜ:—G&ò8æÆRÖFRÔg&æ6R²6†WFW¢ÆW2FWW‚fçBFRÖöçFW"â,:—f÷–W¢GRFV×2fV2ÆW2fÆ—6W2WB:—f—FW¢ÆW2†WW&W2FRö–çFRârÒÀ¢²†VF–æs¢uF†’WBæ÷FRÆ–væRBrÂ6öçFVçC¢uVâF†’÷ReD2ÖWB3(	3CRÖ–â÷W"Vâ6ü;·B7W:—&–WW"âÆ7FF–öâFRÜ:—G&òÆ–væRB6–çBÔÖ–6†VÂW7BfW&Ü:–RGRB6WBâR’L:–2â##b²Æv&R$U""ô2FRÆÆ6RW7BÆRö–çBN(	–'&—l:–R<;·"(	Bfö—"&Gæg"ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uVVÂW7BÆRÇW26–×ÆRFWV—2÷&Ç’òrÂç7vW#¢t÷&Ç—fÂ§W7^(	œ:çFöç’ÂV—2$U""§W7^(	œ:6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖR²ÆföçF–æRW7B:Æ6÷'F–RârÒÀ¢²VW7F–öã¢t6öÖ&–VâFRFV×26VÆ&VæBÖ–ÂòrÂç7vW#¢tVçf—&öâS(	3sÖ–â"ÆR&–ÂfV2Æ6÷'&W7öæFæ6R÷&Ç—fÂÂ6VÆöâÆW2Æ–—6öç2ârÒÀ¢²VW7F–öã¢u’×BÖ–ÂVâG&–âF—&V7BFWV—2÷&Ç’òrÂç7vW#¢tæöâ(	B÷&Ç’î(	–2FRv&R$U"F—&V7FR²öâ6†ævR:çFöç’„÷&Ç—fÂ’÷R"G&×v’²Ü:—G&òârÒÀ¢ÒÀ¢æc¢tFWV—2÷&Ç’rÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂvg&öÒÖ6†&ÆW2ÖFRÖvVÆÆRÖ—'÷'BrÂw&W7F÷&F–öârÂwÆ6R×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢ÒÀ¢66W76–&–Æ—G“¢°¢Vã¢°¢F—FÆS¢tföçF–æR6–çBÔÖ–6†VÂ66W76–&–Æ—G’(	2v†VVÆ6†—"66W72bf–Wv–ærrÀ¢FW67&—F–öã ¢u7FWÖg&VR66W72Â7W&f6W2Âv†W&RFòf–WrF†Rf÷VçF–âg&öÒv†VVÆ6†—"ÂæB†÷rFò6†V6²Æ–gB7FGW2f÷"F†R$U"BÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢t66W76–&–Æ—G’BföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†Rf÷VçF–â6—G2öââ÷VâÂÖ÷7FÇ’fÆBV&Æ–27V&RÂ6òF†RÖöçVÖVçB—G6VÆb—2f–Wv&ÆRv—F†÷WB7FW3²F†RÖ–âf&–&ÆR—2F†R7FWÖg&VR7FGW2öbF†RG&ç7÷'BÆ–æ·2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢uF†R7V&RæBf–Wv–ærrÂ6öçFVçC¢uÆ6R6–çBÔÖ–6†VÂ—2fVBæBÆWfVÂv—F‚F†R7W'&÷VæF–ærfVÖVçG2Â6òF†Rf÷VçF–â6â&Rf–WvVBæB†÷Föw&†VBg&öÒF†R&÷VÆWf&BVFvRæBF†R7V&Rv—F†÷WB6Æ–Ö&–ærâF†RÖöçVÖVçB—2vÆÂf÷VçF–âv–ç7B'V–ÆF–ærÂ6òF†W&R—2æò–çFW&–÷"FòVçFW"ârÒÀ¢²†VF–æs¢u$U"7FWÖg&VR66W72rÂ6öçFVçC¢u$U""ô26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖR†27FWÖg&VR66W72'WBÆ–gBf–Æ&–Æ—G’6†ævW3²6†V6²F†Röff–6–Â$Eò8æÆRÖFRÔg&æ6RÖö&–Æ—L:—2&66W76–&–Æ—G’"7FGW2&Vf÷&RG&fVÆÆ–ærâF†RÜ:—G&òÆ–æR6ÇVç(	4Æ6÷&&öææRVçG&æ6R—2Ç6òâ÷F–öâfWrÖ–çWFW2v’ârÒÀ¢²†VF–æs¢tvWGF–ærF†W&R'’6"rÂ6öçFVçC¢tG&÷–æröfb'’6"—2V6–W7Böâ&÷VÆWf&B6–çBÔÖ–6†VÂ÷"V’6–çBÔÖ–6†VÃ²æ÷FRF†RÜ:—G&òÆ–æRB6–çBÔÖ–6†VÂ7FF–öâ—26Æ÷6VBf÷"v÷&·2B6W(	3’FV2##bÂ6ò&VÇ’öâF†R$U"÷"Æ–æRâ&ÇVR&FvR&¶–ær—2Æ–Ö—FVB–âF†R6VçG&ÂÆF–âV'FW"(	BfW&–g’æV&'’76R–âGfæ6RârÒÀ¢²†VF–æs¢uv†BFòW‡V7BrÂ6öçFVçC¢t7&÷vG2V²Ö–FF’æBV&Ç’WfVæ–æs²Ö÷&æ–æw2&R6ÆÖW"f÷"v†VVÆ6†—"W6W'2â&Væ6†W2Æ–æRF†R&÷VÆWf&Bf÷"&W7G2â76—7Fæ6Rg&öÒ7FF–öâ7Ffb6â&R'&ævVBF‡&÷Vv‚F†R÷W&F÷'>(	’66W76–&–Æ—G’6W'f–6W2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t—2föçF–æR6–çBÔÖ–6†VÂv†VVÆ6†—"66W76–&ÆSòrÂç7vW#¢u–W2(	BF†R7V&R—2fÆBæB7FWÖg&VRÂæBF†Rf÷VçF–â—2f–WvVBg&öÒ÷WG6–FS²öæÇ’F†RG&ç7÷'BÆ–æ·2f'’–âÆ–gBf–Æ&–Æ—G’ârÒÀ¢²VW7F–öã¢t—2F†R$U"7FF–öâ7FWÖg&VSòrÂç7vW#¢u$U""ô26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖR†27FWÖg&VR66W72Â'WB6†V6²Æ—fRÆ–gB7FGW2öâF†R$E66W76–&–Æ—G’vR&Vf÷&R–÷RG&fVÂârÒÀ¢²VW7F–öã¢t6â’G&—fR6Æ÷6RFòF†Rf÷VçF–ãòrÂç7vW#¢u–W2ÂG&÷Ööfb—2÷76–&ÆRöâF†R&÷VÆWf&B÷"V“²FVF–6FVBF—6&ÆVB&¶–ær—2Æ–Ö—FVBÂ6ò6öæf—&Ò76R–âGfæ6RârÒÀ¢ÒÀ¢æc¢t66W76–&–Æ—G’rÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂwf—6—F÷"ÖwV–FRrÂwV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÂw&W7F÷&F–öâuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢t66W76–&–Æ—L:’FRÆföçF–æR6–çBÔÖ–6†VÂ(	26<:‡2Õ"WBgVRrÀ¢FW67&—F–öã ¢t6<:‡26ç2Ö&6†W2Â&Wl:§FVÖVçG2Âü;’fö—"ÆföçF–æRVâfWFWV–ÂÂWBl:—&–f–6F–öâFW266Vç6WW'2GR$U"7W"ÆÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢t66W76–&–Æ—L:’:ÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æR6RG&÷WfR7W"VæRÆ6RV&Æ—VRÖ¦÷&—F—&VÖVçBÆæR¢ÆRÖöçVÖVçB6Rfö—B6ç2Ö&6†W2²Æf&–&ÆR&–æ6—ÆRW7BÎ(	–66W76–&–Æ—L:’6ç2Ö&6†W2FW2G&ç7÷'G2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tÆÆ6RWBÆgVRrÂ6öçFVçC¢tÆÆ6R6–çBÔÖ–6†VÂW7Bl:–RWBFRæ—fVRfV2ÆW2G&÷GFö—'2¢ÆföçF–æR6Rfö—BWB6R†÷Föw&†–RFWV—2ÆR&÷VÆWf&BWBÆÆ6RÂ6ç2w&f—"N(	–W66Æ–W"â>(	–W7BVæRföçF–æRÖ×W&ÆRÂ–Âî(	—’2N(	––çL:—&–WW":f—6—FW"ârÒÀ¢²†VF–æs¢t6<:‡26ç2Ö&6†W2GR$U"rÂ6öçFVçC¢tÆR$U""ô26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRW7B66W76–&ÆR6ç2Ö&6†W2ÂÖ—2ÆW266Vç6WW'2f&–VçB²l:—&–f–W¢Î(	œ:—FB*²66W76–&–Æ—L:’+²öff–6–VÂ$Eò8æÆRÖFRÔg&æ6RÖö&–Æ—L:—2fçBFR'F—"âÆÆ–væR6ÇVç(	4Æ6÷&&öææRÂ:VVÇVW2Ö–çWFW2ÂW7BVæRWG&R÷F–öâârÒÀ¢²†VF–æs¢u’6<:–FW"Vâfö—GW&RrÂ6öçFVçC¢tÆFW66VçFRVâfö—GW&RW7Bf6–ÆR&÷VÆWf&B6–çBÔÖ–6†VÂ÷RV’6–çBÔÖ–6†VÂ²Æ7FF–öâFRÜ:—G&òÆ–væRB6–çBÔÖ–6†VÂW7BfW&Ü:–RGRB6WBâR’L:–2â##bÂ&—f–Ì:–v–W¢ÆR$U"÷RÆÆ–væRâÆW2Æ6W2Õ"6öçB&&W2Fç2ÆRV'F–W"ÆF–â(	Bl:—&–f–W¢:Î(	–fæ6RârÒÀ¢²†VF–æs¢t6R:Vö’>(	–GFVæG&RrÂ6öçFVçC¢tÆRÇW2FRÖöæFRW7B:Ö–F’WBVâL:–'WBFR6ö—,:–R²ÆW2ÖF–ì:–W26öçBÇW26ÆÖW2âFW2&æ72&÷&FVçBÆR&÷VÆWf&B÷W"6R&W÷6W"âVæR–FRVâv&RW7B÷76–&ÆRf–ÆW26W'f–6W2N(	–66W76–&–Æ—L:’FW2÷:—&FWW'2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢tÆföçF–æR6–çBÔÖ–6†VÂW7BÖVÆÆR66W76–&ÆRVâfWFWV–ÂòrÂç7vW#¢t÷V’(	BÆÆ6RW7BÆæRWB6ç2Ö&6†W2ÂWBÆföçF–æR6Rfö—BFRÎ(	–W‡L:—&–WW"²6WVÇ2ÆW2G&ç7÷'G2f&–VçBVâ66Vç6WW'2ârÒÀ¢²VW7F–öã¢tÆv&R$U"W7BÖVÆÆR6ç2Ö&6†W2òrÂç7vW#¢tÆR$U""ô26–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRW7B66W76–&ÆR6ç2Ö&6†W2ÂÖ—2l:—&–f–W¢Î(	œ:—FBFW266Vç6WW'27W"ÆvR66W76–&–Æ—L:’$EârÒÀ¢²VW7F–öã¢uV—2Ö¦RÖRv&W",:‡2FRÆföçF–æRòrÂç7vW#¢t÷V’ÂÆFW66VçFRW7B÷76–&ÆR&÷VÆWf&B÷RV’²ÆW2Æ6W2Õ"6öçBÆ–Ö—L:–W2Â6öæf—&ÖW¢ÖVâVæR:Î(	–fæ6RârÒÀ¢ÒÀ¢æc¢t66W76–&–Æ—L:’rÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂwf—6—F÷"ÖwV–FRrÂwV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÂw&W7F÷&F–öâuÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~YÊ>{>jØ~[	NYk~k8iz™©Îz(ŞhÈ~XÙ~ûÈ‹ÚîjH^KˆîŠx.‹XşûÈ’rÀ¢FW67&—F–öã¢~YÊ>{>jØ~[	N[›şYË®y¨Niz™©Îz(Ş˜	®˜>8‹zş™Ú.8‹ÚîjH^Šx.‹XşKØŞ{ÚîûÈÎKº^Xø®Zh.KÙ^iú^Šú"$U"yK^j*şx«nh8"rÀ¢ƒ¢~YÊ>{>jØ~[	NYk~k8y¨Niz™©Îz(ÒrÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~Yk~k8KØŞK¨îYû®iÊÎ[›>YÚny¨N[ÈiKîXZÎX[[›şYË®ûÈÎiÊÎ‹ª¾iz™ÈXû™‹nXÛ>XúşŠx.‹XşûÉ¾Xù˜xşK‹¾ŠhYÊK¨îKªN˜	®hê^š›>y¨Niz™©Îz(Şx«nXk^8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~[›şYË®KˆîŠx.‹XòrÂ6öçFVçC¢~YÊ>{>jØ~[	N[›şYË®K‹®™;®Š8^YË™Ú.ûÈÎKˆîY‹ëK«®ŠÎ˜>›Ù[›>ûÉ¾XúşYÊZJ~˜>‹ë{ÉKˆî[›şYË®Kˆ®iz™©Îz(ŞŠx.‹Xş8h¸ŞiNYk~k88.Zè>iŠş‹KNZ)[ÈşYk~k8ûÈÎk*iÈZêNXh^z›®™{NXúş‹ù¾XZ^8"rÒÀ¢²†VF–æs¢u$U"iz™©Îz(ÒrÂ6öçFVçC¢u$U""ô2y¨B6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRz¹ŠëîiÈiz™©Îz(Ş˜	®˜>ûÈÎKØnyK^j*şx«nhKÉ®XùXÉnûÉ¾X{®XùX˜ŞŠû~YÊ‚$Eò8æÆRÖFRÔg&æ6RÖö&–Æ—L:—2y¨N8Îiz™©Îz(Ş8Şš^™Ú.iú^Šú.8.jÚ^ŠÎXzXˆn™)şZIny¨NYË™8Xû~{«ò6ÇVç(	4Æ6÷&&öææRK™şiŠşZH~˜8"rÒÀ¢²†VF–æs¢~ˆz®š›îX‹‹ëârÂ6öçFVçC¢~YÊ>{>jØ~[	NZJ~˜>h‰nYÊ>{>jØ~[	NZ
+N[+Xúş[‹ùKˆ¾‹ÚnûÉ¾YË™8BXû~{«ò6–çBÔÖ–6†VÂz¹’##b[›B’iÈ‚Biz^ˆ{2"iÈ‚’iz^X[>™zŞiK˜
+ûÈÎŠû~KéŞ‹Yb$U"h‰bXû~{«ş8.h¸KˆXË®KŠŞ[ø>jè¾ykîK«®‹ÚnKØŞiÈ™™ûÈÎŠû~hùX˜ŞzîŠêN8"rÒÀ¢²†VF–æs¢~k:hHşK¨¾š’rÂ6öçFVçC¢~KŠŞXØKˆîX(Şi™®K«®kXiÈZøn™¸nûÈÎKˆ®XØ‹è>Zè™ÙûÉ¾ZJ~˜>k+ş{«şiÈ™[şjH^XúşKÉhş8.Xúş˜	®‹ø~‹ù‰
+^YXniz™©Îz(ŞiÈŞXªš(N{ªn‹Únz¹XØşXª8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~YÊ>{>jØ~[	NYk~k8Zû‹ÚîjH^Xø¾Z[ŞY	~ûÉòrÂç7vW#¢~Xø¾Z[Ş(	N(	N[›şYË®[›>YÚnizXû™‹nûÈÎYk~k8YÊZêNZInXÛ>XúşŠx.‹XşûÉ¾K¸^KªN˜	®hê^š›>y¨NyK^j*şx«nhKÉ®iÈXùXÉn8"rÒÀ¢²VW7F–öã¢u$U"z¹iÈiz™©Îz(ŞY	~ûÉòrÂç7vW#¢u$U""ô2y¨B6–çBÔÖ–6†VÎ(	4æ÷G&RÔFÖRz¹Xúşiz™©Îz(Ş˜	®ŠÎûÈÎKØnŠû~X{®XùX˜ŞYÊ‚$Eiz™©Îz(Şš^™Ú.iú^Šú.yK^j*şZéîi{nx«nh8"rÒÀ¢²VW7F–öã¢~XúşKº^[È‹Ún™Ú‹ùYk~k8Y	~ûÉòrÂç7vW#¢~XúşKº^ûÈÎZJ~˜>h‰nZ
+N[+Xúş[‹ùKˆ¾‹ÚnûÉ¾K‰>yJjè¾ykîK«®‹ÚnKØŞiÈ™™ûÈÎŠû~hùX˜ŞzîŠêN8"rÒÀ¢ÒÀ¢æc¢~iz™©Îz(ÒrÀ¢&VÆFVC¢²v†÷r×FòÖvWB×F†W&RrÂwf—6—F÷"ÖwV–FRrÂwV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÂw&W7F÷&F–öâuÒÀ¢ÒÀ¢ÒÀ¢wf—6—F–ær×v—F‚Ö6†–ÆG&Vâs¢°¢Vã¢°¢F—FÆS¢uf—6—F–ærföçF–æR6–çBÔÖ–6†VÂv—F‚6†–ÆG&Vâ(	2fÖ–Ç’F—2rÀ¢FW67&—F–öã ¢t¶–BÖg&–VæFÇ’Æâf÷"F†Rf÷VçF–ã¢7FGVR×7÷GF–ærvÖW2ÂW6†6†—"&÷WFW2Â&W7Bö–çG2æBæV&'’fÖ–Ç’7F÷2&÷VæBÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢uf—6—F–ærföçF–æR6–çBÔÖ–6†VÂv—F‚6†–ÆG&VârÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†Rf÷VçF–â—2g&VRÂ÷VâÖ—"ÖöçVÖVçBF†Bv÷&·2vVÆÂ2f—'7B7F÷v—F‚6†–ÆG&Vã¢—B—2V7’Fò&V6‚Â6fRFòf–Wrg&öÒF†R7V&RÂæBgVÆÂöbF†–æw2Fò7÷BârÀ¢6V7F–öç3¢°¢²†VF–æs¢t7FGVR×7÷GF–ærvÖRrÂ6öçFVçC¢t6†ÆÆVævR6†–ÆG&VâFòf–æBF†R&6†ævVÂÂF†RGvòv–ævVBG&vöç2ÂæBF†Rf÷W"f—'GVR7FGVW2…'VFVæ6RÂf÷&6RÂ§W7F–6RÂFV×W&æ6R’âF†R#bÖÖWG&Rf:vFR—2Æ–¶R–7GW&R&öö²–÷R&VBg&öÒF†RfVÖVçBârÒÀ¢²†VF–æs¢uW6†6†—"&÷WFW2rÂ6öçFVçC¢uF†R7V&RæBF†R&—fW'6–FRV—2&RfÆBæBW6†6†—"Ög&–VæFÇ’â7&÷72F†RöçB6–çBÔÖ–6†VÂFòF†R8æÆRFRÆ6—L:’f÷"6†÷'BÂ'Vvw’×6Öö÷F‚Æö÷v—F‚&—fW"f–Ww2ârÒÀ¢²†VF–æs¢u&W7BæB&Vg&W6†ÖVçG2rÂ6öçFVçC¢t&Væ6†W2Æ–æR&÷VÆWf&B6–çBÔÖ–6†VÃ²F†R7W'&÷VæF–ær7G&VWG2…'VRFRÆ‡V6†WGFRÂ'VRFRÆ,;¶6†W&–R’†fR7,:§R7FæG2æB6l:—2âFö–ÆWG2&RÆ—7FVBöâ÷W"f6–Æ—F–W2vRârÒÀ¢²†VF–æs¢tæV&'’fÖ–Ç’7F÷2rÂ6öçFVçC¢uF†R¦&F–âGRÇW†VÖ&÷W&r†&÷WB^(	3#Ö–çWFW>(	’vÆ²’†2öæBÂ÷&6†&BæBÆ–w&÷VæG3²F†R&—fW'6–FR&÷WV–æ—7FW2&RvVçFÆRG&V7W&RÖ‡VçBf÷"÷7F6&G2æBöÆB&öö·2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t—2F†Rf÷VçF–âvööBf÷"–÷Vær6†–ÆG&VãòrÂç7vW#¢u–W2(	B—B—2g&VRÂ÷WFFö÷'2æBf–WvVBg&öÒfÆB7V&RÂv—F‚6–×ÆR7FGVR×7÷GF–ærvÖRFò¶VWF†VÒVævvVBârÒÀ¢²VW7F–öã¢t&RW6†6†—'2ÆÆ÷vVCòrÂç7vW#¢u–W2(	BF†R7V&RæBV—2&R7FWÖg&VRæB'Vvw’Ög&–VæFÇ“²F†R6†÷'B8æÆRFRÆ6—L:’Æö÷—26Öö÷F‚ârÒÀ¢²VW7F–öã¢uv†W&R6âvR&W7BæV&'“òrÂç7vW#¢t&Væ6†W2öâF†R&÷VÆWf&BæB6l:—2öâF†R6–FR7G&VWG3²F†RÇW†VÖ&÷W&rv&FVç2gW'F†W"öâ†fRÆ–w&÷VæG2æB÷Vâ76RârÒÀ¢ÒÀ¢æc¢uv—F‚6†–ÆG&VârÀ¢&VÆFVC¢²wf—6—F÷"ÖwV–FRrÂwV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÂvæV&'’öÇW†VÖ&÷W&rÖv&FVç2rÂwvÆ·2ó3ÖÖ–çWFR×vÆ²uÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢uf—6—FW"ÆföçF–æR6–çBÔÖ–6†VÂfV2FW2VæfçG2(	26öç6V–Ç2fÖ–ÆÆRrÀ¢FW67&—F–öã ¢uVâÆâFL:’W‚fÖ–ÆÆW2¢¦WRFR&W:—&vRFW27FGVW2Â—F–ì:—&—&R÷W76WGFRÂW6W2WB',:§G2&ö6†W2FRÆÆ6R6–çBÔÖ–6†VÂÂsSR&—2ârÀ¢ƒ¢uf—6—FW"ÆföçF–æR6–çBÔÖ–6†VÂfV2FW2VæfçG2rÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æRW7BVâÖöçVÖVçBw&GV—BVâÆV–â—"Â–L:–Â6öÖÖR&VÖœ:‡&R:—FRfV2FW2VæfçG2¢f6–ÆRN(	–6<:‡2Âf—6–&ÆR6ç2FævW"FWV—2ÆÆ6RÂWB&–6†RVâ6†÷6W2:&W:—&W"ârÀ¢6V7F–öç3¢°¢²†VF–æs¢t¦WRFR&W:—&vRFW27FGVW2rÂ6öçFVçC¢u&÷÷6W¢W‚VæfçG2FRG&÷WfW"Î(	–&6†ævRÂÆW2FWW‚G&vöç2–Ì:—2WBÆW2VG&R7FGVW2FRfW'GW2…'VFVæ6RÂf÷&6RÂ§W7F–6RÂFV×:—&æ6R’âÆf:vFRFR#bÒW7B6öÖÖRVâÆ'VÒ:Æ—&RFWV—2ÆRG&÷GFö—"ârÒÀ¢²†VF–æs¢t—F–ì:—&—&R÷W76WGFRrÂ6öçFVçC¢tÆÆ6RWBÆW2V—26öçBÆG2WBFL:—2W‚÷W76WGFW2âg&æ6†—76W¢ÆRöçB6–çBÔÖ–6†VÂfW'2Î(	œ8æÆRFRÆ6—L:’÷W"VæR6÷W'FR&÷V6ÆRF÷WB×FW'&–âfV2gVR7W"ÆRfÆWWfRârÒÀ¢²†VF–æs¢u&W÷2WB&g&:æ6†—76VÖVçG2rÂ6öçFVçC¢tFW2&æ72&÷&FVçBÆR&÷VÆWf&B6–çBÔÖ–6†VÂ²ÆW2'VW2fö—6–æW2‡'VRFRÆ‡V6†WGFRÂ'VRFRÆ,;¶6†W&–R’öçBFW27,:§W2WBFW26l:—2âÆW2Fö–ÆWGFW26öçB7W"æ÷G&RvR*²:—V—VÖVçG2+²ârÒÀ¢²†VF–æs¢t',:§G2fÖ–ÆÆR:&÷†–Ö—L:’rÂ6öçFVçC¢tÆR¦&F–âGRÇW†VÖ&÷W&r†Vçf—&öâ^(	3#Ö–â:–VB’öfg&RVâ&76–âÂVâfW&vW"WBFW2—&W2FR¦WW‚²ÆW2&÷WV–æ—7FW2FW2V—26öçBVæR6†76RW‚G,:—6÷'2÷W"6'FW2÷7FÆW2WBf–WW‚Æ—g&W2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢tÆföçF–æR6öçf–VçBÖVÆÆRW‚¦WVæW2VæfçG2òrÂç7vW#¢t÷V’(	Bw&GV—FRÂVâÆV–â—"WBf—6–&ÆRFWV—2VæRÆ6RÆæRÂfV2Vâ¦WRFR&W:—&vRFW27FGVW2ârÒÀ¢²VW7F–öã¢tÆW2÷W76WGFW26öçBÖVÆÆW2FÖ—6W2òrÂç7vW#¢t÷V’(	BÆÆ6RWBÆW2V—26öçB6ç2Ö&6†W2²Æ6÷W'FR&÷V6ÆRFRÎ(	œ8æÆRFRÆ6—L:’W7BÆ—76RârÒÀ¢²VW7F–öã¢tü;’6R&W÷6W":&÷†–Ö—L:’òrÂç7vW#¢tFW2&æ727W"ÆR&÷VÆWf&BWBFW26l:—2Fç2ÆW2'VW2fö—6–æW2²ÇW2Æö–âÂÆRÇW†VÖ&÷W&rFW2—&W2FR¦WW‚ârÒÀ¢ÒÀ¢æc¢tfV2VæfçG2rÀ¢&VÆFVC¢²wf—6—F÷"ÖwV–FRrÂwV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2rÂvæV&'’öÇW†VÖ&÷W&rÖv&FVç2rÂwvÆ·2ó3ÖÖ–çWFR×vÆ²uÒÀ¢ÒÀ¢ÒÀ¢wf—6—F÷"ÖwV–FRs¢°¢Vã¢°¢F—FÆS¢tföçF–æR6–çBÔÖ–6†VÂf—6—F÷"wV–FR(	2g&VRVçG'’Â†÷W'2b†÷rÆöærFò7F’rÀ¢FW67&—F–öã ¢t—2föçF–æR6–çBÔÖ–6†VÂg&VSò÷Væ–ær†÷W'2Â†÷rÆöærFò7VæBÂv†B–÷R6â6VRÂæBF†RF–ffW&Væ6R&WGvVVâf–Wv–ærF†RÖöçVÖVçBæBF†RvFW"fVGW&RârÀ¢ƒ¢uf—6—F÷"wV–FRFòföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢tföçF–æR6–çBÔÖ–6†VÂ—2V&Æ–2ÖöçVÖVçBöâV&Æ–27V&S¢—B—2g&VRFòf–WrBç’†÷W"Âv—F‚æòF–6¶WBöff–6RæBæòf—†VB÷Væ–ærF–ÖW2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tg&VRæBÇv—2÷VârÂ6öçFVçC¢t&V6W6R—B—2â÷VâÖ—"vÆÂf÷VçF–âöâÆ6R6–çBÔÖ–6†VÂÂF†W&R—2æòVçG'’fVRæBæò6Æ÷6–ærF–ÖR(	B–÷R6âvÆ²WFò—B#B†÷W'2F’Â–V"×&÷VæBâF†R7V&R—2F‡&÷Vv‚×76RÂæ÷BvFVB6—FRârÒÀ¢²†VF–æs¢t†÷rÆöærFò7VæBrÂ6öçFVçC¢tÖ÷7Bf—6—F÷'27VæB(	3#Ö–çWFW2f–Wv–ærF†Rf:vFRæBF¶–ær†÷F÷2ÂÇW2Ö÷&R–bF†W’6—BöâF†R7V&R÷"W‡FVæB–çFòF†R&—fW'6–FRvÆ²âÆÆ÷r(	3"†÷W'2–b–÷R6öÖ&–æR—Bv—F‚F†RæV&'’ÆF–âV'FW"7G&VWG2ârÒÀ¢²†VF–æs¢uv†B–÷R6â6VRrÂ6öçFVçC¢u–÷Rf–WrF†RgVÆÂ#bÖÖWG&RVÆWfF–öâg&öÒF†R7V&S¢F†R6VçG&Â&6†ævVÂÖ–6†VÂw&÷W'’g&æ6—7VRGW&WBÂF†RGvòv–ævVBG&vöç2'’†Vç&’Æg&VB¦7VVÖ'BÂæBF†Rf÷W"6&F–æÂ×f—'GVR7FGVW2BF†R&6RâF†W&R—2æò–çFW&–÷"FòVçFW"ârÒÀ¢²†VF–æs¢uf–Wv–ærg2âF†RvFW"fVGW&RrÂ6öçFVçC¢uF†RÖöçVÖVçB—2f—6–&ÆRv†VæWfW"–÷Rf—6—BâF†R7F—fRvFW"¦WG2&R6W&FRÖGFW#¢gFW"F†R##^(	3##b6öç6W'fF–öâv÷&·2F†Rf÷VçF–âv2VçfV–ÆVBv–â–âVwW7B##bæBF†RvFW"fVGW&Rv266†VGVÆVBFò&W7F'B–âWGVÖâ##b(	B6†V6²F†R&W7F÷&F–öâvRf÷"F†RÆFW7B6öæf—&ÖVB7FGW2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t—2föçF–æR6–çBÔÖ–6†VÂg&VRFòf—6—CòrÂç7vW#¢u–W2(	B—B—2V&Æ–2f÷VçF–âöâV&Æ–27V&RÂg&VRFòf–WrBç’F–ÖRv—F‚æòF–6¶WBârÒÀ¢²VW7F–öã¢uv†B&RF†R÷Væ–ær†÷W'3òrÂç7vW#¢uF†W&R&Ræò6WB†÷W'3²F†R7V&R—266W76–&ÆR&÷VæBF†R6Æö6²ÂWfW'’F’öbF†R–V"ârÒÀ¢²VW7F–öã¢t†÷rÆöær6†÷VÆB’Æâf÷#òrÂç7vW#¢t&÷WB^(	33Ö–çWFW2BF†Rf÷VçF–âÂ÷"(	3"†÷W'2–æ6ÇVF–ærF†R7W'&÷VæF–ær7G&VWG2æB&—fW"vÆ²ârÒÀ¢²VW7F–öã¢t6â’vò–ç6–FRF†Rf÷VçF–ãòrÂç7vW#¢tæò(	B—B—2vÆÂf÷VçF–âf–WvVBg&öÒ÷WG6–FS²F†W&R—2æò–çFW&–÷"FòVçFW"ârÒÀ¢ÒÀ¢æc¢uf—6—F÷"wV–FRrÀ¢&VÆFVC¢²w&W7F÷&F–öârÂv†÷r×FòÖvWB×F†W&RrÂw†÷F÷2rÂwF†–æw2×FòÖFòÖæV"ÖföçF–æR×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢twV–FRf—6—FWW"FRÆföçF–æR6–çBÔÖ–6†VÂ(	2w&GV—L:’Â†÷&—&W2WBGW,:–RrÀ¢FW67&—F–öã ¢tÆföçF–æR6–çBÔÖ–6†VÂW7BÖVÆÆRw&GV—FRò†÷&—&W2ÂFV×2FRf—6—FRÂ6RVRÎ(	–öâfö—BÂWBÆF–fl:—&Væ6RVçG&Rfö—"ÆRÖöçVÖVçBWBÆR¦WRN(	–VRârÀ¢ƒ¢twV–FRf—6—FWW"FRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æR6–çBÔÖ–6†VÂW7BVâÖöçVÖVçBV&Æ–27W"VæRÆ6RV&Æ—VR¢VÆÆR6Rfö—Bw&GV—FVÖVçB:F÷WFR†WW&RÂ6ç2&–ÆÆWGFW&–Ræ’†÷&—&Rf—†RârÀ¢6V7F–öç3¢°¢²†VF–æs¢tw&GV—BWBF÷V¦÷W'2÷WfW'BrÂ6öçFVçC¢tföçF–æRÖ×W&ÆRVâÆV–â—"7W"ÆÆ6R6–çBÔÖ–6†VÂÂVÆÆRW7B6ç2G&ö—BN(	–VçG,:–RWB6ç2fW&ÖWGW&R¢öâWWB>(	–Vâ&ö6†W"#F‚ó#BÂF÷WFRÎ(	–æì:–RâÆÆ6RW7BVâ76vRÂ2Vâ6—FR6Ì;GGW,:’ârÒÀ¢²†VF–æs¢uFV×2FRf—6—FRrÂ6öçFVçC¢tÆÇW'B&W7FVçB(	3#Ö–â:6öçFV×ÆW"Æf:vFRWB†÷Föw&†–W"ÂÇW26’Î(	–öâ>(	–76ö—B÷RVRÎ(	–öâ&öÆöævRfW'2ÆW2V—2â6ö×FW¢(	3"‚fV2ÆW2'VW2GRV'F–W"ÆF–âârÒÀ¢²†VF–æs¢t6RVRÎ(	–öâfö—BrÂ6öçFVçC¢töâfö—BF÷WFRÎ(	œ:–Ì:—fF–öâFR#bÒFWV—2ÆÆ6R¢ÆRw&÷WR6VçG&ÂFRÎ(	–&6†ævRÖ–6†VÂ"g&æ6—7VRGW&WBÂÆW2FWW‚G&vöç2–Ì:—2N(	”†Vç&’Æg&VB¦7VVÖ'BÂWBÆW2VG&R7FGVW2FW2fW'GW26&F–æÆW2:Æ&6Râ2N(	––çL:—&–WW":f—6—FW"ârÒÀ¢²†VF–æs¢ufö—"ÆRÖöçVÖVçBWBÆR¦WRN(	–VRrÂ6öçFVçC¢tÆRÖöçVÖVçBW7Bf—6–&ÆR:F÷WFRf—6—FRâÆW2¦WG27F–g26öçBVâWG&R7V¦WB¢,:‡2ÆW2G&fW‚##^(	3##bÂÆföçF–æR:—L:’L:—fö–Ì:–R:æ÷WfVRVâü;·B##bWBÆR¦WRN(	–VR:—F—B&öw&ÖÜ:’÷W"Î(	–WFöÖæR##b(	Bf÷–W¢ÆvR*²&W7FW&F–öâ+²÷W"Î(	œ:—FB6öæf—&Ü:’ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢tÆföçF–æR6–çBÔÖ–6†VÂW7BÖVÆÆRw&GV—FRòrÂç7vW#¢t÷V’(	BföçF–æRV&Æ—VR7W"Æ6RV&Æ—VRÂw&GV—FR:F÷WFR†WW&RÂ6ç2&–ÆÆWBârÒÀ¢²VW7F–öã¢uVVÇ26öçBÆW2†÷&—&W2òrÂç7vW#¢u2N(	–†÷&—&Rf—†R²ÆÆ6RW7B66W76–&ÆRVâW&ÖæVæ6RÂF÷WFRÎ(	–æì:–RârÒÀ¢²VW7F–öã¢t6öÖ&–VâFRFV×2,:—fö—"òrÂç7vW#¢tVçf—&öâ^(	33Ö–â:ÆföçF–æRÂ÷R(	3"‚fV2ÆW2'VW2WBÆW2V—2ârÒÀ¢²VW7F–öã¢uWWBÖöâVçG&W"Fç2ÆföçF–æRòrÂç7vW#¢tæöâ(	B>(	–W7BVæRföçF–æRÖ×W&ÆRgVRFRÎ(	–W‡L:—&–WW"²2N(	––çL:—&–WW"ârÒÀ¢ÒÀ¢æc¢twV–FRf—6—FWW"rÀ¢&VÆFVC¢²w&W7F÷&F–öârÂv†÷r×FòÖvWB×F†W&RrÂw†÷F÷2rÂwF†–æw2×FòÖFòÖæV"ÖföçF–æR×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~YÊ>{>jØ~[	NYk~k8Xø.Šx.hÈ~XÙ~ûÈXXŞ‹K8[ÈiKîi{n™{NKˆîXÎyY[»®ŠêîûÈ’rÀ¢FW67&—F–öã¢~YÊ>{>jØ~[	NYk~k8iŠşY
+nXXŞ‹KûÉş[ÈiKîi{n™{N8[»®ŠêîXÎyYi{n™[ş8XúşŠx.yÈ¾X‹K¸K˜ûÈÎKº^Xø®Šx.‹XşYk~k8KˆîYk~kNy¨NXË®XŠ¾8"rÀ¢ƒ¢~YÊ>{>jØ~[	NYk~k8Xø.Šx.hÈ~XÙrrÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~YÊ>{>jØ~[	NYk~k8iŠşXZÎX[[›şYË®Kˆ®y¨NXZÎX[{ª®[û^z)ûÉ®XZZJXXŞ‹KŠx.‹XşûÈÎizYJîzZZHNûÈÎK™şizY»®Zé®[ÈiKîi{n™{N8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~XXŞ‹KK‰NXZZJ[ÈiKârÂ6öçFVçC¢~KÙÎK‹®YÊ>{>jØ~[	N[›şYË®Kˆ®y¨N™Ë.ZJ‹KNZ)Yk~k8ûÈÎZè>KˆŞŠëî™zzZ8KˆŞŠëîX[>™zŞi{n™{N(	N(	NXZ[›NjøşZJ’#B[şi{n˜;ŞXúş‹[‹ùŠx.‹Xş8.[›şYË®iŠş˜	®ŠÎz›®™{NûÈÎ[›n™Ùî[™zŞišşx+8"rÒÀ¢²†VF–æs¢~[»®ŠêîXÎyY’rÂ6öçFVçC¢~ZI®i[k‹Zê.ˆ«(	3#Xˆn™)şŠx.yÈ¾z¸¾™Ú.[›nh¸ŞxZ~ûÉ¾ˆº^YÊ[›şYË®YÙKˆ¾h‰nš®[»nˆ{>k+>yYNjÚ^ŠÎX‰i»NK˜^8.ˆº^{¹>YY‹ëh¸KˆXË®Š~[{~ûÈÎXúşš(NyY’(	3"[şi{n8"rÒÀ¢²†VF–æs¢~XúşŠx.yÈ¾X‹K¸K˜‚rÂ6öçFVçC¢~K¸î[›şYË®XúşyÈ¾X‹ZèÎi[Ny¨B#b{>z¸¾™Ú.ûÉ®KŠŞZJî[É~iÉ~Š[şijşXX¼+~‹ú®™»~h˜KÙÎZJ~ZJKÛş{>jØ~[	N{êN™¹^8KªXŠœ+~™‹ş[	N[É~™»~[ë|+~™¸^XX¾ššÎ[	Nh˜KÙÎXøÎ{ûÎ›éûÈÎKº^Xø®iûˆI®Y¹¾[®iê.[ë~™¹^X8ş8.k*iÈZêNXh^z›®™{NXúş‹ù¾XZ^8"rÒÀ¢²†VF–æs¢~Šx.‹XşKˆîYk~kBrÂ6öçFVçC¢~izŠë®KÙ^i{n˜
+Šëş˜;Şˆ;ŞyÈ¾X‹{ª®[û^z)8.Yk~kNŠ8^{ÚîXún[Ù>XŠ¾Šë®ûÉ£##^(	3##b[›NKúîZHŞYîûÈÎYk~k8K¨â##b[›B‚iÈXhŞjÊhúŞ[™^ûÈÎYk~kNŠ8^{ÚîXéşŠêX‰"##b[›Nzx¾ZÚ>h.ZHŞûÉ¾iÈikzîŠêNx«nhŠû~Šx8ÎKúîZHŞ8Şš^™Ú.8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~YÊ>{>jØ~[	NYk~k8XXŞ‹KY	~ûÉòrÂç7vW#¢~XXŞ‹K(	N(	NZè>iŠşXZÎX[[›şYË®Kˆ®y¨NXZÎX[Yk~k8ûÈÎ™¨şi{nXúşXXŞ‹KŠx.‹XşûÈÎiz™È™zzZ8"rÒÀ¢²VW7F–öã¢~[ÈiKîi{n™{NiŠşK¸K˜ûÉòrÂç7vW#¢~izY»®Zé®i{n™{NûÉ¾[›şYË®XZ[›NXZZJX	Xúş‹ù¾XZ^8"rÒÀ¢²VW7F–öã¢~[»®Šêîš(NyYZI®K˜^ûÉòrÂç7vW#¢~Yk~k8ZHN{ªb^(	33Xˆn™)şûÉ¾Y
+¾Y‹ëŠ~[{~Kˆîk+>Z
+NjÚ^ŠÎ{ªb(	3"[şi{n8"rÒÀ¢²VW7F–öã¢~XúşKº^‹ù¾XZ^Yk~k8Xh^˜:Y	~ûÉòrÂç7vW#¢~KˆŞXúşKº^(	N(	NZè>iŠşK¸îZIn˜:Šx.‹Xşy¨N‹KNZ)Yk~k8ûÈÎk*iÈZêNXh^z›®™{N8"rÒÀ¢ÒÀ¢æc¢~Xø.Šx.hÈ~XÙrrÀ¢&VÆFVC¢²w&W7F÷&F–öârÂv†÷r×FòÖvWB×F†W&RrÂw†÷F÷2rÂwF†–æw2×FòÖFòÖæV"ÖföçF–æR×6–çBÖÖ–6†VÂuÒÀ¢ÒÀ¢ÒÀ¢wV&Æ–2×Fö–ÆWG2ÖæBÖf6–Æ—F–W2s¢°¢Vã¢°¢F—FÆS¢uFö–ÆWG2bf6–Æ—F–W2æV"föçF–æR6–çBÔÖ–6†VÂ(	26–çBÔÖ–6†VÂ&—2rÀ¢FW67&—F–öã ¢uV&Æ–2Fö–ÆWG2ÂG&–æ¶–ærvFW"Â6VF–æræB&'’Ö6†ævRæV"F†Rf÷VçF–âÂv—F‚fW&–f–VBÆö6F–öç2&÷VæBÆ6R6–çBÔÖ–6†VÂÂsSR&—2†6†V6¶VBö7Fö&W"##b’ârÀ¢ƒ¢uV&Æ–2Fö–ÆWG2æBf6–Æ—F–W2æV"föçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†Rf÷VçF–â—G6VÆb†2æòf6–Æ—F–W2†—B—2ÖöçVÖVçB’Â'WBV&Æ–2Fö–ÆWG2ÂvFW"f÷VçF–ç2æB6VF–ær&Rv—F†–â6†÷'BvÆ²öâF†R7V&RæB&÷VÆWf&BârÀ¢6V7F–öç3¢°¢²†VF–æs¢uV&Æ–2Fö–ÆWG2‡6æ—6WGFW2’rÂ6öçFVçC¢u&—2÷W&FW26VÆbÖ6ÆVæ–ærV&Æ–2Fö–ÆWG2‡6æ—6WGFW2’B6WfW&Âö–çG2&÷VæBF†RÆF–âV'FW"âF†RæV&W7B&RG—–6ÆÇ’öâF†R&÷VÆWf&G2æV"F†R7V&RæBÆöærF†R6V–æRV—3²Æö6F–öç2&÷FFRv—F‚Ö–çFVææ6RÂ6ò6†V6²F†RÖ67&VVâöâF†Röff–6–Â&—2Fö–ÆWBf–æFW"&Vf÷&R&VÇ––æröâöæRârÒÀ¢²†VF–æs¢tG&–æ¶–ærvFW"rÂ6öçFVçC¢tg&VRV&Æ–2vFW"f÷VçF–ç2†–æ6ÇVF–ær6öÖR%vÆÂöbvFW""ö–çG2’V"ÆöærF†R6V–æRV—2æB–âæV&'’v&FVç3²'&–ær&÷GFÆRæB&Vf–ÆÂ&F†W"F†â'W––ærÆ7F–2âfW&–g’F†RæV&W7Bö–çBöâF†RF’v—F‚F†R6—G(	—2f÷VçF–âÖârÒÀ¢²†VF–æs¢u6VF–æræB6†FRrÂ6öçFVçC¢t&Væ6†W2Æ–æR&÷VÆWf&B6–çBÔÖ–6†VÂæBF†R7V&RVFvW3²F†R&—fW'6–FRV—2öffW"&–Â6VF–ærv—F‚6†FR–âÆ6W2âf÷"w&VVæW"&W7BÂF†R¦&F–âGRÇW†VÖ&÷W&r—2&÷WB^(	3#Ö–çWFW2v’ârÒÀ¢²†VF–æs¢t&'’6†ævRæB66W76–&–Æ—G’rÂ6öçFVçC¢u6öÖR6æ—6WGFW2–æ6ÇVFR&'’Ö6†ævS²7FWÖg&VR66W72f&–W2'’Væ—Bâ6†V6²F†Röff–6–Âf–æFW"f÷"F†Rf6–Æ—F–W2BV6‚Æö6F–öâÂæB6VR÷W"66W76–&–Æ—G’vRf÷"F†R7FWÖg&VR$U"&÷WFRârÒÀ¢²†VF–æs¢ufW&–g’&Vf÷&R–÷RvòrÂ6öçFVçC¢uF†—2Æ—7B&VfÆV7G2f6–Æ—F–W2¶æ÷vâ–âö7Fö&W"##bâ&V6W6RV&Æ–2Væ—G2&RÖ–çF–æVBæB&VÆö6FVBÂÇv—26öæf—&ÒF†RÆ—fRÆö6F–öâöâF†Röff–6–Â&—2'Fö–ÆWGFW2V&Æ—VW2"ÖârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢t&RF†W&RFö–ÆWG2BF†Rf÷VçF–ãòrÂç7vW#¢tæò(	BF†Rf÷VçF–â—2ÖöçVÖVçBÂ'WBV&Æ–26æ—6WGFW2&R6†÷'BvÆ²v’öâF†R&÷VÆWf&BæBV—3²6†V6²F†Röff–6–ÂÖf÷"Æ—fRÆö6F–öç2ârÒÀ¢²VW7F–öã¢t—2F†W&Rg&VRG&–æ¶–ærvFW"æV&'“òrÂç7vW#¢u–W2(	BV&Æ–2vFW"f÷VçF–ç26—BÆöærF†R6V–æRV—2æB–âæV&'’v&FVç3²6öæf—&ÒF†RæV&W7BöâF†R6—G’ÖârÒÀ¢²VW7F–öã¢uv†W&R6â’6—Bv—F‚6†–ÆG&VãòrÂç7vW#¢t&Væ6†W2Æ–æRF†R&÷VÆWf&BæB7V&S²F†RÇW†VÖ&÷W&rv&FVç2gW'F†W"öâ†fRÆvç2ÂöæBæBÆ–w&÷VæG2ârÒÀ¢ÒÀ¢æc¢uFö–ÆWG2bf6–Æ—F–W2rÀ¢&VÆFVC¢²v66W76–&–Æ—G’rÂwf—6—F–ær×v—F‚Ö6†–ÆG&VârÂwf—6—F÷"ÖwV–FRrÂvæV&'’öÇW†VÖ&÷W&rÖv&FVç2uÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢uFö–ÆWGFW2WB:—V—VÖVçG2,:‡2FRÆföçF–æR6–çBÔÖ–6†VÂ(	2&—2rÀ¢FW67&—F–öã ¢uFö–ÆWGFW2V&Æ—VW2ÂVR÷F&ÆRÂ76—6W2WBF&ÆR:ÆævW",:‡2FRÆföçF–æRÂWF÷W"FRÆÆ6R6–çBÔÖ–6†VÂÂsSR&—2‡l:—&–fœ:’Vâö7Fö'&R##b’ârÀ¢ƒ¢uFö–ÆWGFW2V&Æ—VW2WB:—V—VÖVçG2,:‡2FRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æRî(	–2N(	œ:—V—VÖVçG2†>(	–W7BVâÖöçVÖVçB’ÂÖ—2Fö–ÆWGFW2ÂföçF–æW2WB&æ726öçB:VVÇVW227W"ÆÆ6RWBÆR&÷VÆWf&BârÀ¢6V7F–öç3¢°¢²†VF–æs¢uFö–ÆWGFW2V&Æ—VW2‡6æ—6WGFW2’rÂ6öçFVçC¢u&—2|:‡&RFW2Fö–ÆWGFW2WFöÖF—VW2‡6æ—6WGFW2’:ÇW6–WW'2VæG&ö—G2GRV'F–W"ÆF–ââÆW2ÇW2&ö6†W26öçB|:–ì:—&ÆVÖVçB7W"ÆW2&÷VÆWf&G2,:‡2FRÆÆ6RWBÆRÆöærFW2V—2²ÆW2V×Æ6VÖVçG2:—föÇVVçBÂl:—&–f–W¢Æ6'FRöff–6–VÆÆR*²Fö–ÆWGFW2+²fçBFR6ö×FW"FW77W2ârÒÀ¢²†VF–æs¢tVR÷F&ÆRrÂ6öçFVçC¢tFW2föçF–æW2V&Æ—VW2w&GV—FW2†FöçBFW2*²×W'2N(	–VR+²’ÆöævVçBÆW2V—2WBÆW2¦&F–ç2fö—6–ç2²V×÷'FW¢VæRv÷W&FRâ6öæf—&ÖW¢ÆRö–çBÆRÇW2&ö6†R7W"Æ6'FRFRÆf–ÆÆRÆR¦÷W"¢ârÒÀ¢²†VF–æs¢t76—6W2WBöÖ'&RrÂ6öçFVçC¢tFW2&æ72&÷&FVçBÆR&÷VÆWf&B6–çBÔÖ–6†VÂWBÆW2&÷&G2FRÆÆ6R²ÆW2V—2öfg&VçBFW276—6W2fV2&fö—2FRÎ(	–öÖ'&Râ÷W"Vâ&W÷2ÇW2fW'BÂÆR¦&F–âGRÇW†VÖ&÷W&rW7B:Vçf—&öâ^(	3#Ö–âârÒÀ¢²†VF–æs¢uF&ÆR:ÆævW"WB66W76–&–Æ—L:’rÂ6öçFVçC¢t6W'F–æW26æ—6WGFW2öçBVæRF&ÆR:ÆævW"²Î(	–6<:‡26ç2Ö&6†W2f&–Râl:—&–f–W¢7W"Î(	–æçV—&Röff–6–VÂWBfö—"æ÷G&RvR66W76–&–Æ—L:’÷W"ÆR$U"6ç2Ö&6†W2ârÒÀ¢²†VF–æs¢ul:—&–f–W¢fçBFR'F—"rÂ6öçFVçC¢t6WGFRÆ—7FR&VfÌ:‡FRÆW2:—V—VÖVçG26öæçW2Vâö7Fö'&R##b²6öÖÖRÆW2Væ—L:—2V&Æ—VW26öçBVçG&WFVçVW2WBL:—Æ<:–W2Â6öæf—&ÖW¢F÷V¦÷W'2Î(	–V×Æ6VÖVçB7W"Æ6'FRöff–6–VÆÆR*²Fö–ÆWGFW2V&Æ—VW2+²ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢u’×BÖ–ÂFW2Fö–ÆWGFW2:ÆföçF–æRòrÂç7vW#¢tæöâ(	BÆföçF–æRW7BVâÖöçVÖVçBÂÖ—2FW26æ—6WGFW26öçB:VVÇVW227W"ÆR&÷VÆWf&BWBÆW2V—2²f÷–W¢Æ6'FRöff–6–VÆÆRârÒÀ¢²VW7F–öã¢u’×BÖ–ÂFRÎ(	–VR÷F&ÆRw&GV—FRòrÂç7vW#¢t÷V’(	BFW2föçF–æW2V&Æ—VW2ÆöævVçBÆW2V—2WBÆW2¦&F–ç2²6öæf—&ÖW¢ÆÇW2&ö6†R7W"Æ6'FRârÒÀ¢²VW7F–öã¢tü;’Ş(	–76Vö—"fV2FW2VæfçG2òrÂç7vW#¢tFW2&æ72&÷&FVçBÆR&÷VÆWf&BWBÆÆ6R²ÇW2Æö–âÂÆRÇW†VÖ&÷W&rVÆ÷W6W2Â&76–âWB—&W2FR¦WW‚ârÒÀ¢ÒÀ¢æc¢uFö–ÆWGFW2rÀ¢&VÆFVC¢²v66W76–&–Æ—G’rÂwf—6—F–ær×v—F‚Ö6†–ÆG&VârÂwf—6—F÷"ÖwV–FRrÂvæV&'’öÇW†VÖ&÷W&rÖv&FVç2uÒÀ¢ÒÀ¢ÒÀ¢&6†—FV7GW&S¢°¢Vã¢°¢F—FÆS¢tföçF–æR6–çBÔÖ–6†VÂ&6†—FV7GW&R(	2f:vFRÂ6öÇVÖç2bÖFW&–Ç2rÀ¢FW67&—F–öã ¢t†÷rF†R#bÖÖWG&RvÆÂf÷VçF–â—2'V–ÇC¢F†RG&—V×†ÂÖ&6‚Æ–÷WBÂ&VBÖÖ&&ÆR6÷&–çF†–â6öÇVÖç2Âæ–6†RÂ&6–ç2æBF†RÖFW&–Ç2W6VB'’v'&–VÂFf–÷VBârÀ¢ƒ¢uF†R&6†—FV7GW&RöbföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢tföçF–æR6–çBÔÖ–6†VÂ—2'vÆÂf÷VçF–â"(	BÖöçVÖVçFÂ7FöæR67&VVâ&÷WB#bÖWG&W2†–v‚æBRÖWG&W2v–FRÂFW6–væVB'’v'&–VÂFf–÷VB2FV6÷&F—fRVæBFò'VRFçFöâârÀ¢6V7F–öç3¢°¢²†VF–æs¢tG&—V×†ÂÖ&6‚ÆârÂ6öçFVçC¢uF†Rf:vFR&VG2Æ–¶R&VGV6VBG&—V×†Â&6ƒ¢v–FR&6RÂ6VçG&Âæ–6†Rg&ÖVB'’6öÇVÖç2ÂæBâGF–27F÷&W’&÷fRâ—Bv26öæ6V—fVBFò6Æ÷6RF†RW'7V7F—fRöb'VRFçFöâæBFòÖ6²F†R&&Rv&ÆRöbF†R&Æö6²&V†–æB—BârÒÀ¢²†VF–æs¢t6öÇVÖç2æBæ–6†RrÂ6öçFVçC¢tf÷W"&VBÖÖ&&ÆR6÷&–çF†–â6öÇVÖç2&—6R&÷VæBF†R6VçG&Âæ–6†RF†B†öÆG2F†R&6†ævVÂÖ–6†VÂw&÷Wâ&÷fRÂâVçF&ÆGW&RæBGF–26''’F†RÖöçVÖVçN(	—2WW"FV6÷&F–öâæBF†R÷&–v–æÂ–×W&–ÂVÖ&ÆVÒ†ÆFW"&WÆ6VB'’F†R6—G’6öBöb&×2’ârÒÀ¢²†VF–æs¢tÖFW&–Ç2rÂ6öçFVçC¢uF†R&öG’—26–çBÔÖ†–Ö–âÆ–ÖW7FöæRÂ6†÷6Vâf÷"—G2ÆRÂWfVâw&–ã²F†R6öÇVÖç2&R&VBÖ&&ÆRâF†R##^(	3##b6öç6W'fF–öâ6ÆVæVBF†RÆ–ÖW7FöæRÂG&VFVBF†R&VBÖ&&ÆRæB&VæWvVBF†R67BÖ—&öâvFW"7÷WG2æBF†R&V6—&7VÆF–öâ&6–âârÒÀ¢²†VF–æs¢uvFW"æB&6–ç2rÂ6öçFVçC¢uvFW"—2G&vâWæB&WGW&æVBF‡&÷Vv‚&V6—&7VÆF–öâ6—&7V—C²f÷W"7÷WG2fVVBF†RÆ÷vW"&6–ââF†R&6–âæB—&öçv÷&²vW&R&VgW&&—6†VB–âF†R&V6VçB6×–vâ6òF†RfVGW&R6â'Vâv–âârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†B7G–ÆR—2F†Rf÷VçF–ãòrÂç7vW#¢t—B—26V6öæBV×—&RvÆÂf÷VçF–â–âG&—V×†ÂÖ&6‚–F–öÒÂ&÷WB#bÒ†–v‚Â'’v'&–VÂFf–÷VBârÒÀ¢²VW7F–öã¢uv†B—2—BÖFRöcòrÂç7vW#¢u6–çBÔÖ†–Ö–âÆ–ÖW7FöæRf÷"F†R&öG’æB&VBÖ&&ÆRf÷"F†R6öÇVÖç2Âv—F‚67BÖ—&öâ7÷WG2æB&V6—&7VÆF–öâ&6–âârÒÀ¢²VW7F–öã¢uv‡’—2—B6ÆÆVBvÆÂf÷VçF–ãòrÂç7vW#¢t&V6W6R—B—2'V–ÇBv–ç7B'V–ÆF–ær2FV6÷&F—fR67&VVâÂæ÷B2g&VR×7FæF–ær&6–â–âF†RÖ–FFÆRöb7V&RârÒÀ¢ÒÀ¢æc¢t&6†—FV7GW&RrÀ¢&VÆFVC¢²v†—7F÷'’rÂw67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvv'&–VÂÖFf–÷VBrÂv†W76Öæâ×&—2uÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢t&6†—FV7GW&RFRÆföçF–æR6–çBÔÖ–6†VÂ(	2f:vFRÂ6öÆöææW2WBÖL:—&–W‚rÀ¢FW67&—F–öã ¢t6öÖÖVçBW7B6öç7G'V—B6R×W"FR#bÒ¢ÆâVâ&2FRG&–ö×†RÂ6öÆöææW26÷&–çF†–VææW2VâÖ&'&R&÷VvRÂæ–6†RÂ&76–ç2WBÖL:—&–W‚FRv'&–VÂFf–÷VBârÀ¢ƒ¢tÎ(	–&6†—FV7GW&RFRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æR6–çBÔÖ–6†VÂW7BVæR*²föçF–æRÖ×W&ÆR+²¢Vâ:–7&âFR–W'&RÖöçVÖVçFÂN(	–Vçf—&öâ#bÒFR†WBWBRÒFRÆ&vRÂ6öì:wR"v'&–VÂFf–÷VB÷W"fW&ÖW"ÆW'7V7F—fRFRÆ'VRFçFöâârÀ¢6V7F–öç3¢°¢²†VF–æs¢uVâÆâVâ&2FRG&–ö×†RrÂ6öçFVçC¢tÆf:vFR6RÆ—B6öÖÖRVâ&2FRG&–ö×†R,:–GV—B¢VæR&6RÆ&vRÂVæRæ–6†R6VçG&ÆRVæ6G,:–RFR6öÆöææW2ÂWBVâ:—FvRN(	–GF—VRâVÆÆRfW&ÖRÆW'7V7F—fRFRÆ'VRFçFöâWBÖ7VRÆR–væöâçRFRÎ(	––ÖÖWV&ÆRFW'&œ:‡&RârÒÀ¢²†VF–æs¢t6öÆöææW2WBæ–6†RrÂ6öçFVçC¢uVG&R6öÆöææW26÷&–çF†–VææW2VâÖ&'&R&÷VvRVæ6G&VçBÆæ–6†R6VçG&ÆRV’'&—FRÆRw&÷WRFRÎ(	–&6†ævRÖ–6†VÂâRÖFW77W2ÂVâVçF&ÆVÖVçBWBVâGF—VR÷'FVçBÆL:–6÷&F–öâ†WFRWBÎ(	–VÖ&Ì:†ÖR–×:—&–ÂN(	–÷&–v–æR‡&V×Æ<:’Vç7V—FR"ÆW2&ÖW2FRÆf–ÆÆR’ârÒÀ¢²†VF–æs¢tÖL:—&–W‚rÂ6öçFVçC¢tÆR6÷'2W7BVâ6Æ6—&RFR6–çBÔÖ†–Ö–âÂ:w&–â6Æ—"WB,:–wVÆ–W"²ÆW26öÆöææW2VâÖ&'&R&÷VvRâÆ6×væR##^(	3##bæWGF÷œ:’ÆR6Æ6—&RÂG&—L:’ÆRÖ&'&R&÷VvRWB&Væ÷WfVÌ:’ÆW2&÷V6†W2FRföçFRWBÆR&76–âFR&V6—&7VÆF–öâârÒÀ¢²†VF–æs¢tVRWB&76–ç2rÂ6öçFVçC¢tÎ(	–VRÖöçFRWB&Wf–VçB"Vâ6—&7V—BFR&V6—&7VÆF–öâ²VG&R&÷V6†W2Æ–ÖVçFVçBÆR&76–â&2â&76–âWBfW'&öææW&–RöçB:—L:’&Vf—G2÷W"VRÆR¦WRN(	–VRV—76R&W&VæG&RârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uVVÂW7BÆR7G–ÆRFRÆföçF–æRòrÂç7vW#¢tföçF–æRÖ×W&ÆRGR6V6öæBV×—&RÂVâf÷&ÖRN(	–&2FRG&–ö×†RÂVçf—&öâ#bÒFR†WBÂ"v'&–VÂFf–÷VBârÒÀ¢²VW7F–öã¢tVâVö’W7BÖVÆÆRf—FRòrÂç7vW#¢t6Æ6—&RFR6–çBÔÖ†–Ö–â÷W"ÆR6÷'2ÂÖ&'&R&÷VvR÷W"ÆW26öÆöææW2ÂfV2&÷V6†W2FRföçFRWB&76–âFR&V6—&7VÆF–öâârÒÀ¢²VW7F–öã¢u÷W'Vö’&föçF–æRÖ×W&ÆR"òrÂç7vW#¢t6"VÆÆRW7B6öç7G'V—FR6öçG&RVâ–ÖÖWV&ÆR6öÖÖR:–7&âL:–6÷&F–bÂæöâ6öÖÖRVâ&76–â—6öÌ:’RÖ–Æ–WRN(	—VæRÆ6RârÒÀ¢ÒÀ¢æc¢t&6†—FV7GW&RrÀ¢&VÆFVC¢²v†—7F÷'’rÂw67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvv'&–VÂÖFf–÷VBrÂv†W76Öæâ×&—2uÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~YÊ>{>jØ~[	NYk~k8[»®zÙŠz>Šû¾ûÈz¸¾™Ú.8iû[ÈşKˆîiÙiiûÈ’rÀ¢FW67&—F–öã¢~‹ù[ª~{ªb#b{>š¹y¨N‹KNZ)Yk~k8Zh.KÙ^[»®h‰ûÉ®Xzşix¾™z[Èş[ˆ>[8{ª.ˆ›.ZJ~ynyû>zyié~ijşiû8Z8›é¾8kNkûÈÎKº^Xø®‹ëî{»NK˜Î[ë~h˜yJy¨NiÙii8"rÀ¢ƒ¢~YÊ>{>jØ~[	NYk~k8y¨N[»®zÙrÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~YÊ>{>jØ~[	NYk~k8iŠşKˆ[ª~8Î‹KNZ)Yk~k88Ş(	N(	N{ªb#b{>š¹8R{>ZëŞy¨N{ª®[û^z)[Èşyû>[şûÈÎyKXª[ˆ>˜xÎYø>[	L+~‹ëî{»NK˜Î[ë~ŠëîŠêûÈÎKÙÎK‹¢'VRFçFöâŠ~˜>[Şzºşy¨NŠ8^š[iKn[î8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~Xzşix¾™z[Èş[ˆ>[rÂ6öçFVçC¢~z¸¾™Ú.Zh.YÎ{Ê[şy¨NXzşix¾™zûÉ®ZëŞXé®[©^[ª~8yKz¸¾iûY»NYy¨NKŠŞZJîZ8›é¾ûÈÎKº^Xø®Kˆ®iky¨Nšn[.8.Zè>izYÊiKniÙò'VRFçFöây¨NŠxn{«şûÈÎ[›n˜îhêYîik[»®zÙy¨Nzx>[Z)8"rÒÀ¢²†VF–æs¢~iûX‰~KˆîZ8›é²rÂ6öçFVçC¢~Y¹¾j{ª.ˆ›.ZJ~ynyû>zyié~ijşiûxêş{¹^KŠŞZJîZ8›é¾ûÈÎXh^{ÚîZJ~ZJKÛş{>jØ~[	N{êN™¹^8.X[nKˆ®j©˜:Kˆîšn[.h›ş‹ÛŞKˆ®˜:Š8^š[ûÈÎKº^Xø®iÈX‰Şy¨N[‰ŞY»Ş[ëŞŠëûÈYîŠ*¾Yøî[ˆ.[ëŞzºXùnKº>ûÈ8"rÒÀ¢²†VF–æs¢~iÙii’rÂ6öçFVçC¢~K‹¾KÙ>K‹®YÊ>ššÎXX¾Š[şi»ÎûÈ…6–çBÔÖ†–Ö–îûÈyû>x[*ûÈÎ{«ynkX^kzYØ~XÈûÉ¾iû‹ª¾K‹®{ª.ˆ›.ZJ~ynyû>8###^(	3##b[›NKúîZHŞkˆ^kI~K¨nyû>x[*8ZHNyn{ª.ˆ›.ZJ~ynyû>ûÈÎ[›ni»NikK¨n™;™8Yk~Xú>Kˆî[ê®xêşkNk8"rÒÀ¢²†VF–æs¢~kNKˆîkNkrÂ6öçFVçC¢~kN{¸ş[ê®xêşY¹î‹zşhùXØ~[›nY¹îkXûÉ¾Y¹¾KŠ®Yk~Xú>k:XZ^Kˆ¾[.kNk8.kNkKˆî™8K»n[{.YÊ‹ùiÉş[z^zˆ¾KŠŞ{û¾KúîûÈÎKÛşYk~k8[é~Kº^˜xŞik‹ùŠÎ8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~Yk~k8iŠşK¸K˜š8îjÎûÉòrÂç7vW#¢~zÊÎK¨Î[‰ŞY»Ş‹KNZ)Yk~k8ûÈÎXzşix¾™zŠúŞk~ûÈÎ{ªb#b{>š¹ûÈÎX{®ˆz®‹ëî{»NK˜Î[ë~8"rÒÀ¢²VW7F–öã¢~yKK¸K˜[»®h‰ûÉòrÂç7vW#¢~K‹¾KÙ>K‹®YÊ>ššÎXX¾Š[şi»Îyû>x[*ûÈÎiû‹ª¾K‹®{ª.ˆ›.ZJ~ynyû>ûÈÎ˜XŞ™;™8Yk~Xú>Kˆî[ê®xêşkNk8"rÒÀ¢²VW7F–öã¢~K‹®KÙ^z{K‹®‹KNZ)Yk~k8ûÉòrÂç7vW#¢~YºK‹®Zè>‹KN™˜N[»®zÙKÙÎK‹®Š8^š[[şûÈÎˆÎ™Ùîz¸¾K¨î[›şYË®KŠŞZJîy¨NxºÎz¸¾kNk8"rÒÀ¢ÒÀ¢æc¢~[»®zÙrÀ¢&VÆFVC¢²v†—7F÷'’rÂw67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvv'&–VÂÖFf–÷VBrÂv†W76Öæâ×&—2uÒÀ¢ÒÀ¢ÒÀ¢w67VÇGW&W2ÖæB×7–Ö&öÆ—6Òs¢°¢Vã¢°¢F—FÆS¢tföçF–æR6–çBÔÖ–6†VÂ67VÇGW&W2b7–Ö&öÆ—6Ò(	27FGVW2ÖVæ–ærrÀ¢FW67&—F–öã ¢tâ–æFW‚öbWfW'’7FGVS¢F†R6VçG&Â&6†ævVÂÖ–6†VÂÂF†RGvòv–ævVBG&vöç2ÂæBF†Rf÷W"6&F–æÂ×f—'GVRf–wW&W2Âv—F‚F†V—"67VÇF÷'2æBÖVæ–æw2ârÀ¢ƒ¢u67VÇGW&W2æB7–Ö&öÆ—6ÒöbföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†RÖöçVÖVçN(	—267VÇGW&Rv27&VB7&÷72æ–æR'F—7G2âF†R&öw&ÖÖR6WG2F†R&6†ævVÂÖ–6†VÂBF†R6VçG&RÂGvòG&vöç2BF†Ræ–6†R&6RÂæBf÷W"6&F–æÂ×f—'GVR7FGVW2BF†Rfö÷BöbF†R6öÇVÖç2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢t6VçG&Âw&÷W¢&6†ævVÂÖ–6†VÂrÂ6öçFVçC¢uF†RG&ÖF–2w&÷WöbF†R&6†ævVÂÖ–6†VÂ÷fW&6öÖ–ærF†RFWf–Â—2'’g&æ6—7VRÔ¦÷6W‚GW&WBâ—B7&÷vç2F†Ræ–6†RæBv—fW2F†Rf÷VçF–â—G2æÖRæBF†VÖRârÒÀ¢²†VF–æs¢uF†RGvòv–ævVBG&vöç2rÂ6öçFVçC¢tBF†R&6RöbF†R6VçG&Âæ–6†RÂGvòv–ævVBG&vöç2†6†–Ü:‡&W2’&R'’†Vç&’Æg&VB¦7VVÖ'BâF†W’g&ÖRF†RÆ÷vW"&6–âæB&Rff÷W&—FRFWF–Âf÷"†÷Föw&†W'2ârÒÀ¢²†VF–æs¢tf÷W"6&F–æÂf—'GVW2rÂ6öçFVçC¢tBF†Rfö÷BöbF†R6öÇVÖç27FæBf÷W"7FGVW2öbF†R6&F–æÂf—'GVW3¢'VFVæ6R‡6W'VçBæBÖ—'&÷"Â'’¦VâÔVwW7FR&'&R’Âf÷&6R†6ÇV"Â'’6ÆVFRÔ¦VâwV–ÆÆVÖR’Â§W7F–6R‡66ÆW2æB&öBÂ'’Æ÷V—2ÕfÆVçF–â&ö&W'B’æBFV×W&æ6R†'&–FÆRÂ'’6†&ÆW2ÔÇ†öç6RwVÜ:—'’’ârÒÀ¢²†VF–æs¢t÷F†W"6'fVBv÷&²rÂ6öçFVçC¢uF†R&ö6²&VæVF‚Ö–6†VÂ—2'’l:–Æ—‚6W–ã²Æ÷r&VÆ–Vg2æBföÆ–vR&R'’Ö&–RÔæü:–Ö’6F–÷B„æü:–Ö’6öç7FçB“²gW'F†W"&VÆ–Vg2v—F‚F†R6—G’&×2&R'’VwW7FRÔ‡–6–çF†RFV&’âF†RgVÆÂw&÷Wv2&W7F÷&VB–âF†R##^(	3##b6×–vâârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†ò67VÇFVBF†R6VçG&Â7FGVSòrÂç7vW#¢tg&æ6—7VRÔ¦÷6W‚GW&WBÖFRF†R&6†ævVÂÖ–6†VÂw&÷W²F†RGvòG&vöç2&R'’†Vç&’Æg&VB¦7VVÖ'BârÒÀ¢²VW7F–öã¢uv†BFòF†Rf÷W"7FGVW2&W&W6VçCòrÂç7vW#¢uF†Rf÷W"6&F–æÂf—'GVW2(	B'VFVæ6RÂf÷&6RÂ§W7F–6RæBFV×W&æ6R(	BV6‚'’F–ffW&VçB—F‚Ö6VçGW'’67VÇF÷"ârÒÀ¢²VW7F–öã¢uv‡’G&vöãòrÂç7vW#¢uF†RG&vöâ—2F†RFWf–Âv†öÒÖ–6†VÂFVfVG3²Gvòv–ævVBG&vöç26—BBF†Ræ–6†R&6R2'BöbF†Rf–7F÷'’66VæRârÒÀ¢ÒÀ¢æc¢u67VÇGW&W2rÀ¢&VÆFVC¢²v&6†ævVÂÖÖ–6†VÂrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv&6†—FV7GW&RrÂv†—7F÷'’uÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢u67VÇGW&W2WB7–Ö&öÆ—6ÖRFRÆföçF–æR6–çBÔÖ–6†VÂ(	26–væ–f–6F–öârÀ¢FW67&—F–öã ¢t–æFW‚FR6†VR7FGVR¢Î(	–&6†ævRÖ–6†VÂR6VçG&RÂÆW2FWW‚G&vöç2–Ì:—2WBÆW2VG&RfW'GW26&F–æÆW2ÂfV267VÇFWW'2WB6Vç2ârÀ¢ƒ¢u67VÇGW&W2WB7–Ö&öÆ—6ÖRFRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆ67VÇGW&RGRÖöçVÖVçBÖö&–Æ—<:’æWVb'F—7FW2âÆR&öw&ÖÖRÆ6RÎ(	–&6†ævRÖ–6†VÂR6VçG&RÂFWW‚G&vöç2:Æ&6RFRÆæ–6†RÂWBVG&R7FGVW2FRfW'GW26&F–æÆW2R–VBFW26öÆöææW2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tw&÷WR6VçG&Â¢Î(	–&6†ævRÖ–6†VÂrÂ6öçFVçC¢tÆRw&÷WR7V7F7VÆ—&RFRÎ(	–&6†ævRÖ–6†VÂFW'&76çBÆRL:–ÖöâW7BFRg&æ6—7VRÔ¦÷6W‚GW&WBâ–Â6÷W&öææRÆæ–6†RWBFöææR6öâæöÒWB6öâFŒ:†ÖR:ÆföçF–æRârÒÀ¢²†VF–æs¢tÆW2FWW‚G&vöç2–Ì:—2rÂ6öçFVçC¢|8Æ&6RFRÆæ–6†R6VçG&ÆRÂFWW‚G&vöç2–Ì:—2†6†–Ü:‡&W2’6öçBN(	”†Vç&’Æg&VB¦7VVÖ'Bâ–Ç2Væ6G&VçBÆR&76–â&2WB6öçBVâL:—F–Â&—<:’FW2†÷Föw&†W2ârÒÀ¢²†VF–æs¢tÆW2VG&RfW'GW26&F–æÆW2rÂ6öçFVçC¢tR–VBFW26öÆöææW2ÂVG&R7FGVW2FW2fW'GW26&F–æÆW2¢Æ'VFVæ6R‡6W'VçBWBÖ—&ö—"Â¦VâÔVwW7FR&'&R’ÂÆf÷&6R†Ö77VRÂ6ÆVFRÔ¦VâwV–ÆÆVÖR’ÂÆ§W7F–6R†&Ææ6RWBfW&vRÂÆ÷V—2ÕfÆVçF–â&ö&W'B’WBÆFV×:—&æ6R†'&–FRÂ6†&ÆW2ÔÇ†öç6RwVÜ:—'’’ârÒÀ¢²†VF–æs¢tWG&W267VÇGW&W2rÂ6öçFVçC¢tÆR&ö6†W"6÷W2Ö–6†VÂW7BFRl:–Æ—‚6W–â²&2×&VÆ–Vg2WBfWV–ÆÆvW2FRÖ&–RÔæü:–Ö’6F–÷B„æü:–Ö’6öç7FçB’²N(	–WG&W2&VÆ–Vg2W‚&ÖW2FRÆf–ÆÆR"VwW7FRÔ‡–6–çF†RFV&’âÎ(	–Vç6VÖ&ÆR:—L:’&W7FW,:’Vâ##^(	3##bârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uV’67VÇL:’Æ7FGVR6VçG&ÆRòrÂç7vW#¢tg&æ6—7VRÔ¦÷6W‚GW&WBf—BÆRw&÷WRFRÎ(	–&6†ævRÖ–6†VÂ²ÆW2FWW‚G&vöç26öçBN(	”†Vç&’Æg&VB¦7VVÖ'BârÒÀ¢²VW7F–öã¢uVR&W,:—6VçFVçBÆW2VG&R7FGVW2òrÂç7vW#¢tÆW2VG&RfW'GW26&F–æÆW2(	B'VFVæ6RÂf÷&6RÂ§W7F–6RWBFV×:—&æ6R(	B6†7VæR"Vâ67VÇFWW"F–fl:—&VçBGR„•†R6œ:†6ÆRârÒÀ¢²VW7F–öã¢u÷W'Vö’VâG&vöâòrÂç7vW#¢tÆRG&vöâW7BÆRL:–ÖöâVRÖ–6†VÂFW'&76R²FWW‚G&vöç2–Ì:—2&÷&FVçBÆæ–6†RFç2Æ6<:†æRFRf–7Fö—&RârÒÀ¢ÒÀ¢æc¢u67VÇGW&W2rÀ¢&VÆFVC¢²v&6†ævVÂÖÖ–6†VÂrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv&6†—FV7GW&RrÂv†—7F÷'’uÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~YÊ>{>jØ~[	NYk~k8™¹^X8şKˆîZù>hHşûÈ™¹^X8şY
+¾K˜ûÈ’rÀ¢FW67&—F–öã¢~˜	[ª~™¹^X8ş{J.[É^ûÉ®KŠŞZJîZJ~ZJKÛş{>jØ~[	N8XøÎ{ûÎ›éûÈÎKº^Xø®Y¹¾[®iê.[ë~™¹^X8şûÈÎY
+¾™¹^ZZënKˆîZù>hHş8"rÀ¢ƒ¢~YÊ>{>jØ~[	NYk~k8y¨N™¹^X8şKˆîZù>hHòrÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~{ª®[û^z)y¨N™¹^ZyKK™ŞKØŞˆ›®iÊşZënX[YÎZèÎh‰8.ièNY»îKŠŞûÉ®KŠŞZJîK‹®ZJ~ZJKÛş{>jØ~[	NûÈÎZ8›é¾Yû®[ª~K‹®XøÎ{ûÎ›éûÈÎiûˆI®K‹®Y¹¾[®iê.[ë~™¹^X8ş8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~KŠŞZJî{êN™¹^ûÉ®ZJ~ZJKÛş{>jØ~[	BrÂ6öçFVçC¢~8ÎZJ~ZJKÛş{>jØ~[	NX‹niÈŞšÙNšËÎ8Ş{êN™¹^X{®ˆz®[É~iÉ~Š[şijşXX²Ş{ªnyşZJ¼+~‹ú®™»~ûÈ„g&æ6—7VRÔ¦÷6W‚GW&WNûÈûÈÎKØŞK¨îZ8›é¾šnzºşûÈÎK™şiŠşYk~k8YŞz{KˆîK‹¾š)y¨NyKiÚ^8"rÒÀ¢²†VF–æs¢~XøÎ{ûÎ›é’rÂ6öçFVçC¢~KŠŞZJîZ8›é¾Yû®[ª~KŠNKê~y¨NiÈ{ûÎ›éûÈ†6†–Ü:‡&W>ûÈX{®ˆz®KªXŠœ+~™‹ş[	N[É~™»~[ë|+~™¸^XX¾ššÎ[	NûÈ„†Vç&’Æg&VB¦7VVÖ'NûÈûÈÎjnKØşKˆ¾[.kNkûÈÎiŠşiN[Û[ˆy¨N™)şx‹{¸nˆ¨.8"rÒÀ¢²†VF–æs¢~Y¹¾iê.[ërrÂ6öçFVçC¢~iûˆI®Y¹¾[®™¹^X8şKº>ŠY¹¾iê.[ë~ûÉ®ZêhXîûÈhÈ‰¸~Kˆî™YÎûÈÄ¦VâÔVwW7FR&'&RKÙÎûÈ8X©¾˜xşûÈhÈj8Şj9.ûÈÄ6ÆVFRÔ¦VâwV–ÆÆVÖRKÙÎûÈ8jÚ>K˜ûÈhÈZJ[›>KˆîiÙnûÈÄÆ÷V—2ÕfÆVçF–â&ö&W'BKÙÎûÈ8ˆ¨.X‹nûÈhÈ{Ë{»>ûÈÄ6†&ÆW2ÔÇ†öç6RwVÜ:—'’KÙÎûÈ8"rÒÀ¢²†VF–æs¢~X[nK¹n™¹^X‹²rÂ6öçFVçC¢~{>jØ~[	NˆI®Kˆ¾y¨N[*yû>X{®ˆz¢l:–Æ—‚6W–îûÉ¾kX^kZî™¹^KˆîXûnš[X{®ˆz¢Ö&–RÔæü:–Ö’6F–÷NûÈ„æü:–Ö’6öç7FçNûÈûÉ¾[ŠnYøî[ˆ.[ëŞzºy¨NkX^kZî™¹^X{®ˆz¢VwW7FRÔ‡–6–çF†RFV&8.i[N{¸NYÊ‚##^(	3##b[›N[z^zˆ¾KŠŞKúîZHŞ8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~KŠŞZJî™¹^X8şiŠş‹™¹^X‹¾y¨NûÉòrÂç7vW#¢~[É~iÉ~Š[şijşXX²Ş{ªnyşZJ¼+~‹ú®™»~KÙÎZJ~ZJKÛş{>jØ~[	N{êN™¹^ûÉ¾XøÎ{ûÎ›éX{®ˆz®KªXŠœ+~™‹ş[	N[É~™»~[ë|+~™¸^XX¾ššÎ[	N8"rÒÀ¢²VW7F–öã¢~Y¹¾[®™¹^X8şKº>ŠK¸K˜ûÉòrÂç7vW#¢~Y¹¾iê.[ë~(	N(	NZêhXî8X©¾˜xş8jÚ>K˜8ˆ¨.X‹nûÈÎYNyKKˆKØÒ’K‰n{ª®™¹^ZZënZèÎh‰8"rÒÀ¢²VW7F–öã¢~K‹®KÙ^iÈ›éûÉòrÂç7vW#¢~›éXÛ>{>jØ~[	Nh˜X‹niÈŞy¨NšÙNšËÎûÉ¾KŠNXú®{ûÎ›éKØŞK¨îZ8›é¾Yû®[ª~ûÈÎ[îK¨îˆ9ÎXŠYË®išşy¨NKˆ˜:Xˆn8"rÒÀ¢ÒÀ¢æc¢~™¹^X8òrÀ¢&VÆFVC¢²v&6†ævVÂÖÖ–6†VÂrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv&6†—FV7GW&RrÂv†—7F÷'’uÒÀ¢ÒÀ¢ÒÀ¢v&6†ævVÂÖÖ–6†VÂs¢°¢Vã¢°¢F—FÆS¢uF†R&6†ævVÂÖ–6†VÂ7FGVRBföçF–æR6–çBÔÖ–6†VÂ(	2v†òbv‡’rÀ¢FW67&—F–öã ¢uv†òF†R6VçG&Â7FGVRFW–7G2ÂF†R7F÷'’—BFVÆÇ2Â—G267VÇF÷"g&æ6—7VRGW&WBÂæBv‡’F†Rf÷VçF–â&V'26–çBÖ–6†VÎ(	—2æÖRârÀ¢ƒ¢uF†R&6†ævVÂÖ–6†VÂBföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†R6VçG&W–V6R—2F†R&6†ævVÂÖ–6†VÂ÷fW&6öÖ–ærF†RFWf–Â(	Bf–7F÷'’ÖöbÖvööBÖ÷fW"ÖWf–Â66VæRF†BvfRF†Rf÷VçF–âÂF†R7V&RæBF†R&÷VÆWf&BF†V—"æÖRârÀ¢6V7F–öç3¢°¢²†VF–æs¢uF†R7F÷'’6†÷vârÂ6öçFVçC¢tÖ–6†VÂÂÆVFW"öbF†R†VfVæÇ’&×’Â—26†÷vâFVfVF–ærF†RFWf–Â–âF†Rf÷&ÒöbG&vöââF†R7V&¦V7B7V—FVBÖöçVÖVçBÆ6VBVæFW"F†R6V6öæBV×—&RæBÆ–væVBv—F‚F†RfV7BöbF†R77V×F–öâƒRVwW7B’ÂF†RG&öæÂfV7BöbÖ–6†VÂârÒÀ¢²†VF–æs¢uF†R67VÇF÷"rÂ6öçFVçC¢uF†Rw&÷W—2'’g&æ6—7VRÔ¦÷6W‚GW&WBƒƒN(	3ƒcR’ÂÆVF–ær6FVÖ–267VÇF÷"öbF†RW&–öBââV&Æ–W"ƒSbFW6–vâ†B&÷÷6VB%V6R"f–wW&RæBâƒS‚f&–çBæöÆVöâ7FGVRÂ&Vf÷&RÖ–6†VÂv26†÷6VâgFW"V&Æ–2ö&¦V7F–öâârÒÀ¢²†VF–æs¢uv†W&R—B6—G2rÂ6öçFVçC¢uF†Rw&÷W7&÷vç2F†R6VçG&Âæ–6†RÂ&÷fRF†RGvòv–ævVBG&vöç2'’†Vç&’Æg&VB¦7VVÖ'BæBF†Rf÷W"f—'GVR7FGVW2âg&öÒF†R7V&R–÷R&VB—Bg&öÒF†RfVÖVçBW(	B&÷WB#bÖWG&W2öbf:vFRârÒÀ¢²†VF–æs¢uv‡’%6–çBÔÖ–6†VÂ"rÂ6öçFVçC¢uF†RæÖR6öÖW2g&öÒF†R†—7F÷&–26–çBÔÖ–6†VÂ6†VÂöâF†R8æÆRFRÆ6—L:’æBF†R&÷VÆWf&BæÖVBf÷"—C²F†Rf÷VçF–âæB7V&R–æ†W&—BF†RFVF–6F–öâF‡&÷Vv‚F†R&÷VÆWf&BârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†ò—2F†R7FGVRBF†Rf÷VçF–ãòrÂç7vW#¢uF†R&6†ævVÂÖ–6†VÂFVfVF–ærF†RFWf–ÂÂ'’g&æ6—7VRÔ¦÷6W‚GW&WBârÒÀ¢²VW7F–öã¢uv‡’—2—B6ÆÆVB6–çBÔÖ–6†VÃòrÂç7vW#¢tgFW"F†R6–çBÔÖ–6†VÂ6†VÂæB&÷VÆWf&C²F†Rf÷VçF–âæB7V&RF¶RF†RæÖRg&öÒF†R&÷VÆWf&BârÒÀ¢²VW7F–öã¢uv†Vâv2F†Rw&÷WÖFSòrÂç7vW#¢t—Bv26'fVBf÷"F†RƒS(	3ƒcf÷VçF–âæBVçfV–ÆVBBF†Rƒc–æVwW&F–öâârÒÀ¢ÒÀ¢æc¢t&6†ævVÂÖ–6†VÂrÀ¢&VÆFVC¢²w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv†—7F÷'’rÂvv'&–VÂÖFf–÷VBuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tÆ7FGVRFRÎ(	–&6†ævRÖ–6†VÂ:ÆföçF–æR6–çBÔÖ–6†VÂ(	2V’WB÷W'Vö’rÀ¢FW67&—F–öã ¢uV’&W,:—6VçFRÆ7FGVR6VçG&ÆRÂÎ(	–†—7Fö—&R&6öçL:–RÂ6öâ67VÇFWW"g&æ6—7VRGW&WBÂWB÷W'Vö’ÆföçF–æR÷'FRÆRæöÒFR6–çBÖ–6†VÂârÀ¢ƒ¢tÎ(	–&6†ævRÖ–6†VÂ:ÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆœ:†6RÖ:çG&W76RW7BÎ(	–&6†ævRÖ–6†VÂFW'&76çBÆRL:–Ööâ(	B6<:†æRFRÆf–7Fö—&RGR&–Vâ7W"ÆRÖÂV’Föæì:’6öâæöÒ:ÆföçF–æRÂ:ÆÆ6RWBR&÷VÆWf&BârÀ¢6V7F–öç3¢°¢²†VF–æs¢tÎ(	–†—7Fö—&RÖöçG,:–RrÂ6öçFVçC¢tÖ–6†VÂÂ6†VbFRÎ(	–&Ü:–R<:–ÆW7FRÂFW'&76RÆRL:–Ööâ6÷W2f÷&ÖRFRG&vöââÆR7V¦WB6öçfVæ—B:VâÖöçVÖVçBGR6V6öæBV×—&RÂÆ–vì:’7W"Æl:§FRFRÎ(	”76ö×F–öâƒRü;·B’Âl:§FRG&öæÆRFRÖ–6†VÂârÒÀ¢²†VF–æs¢tÆR67VÇFWW"rÂ6öçFVçC¢tÆRw&÷WRW7BFRg&æ6—7VRÔ¦÷6W‚GW&WBƒƒN(	3ƒcR’âVâ&ö¦WBFRƒSb&÷÷6—BVæR*²—‚+²ÂWBVæRf&–çFRFRƒS‚VâæöÌ:–öâÂfçBVRÖ–6†VÂ6ö—B6†ö—6’,:‡2ö&¦V7F–öâGRV&Æ–2ârÒÀ¢²†VF–æs¢tü;’–Â6RG&÷WfRrÂ6öçFVçC¢tÆRw&÷WR6÷W&öææRÆæ–6†R6VçG&ÆRÂRÖFW77W2FW2FWW‚G&vöç2–Ì:—2N(	”†Vç&’Æg&VB¦7VVÖ'BWBFW2VG&R7FGVW2FRfW'GW2âFWV—2ÆÆ6RÂöâÆRÆ—BFR&2Vâ†WB(	BVçf—&öâ#bÒFRf:vFRârÒÀ¢²†VF–æs¢u÷W'Vö’*²6–çBÔÖ–6†VÂ+²rÂ6öçFVçC¢tÆRæöÒf–VçBFRÆ6†VÆÆR6–çBÔÖ–6†VÂFRÎ(	œ8æÆRFRÆ6—L:’WBGR&÷VÆWf&BV’Vâ÷'FRÆRæöÒ²ÆföçF–æRWBÆÆ6RŒ:—&—FVçBFRÆL:–F–66R"ÆR&÷VÆWf&BârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uV’W7BÆ7FGVRFRÆföçF–æRòrÂç7vW#¢tÎ(	–&6†ævRÖ–6†VÂFW'&76çBÆRL:–ÖöâÂ"g&æ6—7VRÔ¦÷6W‚GW&WBârÒÀ¢²VW7F–öã¢u÷W'Vö’*²6–çBÔÖ–6†VÂ+²òrÂç7vW#¢tGRæöÒFRÆ6†VÆÆRWBGR&÷VÆWf&B6–çBÔÖ–6†VÂ²ÆföçF–æRWBÆÆ6RÆRF–VææVçBGR&÷VÆWf&BârÒÀ¢²VW7F–öã¢uVæBÆRw&÷WR×BÖ–Â:—L:’f—BòrÂç7vW#¢uF–ÆÌ:’÷W"ÆföçF–æRFRƒS(	3ƒcWBL:—fö–Ì:’:Î(	––æVwW&F–öâFRƒcârÒÀ¢ÒÀ¢æc¢t&6†ævRÖ–6†VÂrÀ¢&VÆFVC¢²w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv†—7F÷'’rÂvv'&–VÂÖFf–÷VBuÒÀ¢ÒÀ¢¦ƒ¢°¢F—FÆS¢~YÊ>{>jØ~[	NYk~k8KŠŞZJîZJ~ZJKÛş{>jØ~[	N™¹^X8òrÀ¢FW67&—F–öã¢~KŠŞZJî™¹^X8şhøş{¹‹8Šë.‹ûK¸K˜iX^K¨¾8™¹^ZZën[É~iÉ~Š[şijşXX¼+~‹ú®™»~ûÈÎKº^Xø®Yk~k8K‹®KÙ^YŞK‹®YÊ>{>jØ~[	N8"rÀ¢ƒ¢~YÊ>{>jØ~[	NYk~k8y¨NZJ~ZJKÛş{>jØ~[	BrÀ¢WFFVC¢~iÈYîi»NikûÉ£##b[›BiÈ‚rÀ¢ÆVC¢~j[ø>iŠşZJ~ZJKÛş{>jØ~[	NX‹niÈŞšÙNšËÎ(	N(	NYhNhny»K¨y¨NYË®išşûÈÎK™ş‹X¾K¨K¨nYk~k88[›şYË®KˆîZJ~˜>Kº^YÊ>{>jØ~[	NK˜¾YŞ8"rÀ¢6V7F–öç3¢°¢²†VF–æs¢~h˜Šxëy¨NiX^K¨²rÂ6öçFVçC¢~{>jØ~[	NKÙÎK‹®ZJXi¾{¹ş[ˆ^ûÈÎX{¾‹J^XÉnKÙÎ›éy¨NšÙNšËÎ8.Šú^š)iÙZYYzÊÎK¨Î[‰ŞY»Şi{niÉşy¨N{ª®[û^z)ûÈÎ[›nKˆîYÊ>jøŞXØ~ZJˆ¨.ûÈƒ‚iÈ‚Riz^ûÈÎ{>jØ~[	Ny¨NK‹¾KùŞ[¨niz^ûÈy»YÎ[©N8"rÒÀ¢²†VF–æs¢~™¹^ZZëbrÂ6öçFVçC¢~{êN™¹^X{®ˆz®[É~iÉ~Š[şijşXX²Ş{ªnyşZJ¼+~‹ú®™»~ûÈ„g&æ6—7VRÔ¦÷6W‚GW&WNûÈÃƒN(	3ƒc^ûÈ8#ƒSb[›Ny¨Nikji»îh¹şyJ8ÎY(Î[›>8ŞX8şûÈÃƒS‚[›NXøh¹şyJh»şzNK¹X8şûÈÎYîYºXZÎKÉ~XøŞZûiKY¹î{>jØ~[	N8"rÒÀ¢²†VF–æs¢~h˜YÊKØŞ{ÚârÂ6öçFVçC¢~{êN™¹^KØŞK¨îKŠŞZJîZ8›é¾šnzºşûÈÎK˜¾Kˆ®K‹®KªXŠœ+~™‹ş[	N[É~™»~[ë|+~™¸^XX¾ššÎ[	Ny¨NXøÎ{ûÎ›éKˆîY¹¾[®{èî[ë~™¹^X8ş8.K¸î[›şYË®yKKˆ¾[èKˆ®yÈ¾ûÈÎ{ªb#b{>z¸¾™Ú.[ŞiKnyËÎ[©^8"rÒÀ¢²†VF–æs¢~K‹®KÙ^z{YÊ>{>jØ~[	BrÂ6öçFVçC¢~YŞz{k©ˆz®Yøî[)¾Kˆ®y¨NYÊ>{>jØ~[	N[şZ.Xø®Kº^X[nYŞYŞy¨NZJ~˜>ûÉ¾Yk~k8Kˆî[›şYË®˜	®‹ø~ZJ~˜>{º~h›şjÚNYŞ8"rÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢~Yk~k8y¨N™¹^X8şiŠş‹ûÉòrÂç7vW#¢~ZJ~ZJKÛş{>jØ~[	NX‹niÈŞšÙNšËÎûÈÎyK[É~iÉ~Š[şijşXX²Ş{ªnyşZJ¼+~‹ú®™»~h˜KÙÎ8"rÒÀ¢²VW7F–öã¢~K‹®KÙ^Xú¾YÊ>{>jØ~[	NûÉòrÂç7vW#¢~Xùnˆz®YÊ>{>jØ~[	N[şZ.KˆîZJ~˜>ûÉ¾Yk~k8Kˆî[›şYË®YºZJ~˜>ˆÎ[é~YŞ8"rÒÀ¢²VW7F–öã¢~{êN™¹^KÙ^i{nZèÎh‰ûÉòrÂç7vW#¢~K‹¢ƒS(	3ƒc[›NYk~k8™¹^X‹¾ûÈÎ[›nYÊ‚ƒc[›NhúŞ[™^i{nKªîy»8"rÒÀ¢ÒÀ¢æc¢~ZJ~ZJKÛş{>jØ~[	BrÀ¢&VÆFVC¢²w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂvG&vöç2ÖæBÖ6†–ÖW&2rÂv†—7F÷'’rÂvv'&–VÂÖFf–÷VBuÒÀ¢ÒÀ¢ÒÀ¢vG&vöç2ÖæBÖ6†–ÖW&2s¢°¢Vã¢°¢F—FÆS¢uF†RG&vöç2öbföçF–æR6–çBÔÖ–6†VÂ(	2v–ævVB6†–ÖW&2rÀ¢FW67&—F–öã ¢t–FVçF–g’F†RGvòv–ævVBG&vöç2BF†Ræ–6†R&6RÂF†V—"67VÇF÷"†Vç&’Æg&VB¦7VVÖ'BÂv†BF†W’7–Ö&öÆ—6RÂæBF†R&W7BævÆW2Fò†÷Föw&‚F†VÒârÀ¢ƒ¢uF†RG&vöç2æB6†–ÖW&2öbföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uGvòv–ævVBG&vöç2†6†–Ü:‡&W2’7&÷V6‚BF†R&6RöbF†R6VçG&Âæ–6†RÂfÆæ¶–ærF†RÆ÷vW"&6–â(	BV7’FòÖ—72'WBÖöærF†RÖ÷7B†÷FövVæ–2FWF–Ç2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢uv†W&RF†W’&RrÂ6öçFVçC¢tÆöö²Æ÷rÂBF†Rfö÷BöbF†R6VçG&Âæ–6†S¢öæRG&vöâöâV6‚6–FRöbF†RÆ÷vW"&6–ââF†W’6—B&VÆ÷rF†R&6†ævVÂÖ–6†VÂw&÷WæB&÷fRF†Rf÷W"f—'GVR7FGVW2ârÒÀ¢²†VF–æs¢uF†R67VÇF÷"rÂ6öçFVçC¢t&÷F‚G&vöç2&R'’†Vç&’Æg&VB¦7VVÖ'BÂöæRöbF†Ræ–æR67VÇF÷'2öâF†RÖöçVÖVçBâF†V—"66Ç’Âv–ær×7&VF–ærf÷&×26öçG&7Bv—F‚F†R6ÆÒ6Æ76–6Â6öÇVÖç2ârÒÀ¢²†VF–æs¢uv†BF†W’ÖVârÂ6öçFVçC¢uF†RG&vöç2&RF†RFWf–Î(	—2f÷&Ò–âF†Rf–7F÷'’66VæR(	BÖ–6†VÂFVfVG2F†RG&vöâ&÷fRÂv†–ÆRF†R7&VGW&W2BF†R&6R6ö×ÆWFRF†Ræ'&F—fRöbF†RG&—V×‚öbvööBâF†W’&R&6†–ÖW&2"–âF†RFV6÷&F—fR6Vç6S¢6ö×÷6—FRÂ–Öv–æ'’&V7G2ârÒÀ¢²†VF–æs¢u†÷Föw&†–ærF†VÒrÂ6öçFVçC¢tg&öÒF†R7V&RÂÆ÷rævÆRv—F‚v–FRÆVç26GW&W2G&vöâv—F‚F†RWW"f:vFR&V†–æB—BâV&Ç’Ö÷&æ–ær6–FRÖÆ–v‡BFVf–æW2F†R66ÆW3²6VR÷W"†÷F÷2vRf÷"gVÆÂ6†ö÷F–ærF—2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†òÖFRF†RG&vöç3òrÂç7vW#¢t†Vç&’Æg&VB¦7VVÖ'B67VÇFVB&÷F‚v–ævVBG&vöç2BF†Ræ–6†R&6RârÒÀ¢²VW7F–öã¢t&RF†W’G&vöç2÷"6†–ÖW&3òrÂç7vW#¢uF†W’&Rv–ævVBG&vöâf÷&×3²&6†–ÖW&"—2W6VB†W&R–âF†RFV6÷&F—fR6Vç6Röb6ö×÷6—FR–Öv–æ'’&V7BârÒÀ¢²VW7F–öã¢uv‡’&RF†W&RG&vöç3òrÂç7vW#¢uF†W’&W&W6VçBF†RFWf–ÂÖ–6†VÂFVfVG3²F†W’6ö×ÆWFRF†Rf–7F÷'’66VæRBF†R&6RöbF†Ræ–6†RârÒÀ¢ÒÀ¢æc¢tG&vöç2rÀ¢&VÆFVC¢²w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂv&6†ævVÂÖÖ–6†VÂrÂw†÷F÷2rÂv&6†—FV7GW&RuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tÆW2G&vöç2FRÆföçF–æR6–çBÔÖ–6†VÂ(	26†–Ü:‡&W2–Ì:–W2rÀ¢FW67&—F–öã ¢u&W:—&W¢ÆW2FWW‚G&vöç2–Ì:—2:Æ&6RFRÆæ–6†RÂÆWW"67VÇFWW"†Vç&’Æg&VB¦7VVÖ'BÂÆWW"6Vç2ÂWBÆW2ÖV–ÆÆWW'2ævÆW2÷W"ÆW2†÷Föw&†–W"ârÀ¢ƒ¢tÆW2G&vöç2WB6†–Ü:‡&W2FRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tFWW‚G&vöç2–Ì:—2†6†–Ü:‡&W2’6R&Æ÷GF—76VçB:Æ&6RFRÆæ–6†R6VçG&ÆRÂVæ6G&çBÆR&76–â&2(	Bf6–ÆW2:ÖçVW"Ö—2&Ö’ÆW2L:—F–Ç2ÆW2ÇW2†÷Fö|:–æ—VW2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tü;’–Ç26RG&÷WfVçBrÂ6öçFVçC¢u&Vv&FW¢Vâ&2ÂR–VBFRÆæ–6†R6VçG&ÆR¢VâG&vöâFR6†VR<;GL:’GR&76–â&2â–Ç26öçB6÷W2ÆRw&÷WRFRÎ(	–&6†ævRÖ–6†VÂWBRÖFW77W2FW2VG&R7FGVW2FRfW'GW2ârÒÀ¢²†VF–æs¢tÆR67VÇFWW"rÂ6öçFVçC¢tÆW2FWW‚G&vöç26öçBN(	”†Vç&’Æg&VB¦7VVÖ'BÂÎ(	—VâFW2æWVb67VÇFWW'2GRÖöçVÖVçBâÆWW'2f÷&ÖW2:–6–ÆÆWW6W2WBL:—Æ÷œ:–W26öçG&7FVçBfV2ÆW26öÆöææW26Æ76—VW26ÆÖW2ârÒÀ¢²†VF–æs¢t6R^(	––Ç26–væ–f–VçBrÂ6öçFVçC¢tÆW2G&vöç26öçBÆf÷&ÖRGRL:–ÖöâFç2Æ6<:†æRFRf–7Fö—&R(	BÖ–6†VÂFW'&76RÆRG&vöâÇW2†WBÂFæF—2VRÆW27,:–GW&W2:Æ&6R6Œ:‡fVçBÆR,:–6—BGRG&–ö×†RGR&–Vââ6R6öçBFW2*²6†–Ü:‡&W2+²R6Vç2L:–6÷&F–b¢,:§FW2–Öv–æ—&W26ö×÷6—FW2ârÒÀ¢²†VF–æs¢tÆW2†÷Föw&†–W"rÂ6öçFVçC¢tFWV—2ÆÆ6RÂVâævÆR&2fV2Vâw&æBÖævÆR6GW&RVâG&vöâfV2Æf:vFR†WFRFW'&œ:‡&RâÆÇVÖœ:‡&R&6çFRGRÖF–â,:—l:†ÆRÆW2:–6–ÆÆW2²fö—"æ÷G&RvR*²†÷F÷2+²÷W"ÆR&W7FRârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uV’f—BÆW2G&vöç2òrÂç7vW#¢t†Vç&’Æg&VB¦7VVÖ'B67VÇL:’ÆW2FWW‚G&vöç2–Ì:—2:Æ&6RFRÆæ–6†RârÒÀ¢²VW7F–öã¢tG&vöç2÷R6†–Ü:‡&W2òrÂç7vW#¢t6R6öçBFW2f÷&ÖW2FRG&vöç2–Ì:—2²*²6†–Ü:‡&R+²W7B–6’R6Vç2L:–6÷&F–bFR,:§FR–Öv–æ—&R6ö×÷6—FRârÒÀ¢²VW7F–öã¢u÷W'Vö’FW2G&vöç2òrÂç7vW#¢t–Ç2&W,:—6VçFVçBÆRL:–ÖöâVRÖ–6†VÂFW'&76R²–Ç26Œ:‡fVçBÆ6<:†æRFRf–7Fö—&R:Æ&6RFRÆæ–6†RârÒÀ¢ÒÀ¢æc¢tG&vöç2rÀ¢&VÆFVC¢²w67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒrÂv&6†ævVÂÖÖ–6†VÂrÂw†÷F÷2rÂv&6†—FV7GW&RuÒÀ¢ÒÀ¢ÒÀ¢vv'&–VÂÖFf–÷VBs¢°¢Vã¢°¢F—FÆS¢tv'&–VÂFf–÷VBbföçF–æR6–çBÔÖ–6†VÂ(	2F†R&6†—FV7BrÀ¢FW67&—F–öã ¢uv†òFW6–væVBF†Rf÷VçF–ã¢v'&–VÂFf–÷VBÂ†W76Öæî(	—2&6†—FV7BÂæB†—2÷F†W"&—2v÷&·26öææV7FVBFòF†RÖöçVÖVçBârÀ¢ƒ¢tv'&–VÂFf–÷VBÂ&6†—FV7BöbföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†Rf÷VçF–î(	—2&6†—FV7GW&R—2'’v'&–VÂFf–÷VBƒƒ#N(	3ƒƒ’ÂF†R6V6öæBV×—&R&6†—FV7BÖ÷7B76ö6–FVBv—F‚&—27G&VWBgW&æ—GW&RæBV&Æ–2f÷VçF–ç2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tFf–÷VBæB†W76ÖæârÂ6öçFVçC¢t2&6†—FV7Bf÷"F†R6W'f–6RFW2&öÖVæFW2WBÆçFF–öç2VæFW"&&öâ†W76ÖæâÂFf–÷VBFW6–væVB¶–÷6·2ÂF†VG&W2ÂvFW2æBf÷VçF–ç2F†B7F–ÆÂ6†RF†RÆöö²öb&—2(	B–æ6ÇVF–ærF†RföçF–æR6–çBÔÖ–6†VÂƒƒS(	3ƒc’ârÒÀ¢²†VF–æs¢t†—2÷F†W"f÷VçF–ç2rÂ6öçFVçC¢tFf–÷VBÇ6òv÷&¶VBöâF†Rw&VB†W76Öææ–âf÷VçF–ç2öbF†R6Œ:'FVÆWBæBF†Rö'6W'fFö—&RÂæBF†RföçG2öbF†R&÷VÆWf&G2âF†R6–çBÔÖ–6†VÂf÷VçF–â—2vVæW&ÆÇ’6—FVB2F†RÆ7BöbF†RÖ¦÷"6V6öæBV×—&Rf÷VçF–ç26ö×ÆWFVBârÒÀ¢²†VF–æs¢u7G–ÆRæB7&gBrÂ6öçFVçC¢t†Rff÷W&VB6ÆV"Â6Æ76–6Âf:vFW2v—F‚&–6‚67VÇGW&Â&öw&ÖÖW2ÂW6–ærÆRÆ–ÖW7FöæRæB6öÆ÷W&VBÖ&&ÆR(	BF†R6ÖRÆæwVvR6VVâ7&÷72F†R&V'V–ÇB&÷VÆWf&G2öbF†RÆVgB&æ²ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†òFW6–væVBF†Rf÷VçF–ãòrÂç7vW#¢tv'&–VÂFf–÷VBÂ†W76Öæî(	—2&6†—FV7Bf÷"V&Æ–2v÷&·2ÂFW6–væVB—B–âƒS(	3ƒcârÒÀ¢²VW7F–öã¢tF–B†RFW6–vâ÷F†W"&—2f÷VçF–ç3òrÂç7vW#¢u–W2(	B–æ6ÇVF–ærF†R6Œ:'FVÆWBæBö'6W'fFö—&Rf÷VçF–ç2æBÖç’&÷VÆWf&BföçG2ârÒÀ¢²VW7F–öã¢uv†VâF–BFf–÷VBÆ—fSòrÂç7vW#¢t†RÆ—fVBƒ#N(	3ƒƒârÒÀ¢ÒÀ¢æc¢tv'&–VÂFf–÷VBrÀ¢&VÆFVC¢²v†—7F÷'’rÂv&6†—FV7GW&RrÂv†W76Öæâ×&—2rÂw67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tv'&–VÂFf–÷VBWBÆföçF–æR6–çBÔÖ–6†VÂ(	2Î(	–&6†—FV7FRrÀ¢FW67&—F–öã ¢uV’6öì:wRÆföçF–æR¢v'&–VÂFf–÷VBÂ&6†—FV7FRN(	”†W76ÖæâÂWB6W2WG&W2Y7Wg&W2&—6–VææW2Æœ:–W2RÖöçVÖVçBârÀ¢ƒ¢tv'&–VÂFf–÷VBÂ&6†—FV7FRFRÆföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÎ(	–&6†—FV7GW&RFRÆföçF–æRW7BFRv'&–VÂFf–÷VBƒƒ#N(	3ƒƒ’ÂÎ(	–&6†—FV7FRGR6V6öæBV×—&RÆRÇW2Æœ:’RÖö&–Æ–W"W&&–âWBW‚föçF–æW2FR&—2ârÀ¢6V7F–öç3¢°¢²†VF–æs¢tFf–÷VBWB†W76ÖæârÂ6öçFVçC¢t&6†—FV7FRGR6W'f–6RFW2&öÖVæFW2WBÆçFF–öç26÷W2ÆR&&öâ†W76ÖæâÂFf–÷VBFW76–ì:’¶–÷7VW2ÂFŒ:œ:'G&W2Âw&–ÆÆW2WBföçF–æW2V’f:vöææVçBVæ6÷&R&—2(	BFöçBÆföçF–æR6–çBÔÖ–6†VÂƒƒS(	3ƒc’ârÒÀ¢²†VF–æs¢u6W2WG&W2föçF–æW2rÂ6öçFVçC¢tFf–÷VBW76’G&f–ÆÌ:’W‚w&æFW2föçF–æW2†W76Öææ–VææW2GR6Œ:'FVÆWBWBFRÎ(	”ö'6W'fFö—&RÂWBW‚föçF–æW2FW2&÷VÆWf&G2âÆföçF–æR6–çBÔÖ–6†VÂW7B|:–ì:—&ÆVÖVçB6—L:–R6öÖÖRÆFW&æœ:‡&RFW2w&æFW2föçF–æW2GR6V6öæBV×—&R6†Wl:–W2ârÒÀ¢²†VF–æs¢u7G–ÆRWB6fö—"Öf—&RrÂ6öçFVçC¢t–Â–Ö—BÆW2f:vFW26Æ76—VW2æWGFW2:&–6†R&öw&ÖÖR67VÇL:’ÂVâ6Æ6—&R6Æ—"WBÖ&'&R6öÆ÷,:’(	BÆRÜ:¦ÖRÆævvRVR7W"ÆW2&÷VÆWf&G2&V6öç7G'V—G2FRÆ&—fRvV6†RârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uV’6öì:wRÆföçF–æRòrÂç7vW#¢tv'&–VÂFf–÷VBÂ&6†—FV7FRFW2G&fW‚V&Æ–72N(	”†W76ÖæâÂÎ(	–6öì:wVRVâƒS(	3ƒcârÒÀ¢²VW7F–öã¢t×BÖ–ÂFW76–ì:’N(	–WG&W2föçF–æW2òrÂç7vW#¢t÷V’(	BFöçBÆW2föçF–æW2GR6Œ:'FVÆWBWBFRÎ(	”ö'6W'fFö—&RWBæöÖ'&RFRföçF–æW2FR&÷VÆWf&BârÒÀ¢²VW7F–öã¢uVæBFf–÷VB×BÖ–Âl:–7RòrÂç7vW#¢t–Âl:–7RFRƒ#B:ƒƒârÒÀ¢ÒÀ¢æc¢tv'&–VÂFf–÷VBrÀ¢&VÆFVC¢²v†—7F÷'’rÂv&6†—FV7GW&RrÂv†W76Öæâ×&—2rÂw67VÇGW&W2ÖæB×7–Ö&öÆ—6ÒuÒÀ¢ÒÀ¢ÒÀ¢v†W76Öæâ×&—2s¢°¢Vã¢°¢F—FÆS¢tföçF–æR6–çBÔÖ–6†VÂb†W76Öæî(	—2&—2(	2W&&â6öçFW‡BrÀ¢FW67&—F–öã ¢uv‡’F†Rf÷VçF–âW†—7G3¢†W76Öæî(	—2&V'V–ÆF–æröb&—2ÂF†RæWr&÷VÆWf&G2ÂæB†÷rF†R7V&RæBf÷VçF–âf—BF†RÆâârÀ¢ƒ¢tföçF–æR6–çBÔÖ–6†VÂ–â†W76Öæî(	—2&—2rÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†Rf÷VçF–âv2–V6RöbW&&âF†VG&S¢ÖöçVÖVçFÂ67&VVâÆ6VBv†W&R†W76Öæî(	—2æWr&÷VÆWf&B6–çBÔÖ–6†VÂÖWBF†RöÆBÆVgB&æ²7G&VWBw&–BârÀ¢6V7F–öç3¢°¢²†VF–æs¢tæWr&÷VÆWf&BrÂ6öçFVçC¢uVæFW"&&öâ†W76ÖæâÂ&—27WBv–FRÂ7G&–v‡B&÷VÆWf&G2Fò–×&÷fR6—&7VÆF–öâæB7W'fV–ÆÆæ6Râ&÷VÆWf&B6–çBÔÖ–6†VÂ†÷VæVB–âF†RƒS>(	3c2’æVVFVB7G&öærfö6Âö–çBB—G2VçG&æ6RFòF†RÆF–âV'FW"ârÒÀ¢²†VF–æs¢t6Æ÷6–ærf–WrrÂ6öçFVçC¢uF†Rf÷VçF–âv2'V–ÇB2vÆÂf÷VçF–âFòÖ6²F†R&&Rv&ÆRöbF†R&Æö6²&V†–æB'VRFçFöâæBFòv—fRF†R&÷VÆWf&BFV6÷&FVBFW&Ö–çW2(	BG—–6Â†W76Öææ–âÖ÷fRöbGW&æ–ær–æg&7G'V7GW&R–çFò7V7F6ÆRârÒÀ¢²†VF–æs¢u7V&RæB6—G’rÂ6öçFVçC¢uÆ6R6–çBÔÖ–6†VÂv2Æ–B÷WBv—F‚F†R&÷VÆWf&B2‡–v–ÖvVöÖWG&–27&÷77&öG2âF†Rf÷VçF–âÂF†R'&–FvRFòF†R8æÆRFRÆ6—L:’æBF†RV—2vW&R¶æ—B–çFòöæR6öçF–çV÷W2V&Æ–276RârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv‡’v2F†Rf÷VçF–â'V–ÇCòrÂç7vW#¢t2†W76Öææ–âÖöçVÖVçBFò6Æ÷6RF†Rf–Wröb'VRFçFöâæBæ6†÷"F†RæWr&÷VÆWf&B6–çBÔÖ–6†VÂârÒÀ¢²VW7F–öã¢uv†Vâv2F†R&÷VÆWf&BÖFSòrÂç7vW#¢t&÷VÆWf&B6–çBÔÖ–6†VÂv2÷VæVB–âF†RƒS>(	3ƒc2VæFW"†W76ÖæâârÒÀ¢²VW7F–öã¢t—2—BG—–6Âöb†W76Öæî(	—27G–ÆSòrÂç7vW#¢u–W2(	B6Æ76–6ÂÂÖöçVÖVçFÂV&Æ–2v÷&²F†BF÷V&ÆW22W&&â–æg&7G'V7GW&RæBFV6÷&F–öâârÒÀ¢ÒÀ¢æc¢t†W76Öæâ&—2rÀ¢&VÆFVC¢²v†—7F÷'’rÂvv'&–VÂÖFf–÷VBrÂwÆ6R×6–çBÖÖ–6†VÂrÂv&6†—FV7GW&RuÒÀ¢ÒÀ¢g#¢°¢F—FÆS¢tÆföçF–æR6–çBÔÖ–6†VÂWBÆR&—2N(	”†W76Öæâ(	26öçFW‡FRW&&–ârÀ¢FW67&—F–öã ¢u÷W'Vö’ÆföçF–æRW†—7FR¢Æ&V6öç7G'V7F–öâFR&—2"†W76ÖæâÂÆW2æ÷WfVW‚&÷VÆWf&G2ÂWBÆÆ6RFRÆÆ6RWBFRÆföçF–æRFç2ÆRÆâârÀ¢ƒ¢tÆföçF–æR6–çBÔÖ–6†VÂFç2ÆR&—2N(	”†W76ÖæârÀ¢WFFVC¢tFW&æœ:‡&RÖ—6R:¦÷W"¢ö7Fö'&R##brÀ¢ÆVC¢tÆföçF–æR:—F—BVâÖ÷&6VRFRFŒ:œ:'G&RW&&–â¢Vâ:–7&âÖöçVÖVçFÂÌ:ü;’ÆRæ÷WfVR&÷VÆWf&B6–çBÔÖ–6†VÂN(	”†W76Öæâ&Væ6öçG&—BÆG&ÖRæ6–VææRFRÆ&—fRvV6†RârÀ¢6V7F–öç3¢°¢²†VF–æs¢uVâæ÷WfVR&÷VÆWf&BrÂ6öçFVçC¢u6÷W2ÆR&&öâ†W76ÖæâÂ&—2W&<:’FRÆ&vW2&÷VÆWf&G2G&ö—G2÷W"Æ6—&7VÆF–öâWBÆ7W'fV–ÆÆæ6RâÆR&÷VÆWf&B6–çBÔÖ–6†VÂ†÷WfW'BFç2ÆW2æì:–W2ƒS(	3c’f—B&W6ö–âN(	—Vâö–çBfö6Â:Î(	–VçG,:–RGRV'F–W"ÆF–âârÒÀ¢²†VF–æs¢tfW&ÖW"VæRgVRrÂ6öçFVçC¢tÆföçF–æR:—L:’6öç7G'V—FRVâföçF–æRÖ×W&ÆR÷W"Ö7VW"ÆR–væöâçRFRÎ(	––ÖÖWV&ÆRFW'&œ:‡&RÆ'VRFçFöâWBFöææW"R&÷VÆWf&BVæRFW&Ö–æ—6öâL:–6÷,:–R(	BvW7FR†W76Öææ–VâG——VRN(	––æg&7G'V7GW&R7V7F6ÆRârÒÀ¢²†VF–æs¢uÆ6RWBf–ÆÆRrÂ6öçFVçC¢tÆÆ6R6–çBÔÖ–6†VÂ:—L:’G&<:–RfV2ÆR&÷VÆWf&BVâ6'&Vf÷W"|:–öÜ:—G&—VRâÆföçF–æRÂÆRöçBfW'2Î(	œ8æÆRFRÆ6—L:’WBÆW2V—2f÷&ÖVçBVâW76RV&Æ–26öçF–çRârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢u÷W'Vö’ÆföçF–æR×BÖVÆÆR:—L:’6öç7G'V—FRòrÂç7vW#¢tÖöçVÖVçB†W76Öææ–Vâ÷W"fW&ÖW"ÆgVRFRÆ'VRFçFöâWBæ7&W"ÆRæ÷WfVR&÷VÆWf&B6–çBÔÖ–6†VÂârÒÀ¢²VW7F–öã¢uVæBÆR&÷VÆWf&B×BÖ–Â:—L:’W&<:’òrÂç7vW#¢tÆR&÷VÆWf&B6–çBÔÖ–6†VÂ:—L:’÷WfW'BFç2ÆW2æì:–W2ƒS(	3ƒc6÷W2†W76ÖæâârÒÀ¢²VW7F–öã¢tW7BÖ6RG——VRGR7G–ÆR†W76ÖæâòrÂç7vW#¢t÷V’(	BVæRY7Wg&RV&Æ—VR6Æ76—VRWBÖöçVÖVçFÆRÂ:Æfö—2–æg&7G'V7GW&RWBL:–6÷"ârÒÀ¢ÒÀ¢æc¢u&—2N(	”†W76ÖæârÀ¢&VÆFVC¢²v†—7F÷'’rÂvv'&–VÂÖFf–÷VBrÂwÆ6R×6–çBÖÖ–6†VÂrÂv&6†—FV7GW&RuÒÀ¢ÒÀ¢ÒÀ¢–ç67&—F–öç3¢°¢Vã¢°¢F—FÆS¢t–ç67&—F–öç2öâföçF–æR6–çBÔÖ–6†VÂ(	2FW‡BbG&ç6ÆF–öârÀ¢FW67&—F–öã ¢uv†B—2w&—GFVâöâF†Rf÷VçF–ã¢F†RFVF–6F–öâÂFFW2æBç’6'fVBFW‡BÂv—F‚Æ–â&VF–æræB6†÷'BG&ç6ÆF–öâârÀ¢ƒ¢uF†R–ç67&—F–öç2öbföçF–æR6–çBÔÖ–6†VÂrÀ¢WFFVC¢tÆ7BWFFVC¢ö7Fö&W"##brÀ¢ÆVC¢uF†RÖöçVÖVçB6'&–W26'fVBÆWGFW&–ær&F†W"F†âÆöær–ç67&—F–öâ(	BÖ–æÇ’F†RFVF–6F–öâFò6–çBÖ–6†VÂæBF†R6öç7G'V7F–öâFFRÂ&VF&ÆRg&öÒF†R7V&RârÀ¢6V7F–öç3¢°¢²†VF–æs¢uv†BFòÆöö²f÷"rÂ6öçFVçC¢töâF†Rf:vFR–÷Rv–ÆÂf–æBF†RFFW2ƒS‚æBƒc‡F†R7F'BæBF†R–æVwW&F–öâöbF†Rv÷&·2’æBF†RFVF–6F–öâFò6–çBÖ–6†VÂÂ–6¶VB÷WB–âF†R7FöæRâ'&–ær&–æö7VÆ'2÷"¦ööÒÆVç3²F†RÆWGFW&–ær—2†–v‚öâF†RVÆWfF–öâârÒÀ¢²†VF–æs¢t&VF–ærrÂ6öçFVçC¢uF†R¶W’6'fVBf7G2&RF†R6öç7G'V7F–öâ7â#ƒS(	3ƒc"æBF†RRVwW7Bƒc–æVwW&F–öâÂÆ–væVBv—F‚F†RfV7BöbF†R77V×F–öâæBÖ–6†VÎ(	—2G&öæÂF’âÆFW"&W—'2FFVBF†R6—G’6öBöb&×2–âÆ6RöbF†R÷&–v–æÂ–×W&–ÂVÖ&ÆVÒârÒÀ¢²†VF–æs¢t67W&7’æ÷FRrÂ6öçFVçC¢t&V6W6RF†RFW‡B—2†–v‚æBvVF†W&VBÂG&ç67&—F–öç2f'’&WGvVVâ6÷W&6W2âG&VBç’6–ævÆR&VF–ær2–æF–6F—fS²F†RFFW2&÷fR&RF†RöæW26öç6—7FVçFÇ’6—FVB'’F†Rf–ÆÆRFR&—2æB&VfW&Væ6R†—7F÷&–W2ârÒÀ¢ÒÀ¢f¢°¢²VW7F–öã¢uv†B—2w&—GFVâöâF†Rf÷VçF–ãòrÂç7vW#¢tÖ–æÇ’F†RFFW2ƒS(	3ƒcæBF†RFVF–6F–öâFò6–çBÖ–6†VÂÂ6'fVB†–v‚öâF†Rf:vFRârÒÀ¢²VW7F–öã¢t—2F†W&RÆöærÆF–â–ç67&—F–öãòrÂç7vW#¢tæò(	BF†RÆWGFW&–ærµ×¿-¢G§²ÚîÆ­yÑ”1Õá•µ‰½ÕÉœÍ½¹ĞÉ…ÑÕ¥ÑÌ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1•Ìƒ¥±¥Í•ÌÍ½¹Ğµ•±±•ÌÉ…ÑÕ¥Ñ•Ì€üœ°…¹Íİ•Èè€M…¥¹ĞµO¥Ù•É¥¸•ÍĞ±¥‰É”€ì³Še¥¹Ó¥É¥•ÕÈ9½ÑÉ”µ…µ”•ÍĞÉ…ÑÕ¥ĞÍÕÈË¥Í•ÉÙ…Ñ¥½¸¸M…¥¹Ñ”µ¡…Á•±±”•Ğ±”A…¹Ñ£¥½¸Í½¹ĞÁ…å…¹ÑÌ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€…ÕĞµ¥°‘•Ì‰¥±±•ÑÌÁ½ÕÈ±”É…ÑÕ¥Ğ€üœ°…¹Íİ•Èè€M•Õ°³Še¥¹Ó¥É¥•ÕÈ9½ÑÉ”µ…µ”‘•µ…¹‘”Õ¹”Ë¥Í•ÉÙ…Ñ¥½¸É…ÑÕ¥Ñ”€ì±”É•ÍÑ”•ÍĞ½ÕÙ•ÉĞ¸œô°(€€€€€t°(€€€€€¹…Øè€É…ÑÕ¥Ğœ°(€€€€€É•±…Ñ•èlÙ¥Í¥Ñ½ÈµÕ¥‘”œ°€¹•…É‰ä½¹½ÑÉ”µ‘…µ”œ°€¹•…É‰ä½Í…¥¹ĞµÍ•Ù•É¥¸œ°€İ…±­Ì¼ÌÀµµ¥¹ÕÑ”µİ…±¬t°(€€€ô°(€ô°(€Á¡½Ñ½Ìèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°A¡½Ñ½ÌƒŠLMÁ½ÑÌ°¹±•Ì€˜Q¥ÁÌœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€]¡•É”Ñ¼Á¡½Ñ½É…Á Ñ¡”™½Õ¹Ñ…¥¸èÍ¥¡Ñ±¥¹•Ì™É½´Ñ¡”ÍÅÕ…É”…¹Ñ¡”‰É¥‘•Ì°Ñ¡”‰•ÍĞ±¥¡Ğ°…¹¡½ÜÑ¼¡…¹‘±”É½İ‘Ì¸œ°(€€€€€ Äè€A¡½Ñ½É…Á¡¥¹œ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€Q¡”€ÈØµµ•ÑÉ”™‡…‘”É•…‘Ì‰•ÍĞ™É½´ÍÑÉ…¥¡Ğ½¸°…É½ÍÌÑ¡”ÍÅÕ…É”½È„‰É¥‘”ƒŠP…¹¥Ğ¥Ì±¥Ğ…™Ñ•È‘…É¬°Í¼¥ĞÁ¡½Ñ½É…Á¡Ì‘…ä½È¹¥¡Ğ¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€M¡½½Ñ¥¹œ™É½´Ñ¡”ÍÅÕ…É”œ°½¹Ñ•¹Ğè€MÑ…¹¥¸Ñ¡”µ¥‘‘±”½˜A±…”M…¥¹Ğµ5¥¡•°™½È„•¹ÑÉ•°™Õ±°µ™‡…‘”™É…µ”¸İ¥‘”±•¹Ì€ ÄÛŠLÈĞµ´¤Ñ…­•Ì¥¸Ñ¡”İ¡½±”•±•Ù…Ñ¥½¸ì„Í¡½ÉĞÑ•±•Á¡½Ñ¼¥Í½±…Ñ•ÌÑ¡”É¡…¹•°5¥¡…•°É½ÕÀ¡¥ ÕÀ¸œô°(€€€€€€€ì¡•…‘¥¹œè€	É¥‘•Ì…¹É¥Ù•Èœ°½¹Ñ•¹Ğè€Q¡”A½¹ĞM…¥¹Ğµ5¥¡•°Á…É…Á•Ğ™É…µ•ÌÑ¡”™½Õ¹Ñ…¥¸İ¥Ñ Ñ¡”‰½Õ±•Ù…Éì™É½´Ñ¡”EÕ…¤‘”5½¹Ñ•‰•±±¼Ñ¡”‰½½­ÍÑ…±±ÌÍ¥Ğ¥¸™É½¹Ğ½˜9½ÑÉ”µ…µ”°„‘¥™™•É•¹ĞÍÕ‰©•Ğ¸É½ÍÌÑ¼Ñ¡”½ÁÁ½Í¥Ñ”‰…¹¬™½È„Ñ¡É•”µÅÕ…ÉÑ•ÈÙ¥•Ü¸œô°(€€€€€€€ì¡•…‘¥¹œè€1¥¡Ğ…¹É½İ‘Ìœ°½¹Ñ•¹Ğè€M¥‘”µ±¥¡Ğ¥¸Ñ¡”µ½É¹¥¹œ‘•™¥¹•ÌÑ¡”ÍÕ±ÁÑÕÉ”ìÑ¡”™±½½‘±¥Ğ™‡…‘”…™Ñ•È‘ÕÍ¬¥ÌÑ¡”¹¥¡ĞÍ¡½Ğ¸É½İ‘ÌÁ•…¬µ¥‘‘…äƒŠPÍ¡½½Ğ•…É±ä½È±…Ñ”™½È±•…¸™É…µ•Ì°…¹‰”µ¥¹‘™Õ°½˜Á•½Á±”¥¸Ñ¡”ÍÅÕ…É”¸œô°(€€€€€€€ì¡•…‘¥¹œè€•Ñ…¥°Í¡½ÑÌœ°½¹Ñ•¹Ğè€Q¡”Ñİ¼İ¥¹•‘É…½¹Ì…ĞÑ¡”¹¥¡”‰…Í”…¹Ñ¡”™½ÕÈÙ¥ÉÑÕ”ÍÑ…ÑÕ•ÌÉ•İ…É„é½½´¸M•”½ÕÈ‘É…½¹ÌÁ…”™½È¥‘•¹Ñ¥™å¥¹œÑ¡•´¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡•É”¥ÌÑ¡”‰•ÍĞÁ¡½Ñ¼ÍÁ½Ğüœ°…¹Íİ•Èè€•¹ÑÉ•½¸A±…”M…¥¹Ğµ5¥¡•°™½ÈÑ¡”™Õ±°™‡…‘”ìÑ¡”A½¹ĞM…¥¹Ğµ5¥¡•°™½È„™É…µ•Ù¥•Ü¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%Ì¥Ğ±¥Ğ…Ğ¹¥¡Ğüœ°…¹Íİ•Èè€e•ÌƒŠPÑ¡”™‡…‘”¥Ì™±½½‘±¥Ğ°µ…­¥¹œ¥Ğ„ÍÑÉ½¹œ¹¥¡ĞÍÕ‰©•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü‘¼$…Ù½¥É½İ‘Ìüœ°…¹Íİ•Èè€M¡½½Ğ•…É±äµ½É¹¥¹œ½È±…Ñ”•Ù•¹¥¹œìÕÍ”„±½¹•È±•¹ÌÑ¼¥Í½±…Ñ”‘•Ñ…¥±Ì¸œô°(€€€€€t°(€€€€€¹…Øè€A¡½Ñ½Ìœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€‘É…½¹Ìµ…¹µ¡¥µ•É…Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€Ù¥Í¥Ñ½ÈµÕ¥‘”t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€A¡½Ñ½Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLÍÁ½ÑÌ°…¹±•Ì•Ğ½¹Í•¥±Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€?äÁ¡½Ñ½É…Á¡¥•È±„™½¹Ñ…¥¹”€è…á•Ì‘•ÁÕ¥Ì±„Á±…”•Ğ±•ÌÁ½¹ÑÌ°±„µ•¥±±•ÕÉ”±Õµ§¡É”°•Ğ±„•ÍÑ¥½¸‘”±„™½Õ±”¸œ°(€€€€€ Äè€A¡½Ñ½É…Á¡¥•È±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€1„™‡…‘”‘”€ÈØ´Í”±¥Ğ‰¥•¸‘”™…”°‘•ÁÕ¥Ì±„Á±…”½ÔÕ¸Á½¹ĞƒŠP•Ğ•±±”•ÍĞƒ¥±…¥Ë¥”±„¹Õ¥Ğ°‘½¹ŒÁ¡½Ñ½Ÿ¥¹¥ÅÕ”©½ÕÈ•Ğ¹Õ¥Ğ¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€•ÁÕ¥Ì±„Á±…”œ°½¹Ñ•¹Ğè€A±…•èµÙ½ÕÌ…Ô•¹ÑÉ”‘”±„A±…”M…¥¹Ğµ5¥¡•°Á½ÕÈÕ¸…‘É”™É½¹Ñ…°‘”Ñ½ÕÑ”±„™‡…‘”¸U¸É…¹µ…¹±”€ ÄÛŠLÈĞµ´¤ÁÉ•¹³Šg¥³¥Ù…Ñ¥½¸€ìÕ¸½ÕÉĞÓ¥³¤¥Í½±”±”É½ÕÁ”‘”³Še…É¡…¹”•¸¡…ÕĞ¸œô°(€€€€€€€ì¡•…‘¥¹œè€A½¹ÑÌ•ĞM•¥¹”œ°½¹Ñ•¹Ğè€1”Á…É…Á•Ğ‘ÔA½¹ĞM…¥¹Ğµ5¥¡•°…‘É”±„™½¹Ñ…¥¹”…Ù•Œ±”‰½Õ±•Ù…É€ì‘•ÁÕ¥Ì±”ÅÕ…¤‘”5½¹Ñ•‰•±±¼°±•Ì‰½ÕÅÕ¥¹¥ÍÑ•Ì‘•Ù…¹Ğ9½ÑÉ”µ…µ”°Õ¸…ÕÑÉ”ÍÕ©•Ğ¸A…ÍÍ•èÉ¥Ù”½ÁÁ½Ï¥”Á½ÕÈÕ¹”ÙÕ”‘”ÑÉ½¥ÌÅÕ…ÉÑÌ¸œô°(€€€€€€€ì¡•…‘¥¹œè€1Õµ§¡É”•Ğ™½Õ±”œ°½¹Ñ•¹Ğè€1„±Õµ§¡É”É…Í…¹Ñ”‘Ôµ…Ñ¥¸Ë¥Û¡±”±„ÍÕ±ÁÑÕÉ”€ì±„™‡…‘”ƒ¥±…¥Ë¥”±”Í½¥È•ÍĞ±„Á¡½Ñ¼‘”¹Õ¥Ğ¸½Õ±”ƒ€µ¥‘¤ƒŠPÁ¡½Ñ½É…Á¡•èÓÑĞ½ÔÑ…É°•ĞÉ•ÍÁ•Ñ•è±•ÌÁ…ÍÍ…¹ÑÌ¸œô°(€€€€€€€ì¡•…‘¥¹œè€¥Ñ…¥±Ìœ°½¹Ñ•¹Ğè€1•Ì‘•Õà‘É…½¹Ì…¥³¥Ìƒ€±„‰…Í”•Ğ±•ÌÅÕ…ÑÉ”Ù•ÉÑÕÌÍ”ÁË©Ñ•¹Ğ…Ôé½½´¸Y½¥È¹½ÑÉ”Á…”ƒ
+¬‘É…½¹Ìƒ
+ì¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ•°•ÍĞ±”µ•¥±±•ÕÈÍÁ½Ğ€üœ°…¹Íİ•Èè€•¹ÑË¤ÍÕÈ±„A±…”M…¥¹Ğµ5¥¡•°Á½ÕÈ±„™‡…‘”€ì±”A½¹ĞM…¥¹Ğµ5¥¡•°Á½ÕÈÕ¸…‘É…”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ÍĞµ•±±”ƒ¥±…¥Ë¥”±„¹Õ¥Ğ€üœ°…¹Íİ•Èè€=Õ¤ƒŠP™‡…‘”ƒ¥±…¥Ë¥”°ÍÕ©•Ğ‘”¹Õ¥Ğ™½ÉĞ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µµ•¹Ğƒ¥Ù¥Ñ•È±„™½Õ±”€üœ°…¹Íİ•Èè€SÑĞ±”µ…Ñ¥¸½ÔÑ…É±”Í½¥È€ìÕ¸Ó¥³¤Á½ÕÈ¥Í½±•È±•Ì“¥Ñ…¥±Ì¸œô°(€€€€€t°(€€€€€¹…Øè€A¡½Ñ½Ìœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€‘É…½¹Ìµ…¹µ¡¥µ•É…Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€Ù¥Í¥Ñ½ÈµÕ¥‘”t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'šF–öÇš2–6_¾ò#šrë’ö7¢K–ê›’â;š*–ŞŸ¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ–r£–N«¦3š.7šF–ZßšÎ'¾òk’î;–æÿ–rë’â;š†—šŠj¢êÿšr’öÏ–'êÿ¾ò3’î—–>+–š’öW–’B’êëšÖœ°(€€€€€ Äè€Ÿš.7šF–rÆÏš¶–ÂS–ZßšÎ$œ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€œÈØƒÆÏ®/¦v‹’î;š¶–&7šZç¾ò#–æÿ–rëš"[š†—’â+¾ò'¢r/šV#šzsšr’öÏ¾òo–—–’s–B;šr'Ÿšb;¾ò3–nƒš¶“f÷–’§’â;–’sšfk¦÷¦–B#š.7šFœ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿ–æÿ–rëš.7šFœ°½¹Ñ•¹Ğè€Ÿ®g–r£–rÆÏš¶–ÂS–æÿ–rë’â·–’»–>¿¢:ß–ú_–Æ’â·j–º3šVÓ®/¦v‹šz–nû–æÿ¢K¾ò ÄÛŠLÈÑµ·¾ò'¢÷êÏ–—šVÓ–êŸ®/¦v‹¾òo’â·¦Vÿ›–>¿–6W.³ª–ë¦®c–’jÆÏš¶–ÂSú“¦nWœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿš†—šŠ’â;šÊÏšf¼œ°½¹Ñ•¹Ğè€Ÿ–rÆÏš¶–ÂSš†—jš‚?šv–>¿š*+–ZßšÎ'’â;–’Ÿ¦O–B3š†¾òo’î;¢Jg&ç¢ÒwšÒo–‚“–Êãr/¾ò3š^Ÿ’æ›šF+’ö7’ê;–rš¾7¦f‹–&7šZç¾ò3šb¿–>›’â’âï¦Šc¢ş–"Ã–¾ç–Êã–>¿–>[–ú_–no–"’æ/’â'¢¢Kœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–'êÿ’â;’êëšÖœ°½¹Ñ•¹Ğè€Ÿ’â+–6#j’úŸ–'–.û–.K¦nW–†Gî¢*¾òo–
+7šfk’ê»¿–B;j®/¦v‹šb¿–’sšf¿’öÏ’ös’â·–6#’êëšÖšr–¾ŠSŠSšâšf£š"[–
+7šfkš.7šFšnÓ–æË–¾ò3–æÛ¢¾ßšÎ£š?–æÿ–rë’â+j¢†3’êëœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿî¢*œ°½¹Ñ•¹Ğè€Ÿ–¦úo–~ë–êŸj–>3şó¦úg’â;–no–Â+ú;–úß¦nW–?–ó–ú_R£¦Vÿ›&ç–g¢¾–"¯šZçšÎW¢3–>3şó¦úg7¦†×¦v‹œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšr’öÏš.7šF
+ç–r£–N«¦3¾ò|œ°…¹Íİ•Èè€Ÿ–rÆÏš¶–ÂS–æÿ–rë’â·–’»š.7–º3šVÓ®/¦v‹¾òo–rÆÏš¶–ÂSš†—–>¿–>[–ú_š†šf¿œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–’s¦^Óšr'Ÿšb;–B_¾ò|œ°…¹Íİ•Èè€Ÿšr'ŠSŠS®/¦v‹šr'šÎo–'Ÿšb;¾ò3šb¿–ú#––÷j–’sšf¿¦ŠcšvCœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–š’öW¦ÿ–ò’êëšÖ¾ò|œ°…¹Íİ•Èè€Ÿšâšf£š"[–
+7šfkš.7šF¾òoR£¢ú¦Vÿ›šº×ª–ëî¢*œô°(€€€€€t°(€€€€€¹…Øè€ŸšF–öÄœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€‘É…½¹Ìµ…¹µ¡¥µ•É…Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€Ù¥Í¥Ñ½ÈµÕ¥‘”t°(€€€ô°(€ô°(€€…Ğµ¹¥¡Ğœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°…Ğ9¥¡ĞƒŠL9¥¡ĞY¥Í¥Ğ€˜A¡½Ñ½Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€]¡…ĞÑ¡”™½Õ¹Ñ…¥¸±½½­Ì±¥­”…™Ñ•È‘…É¬°Ñ¡”±¥¡Ñ¥¹œ°„Í…™”¹¥¡Ğİ…±¬°…¹İ¡•É”Ñ¼Á¡½Ñ½É…Á Ñ¡”±¥Ğ™‡…‘”¸œ°(€€€€€ Äè€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°…Ğ¹¥¡Ğœ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€™Ñ•È‘…É¬Ñ¡”™½Õ¹Ñ…¥¸¥Ì™±½½‘±¥Ğ…¹Ñ¡”ÍÅÕ…É”ÍÑ…åÌ±¥Ù•±ä°µ…­¥¹œ¥Ğ½¹”½˜Ñ¡”•…Í¥•ÈA…É¥Ìµ½¹Õµ•¹ÑÌÑ¼•¹©½ä¥¸Ñ¡”•Ù•¹¥¹œ¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Q¡”±¥¡Ñ¥¹œœ°½¹Ñ•¹Ğè€UÁ±¥¡ÑÌÁ¥¬½ÕĞÑ¡”½±Õµ¹Ì°Ñ¡”É¡…¹•°5¥¡…•°É½ÕÀ…¹Ñ¡”‘É…½¹ÌìÑ¡”€ÈØµµ•ÑÉ”™‡…‘”É•…‘Ì±•…É±ä……¥¹ÍĞÑ¡”¹¥¡ĞÍ­ä¸Q¡”•™™•Ğ¥ÌÍÑÉ½¹•ÍĞ…™Ñ•È™Õ±°‘ÕÍ¬¸œô°(€€€€€€€ì¡•…‘¥¹œè€¹¥¡Ğİ…±¬œ°½¹Ñ•¹Ğè€Í¡½ÉĞ•Ù•¹¥¹œ±½½ÀÉÕ¹Ì…±½¹œÑ¡”EÕ…¤M…¥¹Ğµ5¥¡•°…¹EÕ…¤‘”5½¹Ñ•‰•±±¼™½ÈÉ•™±•Ñ¥½¹Ì½˜9½ÑÉ”µ…µ”½¸Ñ¡”É¥Ù•È°Ñ¡•¸‰…¬Ñ¼Ñ¡”±¥ĞÍÅÕ…É”¸Q¡”…É•„¥Ì‰ÕÍä…¹İ•±°µ±¥Ğ°•¹•É…±±ä™¥¹”½¸™½½Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€9¥¡ĞÁ¡½Ñ½Ìœ°½¹Ñ•¹Ğè€ÑÉ¥Á½½È„ÍÑ•…‘äÁ¡½¹”½¸„Á…É…Á•Ğ¡•±ÁÌ¥¸±½Ü±¥¡Ğ¸É…µ”Ñ¡”±¥Ğ™‡…‘”™É½´Ñ¡”•¹ÑÉ”½˜Ñ¡”ÍÅÕ…É”°½È…ÁÑÕÉ”Ñ¡”É¥Ù•ÈÉ•™±•Ñ¥½¹Ì™É½´Ñ¡”A½¹ĞM…¥¹Ğµ5¥¡•°¸M•”½ÕÈÁ¡½Ñ½ÌÁ…”™½È…¹±•Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€•ÑÑ¥¹œ‰…¬œ°½¹Ñ•¹Ğè€Q¡”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”…¹7¥ÑÉ¼±¥¹”€ÄÀ±Õ¹çŠM1„M½É‰½¹¹”ÉÕ¸±…Ñ”ì¹½Ñ”Ñ¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½Èİ½É­Ì€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØƒŠPÕÍ”Ñ¡”IH½È±¥¹”€ÄÀ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡”™½Õ¹Ñ…¥¸±¥Ğ…Ğ¹¥¡Ğüœ°…¹Íİ•Èè€e•ÌƒŠP¥Ğ¥Ì™±½½‘±¥Ğ…™Ñ•È‘…É¬…¹Ñ¡”ÍÅÕ…É”ÍÑ…åÌ‰ÕÍä¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%Ì¥ĞÍ…™”Ñ¼Ù¥Í¥Ğ…Ğ¹¥¡Ğüœ°…¹Íİ•Èè€Q¡”…É•„¥Ìİ•±°µ±¥Ğ…¹™É•ÅÕ•¹Ñ•ìÍÑ…¹‘…É¥Ñä…ÕÑ¥½¸…ÁÁ±¥•Ì…Ì…¹åİ¡•É”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü‘¼$•Ğ‰…¬±…Ñ”üœ°…¹Íİ•Èè€IH½…¹7¥ÑÉ¼±¥¹”€ÄÀÉÕ¸±…Ñ”ì…Ù½¥Ñ¡”±½Í•±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸…¹ÕÍ”Ñ¡”IH½È±¥¹”€ÄÀ¸œô°(€€€€€t°(€€€€€¹…Øè€Ğ¹¥¡Ğœ°(€€€€€É•±…Ñ•èlÁ¡½Ñ½Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€1„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°±„¹Õ¥ĞƒŠLÙ¥Í¥Ñ”•ĞÁ¡½Ñ½Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€”ÅÕ”‘½¹¹”±„™½¹Ñ…¥¹”…ÁË¡Ì±„Ñ½µ‹¥”‘”±„¹Õ¥Ğ°³Šg¥±…¥É…”°Õ¹”µ…É¡”¹½ÑÕÉ¹”ÏíÉ”°•Ğ¿äÁ¡½Ñ½É…Á¡¥•È±„™‡…‘”ƒ¥±…¥Ë¥”¸œ°(€€€€€ Äè€1„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°±„¹Õ¥Ğœ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€ÁË¡Ì±„Ñ½µ‹¥”‘”±„¹Õ¥Ğ°±„™½¹Ñ…¥¹”•ÍĞƒ¥±…¥Ë¥”•Ğ±„Á±…”É•ÍÑ”…¹¥·¥”°”ÅÕ¤•¸™…¥ĞÕ¸‘•Ìµ½¹Õµ•¹ÑÌÁ…É¥Í¥•¹Ì™…¥±•Ìƒ€Ù½¥È±”Í½¥È¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€3Šg¥±…¥É…”œ°½¹Ñ•¹Ğè€•ÌÁÉ½©•Ñ•ÕÉÌÍ½Õ±¥¹•¹Ğ±•Ì½±½¹¹•Ì°±”É½ÕÁ”‘”³Še…É¡…¹”•Ğ±•Ì‘É…½¹Ì€ì±„™‡…‘”‘”€ÈØ´Í”±¥Ğ¹•ÑÑ•µ•¹Ğ½¹ÑÉ”±”¥•°¸3Še•™™•Ğ•ÍĞµ…á¥µ…°…ÁË¡Ì±„Á±•¥¹”¹Õ¥Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€U¹”µ…É¡”¹½ÑÕÉ¹”œ°½¹Ñ•¹Ğè€U¹”½ÕÉÑ”‰½Õ±”±”±½¹œ‘ÔÅÕ…¤M…¥¹Ğµ5¥¡•°•Ğ‘ÔÅÕ…¤‘”5½¹Ñ•‰•±±¼‘½¹¹”±•ÌÉ•™±•ÑÌ‘”9½ÑÉ”µ…µ”ÍÕÈ±„M•¥¹”°ÁÕ¥ÌÉ•Ñ½ÕÈƒ€±„Á±…”ƒ¥±…¥Ë¥”¸i½¹”…¹¥·¥”•Ğƒ¥±…¥Ë¥”°Ÿ¥»¥É…±•µ•¹ĞÏíÉ”ƒ€Á¥•¸œô°(€€€€€€€ì¡•…‘¥¹œè€A¡½Ñ½Ì‘”¹Õ¥Ğœ°½¹Ñ•¹Ğè€U¸ÑË¥Á¥•½ÔÕ¸Ó¥³¥Á¡½¹”Á½Ï¤ÍÕÈÕ¸Á…É…Á•Ğ…¥‘”•¸‰…ÍÍ”±Õµ§¡É”¸…‘É•è±„™‡…‘”ƒ¥±…¥Ë¥”‘•ÁÕ¥Ì±”•¹ÑÉ”‘”±„Á±…”°½Ô±•ÌÉ•™±•ÑÌ‘•ÁÕ¥Ì±”A½¹ĞM…¥¹Ğµ5¥¡•°¸Y½¥È¹½ÑÉ”Á…”ƒ
+¬Á¡½Ñ½Ìƒ
+ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€1”É•Ñ½ÕÈœ°½¹Ñ•¹Ğè€1”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”•Ğ±„±¥¹”€ÄÀ±Õ¹çŠM1„M½É‰½¹¹”É½Õ±•¹ĞÑ…É€ì±„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØƒŠPÕÑ¥±¥Í•è±”IH½Ô±„±¥¹”€ÄÀ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1„™½¹Ñ…¥¹”•ÍĞµ•±±”ƒ¥±…¥Ë¥”±„¹Õ¥Ğ€üœ°…¹Íİ•Èè€=Õ¤ƒŠPƒ¥±…¥Ë¥”…ÁË¡Ì±„Ñ½µ‹¥”‘”±„¹Õ¥Ğ°±„Á±…”É•ÍÑ”…¹¥·¥”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ÍĞµ”ÏíÈ±„¹Õ¥Ğ€üœ°…¹Íİ•Èè€i½¹”ƒ¥±…¥Ë¥”•Ğ™Ë¥ÅÕ•¹Ó¥”€ìÁÉÕ‘•¹”ÕÉ‰…¥¹”¡…‰¥ÑÕ•±±”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µµ•¹ĞÉ•¹ÑÉ•ÈÑ…É€üœ°…¹Íİ•Èè€IH½•Ğ±¥¹”€ÄÀÉ½Õ±•¹ĞÑ…É€ìƒ¥Ù¥Ñ•è±„±¥¹”€Ğ™•É·¥”•ĞÕÑ¥±¥Í•è±”IH½Ô±„±¥¹”€ÄÀ¸œô°(€€€€€t°(€€€€€¹…Øè€1„¹Õ¥Ğœ°(€€€€€É•±…Ñ•èlÁ¡½Ñ½Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–’s¦^Óšâã¢#¾ò#–’sšf¿’â;šF–öÇ¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ–ZßšÎ'–—–’s–B;jš‚ß–¶CŸšb;–º'–£j–’s¢ÖÃ¢Ş¿êÿ¾ò3’î—–>+–r£–N«¦3š.7šF’ê»¿®/¦v‹œ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'j–’sšfhœ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ–—–’s–B;–ZßšÎ'šr'šÎo–'Ÿšb;¾ò3–æÿ–rë’úwÛ·¦^ç¾ò3šb¿–ŞÓ¦î;¢úšbO–r£šfk¦^Óš²¢Ö?jê«–ş×ŠG’æ/’âœ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€ŸŸšb8œ°½¹Ñ•¹Ğè€Ÿ–êW¦£š*W–'Ÿ’ê»š~Ç–"_ÆÏš¶–ÂSú“¦nW’â;–>3şó¦úg¾òlÈØƒÆÏ®/¦v‹–r£–’s¦ë’â·šâšfÃ–>¿¢ú£š^—¢B÷–B;–£¦îGš^ÛšV#šzsšr’öÏœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–’s¢ÖÃ¢Ş¿êüœ°½¹Ñ•¹Ğè€Ÿ~·¢/–’s¢ÖÃšÊÿ–rÆÏš¶–ÂS–‚“–Êã’â;¢Jg&ç¢ÒwšÒo–‚“–Êã¾ò3–>¿š.7–rš¾7¦f‹–r£šÊÏ¦v‹j–K–öÇ¾ò3–7–n{–"Ã’ê»¿j–æÿ–rë–2ë–~Ÿšb;–¢ÚÏ’êëšÖ’â7šZ·¾ò3š¶—¢†3šï’öO–º'–£œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–’s¦^ÓšF–öÄœ°½¹Ñ•¹Ğè€Ÿ’â'¢kšzÛš"[–Âš&/šrë¢ÏšRû–r£š‚?švšr'–*§’ê;’ö;–'š.7šF’î;–æÿ–rë’â·–’»š†’ö?’ê»¿®/¦v‹¾ò3š"[’î;–rÆÏš¶–ÂSš†—š6Wš6'šÊÏ¦v‹–K–öÇ¢K–ê›¢3šF–öÇ7¦†×¦v‹œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢şS¢,œ°½¹Ñ•¹Ğè€IH½ƒ’â;–rÃ¦N€ÄÀƒ–>ßêü±Õ¹çŠM1„M½É‰½¹¹”ƒ¢şC¢B—¢Ï¢úšfk¾òo–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®d€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·ŠSŠS¢¾ß’æ`IHƒš"X€ÄÀƒ–>ßêÿœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'–’s¦^Óšr'Ÿšb;–B_¾ò|œ°…¹Íİ•Èè€Ÿšr'ŠSŠSš^—¢B÷–B;šÎo–'Ÿšb;¾ò3–æÿ–rë’î7·¦^çœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–’s¦^Ó–>¢–º'–£–B_¾ò|œ°…¹Íİ•Èè€Ÿ–2ë–~Ÿšb;–¢ÚÏ’êëšÖ’â7šZ·¾òo’â;’îï’öW–~;–â’âš‚ß’şwš2–~ëšr³šÎ£š?œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ŸšŞÇ–’s–š’öW¢şS¢/¾ò|œ°…¹Íİ•Èè€IH½ƒ’â;–rÃ¦N€ÄÀƒ–>ßêÿ¢şC¢B—¢úšfk¾òo¦ÿ–ò–Ï¦^·j€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®g¾ò3šRç’æ`IHƒš"X€ÄÀƒ–>ßêÿœô°(€€€€€t°(€€€€€¹…Øè€Ÿ–’sšâàœ°(€€€€€É•±…Ñ•èlÁ¡½Ñ½Ìœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€ô°(€€İ¡•É”µÑ¼µ•…Ğœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€]¡•É”Ñ¼…Ğ9•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠL	äÉ•„€˜	Õ‘•Ğœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€…Ñ¥¹œ…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸‰ä¹•¥¡‰½ÕÉ¡½½…¹‰Õ‘•ĞèÑ¡”ÍÅÕ…É—ŠeÌÍÕÉÉ½Õ¹‘Ì°Ñ¡”1…Ñ¥¸EÕ…ÉÑ•ÈÍÑÉ••ÑÌ°…¹Ñ¡”É¥Ù•ÈÍ¥‘”°İ¥Ñ „Ù•É¥™¥…Ñ¥½¸‘…Ñ”¸œ°(€€€€€ Äè€]¡•É”Ñ¼•…Ğ¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØ€¡ÁÉ¥•Ì…¹½Á•¹¥¹Ì¡…¹”ƒŠPÙ•É¥™ä½¸Ñ¡”‘…ä¤œ°(€€€€€±•…è€Q¡”™½Õ¹Ñ…¥¸Í¥ÑÌ¥¸Ñ¡”µ¥‘‘±”½˜A…É¥ÏŠeÌ‘•¹Í•ÍĞÉ•ÍÑ…ÕÉ…¹Ğ±ÕÍÑ•È°Í¼¡½¥”¥Ìİ¥‘”ƒŠP™É½´Ë©Á”ÍÑ…¹‘ÌÑ¼™½Éµ…°‰¥ÍÑÉ½ÌƒŠPİ¥Ñ¡¥¸„™•Üµ¥¹ÕÑ•ÏŠdİ…±¬¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€É½Õ¹Ñ¡”ÍÅÕ…É”œ°½¹Ñ•¹Ğè€IÕ”‘”±„!Õ¡•ÑÑ”…¹Ñ¡”ÍÑÉ••ÑÌ©ÕÍĞ½™˜Ñ¡”ÍÅÕ…É”…É”‰ÕÍä…¹Ñ½ÕÉ¥ÍĞµ•¹ÑÉ¥Œ°İ¥Ñ Ë©Á•É¥•Ì°Á¥éé„…¹­•‰…ˆÍÑ…¹‘Ì…Ğ±½İ•ÈÁÉ¥•Ì…¹ÅÕ¥¬ÑÕÉ¹½Ù•È¸½½™½È„™…ÍĞ°¡•…À‰¥Ñ”‰•Ñİ••¸Í¥¡ÑÌ¸œô°(€€€€€€€ì¡•…‘¥¹œè€1…Ñ¥¸EÕ…ÉÑ•ÈÍ¥‘”ÍÑÉ••ÑÌœ°½¹Ñ•¹Ğè€™•Üµ¥¹ÕÑ•Ì¥¹Ñ¼IÕ”‘•Ìƒ%½±•Ì°IÕ”‘”±„!…ÉÁ”…¹Ñ¡”M½É‰½¹¹”…É•„å½Ô™¥¹µ½É”‰¥ÍÑÉ½Ì…¹‰É…ÍÍ•É¥•Ì…Ğµ¥µÉ…¹”ÁÉ¥•Ì°½™Ñ•¸İ¥Ñ Ñ•ÉÉ…•Ì¸	½½­¥¹œ¡•±ÁÌ¥¸Ñ¡”•Ù•¹¥¹œ¸œô°(€€€€€€€ì¡•…‘¥¹œè€I¥Ù•È…¹M…¥¹Ğµ•Éµ…¥¸œ°½¹Ñ•¹Ğè€Q½İ…É‘ÌÑ¡”EÕ…¤‘•ÌÉ…¹‘ÌµÕÕÍÑ¥¹Ì…¹M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì°ÁÉ¥•ÌÉ¥Í”…¹Ñ¡”…›¥Ì€¡±½É”°1•Ì•Õà5…½ÑÌ¤…É”…ÌµÕ …‰½ÕĞÑ¡”Í•ÑÑ¥¹œ…ÌÑ¡”™½½¸É½ÍÌÑ¡”A½¹ĞM…¥¹Ğµ5¥¡•°™½ÈÑ¡¥ÌÅÕ¥•Ñ•È°ÁÉ¥¥•ÈÅÕ…ÉÑ•È¸œô°(€€€€€€€ì¡•…‘¥¹œè€AÉ…Ñ¥…°¹½Ñ•Ìœ°½¹Ñ•¹Ğè€5•¹ÕÌ…¹½Á•¹¥¹œ¡½ÕÉÌÍ¡¥™ĞÍ•…Í½¹…±±äì¡•¬ÕÉÉ•¹ĞÉ•Ù¥•İÌ…¹Ñ¡”Ù•¹Õ—ŠeÌ½İ¸Á…”‰•™½É”å½Ô½µµ¥Ğ¸Q¡”ÍÅÕ…É”¥ÑÍ•±˜¡…Ì¹¼Í•…Ñ•Ñ…‰±”İ¥Ñ „™½Õ¹Ñ…¥¸Ù¥•ÜƒŠPÑ¡”Ù¥•Ü¥Ì™É½´Ñ¡”Á…Ù•µ•¹Ğ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡•É”¥ÌÑ¡”¡•…Á•ÍĞ™½½üœ°…¹Íİ•Èè€Q¡”Ë©Á”…¹­•‰…ˆÍÑ…¹‘Ì½¸IÕ”‘”±„!Õ¡•ÑÑ”‰äÑ¡”ÍÅÕ…É”…É”Ñ¡”ÅÕ¥¬°±½Üµ½ÍĞ½ÁÑ¥½¸¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡•É”…É”Ñ¡”‰•ÍĞ‰¥ÍÑÉ½Ìüœ°…¹Íİ•Èè€Q¡”1…Ñ¥¸EÕ…ÉÑ•ÈÍ¥‘”ÍÑÉ••ÑÌ…¹M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì¡…Ù”µ½É”Í¥Ğµ‘½İ¸‰¥ÍÑÉ½Ìì‰½½¬¥¸Ñ¡”•Ù•¹¥¹œ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡•É”„Ù¥•ÜÉ•ÍÑ…ÕÉ…¹Ğüœ°…¹Íİ•Èè€9¼Í•…Ñ•Ñ•ÉÉ…”½Ù•É±½½­ÌÑ¡”™½Õ¹Ñ…¥¸ìÑ¡”µ½¹Õµ•¹Ğ¥ÌÙ¥•İ•™É½´Ñ¡”Á…Ù•µ•¹Ğ…¹‰É¥‘•Ì¸œô°(€€€€€t°(€€€€€¹…Øè€]¡•É”Ñ¼•…Ğœ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µÍÑ…äœ°€İ…±­Ì½Í…¥¹Ğµ•Éµ…¥¸œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€?äµ…¹•ÈÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLÁ…ÈÅÕ…ÉÑ¥•È•Ğ‰Õ‘•Ğœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€5…¹•È…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”Á…ÈÅÕ…ÉÑ¥•È•Ğ‰Õ‘•Ğ€è…±•¹Ñ½ÕÉÌ‘”±„Á±…”°ÉÕ•Ì‘ÔEÕ…ÉÑ¥•È±…Ñ¥¸°•Ğ±”‰½É‘”M•¥¹”°…Ù•Œ‘…Ñ”‘”Û¥É¥™¥…Ñ¥½¸¸œ°(€€€€€ Äè€?äµ…¹•ÈÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØ€¡ÁÉ¥à•Ğ½ÕÙ•ÉÑÕÉ•ÌÙ…É¥•¹ĞƒŠPÛ¥É¥™¥•è±”©½ÕÈ¤œ°(€€€€€±•…è€1„™½¹Ñ…¥¹”Í”ÑÉ½ÕÙ”…ÔMÕÈ‘ÔÅÕ…ÉÑ¥•È±”Á±ÕÌ‘•¹Í”•¸É•ÍÑ…ÕÉ…¹ÑÌ‘”A…É¥Ì€èË©Á•É¥•Ì½µµ”‰¥ÍÑÉ½ÑÌ°ƒ€ÅÕ•±ÅÕ•Ìµ¥¹ÕÑ•Ì¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€ÕÑ½ÕÈ‘”±„Á±…”œ°½¹Ñ•¹Ğè€1„ÉÕ”‘”±„!Õ¡•ÑÑ”•Ğ±•ÌÉÕ•ÌÁÉ½¡•ÌÍ½¹Ğ…¹¥·¥•Ì•ĞÑ½ÕÉ¥ÍÑ¥ÅÕ•Ì°…Ù•ŒË©Á•É¥•Ì°Á¥éé…Ì•Ğ­•‰…‰Ìƒ€Á•Ñ¥ÑÌÁÉ¥à•Ğ™½ÉĞÑÕÉ¹½Ù•È¸AÉ…Ñ¥ÅÕ”Á½ÕÈÕ¹”‰½Õ£¥”É…Á¥‘”¸œô°(€€€€€€€ì¡•…‘¥¹œè€IÕ•Ì‘ÔEÕ…ÉÑ¥•È±…Ñ¥¸œ°½¹Ñ•¹Ğè€EÕ•±ÅÕ•Ìµ¥¹ÕÑ•Ì‘…¹Ì±„ÉÕ”‘•Ìƒ%½±•Ì°ÉÕ”‘”±„!…ÉÁ”•Ğ±”ÅÕ…ÉÑ¥•ÈM½É‰½¹¹”€èÁ±ÕÌ‘”‰¥ÍÑÉ½ÑÌ•Ğ‰É…ÍÍ•É¥•Ìƒ€ÁÉ¥àµ½å•¹Ì°Í½ÕÙ•¹Ğ•¸Ñ•ÉÉ…ÍÍ”¸K¥Í•ÉÙ•È±”Í½¥È¸œô°(€€€€€€€ì¡•…‘¥¹œè€M•¥¹”•ĞM…¥¹Ğµ•Éµ…¥¸œ°½¹Ñ•¹Ğè€Y•ÉÌ±”ÅÕ…¤‘•ÌÉ…¹‘ÌµÕÕÍÑ¥¹Ì•ĞM…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì°±•ÌÁÉ¥àµ½¹Ñ•¹Ğ•Ğ±•Ì…›¥Ì€¡±½É”°1•Ì•Õà5…½ÑÌ¤Ù…±•¹Ğ…ÕÑ…¹ĞÁ½ÕÈ±”…‘É”¸ÑÉ…Ù•ÉÍ•è±”A½¹ĞM…¥¹Ğµ5¥¡•°Á½ÕÈ”ÅÕ…ÉÑ¥•ÈÁ±ÕÌ…±µ”•ĞÁ±ÕÌ¡•È¸œô°(€€€€€€€ì¡•…‘¥¹œè€9½Ñ•ÌÁÉ…Ñ¥ÅÕ•Ìœ°½¹Ñ•¹Ğè€5•¹ÕÌ•Ğ¡½É…¥É•ÌÙ…É¥•¹Ğ€ìÛ¥É¥™¥•è…Ù¥ÌË¥•¹ÑÌ•ĞÁ…”‘Ô±¥•Ô¸ÕÕ¹”Ñ•ÉÉ…ÍÍ”…ÍÍ¥Í”¹”‘½¹¹”ÍÕÈ±„™½¹Ñ…¥¹”ƒŠP±„ÙÕ”•ÍĞ‘•ÁÕ¥Ì±”ÑÉ½ÑÑ½¥È¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€?ä•ÍĞ±„¹½ÕÉÉ¥ÑÕÉ”±„µ½¥¹Ì£¡É”€üœ°…¹Íİ•Èè€1•ÌË©Á•Ì•Ğ­•‰…‰Ì‘”±„ÉÕ”‘”±„!Õ¡•ÑÑ”°ÁË¡Ì‘”±„Á±…”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€?äÍ½¹Ğ±•Ìµ•¥±±•ÕÉÌ‰¥ÍÑÉ½ÑÌ€üœ°…¹Íİ•Èè€1•ÌÉÕ•Ì‘ÔEÕ…ÉÑ¥•È±…Ñ¥¸•ĞM…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì€ìË¥Í•ÉÙ•è±”Í½¥È¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€d„µĞµ¥°Õ¸É•ÍÑ…ÕÉ…¹Ğ…Ù•ŒÙÕ”€üœ°…¹Íİ•Èè€ÕÕ¹”Ñ•ÉÉ…ÍÍ”…ÍÍ¥Í”¹”‘½¹¹”ÍÕÈ±„™½¹Ñ…¥¹”€ì±”µ½¹Õµ•¹ĞÍ”Ù½¥Ğ‘ÔÑÉ½ÑÑ½¥È•Ğ‘•ÌÁ½¹ÑÌ¸œô°(€€€€€t°(€€€€€¹…Øè€?äµ…¹•Èœ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µÍÑ…äœ°€İ…±­Ì½Í…¥¹Ğµ•Éµ…¥¸œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úçR£¦’C¾ò#š2'–2ë–~’â;¦Šº_¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿš2'¢†_–2ë’â;¦Šº_–r£–ZßšÎ'–F£¢úçR£¦’C¾òk–æÿ–rë–F£¢úçš.'’â–2ë¢†_–Şß’â;šÊÏ–Êã’â’úŸ¾ò3–æÛš‚šÎ£š‚ã–º{š^—šrœ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úç–N«¦3–Bœ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr#¾ò#’îßš‚ó’â;¢B—’âk*Ûš’òk–>c¾ò3¢¾ß–öO–’§š‚ã–º{¾ò$œ°(€€€€€±•…è€Ÿ–ZßšÎ'’ö7’ê;–ŞÓ¦î;¦’C–:šr–¾¦nj–rÃ–â›¾ò3–ƒ–"¦J–¦'š.§šz–æÿŠSŠS’î;–>¿’â÷¦–óšF+–"Ãš¶–ò?–Â?¦K¦šjšr'œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿ–æÿ–rë–F£¢úäœ°½¹Ñ•¹Ğè€Ÿ–Æƒ–ºÃ–rë¢†_¾ò!IÕ”‘”±„!Õ¡•ÑÑ—¾ò'–>+–æÿ–rëš^¢†_–Şß·¦^ç’âS–?šâã–º‹–BG¾ò3šr'–>¿’â÷¦–óš*¯¢B£’â;“¢
+'’âËšF+’ö7¾ò3’îßš‚ó’ö;şï–>Ã–ş¯¾ò3¦–B#šf¿
+ç¦^Ój–ş¯š6ß’â¦’Cœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿš.'’â–2ë¢†_–ŞÜœ°½¹Ñ•¹Ğè€Ÿ–ú ƒ%½±•Ìƒ¢†_!…ÉÁ”ƒ¢†_’â;Ò‹¦
+›’â–â›š¶—¢†3–ƒ–"¦J¾ò3šr'šnÓ–’k’â·¶'’îß’ö7j–Â?¦K¦š’â;–V“¦K–ê_¾ò3–âã¢ºû¦rË–>Ãšfk’â+–îë¢º»¦Šê›œô°(€€€€€€€ì¡•…‘¥¹œè€ŸšÊÏVS’â;–rš^—¢Ïšnğœ°½¹Ñ•¹Ğè€Ÿ–ú É…¹‘ÌµÕÕÍÑ¥¹Ìƒ–‚“–Êã’â;–rš^—¢Ïšnğ·–úÜ·šf»¦nß¾ò3’îßš‚ó–?¦®c¾ò3–J[–V‡¦š¾ò!±½É—–>3–Û¾ò'–6[jšnÓ–’kšb¿šÂo–nÓ¢ş–rÆÏš¶–ÂSš†—–6Ï¢úû¢şg’â«šnÓ–º'¦vg’æšnÓ¢Ò×j¢†_–2ëœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–º{R£š>C’èœ°½¹Ñ•¹Ğè€Ÿ¢>s–6W’â;¢B—’âkš^Û¦^Ó¦j?–¶¢*–>c–2[¾òo–Ï–ºk–&7¢¾ßš~—r/¢şGšr¢¾’îß’â;–ê_–ºÛ¦†×¦v‹–æÿ–rëšr³¢ê¯šÊ‡šr'¢÷r/–ZßšÎ'j–vC–â·¦rË–>ÃŠSŠSšf¿¢šv—¢«’êë¢†3¦O’â;š†—šŠœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšr’úÿ–ºsj¦&§–r£–N«¦3¾ò|œ°…¹Íİ•Èè€Ÿ–æÿ–rëš^–Æƒ–ºÃ–rë¢†_j–>¿’â÷¦–ó’â;“¢
+'’âËšF+’ö7šb¿–ş¯š6ß’ö;’îßj¦'¦†çœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšr––÷j–Â?¦K¦š–r£–N«¦3¾ò|œ°…¹Íİ•Èè€Ÿš.'’â–2ë¢†_–Şß’â;–rš^—¢Ïšnğ·–úÜ·šf»¦nßšr'šnÓ–’k–‚¦–Â?¦K¦š¾òošfk’â+¢¾ß¦Šê›œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšr'šf¿¢¦’C–:–B_¾ò|œ°…¹Íİ•Èè€ŸšÊ‡šr'š¶–¾ç–ZßšÎ'j–vC–â·¦rË–>Ã¾òoê«–ş×ŠG¦r’î;’êë¢†3¦O’â;š†—šŠ¢¢Ö?œô°(€€€€€t°(€€€€€¹…Øè€Ÿ–F£¢úçR£¦’@œ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µÍÑ…äœ°€İ…±­Ì½Í…¥¹Ğµ•Éµ…¥¸œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€ô°(€€İ¡•É”µÑ¼µÍÑ…äœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€]¡•É”Ñ¼MÑ…ä9•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLÉ•…Ì½µÁ…É•œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€MÑ…å¥¹œ¹•…ÈÑ¡”™½Õ¹Ñ…¥¸èÑ¡”1…Ñ¥¸EÕ…ÉÑ•È°M…¥¹Ğµ•Éµ…¥¸…¹Ñ¡”¥Í±…¹‘Ì½µÁ…É•™½ÈÑÉ…¹ÍÁ½ÉĞ°¹½¥Í”…¹İ…±­…‰¥±¥Ñä¸œ°(€€€€€ Äè€]¡•É”Ñ¼ÍÑ…ä¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€MÑ…å¥¹œİ¥Ñ¡¥¸„™•Üµ¥¹ÕÑ•Ì½˜Ñ¡”™½Õ¹Ñ…¥¸ÁÕÑÌå½Ô¥¸Ñ¡”1…Ñ¥¸EÕ…ÉÑ•È½ÈM…¥¹Ğµ•Éµ…¥¸ƒŠP•¹ÑÉ…°°İ…±­…‰±”°‰ÕĞİ¥Ñ ÑÉ…‘”µ½™™Ì¥¸¹½¥Í”…¹ÁÉ¥”¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€1…Ñ¥¸EÕ…ÉÑ•È€¡±½Í•ÍĞ¤œ°½¹Ñ•¹Ğè€!½Ñ•±Ì…É½Õ¹Ñ¡”ÍÅÕ…É”…¹IÕ”M…¥¹Ğµ)…ÅÕ•Ì…É”Ñ¡”Í¡½ÉÑ•ÍĞİ…±¬Ñ¼Ñ¡”™½Õ¹Ñ…¥¸…¹Ñ¡”IH¸áÁ•ĞÍÑÉ••Ğ¹½¥Í”…Ğ¹¥¡Ğ…¹Ñ½ÕÉ¥ÍĞÁÉ¥¥¹œìÕÁÁ•È™±½½ÉÌ…¹½ÕÉÑå…ÉÉ½½µÌ…É”ÅÕ¥•Ñ•È¸œô°(€€€€€€€ì¡•…‘¥¹œè€M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ìœ°½¹Ñ•¹Ğè€™•Üµ¥¹ÕÑ•Ì…É½ÍÌÑ¡”A½¹ĞM…¥¹Ğµ5¥¡•°°Ñ¡¥ÌÅÕ…ÉÑ•È¥Ì…±µ•È…¹µ½É”ÕÁµ…É­•Ğ°İ¥Ñ µ½É”‰½ÕÑ¥ÅÕ”¡½Ñ•±Ì¸M±¥¡Ñ±ä±½¹•Èİ…±¬‰ÕĞ„‘¥™™•É•¹Ğ°ÅÕ¥•Ñ•È™••°¸œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ9±”‘”±„¥Ó¤€¼ƒ9±”M…¥¹Ğµ1½Õ¥Ìœ°½¹Ñ•¹Ğè€)ÕÍĞ…É½ÍÌÑ¡”‰É¥‘•Ì°Ñ¡•Í”¥Í±…¹‘Ì…É”Á•…•™Õ°…Ğ¹¥¡Ğ‰ÕĞ¡…Ù”™•Ü¡½Ñ•±Ì…¹¡¥¡•ÈÁÉ¥•ÌìÑ¡”™½Õ¹Ñ…¥¸¥Ì„€×ŠLÄÀµ¥¹ÕÑ”İ…±¬…İ…ä¸œô°(€€€€€€€ì¡•…‘¥¹œè€QÉ…¹ÍÁ½ÉĞÑÉ…‘”µ½™˜œ°½¹Ñ•¹Ğè€±°Ñ¡É•”ÁÕĞÑ¡”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”İ¥Ñ¡¥¸É•… ¸I•µ•µ‰•ÈÑ¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½Èİ½É­Ì€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØ°Í¼É•±ä½¸Ñ¡”IH½È±¥¹”€ÄÀ™½È±…Ñ”µ½Ù•Ì¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%Ì¥Ğ¹½¥Íä¹•…ÈÑ¡”™½Õ¹Ñ…¥¸üœ°…¹Íİ•Èè€Q¡”ÍÅÕ…É”¥Ì‰ÕÍä±…Ñ”ì¡½½Í”ÕÁÁ•È½È½ÕÉÑå…ÉÉ½½µÌ™½ÈÅÕ¥•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡¥ …É•„¥Ì…±µ•ÍĞüœ°…¹Íİ•Èè€M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì…¹Ñ¡”¥Í±…¹‘Ì…É”ÅÕ¥•Ñ•ÈÑ¡…¸Ñ¡”ÍÅÕ…É”¥ÑÍ•±˜¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑÉ…¹ÍÁ½ÉĞ•…Íä™É½´¡•É”üœ°…¹Íİ•Èè€e•ÌƒŠPIH½…¹7¥ÑÉ¼±¥¹”€ÄÀ…É”±½Í”ì…Ù½¥Ñ¡”±½Í•±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¸œô°(€€€€€t°(€€€€€¹…Øè€]¡•É”Ñ¼ÍÑ…äœ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µ•…Ğœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°œ°€…Ğµ¹¥¡Ğt°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€?ä‘½Éµ¥ÈÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLÅÕ…ÉÑ¥•ÉÌ½µÁ…Ë¥Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€1½•ÈÁË¡Ì‘”±„™½¹Ñ…¥¹”€èEÕ…ÉÑ¥•È±…Ñ¥¸°M…¥¹Ğµ•Éµ…¥¸•Ğƒ¹±•Ì½µÁ…Ë¥ÌÁ½ÕÈÑÉ…¹ÍÁ½ÉĞ°‰ÉÕ¥Ğ•Ğµ…É¡”¸œ°(€€€€€ Äè€?ä‘½Éµ¥ÈÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€1½•Èƒ€ÅÕ•±ÅÕ•Ìµ¥¹ÕÑ•Ì‘”±„™½¹Ñ…¥¹”Á±…”…ÔEÕ…ÉÑ¥•È±…Ñ¥¸½Ôƒ€M…¥¹Ğµ•Éµ…¥¸ƒŠP•¹ÑÉ…°°Á§¥Ñ½¸°µ…¥Ì…Ù•Œ‰ÉÕ¥ÑÌ•ĞÁÉ¥à¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€EÕ…ÉÑ¥•È±…Ñ¥¸€¡±”Á±ÕÌÁÉ½¡”¤œ°½¹Ñ•¹Ğè€#ÑÑ•±Ì…ÕÑ½ÕÈ‘”±„Á±…”•ĞÉÕ”M…¥¹Ğµ)…ÅÕ•Ì€è±„Á±ÕÌ½ÕÉÑ”µ…É¡”Ù•ÉÌ±„™½¹Ñ…¥¹”•Ğ±”IH¸	ÉÕ¥ÑÌ‘”ÉÕ”±”Í½¥È•ĞÁÉ¥àÑ½ÕÉ¥ÍÑ¥ÅÕ•Ì€ìƒ¥Ñ…•ÌÍÕÃ¥É¥•ÕÉÌ•Ğ½ÕÉÌÁ±ÕÌ…±µ•Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ìœ°½¹Ñ•¹Ğè€EÕ•±ÅÕ•Ìµ¥¹ÕÑ•ÌÁ…È±”A½¹ĞM…¥¹Ğµ5¥¡•°°ÅÕ…ÉÑ¥•ÈÁ±ÕÌ…±µ”•Ğ¡…ÕĞ‘”…µµ”°Á±ÕÌ‘”‰½ÕÑ¥ÅÕ•Ìµ£ÑÑ•±Ì¸5…É¡”Õ¸Á•ÔÁ±ÕÌ±½¹Õ”µ…¥Ì…µ‰¥…¹”‘¥™›¥É•¹Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ9±”‘”±„¥Ó¤€¼M…¥¹Ğµ1½Õ¥Ìœ°½¹Ñ•¹Ğè€)ÕÍÑ”‘”³Še…ÕÑÉ”ÑÓ¤‘•ÌÁ½¹ÑÌ°ƒ¹±•ÌÁ…¥Í¥‰±•Ì±„¹Õ¥Ğµ…¥ÌÁ•Ô“Še£ÑÑ•±Ì•ĞÁÉ¥àƒ¥±•Û¥Ì€ì±„™½¹Ñ…¥¹”•ÍĞƒ€€×ŠLÄÀµ¥¸¸œô°(€€€€€€€ì¡•…‘¥¹œè€½µÁÉ½µ¥ÌÑÉ…¹ÍÁ½ÉĞœ°½¹Ñ•¹Ğè€1•ÌÑÉ½¥Ì‘½¹¹•¹Ğ±”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ƒ€Á½ÉÓ¥”¸1„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØ€ì½µÁÑ•èÍÕÈ±”IH½Ô±„±¥¹”€ÄÀ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ÍĞµ”‰ÉÕå…¹ĞÁË¡Ì‘”±„™½¹Ñ…¥¹”€üœ°…¹Íİ•Èè€1„Á±…”•ÍĞ…¹¥·¥”Ñ…É€ìÁË¥›¥É•èƒ¥Ñ…•ÌÍÕÃ¥É¥•ÕÉÌ½Ô½ÕÉÌ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ•°ÅÕ…ÉÑ¥•È•ÍĞ±”Á±ÕÌ…±µ”€üœ°…¹Íİ•Èè€M…¥¹Ğµ•Éµ…¥¸µ‘•ÌµAË¥Ì•Ğ±•Ìƒ¹±•ÌÍ½¹ĞÁ±ÕÌ…±µ•ÌÅÕ”±„Á±…”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1”ÑÉ…¹ÍÁ½ÉĞ•ÍĞµ¥°™…¥±”€üœ°…¹Íİ•Èè€=Õ¤ƒŠPIH½•Ğ±¥¹”€ÄÀÁÉ½¡•Ì€ìƒ¥Ù¥Ñ•è±„±¥¹”€Ğ™•É·¥”¸œô°(€€€€€t°(€€€€€¹…Øè€?ä‘½Éµ¥Èœ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µ•…Ğœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°œ°€…Ğµ¹¥¡Ğt°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úç’ö?–ºÿ¾ò#–2ë–~š¾S¢ú¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ’ö?–r£–ZßšÎ'¦f¢şG¾òkš.'’â–2ë–rš^—¢Ïšnó’â;–~;–Êo–r£’ê“¦k–f«¦~Ï’â;š¶—¢†3’úÿ–"§šŸ’â+jš¾S¢úœ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úç–N«¦3’ö<œ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ’ö?–r£–ZßšÎ'–ƒ–"¦J¢2–nÓ–¾ò3–6Ï’ö7’ê;š.'’â–2ëš"[–rš^—¢ÏšnóŠSŠS’â·–ş–>¿š¶—¢†3¾ò3’ö–r£–f«¦~Ï’â;’îßš‚ó’â+¦ršv¢†‡œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿš.'’â–2ë¾ò#šr¢şG¾ò$œ°½¹Ñ•¹Ğè€Ÿ–æÿ–rë–F£¢úç’â8M…¥¹Ğµ)…ÅÕ•Ìƒ¢†_j¦K–ê_šï–ZßšÎ'’â8IHƒšr¢şG–’sšfk¢†_¦Ošr'–f«¦~Ï–?šâã–º‹’îß¾òo¦®cš–ó–Æš"[–ê·¦f‹š"ÿšnÓ–º'¦vgœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–rš^—¢Ïšnğ·–úÜ·šf»¦nÜœ°½¹Ñ•¹Ğè€Ÿ¢ş–rÆÏš¶–ÂSš†—–ƒ–"¦J–6Ï¢úû¾ò3¢†_–2ëšnÓ–º'¦vgšnÓ¦®cš†¾ò3Êû–N¦K–ê_šnÓ–’kš¶—¢†3¢7¢şs¾ò3’öšÂo–nÓ’â7–B3œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–~;–Êl€¼ƒ–r¢Ş¿šbO–Êlœ°½¹Ñ•¹Ğè€Ÿ¢şš†—–6Ï¢úû¾ò3–’sšfk–º'¦vg’ö¦K–ê_–ÂG’îßš‚ó¦®c¾òo–ZßšÎ'š¶—¢†3ê˜€×ŠLÄÀƒ–"¦Jœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ’ê“¦kšv¢†„œ°½¹Ñ•¹Ğè€Ÿ’â'¢¦÷¦vƒ¢şDIH½ƒjM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¢¾ß¢ºÃ’ö?–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®d€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·¾ò3šfk¦^Ó¢¾ß’úw¢ÖXIHƒš"X€ÄÀƒ–>ßêÿœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'¦f¢şG–B×–B_¾ò|œ°…¹Íİ•Èè€Ÿ–æÿ–rë–—–’s·¦^ç¾òo¦'¦®cš–ó–Æš"[–ê·¦f‹š"ÿšnÓ–º'¦vgœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–N«’â«–2ë–~šr–º'¦vg¾ò|œ°…¹Íİ•Èè€Ÿ–rš^—¢Ïšnğ·–úÜ·šf»¦nß’â;–~;–Êoš¾S–æÿ–rëšr³¢ê¯šnÓ–º'¦vgœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ’ê“¦kšZç’úÿ–B_¾ò|œ°…¹Íİ•Èè€ŸšZç’úÿŠSŠQIH½ƒ’â;–rÃ¦N€ÄÀƒ–>ßêÿ¢şG–r£–J¯–Âë¾òo¦ÿ–ò–Ï¦^·j€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®gœô°(€€€€€t°(€€€€€¹…Øè€Ÿ–F£¢úç’ö?–ºüœ°(€€€€€É•±…Ñ•èlİ¡•É”µÑ¼µ•…Ğœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°œ°€…Ğµ¹¥¡Ğt°(€€€ô°(€ô°(€€Í…¥¹Ğµµ¥¡•°µÙÌµµ½¹ĞµÍ…¥¹Ğµµ¥¡•°œèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€M…¥¹Ğµ5¥¡•°A…É¥ÌÙÌ5½¹ĞM…¥¹Ğµ5¥¡•°ƒŠL]¡…ÓŠeÌÑ¡”¥™™•É•¹”œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€Q¡”Ñİ¼Ù•Éä‘¥™™•É•¹Ğ€‰M…¥¹Ğ5¥¡•°ˆÍ¥Ñ•Ì¥¸É…¹”è„A…É¥Ì™½Õ¹Ñ…¥¸…¹Ñ¡”9½Éµ…¹‘ä¥Í±…¹…‰‰•ä°İ¥Ñ ‘¥ÍÑ…¹”°ÑåÁ”…¹ÑÉ¥ÀÁ±…¹¹¥¹œ¸œ°(€€€€€ Äè€M…¥¹Ğµ5¥¡•°¥¸A…É¥ÌÙÌ5½¹ĞM…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€Q¡•äÍ¡…É”„¹…µ”‰ÕĞ…É”¹½ĞÑ¡”Í…µ”Á±…”è½¹”¥Ì„A…É¥Ì™½Õ¹Ñ…¥¸½¸Ñ¡”1•™Ğ	…¹¬°Ñ¡”½Ñ¡•È„Ñ¥‘…°µ¥Í±…¹…‰‰•ä¥¸9½Éµ…¹‘ä…‰½ÕĞ€ÌØÀ­´…İ…ä¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Qİ¼‘¥™™•É•¹ĞÁ±…•Ìœ°½¹Ñ•¹Ğè€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°¥Ì„€ÄåÑ µ•¹ÑÕÉäÁÕ‰±¥Œ™½Õ¹Ñ…¥¸½¸A±…”M…¥¹Ğµ5¥¡•°¥¸A…É¥ÌƒŠP™É•”°¥¸Ñ¡”¥Ñä°É•…¡•‰ä7¥ÑÉ¼½IH¸5½¹ĞM…¥¹Ğµ5¥¡•°¥Ì„µ•‘¥•Ù…°…‰‰•äÙ¥±±…”½¸„Ñ¥‘…°¥Í±…¹¥¸5…¹¡”°9½Éµ…¹‘ä°…¹¥Ì„U9M<Í¥Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€¥ÍÑ…¹”…¹ÑÉ¥ÀÑåÁ”œ°½¹Ñ•¹Ğè€Q¡”™½Õ¹Ñ…¥¸¥Ì„€Ôµµ¥¹ÕÑ”İ…±¬™É½´9½ÑÉ”µ…µ”¸5½¹ĞM…¥¹Ğµ5¥¡•°¥ÌÉ½Õ¡±ä„€Ì¸×ŠLĞ¸Ô¡½ÕÈÑÉ…¥¸€¬Í¡ÕÑÑ±”ÑÉ¥À™É½´A…É¥Ì°½È„±½¹œ‘É¥Ù”ì¥Ğ¹••‘Ì„™Õ±°‘…ä½È…¸½Ù•É¹¥¡ĞÍÑ…ä°¹½Ğ„¥ÑäÍÑÉ½±°¸œô°(€€€€€€€ì¡•…‘¥¹œè€]¡¥ Ñ¼Á±…¸œ°½¹Ñ•¹Ğè€%˜å½Ô…É”¥¸A…É¥Ì™½ÈÑ¡”™½Õ¹Ñ…¥¸°5½¹ĞM…¥¹Ğµ5¥¡•°¥Ì„Í•Á…É…Ñ”9½Éµ…¹‘äÑÉ¥À¸½»ŠeĞ½¹™ÕÍ”Ñ¡”Ñİ¼İ¡•¸‰½½­¥¹œÑÉ…¹ÍÁ½ÉĞ½È¡½Ñ•±ÌƒŠPÍ•…É €‰5½¹ĞM…¥¹Ğµ5¥¡•°ˆÍÁ•¥™¥…±±ä™½ÈÑ¡”…‰‰•ä¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€É”Ñ¡•äÑ¡”Í…µ”Á±…”üœ°…¹Íİ•Èè€9¼ƒŠP½¹”¥Ì„A…É¥Ì™½Õ¹Ñ…¥¸°Ñ¡”½Ñ¡•È„9½Éµ…¹‘ä¥Í±…¹…‰‰•ä…‰½ÕĞ€ÌØÀ­´…İ…ä¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü™…È¥Ì5½¹ĞM…¥¹Ğµ5¥¡•°™É½´A…É¥Ìüœ°…¹Íİ•Èè€‰½ÕĞ€ÌØÀ­´ìÉ½Õ¡±ä€Ì¸×ŠLĞ¸Ô¡½ÕÉÌ‰äÑÉ…¥¸…¹Í¡ÕÑÑ±”°½È„±½¹œ‘É¥Ù”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€…¸$Í•”‰½Ñ ¥¸½¹”‘…äüœ°…¹Íİ•Èè€Q¡”A…É¥Ì™½Õ¹Ñ…¥¸å•Ìì5½¹ĞM…¥¹Ğµ5¥¡•°¹••‘Ì¥ÑÌ½İ¸™Õ±°µ‘…ä½È½Ù•É¹¥¡ĞÑÉ¥À™É½´A…É¥Ì¸œô°(€€€€€t°(€€€€€¹…Øè€A…É¥ÌÙÌ5½¹Ğœ°(€€€€€É•±…Ñ•èl¡¥ÍÑ½Éäœ°€Á±…”µÍ…¥¹Ğµµ¥¡•°œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€M…¥¹Ğµ5¥¡•°ƒ€A…É¥ÌÙÌ5½¹ĞM…¥¹Ğµ5¥¡•°ƒŠLÅÕ•±±”‘¥™›¥É•¹”œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€1•Ì‘•ÕàÍ¥Ñ•Ìƒ
+¬M…¥¹Ğ5¥¡•°ƒ
+ìÑË¡Ì‘¥™›¥É•¹ÑÌ€èÕ¹”™½¹Ñ…¥¹”Á…É¥Í¥•¹¹”•Ğ³Še…‰‰…å”¹½Éµ…¹‘”°…Ù•Œ‘¥ÍÑ…¹”°ÑåÁ”•Ğ½É…¹¥Í…Ñ¥½¸¸œ°(€€€€€ Äè€M…¥¹Ğµ5¥¡•°ƒ€A…É¥ÌÙÌ5½¹ĞM…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€%±ÌÁ…ÉÑ…•¹ĞÕ¸¹½´µ…¥Ì¹”Í½¹ĞÁ…Ì±”·©µ”±¥•Ô€èÕ¹”™½¹Ñ…¥¹”Á…É¥Í¥•¹¹”É¥Ù”…Õ¡”°•ĞÕ¹”…‰‰…å”ÍÕÈƒ¹±”ƒ€µ…Ë¥”•¸9½Éµ…¹‘¥”°ƒ€•¹Ù¥É½¸€ÌØÀ­´¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€•Õà±¥•Õà‘¥™›¥É•¹ÑÌœ°½¹Ñ•¹Ğè€1„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°•ÍĞÕ¹”™½¹Ñ…¥¹”ÁÕ‰±¥ÅÕ”‘Ôa%a”Í§¡±”ÍÕÈ±„A±…”M…¥¹Ğµ5¥¡•°ƒ€A…É¥ÌƒŠPÉ…ÑÕ¥Ñ”°•¸Ù¥±±”°•¸7¥ÑÉ¼½IH¸1”5½¹ĞM…¥¹Ğµ5¥¡•°•ÍĞÕ¸Ù¥±±…”…‰‰…Ñ¥…°·¥‘§¥Ù…°ÍÕÈƒ¹±”ƒ€µ…Ë¥”‘…¹Ì±„5…¹¡”°Í¥Ñ”U9M<¸œô°(€€€€€€€ì¡•…‘¥¹œè€¥ÍÑ…¹”•ĞÑåÁ”œ°½¹Ñ•¹Ğè€1„™½¹Ñ…¥¹”•ÍĞƒ€€Ôµ¥¸‘”9½ÑÉ”µ…µ”¸1”5½¹ĞM…¥¹Ğµ5¥¡•°•ÍĞƒ€•¹Ù¥É½¸€Ì°×ŠLĞ°Ô ÑÉ…¥¸€¬¹…Ù•ÑÑ”‘•ÁÕ¥ÌA…É¥Ì°½Ô±½¹Õ”É½ÕÑ”€ì¥°™…ÕĞÕ¹”©½ÕÉ»¥”½ÔÕ¹”¹Õ¥Ğ°Á…ÌÕ¹”™³‰¹•É¥”ÕÉ‰…¥¹”¸œô°(€€€€€€€ì¡•…‘¥¹œè€EÕ”ÁË¥Ù½¥Èœ°½¹Ñ•¹Ğè€M¤Ù½ÕÌƒ©Ñ•Ìƒ€A…É¥ÌÁ½ÕÈ±„™½¹Ñ…¥¹”°±”5½¹Ğ•ÍĞÕ¸…ÕÑÉ”Ù½å…”•¸9½Éµ…¹‘¥”¸9”½¹™½¹‘•èÁ…Ì±•Ì‘•Õà•¸Ë¥Í•ÉÙ…¹Ğ€ì¡•É¡•èƒ
+¬5½¹ĞM…¥¹Ğµ5¥¡•°ƒ
+ìÁ½ÕÈ³Še…‰‰…å”¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ÍĞµ”±”·©µ”±¥•Ô€üœ°…¹Íİ•Èè€9½¸ƒŠPÕ¹”™½¹Ñ…¥¹”Á…É¥Í¥•¹¹”°•ĞÕ¹”…‰‰…å”¹½Éµ…¹‘”ƒ€•¹Ù¥É½¸€ÌØÀ­´¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ ÅÕ•±±”‘¥ÍÑ…¹”±”5½¹Ğ‘”A…É¥Ì€üœ°…¹Íİ•Èè€¹Ù¥É½¸€ÌØÀ­´€ì€Ì°×ŠLĞ°Ô ÑÉ…¥¸€¬¹…Ù•ÑÑ”°½Ô±½¹Õ”É½ÕÑ”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€A•ÕĞµ½¸Ù½¥È±•Ì‘•Õà•¸Õ¸©½ÕÈ€üœ°…¹Íİ•Èè€1„™½¹Ñ…¥¹”½Õ¤€ì±”5½¹Ğ‘•µ…¹‘”Í„ÁÉ½ÁÉ”©½ÕÉ»¥”½Ô¹Õ¥Ğ‘•ÁÕ¥ÌA…É¥Ì¸œô°(€€€€€t°(€€€€€¹…Øè€A…É¥ÌÙÌ5½¹Ğœ°(€€€€€É•±…Ñ•èl¡¥ÍÑ½Éäœ°€Á±…”µÍ…¥¹Ğµµ¥¡•°œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”t°(€€€ô°(€ô°(€€İ…±­Ì½Á…É¥Ìµ™½Õ¹Ñ…¥¹Ìœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€A…É¥Ì½Õ¹Ñ…¥¹Ì]…±­¥¹œQ½ÕÈƒŠL½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°€˜	•å½¹œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€™½Õ¹Ñ…¥¸µÑ¡•µ•É½ÕÑ”±¥¹­¥¹œ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°İ¥Ñ ½Ñ¡•ÈA…É¥Ì™½Õ¹Ñ…¥¹ÌèÑ¡”£‰Ñ•±•Ğ…¹=‰Í•ÉÙ…Ñ½¥É”™½Õ¹Ñ…¥¹Ì°Ñ¡”A…±…¥ÌµI½å…°…¹Ñ¡”QÕ¥±•É¥•Ì°İ¥Ñ Ñ¥µ¥¹Ì¸œ°(€€€€€ Äè€A…É¥Ì™½Õ¹Ñ…¥¹Ìİ…±­¥¹œÑ½ÕÈœ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€%˜å½Ô±¥­”Ñ¡”M…¥¹Ğµ5¥¡•°™½Õ¹Ñ…¥¸°„™½Õ¹Ñ…¥¸ÑÉ…¥°½¹¹•ÑÌ¥ĞÑ¼½Ñ¡•È…Ù¥½Õ…¹!…ÕÍÍµ…¹¹¥…¸™½Õ¹Ñ…¥¹Ì…É½ÍÌÑ¡”1•™Ğ	…¹¬…¹‰•å½¹¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Q¡”ÑÉ…¥°œ°½¹Ñ•¹Ğè€MÑ…ÉĞ…Ğ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠH¹½ÉÑ Ñ¼Ñ¡”A±…”‘Ô£‰Ñ•±•Ğ™½Õ¹Ñ…¥¹Ì€¡…±Í¼…Ù¥½Õ½!…ÕÍÍµ…¹¸¤ƒŠHÉ½ÍÌÑ¼Ñ¡”I¥¡Ğ	…¹¬…¹Ñ¡”A…±…¥ÌµI½å…°…É‘•¹ÌƒŠHİ•ÍĞÑ¼Ñ¡”QÕ¥±•É¥•Ì…¹Ñ¡”1½ÕÙÉ”™½Õ¹Ñ…¥¹Ì¸‰½ÕĞ€ÏŠLĞ­´°µ½ÍÑ±ä™±…Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€]¡äÑ¡•Í”™½Õ¹Ñ…¥¹Ìœ°½¹Ñ•¹Ğè€Q¡”£‰Ñ•±•Ğ…¹=‰Í•ÉÙ…Ñ½¥É”™½Õ¹Ñ…¥¹ÌÍ¡…É”Ñ¡”Í…µ”M•½¹µÁ¥É”ÁÉ½É…µµ”…ÌM…¥¹Ğµ5¥¡•°ìÑ¡”A…±…¥ÌµI½å…°…¹QÕ¥±•É¥•ÌÍ¡½Ü•…É±¥•È…¹±…Ñ•ÈÉ½å…°™½Õ¹Ñ…¥¸‘•Í¥¸¸Q½•Ñ¡•ÈÑ¡•äÑ•±°Ñ¡”ÍÑ½Éä½˜A…É¥Ìİ…Ñ•È…ÌÍÁ•Ñ…±”¸œô°(€€€€€€€ì¡•…‘¥¹œè€Q¥µ¥¹œ…¹Ñ¡•µ•Ìœ°½¹Ñ•¹Ğè€±±½Ü¡…±˜„‘…äİ¥Ñ ÍÑ½ÁÌìÑ¡”=‰Í•ÉÙ…Ñ½¥É”™½Õ¹Ñ…¥¸¥Ì„±½¹•ÈÍ½ÕÑ¡•É¸•áÑ•¹Í¥½¸¸… ÍÑ½À¥Ì™É•”Ñ¼Ù¥•Ü¸A…¥ÈÑ¡”¹½ÉÑ¡•É¸Á…ÉĞİ¥Ñ Ñ¡”1½ÕÙÉ”¥˜å½Ôİ…¹Ğ…¸¥¹Ñ•É¥½È¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡¥ ™½Õ¹Ñ…¥¹Ì…É”½¸Ñ¡”ÑÉ…¥°üœ°…¹Íİ•Èè€M…¥¹Ğµ5¥¡•°°Ñ¡”£‰Ñ•±•Ğ™½Õ¹Ñ…¥¹Ì°A…±…¥ÌµI½å…°°Ñ¡”QÕ¥±•É¥•Ì…¹€¡™ÕÉÑ¡•È¤Ñ¡”=‰Í•ÉÙ…Ñ½¥É”™½Õ¹Ñ…¥¸¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü±½¹œ¥ÌÑ¡”İ…±¬üœ°…¹Íİ•Èè€‰½ÕĞ€ÏŠLĞ­´°¡…±˜„‘…äİ¥Ñ ÍÑ½ÁÌìµ½ÍÑ±ä™±…Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€É”Ñ¡•ä…±°™É•”üœ°…¹Íİ•Èè€e•ÌƒŠP…±°Ñ¡”™½Õ¹Ñ…¥¹Ì½¸Ñ¡”ÑÉ…¥°…É”™É•”Ñ¼Ù¥•Ü™É½´½ÕÑÍ¥‘”¸œô°(€€€€€t°(€€€€€¹…Øè€A…É¥Ì™½Õ¹Ñ…¥¹Ìœ°(€€€€€É•±…Ñ•èl…‰É¥•°µ‘…Ù¥½Õœ°€¡…ÕÍÍµ…¹¸µÁ…É¥Ìœ°€İ…±­Ì½¡…±˜µ‘…äµ¥Ñ¥¹•É…Éäœ°€Á¡½Ñ½Ìt°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€U¹”Ù¥Í¥Ñ”‘•Ì™½¹Ñ…¥¹•Ì‘”A…É¥ÌƒŠL½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°•Ğ…Ôµ‘•³€œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€U¸¥Ñ¥»¥É…¥É”‘•Ì™½¹Ñ…¥¹•Ì±¥…¹Ğ±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒ€“Še…ÕÑÉ•Ì€è£‰Ñ•±•Ğ°=‰Í•ÉÙ…Ñ½¥É”°A…±…¥ÌµI½å…°•ĞQÕ¥±•É¥•Ì°…Ù•Œ‘ÕË¥•Ì¸œ°(€€€€€ Äè€U¹”Ù¥Í¥Ñ”‘•Ì™½¹Ñ…¥¹•Ì‘”A…É¥Ìœ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€M¤±„™½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°Ù½ÕÌÁ±‡¹Ğ°Õ¸¥ÉÕ¥Ğ‘•Ì™½¹Ñ…¥¹•Ì±„É•±¥”ƒ€“Še…ÕÑÉ•Ì™½¹Ñ…¥¹•Ì‘”…Ù¥½Õ•Ğ“Še!…ÕÍÍµ…¹¸É¥Ù”…Õ¡”•Ğ…Ôµ‘•³€¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€1”¥ÉÕ¥Ğœ°½¹Ñ•¹Ğè€¥Á…ÉĞ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠH¹½ÉÙ•ÉÌ±•Ì™½¹Ñ…¥¹•Ì‘”±„A±…”‘Ô£‰Ñ•±•Ğ€¡…ÕÍÍ¤…Ù¥½Õ½!…ÕÍÍµ…¹¸¤ƒŠHÉ¥Ù”‘É½¥Ñ”•Ğ©…É‘¥¹Ì‘ÔA…±…¥ÌµI½å…°ƒŠH½Õ•ÍĞÙ•ÉÌ±•ÌQÕ¥±•É¥•Ì•Ğ±”1½ÕÙÉ”¸¹Ù¥É½¸€ÏŠLĞ­´°Á±ÕÓÑĞÁ±…Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€A½ÕÉÅÕ½¤•Ì™½¹Ñ…¥¹•Ìœ°½¹Ñ•¹Ğè€1•Ì™½¹Ñ…¥¹•Ì‘Ô£‰Ñ•±•Ğ•Ğ‘”³Še=‰Í•ÉÙ…Ñ½¥É”Á…ÉÑ…•¹Ğ±”·©µ”ÁÉ½É…µµ”‘ÔM•½¹µÁ¥É”ÅÕ”M…¥¹Ğµ5¥¡•°€ìA…±…¥ÌµI½å…°•ĞQÕ¥±•É¥•Ìµ½¹ÑÉ•¹Ğ‘•Ì™½¹Ñ…¥¹•ÌÉ½å…±•Ì…¹Ó¥É¥•ÕÉ•Ì•ĞÁ½ÍÓ¥É¥•ÕÉ•Ì¸¹Í•µ‰±”°³Še¡¥ÍÑ½¥É”‘”³Še•…ÔÍÁ•Ñ…Õ±…¥É”ƒ€A…É¥Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€ÕË¥”•ĞÑ£¡µ•Ìœ°½¹Ñ•¹Ğè€½µÁÑ•èÕ¹”‘•µ¤µ©½ÕÉ»¥”…Ù•Œ…ÉË©ÑÌ€ì³Še=‰Í•ÉÙ…Ñ½¥É”•ÍĞÕ¸ÁÉ½±½¹•µ•¹ĞÍÕ¸¡…ÅÕ”…ÉË©Ğ•ÍĞÉ…ÑÕ¥Ğ¸ÍÍ½¥•è±„Á…ÉÑ¥”¹½É…Ô1½ÕÙÉ”Á½ÕÈÕ¸¥¹Ó¥É¥•ÕÈ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ•±±•Ì™½¹Ñ…¥¹•ÌÍÕÈ±”¥ÉÕ¥Ğ€üœ°…¹Íİ•Èè€M…¥¹Ğµ5¥¡•°°±•Ì™½¹Ñ…¥¹•Ì‘Ô£‰Ñ•±•Ğ°A…±…¥ÌµI½å…°°±•ÌQÕ¥±•É¥•Ì•Ğ€¡Á±ÕÌ±½¥¸¤³Še=‰Í•ÉÙ…Ñ½¥É”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1½¹Õ•ÕÈ‘”±„µ…É¡”€üœ°…¹Íİ•Èè€¹Ù¥É½¸€ÏŠLĞ­´°‘•µ¤µ©½ÕÉ»¥”…Ù•Œ…ÉË©ÑÌ€ìÁ±ÕÓÑĞÁ±…Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Q½ÕÑ•ÌÉ…ÑÕ¥Ñ•Ì€üœ°…¹Íİ•Èè€=Õ¤ƒŠPÑ½ÕÑ•Ì±•Ì™½¹Ñ…¥¹•Ì‘Ô¥ÉÕ¥ĞÍ”Ù½¥•¹ĞÉ…ÑÕ¥Ñ•µ•¹Ğ¸œô°(€€€€€t°(€€€€€¹…Øè€½¹Ñ…¥¹•Ì‘”A…É¥Ìœ°(€€€€€É•±…Ñ•èl…‰É¥•°µ‘…Ù¥½Õœ°€¡…ÕÍÍµ…¹¸µÁ…É¥Ìœ°€İ…±­Ì½¡…±˜µ‘…äµ¥Ñ¥¹•É…Éäœ°€Á¡½Ñ½Ìt°(€€€ô°(€ô°(€€™É½´µ‰•…ÕÙ…¥Ìµ…¥ÉÁ½ÉĞœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€É½´	•…ÕÙ…¥Ì¥ÉÁ½ÉĞÑ¼½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠL	YÑ¼M…¥¹Ğµ5¥¡•°A…É¥Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€	Õ‘•Ğµ…¥É±¥¹”ÑÉ…Ù•±±•ÉÌèÑ¡”	•…ÕÙ…¥ÌÍ¡ÕÑÑ±”Ñ¼A…É¥Ì°Ñ¡•¸IHÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°İ¥Ñ Ñ¥µ¥¹Ì…¹Ñ¡”İ…±¬Ñ¼A±…”M…¥¹Ğµ5¥¡•°°€ÜÔÀÀÔA…É¥Ì¸œ°(€€€€€ Äè€É½´	•…ÕÙ…¥Ì€¡	Y¤Ñ¼½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€A…É¥Ì	•…ÕÙ…¥Ì¥ÉÁ½ÉĞ€¡	Y¤¥Ì…‰½ÕĞ€àÔ­´¹½ÉÑ ½˜Ñ¡”¥Ñä…¹¡…Ì¹¼ÑÉ…¥¸ÍÑ…Ñ¥½¸°Í¼Ñ¡”ÍÑ…¹‘…ÉÉ½ÕÑ”¥ÌÑ¡”½™™¥¥…°…¥ÉÁ½ÉĞÍ¡ÕÑÑ±”‰ÕÌ¥¹Ñ¼A…É¥Ì°Ñ¡•¸Ñ¡”IHÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”‰•Í¥‘”Ñ¡”ÍÅÕ…É”¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Q…­”Ñ¡”…¥ÉÁ½ÉĞÍ¡ÕÑÑ±”‰ÕÌœ°½¹Ñ•¹Ğè€5½ÍĞIå…¹…¥È…¹‰Õ‘•Ğ™±¥¡ÑÌÕÍ”	Y¸Q¡”½™™¥¥…°A…É¥Ì	•…ÕÙ…¥Ì¥ÉÁ½ÉĞM¡ÕÑÑ±”€¡1”	ÕÌ¤ÉÕ¹ÌÑ¼A½ÉÑ”5…¥±±½Ğ€¡A•ÉÍ¡¥¹œÑ•Éµ¥¹…°¤¥¸…‰½ÕĞ€Å Ä×ŠLÅ ÌÀì‰½½¬¥Ğİ¥Ñ å½ÕÈ™±¥¡Ğ…¹…±±½Ü‰Õ™™•ÈÑ¥µ”¸Q¡•É”¥Ì¹¼‘¥É•ĞÑÉ…¥¸™É½´Ñ¡”…¥ÉÁ½ÉĞ¸œô°(€€€€€€€ì¡•…‘¥¹œè€A½ÉÑ”5…¥±±½ĞÑ¼Ñ¡”™½Õ¹Ñ…¥¸œ°½¹Ñ•¹Ğè€ĞA½ÉÑ”5…¥±±½ĞÑ…­”7¥ÑÉ¼±¥¹”€Ä€¡‘¥É•Ñ¥½¸£‰Ñ•…Ô‘”Y¥¹•¹¹•Ì¤Ñ¼£‰Ñ•±•Ğ°Ñ¡•¸¡…¹”Ñ¼„Í½ÕÑ¡‰½Õ¹IH½ÈÑ¼IHÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ìÑ¡”™½Õ¹Ñ…¥¸¥Ì„Í¡½ÉĞİ…±¬™É½´Ñ¡”ÍÑ…Ñ¥½¸•á¥Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€Q¥­•Ğ…¹±Õ…”œ°½¹Ñ•¹Ğè€Q¡”Í¡ÕÑÑ±”¹••‘Ì¥ÑÌ½İ¸Ñ¥­•Ğ€¡‰½Õ¡Ğ½¹±¥¹”½È…ĞÑ¡”…¥ÉÁ½ÉĞ¤ì¥¸A…É¥Ìå½ÔÑ¡•¸¹••„Í•Á…É…Ñ”ƒ9±”µ‘”µÉ…¹”7¥ÑÉ¼½IHÑ¥­•Ğ€¡9…Ù¥¼…Íä½È„Ù…±¥Á…ÍÌ¤¸QÉ…¥¹Ì¡…Ù”É½½´™½ÈÍÕ¥Ñ…Í•Ì‰ÕĞ…Ù½¥ÉÕÍ ¡½ÕÉÌ¸œô°(€€€€€€€ì¡•…‘¥¹œè€Q…á¤…¹Ñ¡”±¥¹”€Ğ±½ÍÕÉ”œ°½¹Ñ•¹Ğè€Ñ…á¤½ÈÉ¥‘”µ¡…¥°™É½´	Y½ÍÑÌÉ½Õ¡±äƒŠ
+°ÄÔÃŠLÈÀÀ…¹Ñ…­•Ì€Å ÌÃŠLÉ ì¥Ğ¥ÌÉ…É•±äİ½ÉÑ ¥Ğ¸9½Ñ”Ñ¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½Èİ½É­Ì€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØ°Í¼É•±ä½¸Ñ¡”IH½ÍÑ…Ñ¥½¸…ĞÑ¡”ÍÅÕ…É”ƒŠPÍ•”É…ÑÀ¹™È¸œô°(€€€€€€€ì¡•…‘¥¹œè€Y•É¥™ä‰•™½É”å½ÔÑÉ…Ù•°œ°½¹Ñ•¹Ğè€½¹™¥É´Ñ¡”ÕÉÉ•¹ĞÍ¡ÕÑÑ±”Ñ¥µ•Ñ…‰±”…¹™…É•Ì½¸Ñ¡”½™™¥¥…°	•…ÕÙ…¥Ì…¥ÉÁ½ÉĞÍ¥Ñ”…¹IQ@¿9±”µ‘”µÉ…¹”5½‰¥±¥Ó¥ÌÁ…•ÌìÑ¡¥ÌÕ¥‘”É•™±•ÑÌ¥¹™½Éµ…Ñ¥½¸…Ù…¥±…‰±”¥¸=Ñ½‰•È€ÈÀÈØ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü‘¼$•Ğ™É½´	•…ÕÙ…¥ÌÑ¼½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°üœ°…¹Íİ•Èè€Q…­”Ñ¡”½™™¥¥…°Í¡ÕÑÑ±”‰ÕÌÑ¼A½ÉÑ”5…¥±±½Ğ°Ñ¡•¸7¥ÑÉ¼±¥¹”€ÄÑ¼£‰Ñ•±•Ğ…¹IH½Ñ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ìÑ¡”™½Õ¹Ñ…¥¸¥Ì…ĞÑ¡”•á¥Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü±½¹œ‘½•ÌÑ¡”ÑÉ¥ÀÑ…­”üœ°…¹Íİ•Èè€‰½ÕĞ€ÈÑ¼€É ÌÀ¥¸Ñ½Ñ…°°¥¹±Õ‘¥¹œÑ¡”Í¡ÕÑÑ±”…¹Ñ¡”7¥ÑÉ¼½IH½¹¹•Ñ¥½¸¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡•É”„ÑÉ…¥¸™É½´	•…ÕÙ…¥Ì…¥ÉÁ½ÉĞüœ°…¹Íİ•Èè€9¼ƒŠP	Y¡…Ì¹¼ÑÉ…¥¸ÍÑ…Ñ¥½¸ìÑ¡”Í¡ÕÑÑ±”‰ÕÌ¥ÌÑ¡”ÍÑ…¹‘…ÉÁÕ‰±¥Œ±¥¹¬¥¹Ñ¼A…É¥Ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€…¸$ÕÍ”Ñ¡”7¥ÑÉ¼±¥¹”€Ğüœ°…¹Íİ•Èè€Q¡”±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½ÈÉ•¹½Ù…Ñ¥½¸€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØìÕÍ”Ñ¡”IH½ÍÑ…Ñ¥½¸‰•Í¥‘”Ñ¡”™½Õ¹Ñ…¥¸¥¹ÍÑ•…¸œô°(€€€€€t°(€€€€€¹…Øè€É½´	•…ÕÙ…¥Ì…¥ÉÁ½ÉĞœ°(€€€€€É•±…Ñ•èl™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€”³Še‡¥É½Á½ÉĞ‘”	•…ÕÙ…¥Ìƒ€±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠL	YÙ•ÉÌA…É¥Ìœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è(€€€€€€€€Y½å…•ÕÉÌ±½Üµ½ÍĞ€è¹…Ù•ÑÑ”	•…ÕÙ…¥ÌÙ•ÉÌA…É¥Ì°ÁÕ¥ÌIH©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°…Ù•Œ‘ÕË¥•Ì•Ğ±„µ…É¡”Ù•ÉÌ±„A±…”M…¥¹Ğµ5¥¡•°°€ÜÔÀÀÔA…É¥Ì¸œ°(€€€€€ Äè€”	•…ÕÙ…¥Ì€¡	Y¤ƒ€±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€3Še‡¥É½Á½ÉĞ‘”A…É¥Ì	•…ÕÙ…¥Ì€¡	Y¤•ÍĞƒ€•¹Ù¥É½¸€àÔ­´…Ô¹½É‘”A…É¥Ì•Ğ»Še„Á…Ì‘”…É”€è³Še¥Ñ¥»¥É…¥É”¡…‰¥ÑÕ•°•ÍĞ±„¹…Ù•ÑÑ”½™™¥¥•±±”©ÕÍÅ×Šg€A…É¥Ì°ÁÕ¥Ì±”IH©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°ƒ€ÑÓ¤‘”±„Á±…”¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€AÉ•¹‘É”±„¹…Ù•ÑÑ”‡¥É½Á½ÉĞœ°½¹Ñ•¹Ğè€1„Á±ÕÁ…ÉĞ‘•ÌÙ½±Ì±½Üµ½ÍĞ•ĞIå…¹…¥ÈÕÑ¥±¥Í•¹Ğ	Y¸1„¹…Ù•ÑÑ”½™™¥¥•±±”A…É¥Ì	•…ÕÙ…¥Ì€¡1”	ÕÌ¤É•©½¥¹Ğ±„A½ÉÑ”5…¥±±½Ğ€¡Ñ•Éµ¥¹…°A•ÉÍ¡¥¹œ¤•¸•¹Ù¥É½¸€Å Ä×ŠLÅ ÌÀ€ìË¥Í•ÉÙ•èµ±„…Ù•ŒÙ½ÑÉ”Ù½°•ĞÁË¥Ù½å•èÕ¹”µ…É”¸ÕÕ¸ÑÉ…¥¸‘¥É•Ğ‘•ÁÕ¥Ì³Še‡¥É½Á½ÉĞ¸œô°(€€€€€€€ì¡•…‘¥¹œè€A½ÉÑ”5…¥±±½ĞÙ•ÉÌ±„™½¹Ñ…¥¹”œ°½¹Ñ•¹Ğè€Ÿ ±„A½ÉÑ”5…¥±±½Ğ°ÁÉ•¹•è±”·¥ÑÉ¼±¥¹”€Ä€¡‘¥É•Ñ¥½¸£‰Ñ•…Ô‘”Y¥¹•¹¹•Ì¤©ÕÍÅ×Šg€£‰Ñ•±•Ğ°ÁÕ¥Ì½ÉÉ•ÍÁ½¹‘…¹”…Ù•ŒÕ¸IHÙ•ÉÌ±”ÍÕ½Ô±”IH©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€ì±„™½¹Ñ…¥¹”•ÍĞƒ€ÅÕ•±ÅÕ•ÌÁ…Ì‘”±„Í½ÉÑ¥”¸œô°(€€€€€€€ì¡•…‘¥¹œè€	¥±±•Ğ•Ğ‰……•Ìœ°½¹Ñ•¹Ğè€1„¹…Ù•ÑÑ”„Í½¸ÁÉ½ÁÉ”‰¥±±•Ğ€¡•¸±¥¹”½Ôƒ€³Še‡¥É½Á½ÉĞ¤€ìƒ€A…É¥Ì°¥°™…ÕĞ•¹ÍÕ¥Ñ”Õ¸‰¥±±•Ğƒ9±”µ‘”µÉ…¹”Ï¥Á…Ë¤€¡9…Ù¥¼…Íä½ÔÁ…ÍÍ”Ù…±¥‘”¤¸1•ÌÑÉ…¥¹Ì…•ÁÑ•¹Ğ±•ÌÙ…±¥Í•Ì°µ…¥Ìƒ¥Ù¥Ñ•è±•Ì¡•ÕÉ•Ì‘”Á½¥¹Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€Q…á¤•Ğ™•Éµ•ÑÕÉ”±¥¹”€Ğœ°½¹Ñ•¹Ğè€U¸Ñ…á¤½ÔYQ‘•ÁÕ¥Ì	Y¿íÑ”•¹Ù¥É½¸€ÄÔÃŠLÈÀÀƒŠ
+°Á½ÕÈ€Å ÌÃŠLÉ €ìÁ•ÔÉ•¹Ñ…‰±”¸1„ÍÑ…Ñ¥½¸‘”·¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”Á½ÕÈÑÉ…Ù…Õà‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØ€èÁÉ¥Ù¥³¥¥•è±„…É”IH½‘”±„Á±…”ƒŠPÙ½¥ÈÉ…ÑÀ¹™È¸œô°(€€€€€€€ì¡•…‘¥¹œè€[¥É¥™¥•è…Ù…¹Ğ‘”Á…ÉÑ¥Èœ°½¹Ñ•¹Ğè€½¹™¥Éµ•è¡½É…¥É•Ì•ĞÑ…É¥™Ì‘”±„¹…Ù•ÑÑ”ÍÕÈ±”Í¥Ñ”½™™¥¥•°‘”	•…ÕÙ…¥Ì•Ğ±•ÌÁ…•ÌIQ@€¼ƒ9±”µ‘”µÉ…¹”5½‰¥±¥Ó¥Ì€ì”Õ¥‘”É•™³¡Ñ”±•Ì¥¹™½Ì“Še½Ñ½‰É”€ÈÀÈØ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µµ•¹Ğ…±±•È‘”	•…ÕÙ…¥Ìƒ€±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°€üœ°…¹Íİ•Èè€9…Ù•ÑÑ”½™™¥¥•±±”©ÕÍÅ×Šg€±„A½ÉÑ”5…¥±±½Ğ°·¥ÑÉ¼±¥¹”€Ä©ÕÍÅ×Šg€£‰Ñ•±•ĞÁÕ¥ÌIH½©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€ì±„™½¹Ñ…¥¹”•ÍĞƒ€±„Í½ÉÑ¥”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µ‰¥•¸‘”Ñ•µÁÌ‘ÕÉ”±”ÑÉ…©•Ğ€üœ°…¹Íİ•Èè€¹Ù¥É½¸€Èƒ€€É ÌÀ…ÔÑ½Ñ…°°¹…Ù•ÑÑ”•Ğ½ÉÉ•ÍÁ½¹‘…¹”½µÁÉ¥Í•Ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€d„µĞµ¥°Õ¸ÑÉ…¥¸‘•ÁÕ¥Ì	•…ÕÙ…¥Ì€üœ°…¹Íİ•Èè€9½¸ƒŠP	Y»Še„Á…Ì‘”…É”€ì±„¹…Ù•ÑÑ”•ÍĞ±„±¥…¥Í½¸ÁÕ‰±¥ÅÕ”¡…‰¥ÑÕ•±±”Ù•ÉÌA…É¥Ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€AÕ¥Ìµ©”ÁÉ•¹‘É”±„±¥¹”€Ğ€üœ°…¹Íİ•Èè€1„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØ€ìÕÑ¥±¥Í•è±„…É”IH½…ÑÑ•¹…¹Ñ”¸œô°(€€€€€t°(€€€€€¹…Øè€•ÁÕ¥Ì	•…ÕÙ…¥Ìœ°(€€€€€É•±…Ñ•èl™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ’î;–6k¦~›šrë–rë–"Ã–rÆÏš¶–ÂS–ZßšÎ'¾ò!	YƒŠHƒ–rÆÏš¶–ÂS¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ–î'’îß¢"«¦ëš^–º‹š2–6_¾òk–6k¦~›šrë–rë>·¢ö›¢şo–ŞÓ¦î;¾ò3–7¢ö°IHƒ¢ÌM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3–B¯š^Û¦Vÿ’â;š¶—¢†3–"Ã–rÆÏš¶–ÂS–æÿ–rëj¢Ş¿êÿœ°(€€€€€ Äè€Ÿ’î;–6k¦~›šrë–rë¾ò!	Y¾ò'–"Ã–rÆÏš¶–ÂS–ZßšÎ$œ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ–ŞÓ¦î;–6k¦~›šrë–rë¾ò!	Y¾ò'’ö7’ê;–â–2ë’î—–2_ê˜€àÔƒ–³¦3¾ò3šÊ‡šr'¯¢ö›®g¾ò3–nƒš¶“¦k–âã¢Ş¿êÿšb¿–#’æc–ºcšZçšrë–rë>·¢ö›¢şo–ŞÓ¦î;¾ò3–7¢ö°IHƒ–"ÃÒŸ¦
+ï–æÿ–rëjM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ƒ®gœ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€ŸšB·’æcšrë–rë>·¢ö˜œ°½¹Ñ•¹Ğè€Ÿ–’kšVÃF{–º'¢"«¦ë’â;–î'’îß¢"«>·’öÿR 	Y–ºcšZç3–ŞÓ¦î;–6k¦~›šrë–rë>·¢ö›¾ò!1”	ÕÏ¾ò'7ê˜€Äƒ–Â?š^Ø€ÄÔƒ–"ŠLÄƒ–Â?š^Ø€ÌÀƒ–"–"Ã¢úøA½ÉÑ”5…¥±±½Ó¾ò!A•ÉÍ¡¥¹œƒî#
+ç®g¾ò'¾òo¢¾ß’â;šrë–£’â–æÛ¦Š¢º‹–æÛ¦ŠVgòO–Ëšrë–rëšÊ‡šr'nÓ¢úû–"_¢ö›œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ’î8A½ÉÑ”5…¥±±½Ğƒ–"Ã–ZßšÎ$œ°½¹Ñ•¹Ğè€Ÿ–r A½ÉÑ”5…¥±±½Ğƒ’æc–rÃ¦N€Äƒ–>ßêÿ¾ò#–ú £‰Ñ•…Ô‘”Y¥¹•¹¹•ÌƒšZç–BG¾ò'–"À£‰Ñ•±•Ó¾ò3–7š6‹’æc–6_¢†0IHƒš"XIHƒ¢ÌM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾òo–ZßšÎ'¢Şw–ë®g–>’îšVÃš¶—’æ/¦—œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢ö›–£’â;¢†3šv8œ°½¹Ñ•¹Ğè€Ÿ>·¢ö›¦r–6W.³¢Ò·–£¾ò#êÿ’â+š"[šrë–rë¢Ò·’æÃ¾ò'¾òo–r£–ŞÓ¦î;¢şc¦r–>›¢Ò·–2ë–~¢ö›–£¾ò!9…Ù¥¼…Íäƒš"[šr'šV#¦k–£¾ò'–"_¢ö›–>¿šRû¢†3šv;¾ò3’ö¢¾ß¦ÿ–ò¦®c–ÎÃš^Ûšº×œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–ë¢ö›’â8€Ğƒ–>ßêÿ–s¢ş@œ°½¹Ñ•¹Ğè€Ÿ’î8	Yƒš&O¢ö›š"[öGê›¢ö›ê˜€ÄÔÃŠLÈÀÀƒš²Ÿ–¢_š^Ø€Ä¸×ŠLÈƒ–Â?š^Û¾ò3¦k–âã–æÛ’â7–"Kº_–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®g–nƒšRç¦ƒ’ê8€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·¾ò3¢¾ßšRç’æc–æÿ–rëš^jIH½ƒ®gŠSŠS–º{š^Û*Ûš¢É…ÑÀ¹™Ëœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–ë–>G–&7š‚ã–¾äœ°½¹Ñ•¹Ğè€Ÿ¢¾ß–r£–6k¦~›šrë–rë–ºcöG’â8IQ@€¼ƒ9±”µ‘”µÉ…¹”5½‰¥±¥Ó¥Ìƒ¦†×¦v‹†»¢º“>·¢ö›š^Û–"ï’â;–£’îß¾òošr³š2–6_–~ë’ê8€ÈÀÈØƒ–æĞ€ÄÀƒšr#j’ş‡š¿œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–š’öW’î;–6k¦~›–"Ã–rÆÏš¶–ÂS–ZßšÎ'¾ò|œ°…¹Íİ•Èè€Ÿ’æc–ºcšZç>·¢ö›–"ÀA½ÉÑ”5…¥±±½Ó¾ò3¢ö³–rÃ¦N€Äƒ–>ßêÿ–"À£‰Ñ•±•Ó¾ò3–7’æ`IH½ƒ¢ÌM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3–ZßšÎ'–ÂÇ–r£–ë®g–>œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ¢ö›¢/–’k’æ¾ò|œ°…¹Íİ•Èè€Ÿ–B¯>·¢ö›’â;–rÃ¦N½IHƒš6‹’æc¾ò3šï¢º‡ê˜€ËŠLÈ¸Ôƒ–Â?š^Ûœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–6k¦~›šrë–rëšr'¯¢ö›–B_¾ò|œ°…¹Íİ•Èè€ŸšÊ‡šr'ŠSŠQ	Yƒš^ƒ¯¢ö›®g¾ò3>·¢ö›šb¿¢şo–ŞÓ¦î;j–âã¢–³–Ç’ê“¦kšZç–ò?œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–>¿’î—–vC–rÃ¦N€Ğƒ–>ßêÿ–B_¾ò|œ°…¹Íİ•Èè€œĞƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®d€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·šRç¦ƒ¾ò3¢¾ßšRç’æc–æÿ–rëš^jIH½ƒ®gœô°(€€€€€t°(€€€€€¹…Øè€Ÿ’î;–6k¦~›šrë–rèœ°(€€€€€É•±…Ñ•èl™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€ô°(€€™É½´µÑ¡”µ¥Ñäµ•¹Ñ•Èœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€É½´•¹ÑÉ…°A…É¥Ì€˜QÉ…¥¸MÑ…Ñ¥½¹ÌÑ¼½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€!½ÜÑ¼É•… ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°™É½´Ñ¡”µ…¥¸A…É¥ÌÍÑ…Ñ¥½¹Ì€¡…É”‘Ô9½É°…É”‘”1å½¸°5½¹ÑÁ…É¹…ÍÍ”°M…¥¹Ğµ1…é…É”¤…¹•¹ÑÉ…°‘¥ÍÑÉ¥ÑÌÙ¥„IH½…¹7¥ÑÉ¼¸œ°(€€€€€ Äè€É½´•¹ÑÉ…°A…É¥Ì…¹Ñ¡”ÑÉ…¥¸ÍÑ…Ñ¥½¹Ìœ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€Q¡”™½Õ¹Ñ…¥¸Í¥ÑÌ¥¸Ñ¡”¡•…ÉĞ½˜Ñ¡”1•™Ğ	…¹¬°Í¼µ½ÍĞ•¹ÑÉ…°©½ÕÉ¹•åÌ•¹…ĞÑ¡”IH½ÍÑ…Ñ¥½¸M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°„™•ÜÍÑ•ÁÌ™É½´Ñ¡”ÍÅÕ…É”ƒŠP½È½¸„Í¡½ÉĞİ…±¬™É½´ƒ9±”‘”±„¥Ó¤¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Q¡”•…Í¥•ÍĞ±¥¹¬èIH½œ°½¹Ñ•¹Ğè€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”¥ÌÍ•ÉÙ•‰ä‰½Ñ IH…¹IH¸É½´…±µ½ÍĞ…¹åİ¡•É”•¹ÑÉ…°°É¥‘”Ñ¡”IHÑ¼Ñ¡…ĞÍÑ…Ñ¥½¸ìÑ¡”™½Õ¹Ñ…¥¸¥Ì…ĞÑ¡”•á¥Ğ½¸A±…”M…¥¹Ğµ5¥¡•°¸œô°(€€€€€€€ì¡•…‘¥¹œè€É½´…É”‘Ô9½É€˜…É”‘”³ŠeÍĞœ°½¹Ñ•¹Ğè€	½Ñ ÍÑ…Ñ¥½¹ÌÍ¥Ğ½¸IH¸	½…É„Í½ÕÑ¡‰½Õ¹IH€¡Ñ½İ…É‘ÌM…¥¹ĞµK¥µäµ³¡Ìµ¡•ÙÉ•ÕÍ”½ÈI½‰¥¹Í½¸¤…¹É¥‘”Ñ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ƒŠP¹¼¡…¹”¹••‘•°…‰½ÕĞ€ÄÃŠLÄÔµ¥¹ÕÑ•Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€É½´…É”‘”1å½¸€˜5½¹ÑÁ…É¹…ÍÍ”œ°½¹Ñ•¹Ğè€É½´…É”‘”1å½¸Ñ…­”IHÑ¼£‰Ñ•±•ÓŠM1•Ì!…±±•Ì°Ñ¡•¸IH½ÈÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ì™É½´5½¹ÑÁ…É¹…ÍÍ”ÕÍ”IH€¡¹•…É‰äÍÑ…Ñ¥½¹Ì¤½È„Í¡½ÉĞ7¥ÑÉ¼ÑÉ¥À°Í¥¹”Ñ¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½Èİ½É­ÌÕ¹Ñ¥°€Ää••µ‰•È€ÈÀÈØ¸œô°(€€€€€€€ì¡•…‘¥¹œè€=¸™½½Ğ™É½´Ñ¡”•¹ÑÉ”œ°½¹Ñ•¹Ğè€Q¡”™½Õ¹Ñ…¥¸¥Ì…‰½ÕĞ„€ÄÀµµ¥¹ÕÑ”İ…±¬™É½´£‰Ñ•±•Ğ°€ÄÔµ¥¹ÕÑ•Ì™É½´9½ÑÉ”µ…µ”…¹Ñ¡”ƒ9±”‘”±„¥Ó¤°…¹€ÈÀµ¥¹ÕÑ•Ì…±½¹œÑ¡”M•¥¹”™É½´Ñ¡”1½ÕÙÉ”…É•„ƒŠPÁ±•…Í…¹Ğ¥˜å½Ô…É”…±É•…‘äÍÑÉ½±±¥¹œÑ¡”I¥¡Ğ	…¹¬¸œô°(€€€€€€€ì¡•…‘¥¹œè€1¥¹”€Ğ±½ÍÕÉ”…¹Ñ¥ÁÌœ°½¹Ñ•¹Ğè€Q¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØìÕÍ”Ñ¡”IH½ÍÑ…Ñ¥½¸½È7¥ÑÉ¼±¥¹”€ÄÀ…Ğ±Õ¹çŠM1„M½É‰½¹¹”¥¹ÍÑ•…¸¡•¬±¥Ù”ÍÑ…ÑÕÌ…ĞÉ…ÑÀ¹™È‰•™½É”ÑÉ…Ù•±±¥¹œ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü‘¼$•Ğ™É½´…É”‘Ô9½ÉÑ¼Ñ¡”™½Õ¹Ñ…¥¸üœ°…¹Íİ•Èè€Q…­”„Í½ÕÑ¡‰½Õ¹IH‘¥É•Ñ±äÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ìÑ¡”™½Õ¹Ñ…¥¸¥Ì…ĞÑ¡”ÍÑ…Ñ¥½¸•á¥Ğ°…‰½ÕĞ€ÄÃŠLÄÔµ¥¹ÕÑ•Ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€…¸$İ…±¬™É½´•¹ÑÉ…°A…É¥Ìüœ°…¹Íİ•Èè€e•ÌƒŠP¥Ğ¥ÌÉ½Õ¡±ä„€ÄÃŠLÈÀµ¥¹ÕÑ”İ…±¬™É½´£‰Ñ•±•Ğ°9½ÑÉ”µ…µ”½ÈÑ¡”1½ÕÙÉ”…±½¹œÑ¡”M•¥¹”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡¥ 7¥ÑÉ¼±¥¹”É•…¡•ÌÑ¡”ÍÅÕ…É”üœ°…¹Íİ•Èè€Q¡”±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•Õ¹Ñ¥°€Ää•Œ€ÈÀÈØìÕÍ”IH½½È7¥ÑÉ¼±¥¹”€ÄÀ…Ğ±Õ¹çŠM1„M½É‰½¹¹”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡”™½Õ¹Ñ…¥¸•¹ÑÉ…°üœ°…¹Íİ•Èè€e•ÌƒŠP¥Ğ¥Ì½¸A±…”M…¥¹Ğµ5¥¡•°¥¸Ñ¡”1…Ñ¥¸EÕ…ÉÑ•È°„Í¡½ÉĞIHÉ¥‘”½Èİ…±¬™É½´Ñ¡”µ…¥¸ÍÑ…Ñ¥½¹Ì…¹¥Í±…¹‘Ì¸œô°(€€€€€t°(€€€€€¹…Øè€É½´Ñ¡”¥Ñä•¹ÑÉ”œ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€Ô•¹ÑÉ”‘”A…É¥Ì•Ğ‘•Ì…É•Ìƒ€±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€½µµ•¹ĞÉ•©½¥¹‘É”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°‘•ÁÕ¥Ì±•ÌÉ…¹‘•Ì…É•ÌÁ…É¥Í¥•¹¹•Ì€¡…É”‘Ô9½É°…É”‘”1å½¸°5½¹ÑÁ…É¹…ÍÍ”°M…¥¹Ğµ1…é…É”¤•Ğ±•ÌÅÕ…ÉÑ¥•ÉÌ•¹ÑÉ…ÕàÁ…ÈIH½•Ğ·¥ÑÉ¼¸œ°(€€€€€ Äè€Ô•¹ÑÉ”‘”A…É¥Ì•Ğ‘•Ì…É•Ìœ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€1„™½¹Ñ…¥¹”Í”ÑÉ½ÕÙ”•¸Á±•¥¸MÕÈ‘”±„I¥Ù”…Õ¡”€è±„Á±ÕÁ…ÉĞ‘•ÌÑÉ…©•ÑÌÍ”Ñ•Éµ¥¹•¹Ğƒ€±„…É”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°ƒ€‘•ÕàÁ…Ì‘”±„Á±…”°½Ô…ÁË¡ÌÕ¹”½ÕÉÑ”µ…É¡”‘•ÁÕ¥Ì³Šg9±”‘”±„¥Ó¤¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€1”Á±ÕÌÍ¥µÁ±”€èIH½œ°½¹Ñ•¹Ğè€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”•ÍĞ‘•ÍÍ•ÉÙ¥”Á…È±”IH•Ğ±”IH¸•ÁÕ¥ÌÁÉ•ÍÅÕ”Ñ½ÕĞ±”•¹ÑÉ”°ÁÉ•¹•è±”IH©ÕÍÅ×Šg€•ÑÑ”…É”€ì±„™½¹Ñ…¥¹”•ÍĞƒ€±„Í½ÉÑ¥”ÍÕÈ±„A±…”M…¥¹Ğµ5¥¡•°¸œô°(€€€€€€€ì¡•…‘¥¹œè€•ÁÕ¥Ì…É”‘Ô9½É•Ğ…É”‘”³ŠeÍĞœ°½¹Ñ•¹Ğè€•Ì‘•Õà…É•ÌÍ½¹ĞÍÕÈ±”IH¸5½¹Ñ•è‘…¹ÌÕ¸IHÙ•ÉÌ±”ÍÕ€¡M…¥¹ĞµK¥µäµ³¡Ìµ¡•ÙÉ•ÕÍ”½ÔI½‰¥¹Í½¸¤©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€èÍ…¹Ì½ÉÉ•ÍÁ½¹‘…¹”°•¹Ù¥É½¸€ÄÃŠLÄÔµ¥¸¸œô°(€€€€€€€ì¡•…‘¥¹œè€•ÁÕ¥Ì…É”‘”1å½¸•Ğ5½¹ÑÁ…É¹…ÍÍ”œ°½¹Ñ•¹Ğè€•ÁÕ¥Ì…É”‘”1å½¸°IH©ÕÍÅ×Šg€£‰Ñ•±•ÓŠM1•Ì!…±±•ÌÁÕ¥ÌIH½ÔÙ•ÉÌM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€ì‘•ÁÕ¥Ì5½¹ÑÁ…É¹…ÍÍ”°ÕÑ¥±¥Í•è±”IH€¡…É•ÌÁÉ½¡•Ì¤½ÔÕ¸½ÕÉĞÑÉ…©•Ğ‘”·¥ÑÉ¼°…È±„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”©ÕÍÅ×Še…Ô€Ää“¥Œ¸€ÈÀÈØ¸œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ Á¥•‘•ÁÕ¥Ì±”•¹ÑÉ”œ°½¹Ñ•¹Ğè€1„™½¹Ñ…¥¹”•ÍĞƒ€•¹Ù¥É½¸€ÄÀµ¥¸‘”£‰Ñ•±•Ğ°€ÄÔµ¥¸‘”9½ÑÉ”µ…µ”•Ğ‘”³Šg9±”‘”±„¥Ó¤°•Ğ€ÈÀµ¥¸±”±½¹œ‘”±„M•¥¹”‘•ÁÕ¥Ì±”1½ÕÙÉ”ƒŠP…Ë¥…‰±”Í¤Ù½ÕÌ™³‰¹•è“¥«€ÍÕÈ±„I¥Ù”‘É½¥Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€•Éµ•ÑÕÉ”±¥¹”€Ğ•Ğ½¹Í•¥±Ìœ°½¹Ñ•¹Ğè€1„ÍÑ…Ñ¥½¸‘”·¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØ€ìÁË¥›¥É•è±”IH½½Ô±”·¥ÑÉ¼±¥¹”€ÄÀƒ€±Õ¹çŠM1„M½É‰½¹¹”¸[¥É¥™¥•èÍÕÈÉ…ÑÀ¹™È…Ù…¹Ğ‘”Á…ÉÑ¥È¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µµ•¹Ğ…±±•È‘”±„…É”‘Ô9½Éƒ€±„™½¹Ñ…¥¹”€üœ°…¹Íİ•Èè€IHÙ•ÉÌ±”ÍÕ©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€ì±„™½¹Ñ…¥¹”•ÍĞƒ€±„Í½ÉÑ¥”°•¹Ù¥É½¸€ÄÃŠLÄÔµ¥¸¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€A•ÕĞµ½¸ä…±±•Èƒ€Á¥•‘Ô•¹ÑÉ”€üœ°…¹Íİ•Èè€=Õ¤ƒŠP•¹Ù¥É½¸€ÄÃŠLÈÀµ¥¸‘”£‰Ñ•±•Ğ°9½ÑÉ”µ…µ”½Ô±”1½ÕÙÉ”±”±½¹œ‘”±„M•¥¹”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ•±±”±¥¹”‘”·¥ÑÉ¼É•©½¥¹Ğ±„Á±…”€üœ°…¹Íİ•Èè€1„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”©ÕÍÅ×Še…Ô€Ää“¥Œ¸€ÈÀÈØ€ìÕÑ¥±¥Í•è±”IH½½Ô±”·¥ÑÉ¼±¥¹”€ÄÀƒ€±Õ¹çŠM1„M½É‰½¹¹”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1„™½¹Ñ…¥¹”•ÍĞµ•±±”•¹ÑÉ…±”€üœ°…¹Íİ•Èè€=Õ¤ƒŠPÍÕÈ±„A±…”M…¥¹Ğµ5¥¡•°°‘…¹Ì±”EÕ…ÉÑ¥•È±…Ñ¥¸°ƒ€Õ¸½ÕÉĞIH½Ôƒ€Á¥•‘•ÌÉ…¹‘•Ì…É•Ì•Ğ‘•Ìƒ¹±•Ì¸œô°(€€€€€t°(€€€€€¹…Øè€•ÁÕ¥Ì±”•¹ÑÉ”œ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ’î;–ŞÓ¦î;–â’â·–ş’â;¯¢ö›®g–"Ã–rÆÏš¶–ÂS–ZßšÎ$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ’î;–ŞÓ¦î;’âï¢š¯¢ö›®g¾ò#–2_®g¦3šb®g¢Jg–âWêÏšZ¿–rš.'š&;–ÂS¾ò'–>+’â·–ş–~;–2ë¾ò3î<IH½ƒ’â;–rÃ¦N–&7–ú–rÆÏš¶–ÂS–ZßšÎ'œ°(€€€€€ Äè€Ÿ’î;–ŞÓ¦î;–â’â·–ş’â;¯¢ö›®dœ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ–ZßšÎ'’ö7’ê;–Ş›–Êãš‚ã–ş–rÃ–â›¾ò3–nƒš¶“–’kšVÃ–â’â·–ş¢†3¢/¦÷î#–"ÃÒŸ¦
+ï–æÿ–rëjIH½ƒ®dM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3š"[š¶—¢†3¢«¢–ÿ–ÊÇ–Êoš*×¢úûœ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿšr’úÿš6ß¾òiIH½œ°½¹Ñ•¹Ğè€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ƒ–B3š^ÛRÄIHƒ’â8IHƒšr7–*‡’î;–â–2ë–ƒ’æ;’îï’öW–rÃšZç¦÷–>¿’æ`IHƒ–"Ã¢¾—®g¾òo–ZßšÎ'–ÂÇ–r£–rÆÏš¶–ÂS–æÿ–rëj®g–>œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ’î;–2_®g’â;’âs®dœ°½¹Ñ•¹Ğè€Ÿ’â“®g¦÷–r IHƒêÿ’â+šB·’æc–6_¢†0IH¾ò#–ú M…¥¹ĞµK¥µäµ³¡Ìµ¡•ÙÉ•ÕÍ”ƒš"XI½‰¥¹Í½¸ƒšZç–BG¾ò'nÓ¢úøM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3š^ƒ¦rš6‹’æc¾ò3ê˜€ÄÃŠLÄÔƒ–"¦Jœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ’î;¦3šb®g’â;¢Jg–âWêÏšZ¼œ°½¹Ñ•¹Ğè€Ÿ’î;¦3šb®g’æ`IHƒ–"À£‰Ñ•±•ÓŠM1•Ì!…±±•Ï¾ò3–7š6‹’æ`IH½ƒ¢ÌM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾òo’î;¢Jg–âWêÏšZ¿–>¿’æc¦
+ï¢şGjIHƒš"[~·¦S–rÃ¦N¾ò3–nƒ–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®gšRç¦ƒ–Ï¦^·¢Ì€ÈÀÈØƒ–æĞ€ÄÈƒšr €Ääƒš^—œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–â’â·–şš¶—¢†3–>¿¢úøœ°½¹Ñ•¹Ğè€Ÿ–ZßšÎ'¢Şt£‰Ñ•±•Ğƒê˜€ÄÀƒ–"¦Jš¶—¢†3¢Şw–ŞÓ¦î;–rš¾7¦f‹’â;¢–ÿ–ÊÇ–Êoê˜€ÄÔƒ–"¦JšÊÿ–†{êÏšÊÏ’î;–6‹šÖ»–º¯’â–â›ê˜€ÈÀƒ–"¦JŠSŠS¢.—’öƒ–ŞË–r£–>Ï–ÊãšVš¶—¾ò3–6–"š³š?œô°(€€€€€€€ì¡•…‘¥¹œè€œĞƒ–>ßêÿ–s¢şC’â;š>C’èœ°½¹Ñ•¹Ğè€Ÿ–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®d€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·¾òo¢¾ßšRç’æ`IH½ƒ®gš"X±Õ¹çŠM1„M½É‰½¹¹”ƒj–rÃ¦N€ÄÀƒ–>ßêÿ–ë¢†3–&7¢¾ßš~”É…ÑÀ¹™Èƒ–º{š^Û*Ûšœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ’î;–2_®gš;’æ#–"Ã–ZßšÎ'¾ò|œ°…¹Íİ•Èè€Ÿ’æc–6_¢†0IHƒnÓ¢úøM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3–ZßšÎ'–ÂÇ–r£®g–>¾ò3ê˜€ÄÃŠLÄÔƒ–"¦Jœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–>¿’î—š¶—¢†3’î;–â’â·–ş¢ş–:ï–B_¾ò|œ°…¹Íİ•Èè€Ÿ–>¿’î—ŠSŠSšÊÿ–†{êÏšÊÏ’î8£‰Ñ•±•Ó–ŞÓ¦î;–rš¾7¦f‹š"[–6‹šÖ»–º¯š¶—¢†3ê˜€ÄÃŠLÈÀƒ–"¦Jœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–N«šv‡–rÃ¦Nêÿ–"Ã–æÿ–rë¾ò|œ°…¹Íİ•Èè€œĞƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®g–Ï¦^·¢Ì€ÈÀÈØƒ–æĞ€ÄÈƒšr €Ääƒš^—¾òo¢¾ß’æ`IH½ƒš"X±Õ¹çŠM1„M½É‰½¹¹”ƒj–rÃ¦N€ÄÀƒ–>ßêÿœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'–r£–â’â·–ş–B_¾ò|œ°…¹Íİ•Èè€Ÿšb¿jŠSŠS’ö7’ê;š.'’â–2ë–rÆÏš¶–ÂS–æÿ–rë¾ò3¢Şw’âï¢š¯¢ö›®g’â;–Êo–Æÿ’î~·¦PIHƒš"[š¶—¢†3œô°(€€€€€t°(€€€€€¹…Øè€Ÿ’î;–â’â·–şœ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€™É½´µ¡…É±•Ìµ‘”µ…Õ±±”µ…¥ÉÁ½ÉĞœ°€™É½´µ½É±äµ…¥ÉÁ½ÉĞœ°€Á±…”µÍ…¥¹Ğµµ¥¡•°t°(€€€ô°(€ô°(€€ÑÉ…Ù•°µ™…Äœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°QÉ…Ù•°DƒŠL•ÑÑ¥¹œQ¡•É”°Q¥­•ÑÌ°M…™•Ñä€˜	•ÍĞQ¥µ”œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€EÕ¥¬…¹Íİ•ÉÌ™½ÈÙ¥Í¥Ñ¥¹œ½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°è¡½ÜÑ¼•ĞÑ¡•É”°¥Ì¥Ğ™É•”°‰•ÍĞÑ¥µ”Ñ¼Ù¥Í¥Ğ°Ñ¥­•ÑÌ°¹•…É‰ä™…¥±¥Ñ¥•Ì…¹Í…™•ÑäÑ¥ÁÌ™½ÈÑ¡”€ÜÔÀÀÔA…É¥Ìµ½¹Õµ•¹Ğ¸œ°(€€€€€ Äè€½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ÑÉ…Ù•°Dœ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€½µÁ…ĞD½Ù•É¥¹œÑ¡”ÁÉ…Ñ¥…°ÅÕ•ÍÑ¥½¹ÌÑÉ…Ù•±±•ÉÌ…Í¬‰•™½É”Ù¥Í¥Ñ¥¹œÑ¡”™½Õ¹Ñ…¥¸½¸A±…”M…¥¹Ğµ5¥¡•°ƒŠPÑÉ…¹ÍÁ½ÉĞ°½ÍĞ°Ñ¥µ¥¹œ°™…¥±¥Ñ¥•Ì…¹ÍÑ…å¥¹œÍ…™”¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€•ÑÑ¥¹œÑ¡•É”œ°½¹Ñ•¹Ğè€Q¡”µ½¹Õµ•¹Ğ¥Ì‰•Í¥‘”Ñ¡”IH½ÍÑ…Ñ¥½¸M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°¥¸Ñ¡”1…Ñ¥¸EÕ…ÉÑ•È¸É½´Ñ…­”Ñ¡”IH‘¥É•Ğì™É½´=É±äÕÍ”=É±åÙ…°€¬IHì™É½´	•…ÕÙ…¥ÌÑ…­”Ñ¡”Í¡ÕÑÑ±”Ñ¼A½ÉÑ”5…¥±±½ĞÑ¡•¸7¥ÑÉ¼½IH¸9½Ñ”Ñ¡”7¥ÑÉ¼±¥¹”€ĞM…¥¹Ğµ5¥¡•°ÍÑ…Ñ¥½¸¥Ì±½Í•™½Èİ½É­Ì€ÄĞM•ÃŠLÄä•Œ€ÈÀÈØ¸œô°(€€€€€€€ì¡•…‘¥¹œè€½ÍĞ…¹½Á•¹¥¹œœ°½¹Ñ•¹Ğè€Q¡”™½Õ¹Ñ…¥¸¥Ì„ÁÕ‰±¥Œµ½¹Õµ•¹Ğ½¸„ÁÕ‰±¥ŒÍÅÕ…É”è™É•”Ñ¼Ù¥•Ü°İ¥Ñ ¹¼Ñ¥­•Ğ½™™¥”…¹¹¼Í•Ğ½Á•¹¥¹œ¡½ÕÉÌƒŠPå½Ô…¸Ù¥Í¥Ğ…Ğ…¹äÑ¥µ”°‘…ä½È¹¥¡Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€Q¥­•ÑÌ…¹Á…åµ•¹Ğœ°½¹Ñ•¹Ğè€%¸A…É¥ÌÕÍ”„Í¥¹±”ƒ9±”µ‘”µÉ…¹”Ñ¥­•Ğ°„9…Ù¥¼…Íä…É°„9…Ù¥¼Á…ÍÌ½È½¹Ñ…Ñ±•ÍÌÁ…åµ•¹Ğ™½È7¥ÑÉ¼½IH¸	Õä‰•™½É”‰½…É‘¥¹œìÑ¡•É”¥Ì¹¼½¹‰½…ÉÁÕÉ¡…Í”½¸ÑÉ…¥¹Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€	•ÍĞÑ¥µ”Ñ¼Ù¥Í¥Ğœ°½¹Ñ•¹Ğè€5½É¹¥¹Ì…¹•Ù•¹¥¹Ì…É”…±µ•È…¹‰•ÍĞ™½ÈÁ¡½Ñ½ÌìÑ¡”ÍÅÕ…É”¥Ì±¥Ğ…Ğ¹¥¡Ğ¸MÁÉ¥¹œ…¹…ÕÑÕµ¸…É”Á±•…Í…¹Ğ™½Èİ…±­¥¹œÑ¡”ÍÕÉÉ½Õ¹‘¥¹œ1…Ñ¥¸EÕ…ÉÑ•È…¹É¥Ù•É‰…¹­Ì¸œô°(€€€€€€€ì¡•…‘¥¹œè€…¥±¥Ñ¥•Ì…¹Í…™•Ñäœ°½¹Ñ•¹Ğè€Q¡•É”…É”¹¼Ñ½¥±•ÑÌ…ĞÑ¡”µ½¹Õµ•¹Ğ°‰ÕĞÁÕ‰±¥ŒÍ…¹¥Í•ÑÑ•Ì…¹İ…Ñ•È™½Õ¹Ñ…¥¹Ì…É”„Í¡½ÉĞİ…±¬…İ…ä¸]…Ñ ™½ÈÁ¥­Á½­•ÑÌ½¸‰ÕÍäIHÑÉ…¥¹Ì…¹…É½Õ¹Ñ¡”ÍÅÕ…É”°…¹­••À‰…Ìé¥ÁÁ•¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€!½Ü‘¼$•ĞÑ¼½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°üœ°…¹Íİ•Èè€I¥‘”Ñ¡”IH½ÈÑ¼M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”ìÑ¡”™½Õ¹Ñ…¥¸¥Ì…ĞÑ¡”ÍÑ…Ñ¥½¸•á¥Ğ¸É½´Ñ¡”IHÉÕ¹Ì‘¥É•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡”™½Õ¹Ñ…¥¸™É•”Ñ¼Ù¥Í¥Ğüœ°…¹Íİ•Èè€e•ÌƒŠP¥Ğ¥Ì„ÁÕ‰±¥Œ™½Õ¹Ñ…¥¸½¸„ÁÕ‰±¥ŒÍÅÕ…É”°™É•”Ñ¼Ù¥•Ü…Ğ…¹ä¡½ÕÈİ¥Ñ ¹¼Ñ¥­•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡…Ğ¥ÌÑ¡”‰•ÍĞÑ¥µ”Ñ¼¼üœ°…¹Íİ•Èè€…É±äµ½É¹¥¹œ½È•Ù•¹¥¹œ™½È™•İ•ÈÉ½İ‘Ì…¹½½±¥¡ĞìÑ¡”ÍÅÕ…É”¥Ì±¥Ğ…™Ñ•È‘…É¬¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%Ì¥ĞÍ…™”…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸üœ°…¹Íİ•Èè€Q¡”…É•„¥Ì•¹•É…±±äÍ…™”°‰ÕĞµ¥¹Á¥­Á½­•ÑÌ½¸É½İ‘•IHÑÉ…¥¹Ì…¹½¸Ñ¡”‰ÕÍäÍÅÕ…É”ì­••ÀÙ…±Õ…‰±•ÌÍ•ÕÉ”¸œô°(€€€€€t°(€€€€€¹…Øè€QÉ…Ù•°Dœ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€…•ÍÍ¥‰¥±¥Ñäœ°€ÁÕ‰±¥ŒµÑ½¥±•ÑÌµ…¹µ™…¥±¥Ñ¥•Ìt°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€DÙ½å…”½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠL…¡Ì°‰¥±±•ÑÌ°Ï¥ÕÉ¥Ó¤•Ğµ•¥±±•ÕÉ”Ã¥É¥½‘”œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€K¥Á½¹Í•ÌÉ…Á¥‘•ÌÁ½ÕÈÙ¥Í¥Ñ•È±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°€èä…±±•È°É…ÑÕ¥Ó¤°µ•¥±±•ÕÉ”Ã¥É¥½‘”°‰¥±±•ÑÌ°ƒ¥ÅÕ¥Á•µ•¹ÑÌ•Ğ½¹Í•¥±Ì‘”Ï¥ÕÉ¥Ó¤Á½ÕÈ±”µ½¹Õµ•¹Ğ‘Ô€ÜÔÀÀÔA…É¥Ì¸œ°(€€€€€ Äè€DÙ½å…”½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€U¹”D½µÁ…Ñ”ÍÕÈ±•ÌÅÕ•ÍÑ¥½¹ÌÁÉ…Ñ¥ÅÕ•Ì…Ù…¹Ğ‘”Ù¥Í¥Ñ•È±„™½¹Ñ…¥¹”‘”±„A±…”M…¥¹Ğµ5¥¡•°€èÑÉ…¹ÍÁ½ÉĞ°ÁÉ¥à°¡½É…¥É•Ì°ƒ¥ÅÕ¥Á•µ•¹ÑÌ•ĞÏ¥ÕÉ¥Ó¤¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€d…±±•Èœ°½¹Ñ•¹Ğè€1”µ½¹Õµ•¹Ğ•ÍĞƒ€ÑÓ¤‘”±„…É”IH½M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”°‘…¹Ì±”EÕ…ÉÑ¥•È±…Ñ¥¸¸•ÁÕ¥Ì°IH‘¥É•Ğ€ì‘•ÁÕ¥Ì=É±ä°=É±åÙ…°€¬IH€ì‘•ÁÕ¥Ì	•…ÕÙ…¥Ì°¹…Ù•ÑÑ”©ÕÍÅ×Šg€±„A½ÉÑ”5…¥±±½ĞÁÕ¥Ì·¥ÑÉ¼½IH¸1„ÍÑ…Ñ¥½¸±¥¹”€ĞM…¥¹Ğµ5¥¡•°•ÍĞ™•É·¥”‘Ô€ÄĞÍ•ÁĞ¸…Ô€Ää“¥Œ¸€ÈÀÈØ¸œô°(€€€€€€€ì¡•…‘¥¹œè€AÉ¥à•Ğ¡½É…¥É•Ìœ°½¹Ñ•¹Ğè€1„™½¹Ñ…¥¹”•ÍĞÕ¸µ½¹Õµ•¹ĞÁÕ‰±¥ŒÍÕÈÁ±…”ÁÕ‰±¥ÅÕ”€èÉ…ÑÕ¥Ñ”ƒ€Ù½¥È°Í…¹Ì‰¥±±•ÑÑ•É¥”¹¤¡½É…¥É”™¥á”ƒŠPÙ¥Í¥Ñ…‰±”ƒ€Ñ½ÕÑ”¡•ÕÉ”°©½ÕÈ•Ğ¹Õ¥Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€	¥±±•ÑÌ•ĞÁ…¥•µ•¹Ğœ°½¹Ñ•¹Ğè€Ÿ A…É¥Ì°Õ¸‰¥±±•Ğƒ9±”µ‘”µÉ…¹”°Õ¹”…ÉÑ”9…Ù¥¼…Íä°Õ¸Á…ÍÍ”9…Ù¥¼½Ô±”Í…¹Ìµ½¹Ñ…ĞÍÕ™™¥Í•¹ĞÁ½ÕÈ·¥ÑÉ¼½IH¸¡•Ñ•è…Ù…¹Ğ‘”µ½¹Ñ•È€ì…ÕÕ¸…¡…Ğƒ€‰½É¸œô°(€€€€€€€ì¡•…‘¥¹œè€5•¥±±•ÕÉ”Ã¥É¥½‘”œ°½¹Ñ•¹Ğè€5…Ñ¥»¥•Ì•ĞÍ½¥Ë¥•ÌÍ½¹ĞÁ±ÕÌ…±µ•Ì•Ğ¥“¥…±•ÌÁ½ÕÈ±•ÌÁ¡½Ñ½Ì€ì±„Á±…”•ÍĞƒ¥±…¥Ë¥”±„¹Õ¥Ğ¸AÉ¥¹Ñ•µÁÌ•Ğ…ÕÑ½µ¹”Í½¹Ğ…Ë¥…‰±•ÌÁ½ÕÈ™³‰¹•È‘…¹Ì±”EÕ…ÉÑ¥•È±…Ñ¥¸•Ğ±”±½¹œ‘”±„M•¥¹”¸œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ%ÅÕ¥Á•µ•¹ÑÌ•ĞÏ¥ÕÉ¥Ó¤œ°½¹Ñ•¹Ğè€A…Ì‘”Ñ½¥±•ÑÑ•Ì…Ôµ½¹Õµ•¹Ğ°µ…¥Ì‘•ÌÍ…¹¥Í•ÑÑ•Ì•Ğ™½¹Ñ…¥¹•ÌÁÕ‰±¥ÅÕ•ÌÍ½¹Ğƒ€ÅÕ•±ÅÕ•ÌÁ…Ì¸7¥™¥•èµÙ½ÕÌ‘•ÌÁ¥­Á½­•ÑÌ‘…¹Ì±•ÌIH‰½¹“¥Ì•ĞÍÕÈ±„Á±…”€ìÍ…Ì™•É·¥Ì¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€½µµ•¹Ğ…±±•Èƒ€±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°€üœ°…¹Íİ•Èè€IH½Ô©ÕÍÅ×Šg€M…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ”€ì±„™½¹Ñ…¥¹”•ÍĞƒ€±„Í½ÉÑ¥”¸•ÁÕ¥Ì°±”IH•ÍĞ‘¥É•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1„™½¹Ñ…¥¹”•ÍĞµ•±±”É…ÑÕ¥Ñ”€üœ°…¹Íİ•Èè€=Õ¤ƒŠP™½¹Ñ…¥¹”ÁÕ‰±¥ÅÕ”ÍÕÈÁ±…”ÁÕ‰±¥ÅÕ”°É…ÑÕ¥Ñ”ƒ€Ñ½ÕÑ”¡•ÕÉ”°Í…¹Ì‰¥±±•Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ•±±”•ÍĞ±„µ•¥±±•ÕÉ”Ã¥É¥½‘”€üœ°…¹Íİ•Èè€SÑĞ±”µ…Ñ¥¸½Ô•¸Í½¥Ë¥”Á½ÕÈµ½¥¹Ì‘”µ½¹‘”•ĞÕ¹”‰•±±”±Õµ§¡É”€ì±„Á±…”•ÍĞ¥±±Õµ¥»¥”±„¹Õ¥Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€ÍĞµ”ÏíÈ…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”€üœ°…¹Íİ•Èè€1„é½¹”•ÍĞ±½‰…±•µ•¹ĞÏíÉ”°µ…¥Ì…ÑÑ•¹Ñ¥½¸…ÕàÁ¥­Á½­•ÑÌ‘…¹Ì±•ÌIH‰½¹“¥Ì•ĞÍÕÈ±„Á±…”€ìÏ¥ÕÉ¥Í•èÙ½Ì…™™…¥É•Ì¸œô°(€€€€€t°(€€€€€¹…Øè€DÙ½å…”œ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€…•ÍÍ¥‰¥±¥Ñäœ°€ÁÕ‰±¥ŒµÑ½¥±•ÑÌµ…¹µ™…¥±¥Ñ¥•Ìt°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'š^¢†0G¾ò#’ê“¦k¦^£–£–º'–£’â;šr’öÏš^Ûšº×¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ–>¢–rÆÏš¶–ÂS–ZßšÎ'j–âã¢¦^»¦Šc¾òk–š’öW–"Ã¢úûšb¿–B›–7¢Òçšr’öÏš^Ûšº×¢ö›–£–F£¢úç¢ºûšZ÷’â;–º'–£š>C’ëœ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'š^¢†0Dœ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ’â’î÷Êûºjš^¢†3¦^»¶S¾ò3šÚ×n[¦ƒ¢ºÿ–rÆÏš¶–ÂS–æÿ–rë–ZßšÎ'–&7j–º{¦f¦^»¦Šc¾òk’ê“¦k¢ÒçR£š^Û¦^Ó¢ºûšZ÷’â;–º'–£œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿ–š’öW–"Ã¢úøœ°½¹Ñ•¹Ğè€Ÿê«–ş×ŠGÒŸ¦
+ïš.'’â–2ëjIH½ƒ®dM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—’î8ƒ’æ`IHƒnÓ¢úû¾òo’î8=É±äƒ’æ`=É±åÙ…°ƒ¢ö°IH¾òo’î;–6k¦~›’æc>·¢ö›–"ÀA½ÉÑ”5…¥±±½Ğƒ–7¢ö³–rÃ¦N½IK–rÃ¦N€Ğƒ–>ßêüM…¥¹Ğµ5¥¡•°ƒ®g–nƒšRç¦ƒ’ê8€ÈÀÈØƒ–æĞ€äƒšr €ÄĞƒš^—¢Ì€ÄÈƒšr €Ääƒš^—–Ï¦^·œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢ÒçR£’â;–òšRøœ°½¹Ñ•¹Ğè€Ÿ–ZßšÎ'šb¿–³–Ç–æÿ–rë’â+j–³–Çê«–ş×ŠG¾òk–7¢Òç¢¢Ö?¾ò3š^ƒ–R»–£–’¾ò3’æš^ƒ–në–ºk–òšRûš^Û¦^ÓŠSŠS’îï’öWš^Û¦^Ó¾ò#f÷–’§š"[–’sšfk¾ò'¦÷–>¿–>¢œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢ö›–£’â;šR¿’î`œ°½¹Ñ•¹Ğè€Ÿ–r£–ŞÓ¦î;’æc–rÃ¦N½IK¾ò3’öÿR£–6W¢/–2ë–~¢ö›–£9…Ù¥¼…Íäƒ–6‡9…Ù¥¼ƒ¦k–£š"[¦NÛ¢†3–6‡¦v{š:—¢›šR¿’îc–v–>¿¢¾ß’â+¢ö›–&7¢Ò·–£¾òo–"_¢ö›’â+’â7–R»¢ö›–£œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿšr’öÏš^ÛšºÔœ°½¹Ñ•¹Ğè€Ÿšâšf£’â;–
+7šfk’êë–ÂG’âS–'êÿ––÷¾ò3¦–B#š.7Ÿ¾òo–æÿ–rë–’s¦^Óšr'¿–'šb—/’â“–¶–r£–F£¢úçš.'’â–2ë’â;šÊÏ–‚“šVš¶—šr’âëš³š?œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢ºûšZ÷’â;–º'– œ°½¹Ñ•¹Ğè€Ÿê«–ş×ŠG–’š^ƒ–:Wš&¾ò3’öš¶—¢†3’â7¢şs–6Ïšr'–³–ÄÍ…¹¥Í•ÑÑ”ƒ’â;¦–»šÂÓ–ZßšÎ'æ–şgjIHƒ¢ö›–:‹’â;–æÿ–rë’â+šÎ£š?¦bËn_¾ò3–2¢Š/š.'––÷œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿš;’æ#–:ï–rÆÏš¶–ÂS–ZßšÎ'¾ò|œ°…¹Íİ•Èè€Ÿ’æ`IHƒš"Xƒ–"ÀM…¥¹Ğµ5¥¡•³ŠM9½ÑÉ”µ…µ—¾ò3–ZßšÎ'–ÂÇ–r£®g–>¾òo’î8ƒ’æ`IHƒ–>¿nÓ¢úûœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'–7¢Òç–B_¾ò|œ°…¹Íİ•Èè€Ÿ–7¢ÒçŠSŠS–ºšb¿–³–Ç–æÿ–rë’â+j–³–Ç–ZßšÎ'¾ò3¦j?š^Û–>¿–7¢Òç¢¢Ö?¾ò3š^ƒ¦r¦^£–£œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ’î’æ#š^Û¦^Ó–:ïšr––÷¾ò|œ°…¹Íİ•Èè€Ÿšâšf£š"[–
+7šfk’êë–ÂG–'êÿ––÷¾òo–—–’s–B;–æÿ–rëšr'Ÿšb;œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'–F£¢úç–º'–£–B_¾ò|œ°…¹Íİ•Èè€ŸšVÓ’öO–º'–£¾ò3’ö–r£š.—š2“jIHƒ¢ö›–:‹’â;æ–şg–æÿ–rë’â+šÎ£š?¦bËn_¾ò3¢Ò×¦7&§–N–š—–Z’şwº‡œô°(€€€€€t°(€€€€€¹…Øè€Ÿš^¢†0Dœ°(€€€€€É•±…Ñ•èl¡½ÜµÑ¼µ•ĞµÑ¡•É”œ°€Ù¥Í¥Ñ½ÈµÕ¥‘”œ°€…•ÍÍ¥‰¥±¥Ñäœ°€ÁÕ‰±¥ŒµÑ½¥±•ÑÌµ…¹µ™…¥±¥Ñ¥•Ìt°(€€€ô°(€ô°(€€…ÕÑÕµ¸µ•Ù•¹ÑÌœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€ÕÑÕµ¸Ù•¹ÑÌ¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLA…É¥Ì¥¸Ñ¡”…±°œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€M•…Í½¹…°•Ù•¹ÑÌ…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸™É½´M•ÁÑ•µ‰•ÈÑ¼9½Ù•µ‰•ÈèM…¥¹Ğ5¥¡…•³ŠeÌ…ä°9Õ¥Ğ	±…¹¡”°•ÍÑ¥Ù…°“ŠeÕÑ½µ¹”°!•É¥Ñ…”…åÌ…¹…ÕÑÕµ¸±¥¡Ğ™½ÈÁ¡½Ñ½É…Á¡ä¸œ°(€€€€€ Äè€ÕÑÕµ¸•Ù•¹ÑÌ¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€Q¡”1…Ñ¥¸EÕ…ÉÑ•È…¹ƒ9±”‘”±„¥Ó¤…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸¡½ÍĞÍ•Ù•É…°…ÕÑÕµ¸¡…ÁÁ•¹¥¹ÌƒŠP™É½´Ñ¡”Á…ÑÉ½¸™•…ÍĞ½˜Ñ¡”™½Õ¹Ñ…¥¸Ñ¼…±°µ¹¥¡Ğ…ÉĞƒŠPÑ¡…ĞÁ…¥Èİ•±°İ¥Ñ „Ù¥Í¥Ğ¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€M…¥¹Ğ5¥¡…•³ŠeÌ…ä€ ÈäM•ÁÑ•µ‰•È¤œ°½¹Ñ•¹Ğè€Q¡”™½Õ¹Ñ…¥¸¥Ì‘•‘¥…Ñ•Ñ¼Ñ¡”É¡…¹•°5¥¡…•°°İ¡½Í”™•…ÍĞ‘…ä¥Ì€ÈäM•ÁÑ•µ‰•È¸]¡¥±”Ñ¡•É”¥Ì¹¼Ñ¥­•Ñ••Ù•¹Ğ…ĞÑ¡”µ½¹Õµ•¹Ğ°Ñ¡”‘…Ñ”¥Ì„¹…ÑÕÉ…°µ½µ•¹ĞÑ¼…ÁÁÉ•¥…Ñ”Ñ¡”É¡…¹•°5¥¡…•°É½ÕÀ‰ä…Ù¥½Õ…¹Ñ¡”¹…µ”½˜Ñ¡”ÍÅÕ…É”¸œô°(€€€€€€€ì¡•…‘¥¹œè€9Õ¥Ğ	±…¹¡”€¡=Ñ½‰•È¤œ°½¹Ñ•¹Ğè€Q¡”A…É¥Ì…±°µ¹¥¡Ğ…ÉÑÌ™•ÍÑ¥Ù…°ÕÍÕ…±±ä™…±±Ì½¸Ñ¡”™¥ÉÍĞM…ÑÕÉ‘…ä½˜=Ñ½‰•È°İ¥Ñ ¥¹ÍÑ…±±…Ñ¥½¹Ì…¹Á•É™½Éµ…¹•Ì…É½ÍÌÑ¡”1…Ñ¥¸EÕ…ÉÑ•È…¹ƒ9±”‘”±„¥Ó¤ƒŠP½™Ñ•¸İ¥Ñ¡¥¸İ…±­¥¹œ‘¥ÍÑ…¹”½˜Ñ¡”™½Õ¹Ñ…¥¸¸¡•¬Ñ¡”¥ÑäÁÉ½É…µµ”™½ÈÑ¡”•á…Ğ‘…Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€•ÍÑ¥Ù…°“ŠeÕÑ½µ¹”€¡M•ÃŠM•Œ¤œ°½¹Ñ•¹Ğè€Q¡¥Ì±½¹œµÉÕ¹¹¥¹œ™•ÍÑ¥Ù…°‰É¥¹Ì½¹•ÉÑÌ°Ñ¡•…ÑÉ”…¹‘…¹”Ñ¼Ù•¹Õ•Ì¹•…ÈÑ¡”•¹ÑÉ”°¥¹±Õ‘¥¹œÍÁ…•Ì„Í¡½ÉĞİ…±¬™É½´Ñ¡”ÍÅÕ…É”¸AÉ½É…µµ•Ì…É”É•±•…Í•¥¸…‘Ù…¹”½¸Ñ¡”™•ÍÑ¥Ù…°Í¥Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€ÕÉ½Á•…¸!•É¥Ñ…”…åÌ€¡M•ÁÑ•µ‰•È¤œ°½¹Ñ•¹Ğè€=¸„İ••­•¹¥¸µ¥µM•ÁÑ•µ‰•È°¹½Éµ…±±ä±½Í•µ½¹Õµ•¹ÑÌ…¹‰Õ¥±‘¥¹Ì½Á•¸Ñ¼Ñ¡”ÁÕ‰±¥Œì¹•…É‰äÍ¥Ñ•ÌÍÕ …ÌM…¥¹Ñ”µ¡…Á•±±”…¹Ñ¡”A…¹Ñ£¥½¸©½¥¸°µ…­¥¹œ¥Ğ„½½Ñ¥µ”Ñ¼½µ‰¥¹”İ¥Ñ Ñ¡”™½Õ¹Ñ…¥¸¸œô°(€€€€€€€ì¡•…‘¥¹œè€ÕÑÕµ¸±¥¡Ğ…¹Ñ¡”İ…Ñ•È™•…ÑÕÉ”œ°½¹Ñ•¹Ğè€1½Ü…ÕÑÕµ¸ÍÕ¸µ…­•ÌÑ¡”±¥µ•ÍÑ½¹”™‡…‘”±½Ü°…¹Ñ¡”É•ÍÑ½É•İ…Ñ•È™•…ÑÕÉ”İ…ÌÍ¡•‘Õ±•Ñ¼É•ÑÕÉ¸¥¸…ÕÑÕµ¸€ÈÀÈØ…™Ñ•ÈÑ¡”½¹Í•ÉÙ…Ñ¥½¸İ½É­ÌƒŠPÍ•”Ñ¡”É•ÍÑ½É…Ñ¥½¸Á…”™½ÈÑ¡”±…Ñ•ÍĞ½¹™¥Éµ•ÍÑ…ÑÕÌ¸Y•É¥™ä…±°‘…Ñ•Ì½¸½™™¥¥…°Í¥Ñ•Ì‰•™½É”ÑÉ…Ù•±±¥¹œ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€É”Ñ¡•É”•Ù•¹ÑÌ…ĞÑ¡”™½Õ¹Ñ…¥¸¥¸…ÕÑÕµ¸üœ°…¹Íİ•Èè€Q¡”µ½¹Õµ•¹Ğ¥ÑÍ•±˜¡…Ì¹¼Ñ¥­•Ñ••Ù•¹ÑÌ°‰ÕĞM…¥¹Ğ5¥¡…•³ŠeÌ…ä€ ÈäM•À¤°9Õ¥Ğ	±…¹¡”…¹¹•…É‰ä!•É¥Ñ…”…åÌ…¹•ÍÑ¥Ù…°“ŠeÕÑ½µ¹”µ…­”…ÕÑÕµ¸±¥Ù•±ä…É½Õ¹¥Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡•¸¥Ì9Õ¥Ğ	±…¹¡”üœ°…¹Íİ•Èè€UÍÕ…±±äÑ¡”™¥ÉÍĞM…ÑÕÉ‘…ä½˜=Ñ½‰•Èì½¹™¥É´Ñ¡”•á…Ğ‘…Ñ”½¸Ñ¡”A…É¥Ì•Ù•¹ÑÌ…±•¹‘…È¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÑ¡”™½Õ¹Ñ…¥¸±¥Ğ…Ğ¹¥¡Ğüœ°…¹Íİ•Èè€e•ÌƒŠPÑ¡”ÍÅÕ…É”¥Ì¥±±Õµ¥¹…Ñ•…™Ñ•È‘…É¬ìÍ•”½ÕÈ…Ğµ¹¥¡ĞÁ…”™½ÈÑ¡”•Ù•¹¥¹œ…Ñµ½ÍÁ¡•É”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%Ì…ÕÑÕµ¸½½™½ÈÁ¡½Ñ½Ìüœ°…¹Íİ•Èè€e•ÌƒŠPÑ¡”±½Ü…ÕÑÕµ¸ÍÕ¸…¹Ñ¡”É•ÑÕÉ¹¥¹œİ…Ñ•È™•…ÑÕÉ”µ…­”¥Ğ„ÍÑÉ½¹œÍ•…Í½¸™½ÈÁ¡½Ñ½É…Á¡ä¸œô°(€€€€€t°(€€€€€¹…Øè€ÕÑÕµ¸•Ù•¹ÑÌœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€É•ÍÑ½É…Ñ¥½¸œ°€İ…±­Ì½¹½ÑÉ”µ‘…µ”µ¥±”µ‘”µ±„µ¥Ñ”œ°€¹•…É‰ä½Í…¥¹Ñ”µ¡…Á•±±”t°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€Ÿ%Û¥¹•µ•¹ÑÌ“Še…ÕÑ½µ¹”ÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLA…É¥Ì•¸…ÕÑ½µ¹”œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ%Û¥¹•µ•¹ÑÌÍ…¥Í½¹¹¥•ÉÌ…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”‘”Í•ÁÑ•µ‰É”ƒ€¹½Ù•µ‰É”€èM…¥¹Ğµ5¥¡•°°9Õ¥Ğ	±…¹¡”°•ÍÑ¥Ù…°“Še…ÕÑ½µ¹”°)½ÕÉ»¥•Ì‘ÔA…ÑÉ¥µ½¥¹”•Ğ±Õµ§¡É”…ÕÑ½µ¹…±”¸œ°(€€€€€ Äè€Ÿ%Û¥¹•µ•¹ÑÌ“Še…ÕÑ½µ¹”ÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€1”EÕ…ÉÑ¥•È±…Ñ¥¸•Ğ³Šg9±”‘”±„¥Ó¤…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”…Õ•¥±±•¹ĞÁ±ÕÍ¥•ÕÉÌÉ•¹‘•èµÙ½ÕÌ“Še…ÕÑ½µ¹”ƒŠP‘”±„›©Ñ”‘ÔÍ…¥¹ĞÁ…ÑÉ½¸ƒ€³Še…ÉĞÑ½ÕÑ”±„¹Õ¥ĞƒŠPÅÕ¤ÏŠe…ÍÍ½¥•¹Ğ‰¥•¸ƒ€Õ¹”Ù¥Í¥Ñ”¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€M…¥¹Ğµ5¥¡•°€ ÈäÍ•ÁÑ•µ‰É”¤œ°½¹Ñ•¹Ğè€1„™½¹Ñ…¥¹”•ÍĞ“¥‘§¥”ƒ€³Še…É¡…¹”5¥¡•°°‘½¹Ğ±„›©Ñ”Ñ½µ‰”±”€ÈäÍ•ÁÑ•µ‰É”¸ÕÕ¸ƒ¥Û¥¹•µ•¹ĞÁ…å…¹Ğ…Ôµ½¹Õµ•¹Ğ°µ…¥Ì±„‘…Ñ”¥¹Ù¥Ñ”ƒ€½¹Ñ•µÁ±•È±”É½ÕÁ”‘”³Še…É¡…¹”‘”…Ù¥½Õ•Ğ±”¹½´‘”±„Á±…”¸œô°(€€€€€€€ì¡•…‘¥¹œè€9Õ¥Ğ	±…¹¡”€¡½Ñ½‰É”¤œ°½¹Ñ•¹Ğè€1„¹Õ¥Ğ‰±…¹¡”‘•Ì…ÉÑÌ‘”A…É¥Ì„±¥•ÔŸ¥»¥É…±•µ•¹Ğ±”ÁÉ•µ¥•ÈÍ…µ•‘¤“Še½Ñ½‰É”°…Ù•Œ¥¹ÍÑ…±±…Ñ¥½¹Ì•ĞÁ•É™½Éµ…¹•Ì‘…¹Ì±”EÕ…ÉÑ¥•È±…Ñ¥¸•Ğ³Šg9±”‘”±„¥Ó¤°Í½ÕÙ•¹Ğƒ€Á¥•‘”±„™½¹Ñ…¥¹”¸[¥É¥™¥•è±”ÁÉ½É…µµ”½™™¥¥•°Á½ÕÈ±„‘…Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€•ÍÑ¥Ù…°“Še…ÕÑ½µ¹”€¡Í•ÃŠM“¥Œ¤œ°½¹Ñ•¹Ğè€”™•ÍÑ¥Ù…°¡¥ÍÑ½É¥ÅÕ”ÁÉ½Á½Í”½¹•ÉÑÌ°Ñ£§‰ÑÉ”•Ğ‘…¹Í”‘…¹Ì‘•Ì±¥•ÕàÁÉ½¡•Ì‘Ô•¹ÑÉ”°Á…É™½¥Ìƒ€ÅÕ•±ÅÕ•ÌÁ…Ì‘”±„Á±…”¸1•ÌÁÉ½É…µµ•ÌÍ½¹ĞÁÕ‰±§¥Ìƒ€³Še…Ù…¹”¸œô°(€€€€€€€ì¡•…‘¥¹œè€)½ÕÉ»¥•Ì‘ÔA…ÑÉ¥µ½¥¹”€¡Í•ÁÑ•µ‰É”¤œ°½¹Ñ•¹Ğè€U¸İ••¬µ•¹µ¤µÍ•ÁÑ•µ‰É”°‘•Ìµ½¹Õµ•¹ÑÌ¡…‰¥ÑÕ•±±•µ•¹Ğ™•É·¥Ì½ÕÙÉ•¹Ğ€ì±„M…¥¹Ñ”µ¡…Á•±±”•Ğ±”A…¹Ñ£¥½¸Á…ÉÑ¥¥Á•¹Ğ°”ÅÕ¤½µ‰¥¹”‰¥•¸…Ù•Œ±„™½¹Ñ…¥¹”¸œô°(€€€€€€€ì¡•…‘¥¹œè€1Õµ§¡É”“Še…ÕÑ½µ¹”•Ğ©•Ô“Še•…Ôœ°½¹Ñ•¹Ğè€1”Í½±•¥°‰…Ì‘”³Še…ÕÑ½µ¹”™…¥ĞÉ•ÍÁ±•¹‘¥È±„™‡…‘”‘”…±…¥É”°•Ğ±”©•Ô“Še•…ÔÉ•ÍÑ…ÕË¤ƒ¥Ñ…¥ĞÁÉ½É…µ·¤Á½ÕÈ³Še…ÕÑ½µ¹”€ÈÀÈØ…ÁË¡Ì±•ÌÑÉ…Ù…ÕàƒŠPÙ½å•è±„Á…”É•ÍÑ…ÕÉ…Ñ¥½¸¸[¥É¥™¥•è±•Ì‘…Ñ•ÌÍÕÈ±•ÌÍ¥Ñ•Ì½™™¥¥•±Ì¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€d„µĞµ¥°‘•Ìƒ¥Û¥¹•µ•¹ÑÌƒ€±„™½¹Ñ…¥¹”•¸…ÕÑ½µ¹”€üœ°…¹Íİ•Èè€1”µ½¹Õµ•¹Ğ»Še„Á…Ì“Šg¥Û¥¹•µ•¹ĞÁ…å…¹Ğ°µ…¥Ì±„M…¥¹Ğµ5¥¡•°€ ÈäÍ•À¤°±„9Õ¥Ğ	±…¹¡”•Ğ±•Ì)½ÕÉ»¥•Ì‘ÔA…ÑÉ¥µ½¥¹”ƒ€ÁÉ½á¥µ¥Ó¤É•¹‘•¹Ğ³Še…ÕÑ½µ¹”…¹¥·¤¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ…¹„±¥•Ô±„9Õ¥Ğ	±…¹¡”€üœ°…¹Íİ•Èè€¥»¥É…±•µ•¹Ğ±”ÁÉ•µ¥•ÈÍ…µ•‘¤“Še½Ñ½‰É”€ì½¹™¥Éµ•è±„‘…Ñ”…Ô…±•¹‘É¥•È½™™¥¥•°‘”A…É¥Ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1„™½¹Ñ…¥¹”•ÍĞµ•±±”¥±±Õµ¥»¥”±„¹Õ¥Ğ€üœ°…¹Íİ•Èè€=Õ¤ƒŠP±„Á±…”•ÍĞƒ¥±…¥Ë¥”…ÁË¡Ì±„Ñ½µ‹¥”‘”±„¹Õ¥Ğ€ìÙ½¥È¹½ÑÉ”Á…”ƒ
+¬‘”¹Õ¥Ğƒ
+ì¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€3Še…ÕÑ½µ¹”•ÍĞµ¥°‰½¸Á½ÕÈ±•ÌÁ¡½Ñ½Ì€üœ°…¹Íİ•Èè€=Õ¤ƒŠP±”Í½±•¥°‰…Ì•Ğ±”É•Ñ½ÕÈ‘Ô©•Ô“Še•…Ô•¸™½¹ĞÕ¹”‰•±±”Í…¥Í½¸¸œô°(€€€€€t°(€€€€€¹…Øè€Ÿ%Û¥¹•µ•¹ÑÌ“Še…ÕÑ½µ¹”œ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€É•ÍÑ½É…Ñ¥½¸œ°€İ…±­Ì½¹½ÑÉ”µ‘…µ”µ¥±”µ‘”µ±„µ¥Ñ”œ°€¹•…É‰ä½Í…¥¹Ñ”µ¡…Á•±±”t°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úç/–¶šÒï–*£¾ò#–ŞÓ¦î;’æ//¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€œäƒšr#¢Ì€ÄÄƒšr#–ZßšÎ'–F£¢úçj–¶¢*šŸšÒï–*£¾òk–rÆÏš¶–ÂS¢*f÷–’s/–¶¢&ëšr¿¢*š²ŸšÒË¦_’êŸš^—’â;/–¶šF–öÇ–'êÿœ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úç/–¶šÒï–* œ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿ–ZßšÎ'–F£¢úçjš.'’â–2ë’â;¢–ÿ–ÊÇ–Êo–r£/–¶šr'–’k–rëšÒï–*£ŠSŠS’î;–ZßšÎ'j’âï’şw–r’êë–êš^—–"Ã–’Ÿ–’s¢&ëšr¿¢*ŠSŠS’â;–>¢nã–ú_n+–öÃœ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿ–rÆÏš¶–ÂS¢*¾ò äƒšr €Èäƒš^—¾ò$œ°½¹Ñ•¹Ğè€Ÿ–ZßšÎ'2»îg–’Ÿ–’§’öÿÆÏš¶–ÂS¾ò3–Û–êš^—’âè€äƒšr €Èäƒš^—ê«–ş×ŠGšr³¢ê¯’â7¢ºû–R»–£šÒï–*£¾ò3’ö¢şg’â–’§š¶¦–B#š²¢Ö?¢úûîÓ’æ3š&’ös–’Ÿ–’§’öÿÆÏš¶–ÂSú“¦nW¾ò3’î—–>+–æÿ–rëj–B3–B7RÇšv—œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿf÷–’s¾ò!9Õ¥Ğ	±…¹¡—¾ò0ÄÀƒšr#¾ò$œ°½¹Ñ•¹Ğè€Ÿ–ŞÓ¦î;¦k–º×¢&ëšr¿¢*¦k–âã–r €ÄÀƒšr#²³’â’â«–F£–·’âû¢†3¾ò3š.'’â–2ë’â;¢–ÿ–ÊÇ–Êo¦7–â¢ö»’â;šòS–ë¾ò3–ú–ú¢Şw–ZßšÎ'š¶—¢†3–>¿¢úû†»–"š^—šr¢¾ßš~—–âšRÿ–ês¢*n»–6Wœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ/–¶¢&ëšr¿¢*¾ò çŠLÄÈƒšr#¾ò$œ°½¹Ñ•¹Ğè€Ÿ¢şg’â–:–>Ëš
+ƒ’æj¢*–ê–â›šv—¦~Ï’æC’òkš"?–&Ÿ’â;¢"{¢æ#¾ò3–rë¦š–’k’ö7’ê;–â’â·–ş¾ò3¦£–"¢Şw–æÿ–rë’îšVÃš¶—’æ/¦—¾òo¢*n»–6W’òkš>C–&7–r£–ºcöG–>G–âœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿš²ŸšÒË¦_’êŸš^—¾ò äƒšr#¾ò$œ°½¹Ñ•¹Ğè€œäƒšr#’â·š^³jš~C’â«–F£šr¯¾ò3–æÏš^Û–Ï¦^·jê«–ş×–îë¶G–BG–³’ò_–òšRû¾òo¦
+ï¢şGj–r’óš.s–‚’â;–#¢Ò“–ƒ–v–>’â;¾ò3¦–ºs’â;–ZßšÎ'’â–æÛšâã¢#œô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ/š^—–'êÿ’â;–ZßšÂĞœ°½¹Ñ•¹Ğè€Ÿ’ö;šZsj/š^—¦bÏ–'’î“~ÏÃ–Ê§®/¦v‹ƒƒR¢ú'¾òo’ş»–’7–B;j–ZßšÂÓ¢ö»–:¢º‡–"H€ÈÀÈØƒ–æÓ/–¶–r£–ïš*“–Ş—¢/–B;š‹–’7ŠSŠSšršZÃ†»¢º“*Ûš¢3’ş»–’77¦†×¦v‹–ë¢†3–&7¢¾ß–r£–ºcöGš‚ã–º{š&šr'š^—šrœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ/–¶–ZßšÎ'šr'šÒï–*£–B_¾ò|œ°…¹Íİ•Èè€Ÿê«–ş×ŠGšr³¢ê¯’â7¢ºû–R»–£šÒï–*£¾ò3’ö–rÆÏš¶–ÂS¢*¾ò ä¼Èç¾ò'f÷–’s–>+–F£¢úçj¦_’êŸš^—’â;/–¶¢&ëšr¿¢*¢º§/–¶š‚ó–’[·¦^çœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿf÷–’sšb¿’î’æ#š^Û–g¾ò|œ°…¹Íİ•Èè€Ÿ¦k–âã–r €ÄÀƒšr#²³’â’â«–F£–·¾òo†»–"š^—šr¢¾ßš~—–ŞÓ¦î;šÒï–*£š^—–:œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ–ZßšÎ'–’s¦^Óšr'¿–'–B_¾ò|œ°…¹Íİ•Èè€Ÿšr'ŠSŠS–—–’s–B;–æÿ–rëšr'Ÿšb;¾òo–’sšfkšÂo–nÓ¢3–’s¦^Ó7¦†×¦v‹œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ/–¶¦–B#š.7Ÿ–B_¾ò|œ°…¹Íİ•Èè€Ÿ¦–B#ŠSŠS’ö;šZs/¦bÏ’â;š‹–’7–ZßšÂÓj¢ö»¾ò3’öÿ–Ûš"C’âë’â7¦RgjšF–öÇ–¶¢*œô°(€€€€€t°(€€€€€¹…Øè€Ÿ/–¶šÒï–* œ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€É•ÍÑ½É…Ñ¥½¸œ°€İ…±­Ì½¹½ÑÉ”µ‘…µ”µ¥±”µ‘”µ±„µ¥Ñ”œ°€¹•…É‰ä½Í…¥¹Ñ”µ¡…Á•±±”t°(€€€ô°(€ô°(€€ÍÁÉ¥¹œµ•Ù•¹ÑÌœèì(€€€•¸èì(€€€€€Ñ¥Ñ±”è€MÁÉ¥¹œÙ•¹ÑÌ¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLA…É¥Ì¥¸Ñ¡”MÁÉ¥¹œœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€M•…Í½¹…°•Ù•¹ÑÌ…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸™É½´5…É Ñ¼)Õ¹”è©Ñ”‘”±„5ÕÍ¥ÅÕ”°9Õ¥Ğ‘•Ì5ÕÏ¥•Ì°Ñ¡”A…É¥Ì5…É…Ñ¡½¸°…É‘•¸‰±½½µÌ…¹±½¹œÉ¥Ù•É‰…¹¬•Ù•¹¥¹Ì¸œ°(€€€€€ Äè€MÁÉ¥¹œ•Ù•¹ÑÌ¹•…È½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€1…ÍĞÕÁ‘…Ñ•è=Ñ½‰•È€ÈÀÈØœ°(€€€€€±•…è€Ì‘…åÌ±•¹Ñ¡•¸°Ñ¡”1…Ñ¥¸EÕ…ÉÑ•È…¹M•¥¹”…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸™¥±°İ¥Ñ ™É•”µÕÍ¥Œ°±…Ñ”µ½Á•¹¥¹œµÕÍ•ÕµÌ…¹‰±½ÍÍ½´ƒŠP„±¥Ù•±äÍ•…Í½¸Ñ¼Ù¥Í¥ĞA±…”M…¥¹Ğµ5¥¡•°¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€©Ñ”‘”±„5ÕÍ¥ÅÕ”€ ÈÄ)Õ¹”¤œ°½¹Ñ•¹Ğè€=¸Ñ¡”ÍÕµµ•ÈÍ½±ÍÑ¥”°™É•”½¹•ÉÑÌÍÁ¥±°…É½ÍÌÑ¡”1…Ñ¥¸EÕ…ÉÑ•È…¹ƒ9±”‘”±„¥Ó¤ìÑ¡”ÍÑÉ••ÑÌ…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸½™Ñ•¸¡½ÍĞ±¥Ù”µÕÍ¥Œ±…Ñ”¥¹Ñ¼Ñ¡”•Ù•¹¥¹œ¸%Ğ¥Ì™É•”…¹½Á•¸Ñ¼…±°¸œô°(€€€€€€€ì¡•…‘¥¹œè€9Õ¥Ğ‘•Ì5ÕÏ¥•Ì€¡5…ä¤œ°½¹Ñ•¹Ğè€=¸½¹”M…ÑÕÉ‘…ä¥¸5…ä°µÕÍ•ÕµÌ…É½ÍÌA…É¥ÌƒŠP¥¹±Õ‘¥¹œ½¹•Ì„Í¡½ÉĞİ…±¬™É½´Ñ¡”ÍÅÕ…É”ÍÕ …ÌÑ¡”±Õ¹ä5ÕÍ•Õ´ƒŠPÍÑ…ä½Á•¸±…Ñ”¥¹Ñ¼Ñ¡”¹¥¡Ğİ¥Ñ ™É•”•¹ÑÉä¸œô°(€€€€€€€ì¡•…‘¥¹œè€A…É¥Ì5…É…Ñ¡½¸€¡ÁÉ¥°¤œ°½¹Ñ•¹Ğè€Q¡”µ…É…Ñ¡½¸½ÕÉÍ”ÉÕ¹Ì…±½¹œÑ¡”M•¥¹”…¹Á…ÍĞÑ¡”¥Í±…¹‘Ìì¹•…É‰äÅÕ…åÌ…¹‰É¥‘•Ì…¸‰”‰ÕÍä½ÈÁ…ÉÑ¥…±±ä±½Í•½¸É…”µ½É¹¥¹œ°Í¼Á±…¸å½ÕÈ…ÉÉ¥Ù…°Ù¥„Ñ¡”IH½¸œô°(€€€€€€€ì¡•…‘¥¹œè€MÁÉ¥¹œ¥¸Ñ¡”…É‘•¹Ìœ°½¹Ñ•¹Ğè€Q¡”)…É‘¥¸‘Ô1Õá•µ‰½ÕÉœ°…‰½ÕĞ€Ä×ŠLÈÀµ¥¹ÕÑ•Ì…İ…ä°¥Ì…Ğ¥ÑÌ‰•ÍĞ¥¸ÍÁÉ¥¹œİ¥Ñ ¡•ÍÑ¹ÕĞ‰±½½µÌ…¹‘•­¡…¥ÉÌì„Á±•…Í…¹Ğ…‘µ½¸Ñ¼„™½Õ¹Ñ…¥¸Ù¥Í¥Ğ¸œô°(€€€€€€€ì¡•…‘¥¹œè€1½¹•È‘…åÌ‰äÑ¡”É¥Ù•Èœ°½¹Ñ•¹Ğè€]¥Ñ •áÑ•¹‘•‘…å±¥¡Ğ°Ñ¡”M•¥¹”‰½½­ÍÑ…±±Ì…¹É¥Ù•É‰…¹¬İ…±­Ì…É”…ĞÑ¡•¥È•…Í¥•ÍĞì½µ‰¥¹”Ñ¡”™½Õ¹Ñ…¥¸İ¥Ñ „ÍÕ¹Í•ĞÍÑÉ½±°¸Y•É¥™ä…±°‘…Ñ•Ì½¸½™™¥¥…°•Ù•¹ĞÍ¥Ñ•Ì‰•™½É”ÑÉ…Ù•±±¥¹œ¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€É”Ñ¡•É”•Ù•¹ÑÌ…ĞÑ¡”™½Õ¹Ñ…¥¸¥¸ÍÁÉ¥¹œüœ°…¹Íİ•Èè€Q¡”µ½¹Õµ•¹Ğ¡…Ì¹¼Ñ¥­•Ñ••Ù•¹ÑÌ°‰ÕĞ©Ñ”‘”±„5ÕÍ¥ÅÕ”°9Õ¥Ğ‘•Ì5ÕÏ¥•Ì…¹Ñ¡”A…É¥Ì5…É…Ñ¡½¸µ…­”ÍÁÉ¥¹œ±¥Ù•±ä¹•…É‰ä¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€]¡•¸¥Ì©Ñ”‘”±„5ÕÍ¥ÅÕ”üœ°…¹Íİ•Èè€Ù•Éä€ÈÄ)Õ¹”°İ¥Ñ ™É•”µÕÍ¥Œ…É½ÍÌÑ¡”¥ÑäìÑ¡”1…Ñ¥¸EÕ…ÉÑ•È…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸©½¥¹Ì¥¸¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€É”µÕÍ•ÕµÌ½Á•¸±…Ñ”¥¸ÍÁÉ¥¹œüœ°…¹Íİ•Èè€e•ÌƒŠP9Õ¥Ğ‘•Ì5ÕÏ¥•Ì¥¸5…ä½Á•¹Ìµ…¹äµÕÍ•ÕµÌ°¥¹±Õ‘¥¹œÑ¡”±Õ¹ä5ÕÍ•Õ´¹•…ÈÑ¡”ÍÅÕ…É”°¥¹Ñ¼Ñ¡”¹¥¡Ğ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€%ÌÍÁÉ¥¹œ½½™½Èİ…±­¥¹œüœ°…¹Íİ•Èè€e•ÌƒŠP±½¹•È‘…å±¥¡Ğ°…É‘•¸‰±½½µÌ…¹•…ÍäÉ¥Ù•É‰…¹¬ÍÑÉ½±±Ìµ…­”¥Ğ„É•…ĞÍ•…Í½¸…É½Õ¹Ñ¡”™½Õ¹Ñ…¥¸¸œô°(€€€€€t°(€€€€€¹…Øè€MÁÉ¥¹œ•Ù•¹ÑÌœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€¹•…É‰ä½µÕÍ•”µ‘”µ±Õ¹äœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¹•…É‰ä½±Õá•µ‰½ÕÉœµ…É‘•¹Ìt°(€€€ô°(€€€™Èèì(€€€€€Ñ¥Ñ±”è€Ÿ%Û¥¹•µ•¹ÑÌ‘”ÁÉ¥¹Ñ•µÁÌÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°ƒŠLA…É¥Ì…ÔÁÉ¥¹Ñ•µÁÌœ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€Ÿ%Û¥¹•µ•¹ÑÌÍ…¥Í½¹¹¥•ÉÌ…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”‘”µ…ÉÌƒ€©Õ¥¸€è©Ñ”‘”±„5ÕÍ¥ÅÕ”°9Õ¥Ğ‘•Ì5ÕÏ¥•Ì°5…É…Ñ¡½¸‘”A…É¥Ì°™±½É…¥Í½¹Ì•Ğ±½¹Õ•ÌÍ½¥Ë¥•ÌÁË¡Ì‘”±„M•¥¹”¸œ°(€€€€€ Äè€Ÿ%Û¥¹•µ•¹ÑÌ‘”ÁÉ¥¹Ñ•µÁÌÁË¡Ì‘”±„½¹Ñ…¥¹”M…¥¹Ğµ5¥¡•°œ°(€€€€€ÕÁ‘…Ñ•è€•É¹§¡É”µ¥Í”ƒ€©½ÕÈ€è½Ñ½‰É”€ÈÀÈØœ°(€€€€€±•…è€Ù•Œ±•Ì©½ÕÉÌÅÕ¤É…±±½¹•¹Ğ°±”EÕ…ÉÑ¥•È±…Ñ¥¸•Ğ±„M•¥¹”…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”Í”É•µÁ±¥ÍÍ•¹Ğ‘”µÕÍ¥ÅÕ”É…ÑÕ¥Ñ”°‘”µÕÏ¥•Ì½ÕÙ•ÉÑÌÑ…É•Ğ‘”™±•ÕÉÌƒŠPÕ¹”Í…¥Í½¸…¹¥·¥”Á½ÕÈ±„A±…”M…¥¹Ğµ5¥¡•°¸œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€©Ñ”‘”±„5ÕÍ¥ÅÕ”€ ÈÄ©Õ¥¸¤œ°½¹Ñ•¹Ğè€ÔÍ½±ÍÑ¥”“Šg¥Ó¤°‘•Ì½¹•ÉÑÌÉ…ÑÕ¥ÑÌ•¹Ù…¡¥ÍÍ•¹Ğ±”EÕ…ÉÑ¥•È±…Ñ¥¸•Ğ³Šg9±”‘”±„¥Ó¤€ì±•ÌÉÕ•Ì…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”…Õ•¥±±•¹ĞÍ½ÕÙ•¹Ğ‘”±„µÕÍ¥ÅÕ”±¥Ù”•¸Í½¥Ë¥”¸Še•ÍĞÉ…ÑÕ¥Ğ•Ğ½ÕÙ•ÉĞƒ€Ñ½ÕÌ¸œô°(€€€€€€€ì¡•…‘¥¹œè€9Õ¥Ğ‘•Ì5ÕÏ¥•Ì€¡µ…¤¤œ°½¹Ñ•¹Ğè€U¸Í…µ•‘¤‘”µ…¤°±•ÌµÕÏ¥•Ì‘”A…É¥ÌƒŠP‘½¹Ğ±”5ÕÏ¥”‘”±Õ¹ä°ƒ€ÅÕ•±ÅÕ•ÌÁ…Ì‘”±„Á±…”ƒŠPÉ•ÍÑ•¹Ğ½ÕÙ•ÉÑÌÑ…É°•¹ÑË¥”É…ÑÕ¥Ñ”¸œô°(€€€€€€€ì¡•…‘¥¹œè€5…É…Ñ¡½¸‘”A…É¥Ì€¡…ÙÉ¥°¤œ°½¹Ñ•¹Ğè€1”Á…É½ÕÉÌ‘Ôµ…É…Ñ¡½¸±½¹”±„M•¥¹”•Ğ±•Ìƒ¹±•Ì€ì±•ÌÅÕ…¥Ì•ĞÁ½¹ÑÌÁÉ½¡•ÌÁ•ÕÙ•¹Ğƒ©ÑÉ”¡…ÉŸ¥Ì½Ô™•É·¥Ì±”µ…Ñ¥¸‘”±„½ÕÉÍ”°ÁË¥Ù½å•è³Še…ÉÉ¥Û¥”Á…È±”IH½¸œô°(€€€€€€€ì¡•…‘¥¹œè€1”ÁÉ¥¹Ñ•µÁÌ‘…¹Ì±•Ì©…É‘¥¹Ìœ°½¹Ñ•¹Ğè€1”)…É‘¥¸‘Ô1Õá•µ‰½ÕÉœ°ƒ€•¹Ù¥É½¸€Ä×ŠLÈÀµ¥¸°•ÍĞÍÕÁ•É‰”…ÔÁÉ¥¹Ñ•µÁÌ…Ù•ŒÍ•Ìµ…ÉÉ½¹¹¥•ÉÌ•ĞÍ•Ì¡…¥Í•Ì€ìÕ¹”‰•±±”•áÑ•¹Í¥½¸ƒ€±„Ù¥Í¥Ñ”‘”±„™½¹Ñ…¥¹”¸œô°(€€€€€€€ì¡•…‘¥¹œè€)½ÕÉ»¥•ÌÁ±ÕÌ±½¹Õ•ÌÁË¡Ì‘Ô™±•ÕÙ”œ°½¹Ñ•¹Ğè€Ù•Œ±„±Õµ§¡É”ÁÉ½±½¹Ÿ¥”°±•Ì‰½ÕÅÕ¥¹¥ÍÑ•Ì•Ğ±„ÁÉ½µ•¹…‘”‘•ÌÅÕ…¥ÌÍ½¹Ğ…¥Ï¥Ì€ì…ÍÍ½¥•è±„™½¹Ñ…¥¹”ƒ€Õ¹”™³‰¹•É¥”…Ô½Õ¡•È‘ÔÍ½±•¥°¸[¥É¥™¥•è±•Ì‘…Ñ•ÌÍÕÈ±•ÌÍ¥Ñ•Ì½™™¥¥•±Ì¸œô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€d„µĞµ¥°‘•Ìƒ¥Û¥¹•µ•¹ÑÌƒ€±„™½¹Ñ…¥¹”…ÔÁÉ¥¹Ñ•µÁÌ€üœ°…¹Íİ•Èè€1”µ½¹Õµ•¹Ğ»Še„Á…Ì“Šg¥Û¥¹•µ•¹ĞÁ…å…¹Ğ°µ…¥Ì±„©Ñ”‘”±„5ÕÍ¥ÅÕ”°±„9Õ¥Ğ‘•Ì5ÕÏ¥•Ì•Ğ±”5…É…Ñ¡½¸‘”A…É¥Ì…¹¥µ•¹Ğ±”ÁÉ¥¹Ñ•µÁÌ…±•¹Ñ½ÕÈ¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€EÕ…¹„±¥•Ô±„©Ñ”‘”±„5ÕÍ¥ÅÕ”€üœ°…¹Íİ•Èè€¡…ÅÕ”€ÈÄ©Õ¥¸°µÕÍ¥ÅÕ”É…ÑÕ¥Ñ”‘…¹ÌÑ½ÕĞA…É¥Ì€ì±”EÕ…ÉÑ¥•È±…Ñ¥¸…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”Á…ÉÑ¥¥Á”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1•ÌµÕÏ¥•Ì½ÕÙÉ•¹Ğµ¥±ÌÑ…É…ÔÁÉ¥¹Ñ•µÁÌ€üœ°…¹Íİ•Èè€=Õ¤ƒŠP±„9Õ¥Ğ‘•Ì5ÕÏ¥•Ì•¸µ…¤½ÕÙÉ”Ñ…É‘”¹½µ‰É•ÕàµÕÏ¥•Ì°‘½¹Ğ±Õ¹äÁË¡Ì‘”±„Á±…”¸œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€1”ÁÉ¥¹Ñ•µÁÌ•ÍĞµ¥°‰½¸Á½ÕÈµ…É¡•È€üœ°…¹Íİ•Èè€=Õ¤ƒŠP©½ÕÉ»¥•ÌÁ±ÕÌ±½¹Õ•Ì°™±½É…¥Í½¹Ì•ĞÅÕ…¥Ì™…¥±•Ì•¸™½¹ĞÕ¹”‰•±±”Í…¥Í½¸…ÕÑ½ÕÈ‘”±„™½¹Ñ…¥¹”¸œô°(€€€€€t°(€€€€€¹…Øè€Ÿ%Û¥¹•µ•¹ÑÌ‘”ÁÉ¥¹Ñ•µÁÌœ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€¹•…É‰ä½µÕÍ•”µ‘”µ±Õ¹äœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¹•…É‰ä½±Õá•µ‰½ÕÉœµ…É‘•¹Ìt°(€€€ô°(€€€é èì(€€€€€Ñ¥Ñ±”è€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úçšb—–¶šÒï–*£¾ò#–ŞÓ¦î;’æ/šb—¾ò$œ°(€€€€€‘•ÍÉ¥ÁÑ¥½¸è€œÌƒšr#¢Ì€Øƒšr#–ZßšÎ'–F£¢úçj–¶¢*šŸšÒï–*£¾òk¦~Ï’æC¢*–6k&§¦š’æ/–’s–ŞÓ¦î;¦¦³š.'švû¢*Ç–n·¢*Ç’ê/’â;–†{êÏšÊÏšò¯¦Vÿ–
+7šfkœ°(€€€€€ Äè€Ÿ–rÆÏš¶–ÂS–ZßšÎ'–F£¢úçšb—–¶šÒï–* œ°(€€€€€ÕÁ‘…Ñ•è€Ÿšr–B;šnÓšZÃ¾òhÈÀÈØƒ–æĞ€ÄÀƒšr œ°(€€€€€±•…è€Ÿf÷šbóšâC¦Vÿ¾ò3–ZßšÎ'–F£¢úçjš.'’â–2ë’â;–†{êÏšÊÏ–šî‡–7¢Òç¦~Ï’æCšŞÇ–’s–òšRûj–6k&§¦š’â;¦Ês¢*ÇŠSŠSšb¿¦ƒ¢ºÿ–rÆÏš¶–ÂS–æÿ–rëj·¦^ç–¶¢*œ°(€€€€€Í•Ñ¥½¹Ìèl(€€€€€€€ì¡•…‘¥¹œè€Ÿ¦~Ï’æC¢*¾ò Øƒšr €ÈÄƒš^—¾ò$œ°½¹Ñ•¹Ğè€Ÿ–’?¢Ï’æ/š^—¾ò3–7¢Òç¦~Ï’æC’òk¦7–âš.'’â–2ë’â;¢–ÿ–ÊÇ–Êo¾òo–ZßšÎ'–F£¢úç¢†_¦O–âã–âãšŞÇ–’s’î7šr':Ã–rë¦~Ï’æCšÒï–*£–7¢Òç¦v‹–BGš&šr'’êëœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–6k&§¦š’æ/–’s¾ò Ôƒšr#¾ò$œ°½¹Ñ•¹Ğè€œÔƒšr#š~C’â«–F£–·¾ò3–ŞÓ¦î;’ò_–’k–6k&§¦šŠSŠS–2š.³¢Şw–æÿ–rë’â7¢şsj–/–BW–Âó–6k&§¦šŠSŠS–îÛ¦Vÿ–òšRû¢ÏšŞÇ–’s–æÛ–7¢Òç–—–rëœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ–ŞÓ¦î;¦¦³š.'švû¾ò Ğƒšr#¾ò$œ°½¹Ñ•¹Ğè€Ÿ¦¦³š.'švû¢Ş¿êÿšÊÿ–†{êÏšÊÏ–æÛî?–Êo–Æÿ¾òoš¾S¢Öo–öOš^—šâšf£¦
+ï¢şGšÊÏ–‚“’â;š†—šŠ–>¿¢÷š.—š2“š"[–Æ¦£–Â¦^·¾ò3–îë¢º»î<IH½ƒš*×¢úûœô°(€€€€€€€ì¡•…‘¥¹œè€Ÿ¢*Ç–n·’æ/šb”œ°½¹Ñ•¹Ğè€Ÿê˜€Ä×ŠLÈÀƒ–"¦J–’[j–6‹š»–‚‡¢*Ç–n·šb—–¶šrú;¾ò3š‚_š‚G–ò¢*Ç¦Vÿš’¦7–â¾ò3šb¿–ZßšÎ'’æ/¢†3jš³š?–îÛ’òãœô°(€€€€€€€ì¡•…‘¥¹œè€ŸšÊÏVS¦Vÿš^”œ°½¹Ñ•¹Ğè€Ÿf÷šbó–îÛ¦Vÿ¾ò3–†{êÏšÊÏ’æ›šF+’â;šÊÏ–‚“šò¯š¶—šr’âë¢öïšvû¾òo–>¿–Â–ZßšÎ'’â;¢B÷š^—šVš¶—îO–B#–ë¢†3–&7¢¾ß–r£–ºcöGš‚ã–º{š&šr'š^—šrœô°(€€€€€t°(€€€€€™…Äèl(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšb—–¶–ZßšÎ'šr'šÒï–*£–B_¾ò|œ°…¹Íİ•Èè€Ÿê«–ş×ŠGšr³¢ê¯’â7¢ºû–R»–£šÒï–*£¾ò3’ö¦~Ï’æC¢*–6k&§¦š’æ/–’s’â;–ŞÓ¦î;¦¦³š.'švû¢º§–F£¢úçšb—–¶·¦^ç¦v{–‡œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿ¦~Ï’æC¢*šb¿’î’æ#š^Û–g¾ò|œ°…¹Íİ•Èè€Ÿš¾?–æĞ€Øƒšr €ÈÄƒš^—¾ò3–£–~;–7¢Òç¦~Ï’æC¾òo–ZßšÎ'–F£¢úçjš.'’â–2ë’æ’òk–>’â;œô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšb—–¶–6k&§¦š’òkšŞÇ–’s–òšRû–B_¾ò|œ°…¹Íİ•Èè€Ÿ’òkŠSŠPÔƒšr#j–6k&§¦š’æ/–’s¢º§’ò_–’k–6k&§¦š¾ò#–B¯¦
+ï¢şGj–/–BW–Âó–6k&§¦š¾ò'–òšRû¢ÏšŞÇ–’sœô°(€€€€€€€ìÅÕ•ÍÑ¥½¸è€Ÿšb—–¶¦–B#šVš¶—–B_¾ò|œ°…¹Íİ•Èè€Ÿ¦–B#ŠSŠSf÷šbóšnÓ¦Vÿ¢*Ç–n·¢*Ç–òšÊÏ–‚“šbO¢†3¾ò3šb¿–ZßšÎ'–F£¢úç’â7¦Rgj–¶¢*œô°(€€€€€t°(€€€€€¹…Øè€Ÿšb—–¶šÒï–* œ°(€€€€€É•±…Ñ•èl…Ğµ¹¥¡Ğœ°€¹•…É‰ä½µÕÍ•”µ‘”µ±Õ¹äœ°€İ…±­Ì½Í•¥¹”µ‰½½­ÍÑ…±±Ìœ°€¹•…É‰ä½±Õá•µ‰½ÕÉœµ…É‘•¹Ìt°(€€€ô°(€ô°)ôì()•áÁ½ÉĞ½¹ÍĞQ=A%LèI•½ÉñÍÑÉ¥¹œ°Q½Á¥1½…±•Ìø€ôì€¸¸¹1e}Q=A%L°€¸¸¹9]}Q=A%Lôì()•áÁ½ÉĞ™Õ¹Ñ¥½¸•ÑQ½Á¥Œ¡Í±ÕœèÍÑÉ¥¹œ¤èQ½Á¥1½…±•ÌğÕ¹‘•™¥¹•ì(€½¹ÍĞ‰…Í”€ôQ=A%MmÍ±Õtì(€½¹ÍĞ¹•…É‰ä€ô9I	e}Q=A%MmÍ±Õtì(€¥˜€ …¹•…É‰ä¤É•ÑÕÉ¸‰…Í”ì(€É•ÑÕÉ¸ì€¸¸¹¹•…É‰ä°€¸¸¹‰…Í”°•¸è‰…Í”ü¹•¸€üü¹•…É‰ä¹•¸°™Èè‰…Í”ü¹™È€üü¹•…É‰ä¹™È°é è‰…Í”ü¹é €üü¹•…É‰ä¹é ôì)ô()•áÁ½ÉĞ™Õ¹Ñ¥½¸Ñ½Á¥1½…±•Ì¡Í±ÕœèÍÑÉ¥¹œ¤èÉÉ…äğ•¸œğ€™Èœğ€é œøì(€¥˜€¡Í±Õœ€ôôô€¹•…É‰äœñğ9I	e}A1L¹Í½µ” ¡Á±…”¤€ôø¹•…É‰ä¼‘íÁ±…”¹Í±Õõ€€ôôôÍ±Õœ¤¤É•ÑÕÉ¸l•¸œ°€™Èœ°€é tì(€½¹ÍĞ•¹ÑÉä€ôQ=A%MmÍ±Õtì(€½¹ÍĞ±½…±•ÌèÉÉ…äğ•¸œğ€™Èœğ€é œø€ôl•¸œ°€™Ètì(€¥˜€¡•¹ÑÉäü¹é ¤±½…±•Ì¹ÁÕÍ  é œ¤ì(€É•ÑÕÉ¸±½…±•Ìì)ô()•áÁ½ÉĞ™Õ¹Ñ¥½¸Ñ½Á¥A…Ñ ¡Í±ÕœèÍÑÉ¥¹œ¤èÍÑÉ¥¹œì(€É•ÑÕÉ¸€¼‘íÍ±Õõ€ì)ô(
