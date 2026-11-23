@@ -1,7 +1,19 @@
+import Image from 'next/image';
+import { getParisVisit } from '@/data/nearby-paris';
+import photoData from '@/data/nearby-paris-photos.json';
 import { useLocale } from 'next-intl';
 import { BASE_URL, localeUrl } from '@/lib/seo';
 import { getTopic, topicLocales, topicPath } from '@/data/topics';
 import { getNearbyPlace, nearbyCopy, nearbyMapQuery, NEARBY_PLACES } from '@/data/nearby-directory';
+
+type PlacePhoto = {
+  credit: string;
+  width: number;
+  height: number;
+  source: string;
+  caption: Record<'en' | 'fr' | 'zh', string>;
+};
+const photos: Record<string, PlacePhoto> = photoData;
 
 type TopicContent = {
   h1: string;
@@ -25,7 +37,10 @@ export default function TopicPage({ slug }: { slug: string }) {
   const pageUrl = localeUrl(locale, topicPath(slug));
   const nearbyPlace = getNearbyPlace(slug);
   const nearbyText = nearbyCopy(locale);
+  const visit = nearbyPlace?.visit && getParisVisit(nearbyPlace.visit, locale);
+  const photo = nearbyPlace && photos[nearbyPlace.slug];
   const mapQuery = nearbyMapQuery(slug);
+  const reviewsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
   const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Fontaine Saint-Michel, Paris')}&destination=${encodeURIComponent(mapQuery)}&travelmode=walking`;
   const related = (topic.related ?? []).filter(
     (s) => s !== slug && topicLocales(s).includes(locale),
@@ -68,9 +83,9 @@ export default function TopicPage({ slug }: { slug: string }) {
     headline: topic.h1,
     description: topic.lead,
     inLanguage: locale === 'zh' ? 'zh-CN' : locale,
-    dateModified: '2026-10-01',
+    dateModified: visit ? '2026-11-23' : '2026-10-01',
     isPartOf: { '@id': `${BASE_URL}/#website` },
-    about: { '@id': `${BASE_URL}/#attraction` },
+    about: visit ? { '@type': 'Place', name: topic.h1, hasMap: reviewsUrl } : { '@id': `${BASE_URL}/#attraction` },
     publisher: { '@id': `${BASE_URL}/#organization` },
   };
 
@@ -119,8 +134,14 @@ export default function TopicPage({ slug }: { slug: string }) {
         {(nearbyPlace || slug === 'nearby') && (
           <div className="space-y-5 mb-12">
             <section className="rounded-xl p-5 sm:p-6" style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)' }}>
-              <h2 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>{nearbyText.manager}</h2>
-              {nearbyPlace?.operator ? (
+              <h2 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>{visit ? `${visit.labels.about}${locale === 'zh' ? '' : ' '}${topic.h1}` : nearbyText.manager}</h2>
+              {visit && nearbyPlace?.visit ? (
+                <>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{visit.management}</p>
+                  <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>{nearbyPlace.visit.address} · Paris, France</p>
+                  <a className="text-sm underline" style={{ color: 'var(--accent)' }} href={nearbyPlace.visit.source}>{visit.labels.sources}</a>
+                </>
+              ) : nearbyPlace?.operator ? (
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   {nearbyPlace.operator.name[locale]} · <a href={nearbyPlace.operator.url} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'var(--accent)' }}>{nearbyText.verified}</a>
                 </p>
@@ -132,13 +153,31 @@ export default function TopicPage({ slug }: { slug: string }) {
                 <h2 className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{nearbyText.walk}</h2>
                 <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="text-sm underline" style={{ color: 'var(--accent)' }}>{nearbyText.map}</a>
               </div>
-              <iframe title={`${topic.h1} map`} src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-64 rounded-xl" style={{ border: '1px solid var(--border-color)' }} />
+              <iframe title={visit ? `${visit.labels.iframe} · ${topic.h1}` : `${topic.h1} map`} src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-64 rounded-xl" style={{ border: '1px solid var(--border-color)' }} />
+              {visit && <a className="inline-block mt-3 text-sm underline" style={{ color: 'var(--accent)' }} href={reviewsUrl} target="_blank" rel="noopener noreferrer">{visit.labels.reviews}</a>}
             </section>
 
-            <section className="rounded-xl p-5 sm:p-6" aria-label={nearbyText.image} style={{ background: 'linear-gradient(135deg, var(--bg-secondary), var(--card-bg))', border: '1px dashed var(--border-color)' }}>
+            {photo && visit && nearbyPlace ? (
+              <section aria-label={visit.labels.photos}>
+                <h2 className="font-display text-xl font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>{visit.labels.photos}</h2>
+                <figure>
+                  <Image
+                    src={`/nearby/${nearbyPlace.slug}.webp`}
+                    alt={photo.caption[locale]}
+                    width={photo.width}
+                    height={photo.height}
+                    unoptimized
+                    className="w-full h-auto rounded-xl"
+                  />
+                  <figcaption className="mt-2 text-sm" style={{ color: 'var(--text-muted)' }}>
+                    {photo.caption[locale]} · <a className="underline" href={photo.source}>{photo.credit || visit.labels.photoCredit}</a>
+                  </figcaption>
+                </figure>
+              </section>
+            ) : <section className="rounded-xl p-5 sm:p-6" aria-label={nearbyText.image} style={{ background: 'linear-gradient(135deg, var(--bg-secondary), var(--card-bg))', border: '1px dashed var(--border-color)' }}>
               <h2 className="font-display text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{nearbyText.image}</h2>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{nearbyText.imageNote}</p>
-            </section>
+            </section>}
             {slug !== 'nearby' && <a href={`/${locale}/nearby`} className="inline-block text-sm underline" style={{ color: 'var(--accent)' }}>{nearbyText.directory}</a>}
           </div>
         )}

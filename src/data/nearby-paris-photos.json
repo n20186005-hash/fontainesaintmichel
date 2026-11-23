@@ -1,0 +1,343 @@
+{
+  "square-rene-viviani": {
+    "source": "https://www.paris.fr/lieux/square-rene-viviani-2441",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "The old locust tree and Notre-Dame seen from Square René Viviani",
+      "fr": "Le vieux robinier et Notre-Dame vus du square René Viviani",
+      "zh": "从勒内·维维亚尼广场看古刺槐和巴黎圣母院"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-paul-langevin": {
+    "source": "https://www.paris.fr/lieux/square-paul-langevin-2446",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "Planted wall and stone fountain in Square Paul Langevin",
+      "fr": "Mur végétalisé et fontaine de pierre au square Paul Langevin",
+      "zh": "保罗·朗之万广场内的植被墙与石喷泉"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-robert-montagne": {
+    "source": "https://www.paris.fr/lieux/square-robert-montagne-2829",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "Flower beds in Square Robert Montagne",
+      "fr": "Massifs fleuris du square Robert Montagne",
+      "zh": "罗贝尔·蒙塔涅广场的花坛"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-marius-constant": {
+    "source": "https://www.paris.fr/lieux/square-marius-constant-2447",
+    "credit": "Sonia Yassa/ Ville de Paris",
+    "caption": {
+      "en": "Garden path and benches in Square Marius Constant",
+      "fr": "Allée et bancs du square Marius Constant",
+      "zh": "马里于斯·康斯唐广场的步道与长椅"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "jardin-tino-rossi": {
+    "source": "https://www.paris.fr/lieux/jardin-tino-rossi-1786",
+    "credit": "Sonia Yassa / Ville de Paris",
+    "caption": {
+      "en": "The Seine promenade in Jardin Tino-Rossi",
+      "fr": "La promenade en bord de Seine au jardin Tino-Rossi",
+      "zh": "蒂诺·罗西花园的塞纳河畔步道"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-boucicaut": {
+    "source": "https://www.paris.fr/lieux/square-boucicaut-2462",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "Planted paths and lawn in Square Boucicaut",
+      "fr": "Allées plantées et pelouse au square Boucicaut",
+      "zh": "布西科广场的绿植小道与草坪"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-vert-galant": {
+    "source": "https://www.paris.fr/lieux/square-du-vert-galant-2825",
+    "credit": "Sonia Yassa / Ville de Paris",
+    "caption": {
+      "en": "Square du Vert-Galant at the tip of Île de la Cité",
+      "fr": "Le square du Vert-Galant à la pointe de l’île de la Cité",
+      "zh": "西岱岛尖的绿骑士广场"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-jean-xxiii": {
+    "source": "https://www.paris.fr/lieux/square-jean-xxiii-35",
+    "credit": "Christophe Noël / Ville de Paris",
+    "caption": {
+      "en": "Notre-Dame’s stonework and garden flowers at Square Jean XXIII",
+      "fr": "Les pierres de Notre-Dame et les fleurs du square Jean XXIII",
+      "zh": "若望二十三世广场的花卉与圣母院石墙"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-ile-de-france": {
+    "source": "https://www.paris.fr/lieux/square-de-l-ile-de-france-32",
+    "credit": "Guillaume Bontemps / Ville de Paris",
+    "caption": {
+      "en": "The riverside edge of Square de l’Île-de-France",
+      "fr": "Le bord de Seine du square de l’Île-de-France",
+      "zh": "法兰西岛广场靠河的一侧"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-barye": {
+    "source": "https://www.paris.fr/lieux/square-barye-29",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "Sculptor Antoine-Louis Barye’s monument in the square",
+      "fr": "Monument au sculpteur Antoine-Louis Barye dans le square",
+      "zh": "巴里广场里的雕塑家巴里纪念碑"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "square-gabriel-pierne": {
+    "source": "https://www.paris.fr/lieux/square-gabriel-pierne-2453",
+    "credit": "Frédéric Combeau / Ville de Paris",
+    "caption": {
+      "en": "Statue and shaded paths in Square Gabriel-Pierné",
+      "fr": "Statue et allées ombragées du square Gabriel-Pierné",
+      "zh": "加布里埃尔·皮埃尔内广场的雕像与林荫小道"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "pont-archeveche": {
+    "source": "https://parisjetaime.com/transport/pont-de-l-archeveche-p1897",
+    "credit": "Amélie Dupont / Paris je t’aime",
+    "caption": {
+      "en": "The stone arches of Pont de l’Archevêché over the Seine",
+      "fr": "Les arches en pierre du pont de l’Archevêché sur la Seine",
+      "zh": "总主教桥横跨塞纳河的石拱"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "pont-tournelle": {
+    "source": "https://parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/le-pont-de-la-tournelle",
+    "credit": "Jules Séeberger / Paris Musées",
+    "caption": {
+      "en": "Archival photograph of Pont de la Tournelle",
+      "fr": "Photographie d’archives du pont de la Tournelle",
+      "zh": "图尔内勒桥的档案实景照片"
+    },
+    "width": 585,
+    "height": 449
+  },
+  "pont-marie": {
+    "source": "https://parisjetaime.com/eng/transport/pont-marie-p1882",
+    "credit": "Amélie Dupont / Paris je t’aime",
+    "caption": {
+      "en": "A stone span of Pont Marie from water level",
+      "fr": "Une arche en pierre du pont Marie vue depuis le fleuve",
+      "zh": "从水面看玛丽桥的一道石拱"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "pont-louis-philippe": {
+    "source": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/pont-louis-philippe-4eme-arrondissement-paris-0",
+    "credit": "Paris Musées / Musée Carnavalet",
+    "caption": {
+      "en": "Archival photograph of Pont Louis-Philippe",
+      "fr": "Photographie d’archives du pont Louis-Philippe",
+      "zh": "路易－菲利普桥的档案实景照片"
+    },
+    "width": 585,
+    "height": 291
+  },
+  "pont-sully": {
+    "source": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/pont-de-sully-5eme-arrondissement-paris",
+    "credit": "Paris Musées / Musée Carnavalet",
+    "caption": {
+      "en": "Archival photograph of Pont de Sully",
+      "fr": "Photographie d’archives du pont de Sully",
+      "zh": "苏利桥的档案实景照片"
+    },
+    "width": 423,
+    "height": 540
+  },
+  "quai-montebello": {
+    "source": "https://parisjetaime.com/transport/quai-de-montebello-p1987",
+    "credit": "Sarah Sergent / Paris je t’aime",
+    "caption": {
+      "en": "Evening view across the Seine from Quai de Montebello",
+      "fr": "Vue du soir sur la Seine depuis le quai de Montebello",
+      "zh": "从蒙特贝洛河岸拍摄的塞纳河夜景"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "crypte-archeologique": {
+    "source": "https://www.crypte.paris.fr/",
+    "credit": "Stéphane Piera / Musée Carnavalet",
+    "caption": {
+      "en": "Excavated masonry in the archaeological crypt beneath Notre-Dame’s forecourt",
+      "fr": "Maçonneries dégagées dans la crypte archéologique sous le parvis de Notre-Dame",
+      "zh": "圣母院前广场考古地窖内发掘出的石砌遗迹"
+    },
+    "width": 820,
+    "height": 431
+  },
+  "memorial-deportation": {
+    "source": "https://parisjetaime.com/culture/memorial-des-martyrs-de-la-deportation-p961",
+    "credit": "ONaCVG",
+    "caption": {
+      "en": "Lower court of the deportation memorial",
+      "fr": "Cour basse du mémorial des martyrs de la Déportation",
+      "zh": "驱逐遇难者纪念馆的下沉庭院"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "musee-curie": {
+    "source": "https://parisjetaime.com/eng/culture/musee-curie-p999",
+    "credit": "Paris je t’aime",
+    "caption": {
+      "en": "Marie Curie’s preserved office in the Musée Curie",
+      "fr": "Le bureau conservé de Marie Curie au musée Curie",
+      "zh": "居里博物馆保存的玛丽·居里办公室"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "musee-prefecture-police": {
+    "source": "https://parisjetaime.com/eng/culture/musee-de-la-prefecture-de-police-p1067",
+    "credit": "Préfecture de police de Paris",
+    "caption": {
+      "en": "Exhibition cases in the Paris Police Prefecture museum",
+      "fr": "Vitrines du musée de la Préfecture de police",
+      "zh": "巴黎警察总局博物馆内的展柜"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "musee-histoire-medecine": {
+    "source": "https://parisjetaime.com/culture/musee-de-l-histoire-de-la-medecine-p976",
+    "credit": "Arnaud Février / Photothèque Paris Descartes",
+    "caption": {
+      "en": "Medical instruments in the museum’s long gallery",
+      "fr": "Instruments médicaux dans la longue galerie du musée",
+      "zh": "医学史博物馆长廊里的医疗器械"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "musee-delacroix": {
+    "source": "https://www.louvre.fr/le-louvre-en-france-et-dans-le-monde/le-musee-national-eugene-delacroix",
+    "credit": "Musée du Louvre",
+    "caption": {
+      "en": "The garden of the Musée national Eugène-Delacroix",
+      "fr": "Le jardin du musée national Eugène-Delacroix",
+      "zh": "欧仁·德拉克鲁瓦国家博物馆的花园"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "musee-luxembourg": {
+    "source": "https://parisjetaime.com/eng/culture/musee-du-luxembourg-p3573",
+    "credit": "Paris je t’aime",
+    "caption": {
+      "en": "The Musée du Luxembourg façade on rue de Vaugirard",
+      "fr": "Façade du musée du Luxembourg rue de Vaugirard",
+      "zh": "沃日拉尔街上的卢森堡博物馆立面"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "musee-zadkine": {
+    "source": "https://parisjetaime.com/eng/culture/musee-zadkine-p3502",
+    "credit": "Pierre Antoine",
+    "caption": {
+      "en": "Sculptures displayed at Musée Zadkine",
+      "fr": "Sculptures exposées au musée Zadkine",
+      "zh": "扎德金博物馆展出的雕塑"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "memorial-shoah": {
+    "source": "https://fondationshoah.org/lieux-de-memoire/memorial-de-la-shoah",
+    "credit": "Pierre-Emmanuel Weck / Fondation pour la Mémoire de la Shoah",
+    "caption": {
+      "en": "Entrance façade of the Mémorial de la Shoah in Paris",
+      "fr": "Fronton du Mémorial de la Shoah à Paris",
+      "zh": "巴黎犹太人大屠杀纪念馆的入口立面"
+    },
+    "width": 600,
+    "height": 450
+  },
+  "maison-europeenne-photographie": {
+    "source": "https://www.paris.fr/lieux/maison-europeenne-de-la-photographie-19189",
+    "credit": "© Quentin Chevrier",
+    "caption": {
+      "en": "Visitors outside the Maison Européenne de la Photographie",
+      "fr": "Des visiteurs devant la Maison Européenne de la Photographie",
+      "zh": "欧洲摄影之家门外的访客"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "musee-carnavalet": {
+    "source": "https://www.carnavalet.paris.fr/",
+    "credit": "Antoine Mercusot / Chatillon Architectes",
+    "caption": {
+      "en": "Restoration of carved gilt decoration at Musée Carnavalet",
+      "fr": "Restauration d’un décor sculpté et doré au musée Carnavalet",
+      "zh": "卡纳瓦莱博物馆内雕刻贴金装饰的修复现场"
+    },
+    "width": 640,
+    "height": 360
+  },
+  "maison-victor-hugo": {
+    "source": "https://www.paris.fr/lieux/maison-de-victor-hugo-62",
+    "credit": "Clément Dorval / Ville de Paris",
+    "caption": {
+      "en": "A furnished room in Victor Hugo’s former apartment",
+      "fr": "Une pièce meublée de l’ancien appartement de Victor Hugo",
+      "zh": "维克多·雨果旧居内的室内陈设"
+    },
+    "width": 810,
+    "height": 540
+  },
+  "musee-orsay": {
+    "source": "https://parisjetaime.com/eng/culture/musee-d-orsay-p3592",
+    "credit": "Paris je t’aime – Office de tourisme",
+    "caption": {
+      "en": "The Musée d’Orsay in the former railway station",
+      "fr": "Le musée d’Orsay dans l’ancienne gare",
+      "zh": "原火车站改造而成的奥赛博物馆"
+    },
+    "width": 540,
+    "height": 540
+  },
+  "grande-galerie-evolution": {
+    "source": "https://www.jardindesplantesdeparis.fr/fr/grande-galerie-de-l-evolution",
+    "credit": "Muséum national d’Histoire naturelle",
+    "caption": {
+      "en": "Interior of the Grande Galerie de l’Évolution at the Jardin des Plantes",
+      "fr": "Intérieur de la Grande Galerie de l’Évolution au Jardin des Plantes",
+      "zh": "巴黎植物园内的进化大展厅"
+    },
+    "width": 800,
+    "height": 421
+  }
+}

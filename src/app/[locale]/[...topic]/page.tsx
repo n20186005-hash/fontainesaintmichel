@@ -1,20 +1,17 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, TOPIC_SLUGS, type TopicSlug } from '@/i18n/routing';
-import { buildAlternates } from '@/lib/seo';
+import { buildAlternates, localeUrl } from '@/lib/seo';
 import { getTopic, topicLocales, topicPath } from '@/data/topics';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import TopicPage from '@/components/TopicPage';
 import type { Metadata } from 'next';
 
-export const dynamicParams = false;
+type TopicLocale = (typeof routing.locales)[number];
 
-export function generateStaticParams() {
-  return routing.locales.flatMap((locale) =>
-    TOPIC_SLUGS.filter((topic) => topicLocales(topic).includes(locale)).map(
-      (topic) => ({ locale, topic: topic.split('/') }),
-    )
-  );
-}
+// Render guide routes directly on Cloudflare instead of requiring a cached prerender.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -24,17 +21,20 @@ export async function generateMetadata({
   const { locale, topic } = await params;
   const slug = topic.join('/');
 
-  if (!TOPIC_SLUGS.includes(slug)) {
+  if (!TOPIC_SLUGS.includes(slug) || !routing.locales.includes(locale as TopicLocale) || !topicLocales(slug).includes(locale as TopicLocale)) {
     return {};
   }
 
   const entry = getTopic(slug);
   if (!entry) return {};
-  const content = entry[locale as 'en' | 'fr' | 'zh'] ?? entry.en;
+  const content = entry[locale as TopicLocale];
+
+  if (!content) return {};
 
   return {
     title: content.title,
     description: content.description,
+    openGraph: { title: content.title, description: content.description, url: localeUrl(locale, topicPath(slug)), type: 'article' },
     alternates: buildAlternates(locale, topicPath(slug), topicLocales(slug)),
     robots: {
       index: true,
@@ -52,17 +52,23 @@ export default async function TopicRoute({
   const { locale, topic } = await params;
   const slug = topic.join('/');
 
-  if (!TOPIC_SLUGS.includes(slug as TopicSlug)) {
+  if (!TOPIC_SLUGS.includes(slug as TopicSlug) || !routing.locales.includes(locale as TopicLocale) || !topicLocales(slug).includes(locale as TopicLocale)) {
     notFound();
   }
 
   const entry = getTopic(slug);
   if (!entry) notFound();
 
-  const content = entry[locale as 'en' | 'fr' | 'zh'] ?? entry.en;
+  const content = entry[locale as TopicLocale];
   if (!content) notFound();
 
   setRequestLocale(locale);
 
-  return <TopicPage slug={slug} />;
+  return (
+    <>
+      <Header solid />
+      <main className="pt-16"><TopicPage slug={slug} /></main>
+      <Footer />
+    </>
+  );
 }

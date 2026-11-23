@@ -1,0 +1,929 @@
+[
+  {
+    "slug": "square-rene-viviani",
+    "name": {
+      "en": "Square René Viviani",
+      "fr": "Square René Viviani",
+      "zh": "勒内·维维亚尼广场"
+    },
+    "address": "2 rue du Fouarre, 75005",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-rene-viviani-2441",
+    "minutes": 15,
+    "history": {
+      "en": "The city garden opened in 1928 beside Saint-Julien-le-Pauvre.",
+      "fr": "Le jardin municipal a ouvert en 1928 près de Saint-Julien-le-Pauvre.",
+      "zh": "市政花园于1928年在圣朱利安教堂旁开放。"
+    },
+    "arrival": {
+      "en": "Enter from rue du Fouarre and head toward the church wall.",
+      "fr": "Entrez rue du Fouarre et gagnez le mur de l’église.",
+      "zh": "从富阿尔街入口走向教堂外墙。"
+    },
+    "detail": {
+      "en": "Find Jean Robin’s 1601 black locust and frame Notre-Dame from the riverside edge.",
+      "fr": "Repérez le robinier planté en 1601 par Jean Robin et cadrez Notre-Dame depuis le côté Seine.",
+      "zh": "寻找让·罗班1601年栽下的刺槐，在靠河的一侧取景圣母院。"
+    }
+  },
+  {
+    "slug": "square-paul-langevin",
+    "name": {
+      "en": "Square Paul Langevin",
+      "fr": "Square Paul Langevin",
+      "zh": "保罗·朗之万广场"
+    },
+    "address": "20 rue Monge, 75005",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-paul-langevin-2446",
+    "minutes": 15,
+    "history": {
+      "en": "This small city garden is named for the physicist Paul Langevin.",
+      "fr": "Ce jardin municipal porte le nom du physicien Paul Langevin.",
+      "zh": "这座市政小花园以物理学家保罗·朗之万命名。"
+    },
+    "arrival": {
+      "en": "Take rue Monge uphill from Maubert; the city notes a narrow gate at number 20.",
+      "fr": "Remontez la rue Monge depuis Maubert ; la mairie signale un portillon étroit au numéro 20.",
+      "zh": "从莫贝尔沿蒙日街上坡，市政府提示20号门扇较窄。"
+    },
+    "detail": {
+      "en": "Leave the busy street for the planted paths and photograph the greenery from inside the gate.",
+      "fr": "Quittez la rue passante pour les allées plantées et photographiez la végétation depuis l’intérieur du jardin.",
+      "zh": "离开繁忙街道，沿绿植小路走，在门内拍摄植物景观。"
+    },
+    "access": {
+      "en": "Entry is free and gate times are seasonal. The city flags the narrow gate as a possible difficulty for visitors with reduced mobility.",
+      "fr": "L’entrée est gratuite et les horaires varient selon la saison. La Ville signale qu’un portillon étroit peut gêner les personnes à mobilité réduite.",
+      "zh": "免费入场，园门按季开放。市政府提醒狭窄的门扇可能给行动不便者带来困难。"
+    }
+  },
+  {
+    "slug": "square-robert-montagne",
+    "name": {
+      "en": "Square Robert Montagne",
+      "fr": "Square Robert Montagne",
+      "zh": "罗贝尔·蒙塔涅广场"
+    },
+    "address": "place du Puits-de-l’Ermite, 75005",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-robert-montagne-2829",
+    "minutes": 10,
+    "history": {
+      "en": "The square opened in 1929 across from the Paris mosque.",
+      "fr": "Le square a ouvert en 1929 face à la mosquée de Paris.",
+      "zh": "花园于1929年在巴黎大清真寺对面开放。"
+    },
+    "arrival": {
+      "en": "Follow rue Daubenton to place du Puits-de-l’Ermite and enter the garden across from the mosque.",
+      "fr": "Suivez la rue Daubenton jusqu’à la place du Puits-de-l’Ermite et entrez en face de la mosquée.",
+      "zh": "沿多邦通街走到隐士井广场，从清真寺对面进入。"
+    },
+    "detail": {
+      "en": "Look for the Hispano-Moorish fountain and the white mulberries mentioned by the district council.",
+      "fr": "Repérez la fontaine hispano-mauresque et les mûriers blancs signalés par la mairie d’arrondissement.",
+      "zh": "留意区政府介绍的西班牙摩尔风格喷泉和白桑树。"
+    }
+  },
+  {
+    "slug": "square-marius-constant",
+    "name": {
+      "en": "Square Marius Constant",
+      "fr": "Square Marius Constant",
+      "zh": "马里于斯·康斯唐广场"
+    },
+    "address": "8 rue d’Ortolan, 75005",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-marius-constant-2447",
+    "minutes": 10,
+    "history": {
+      "en": "The small urban garden was laid out in 1958 and closes at night.",
+      "fr": "Le petit jardin de quartier a été aménagé en 1958 et ferme la nuit.",
+      "zh": "这座社区小花园于1958年建成，夜间关闭。"
+    },
+    "arrival": {
+      "en": "Leave rue Mouffetard by rue d’Ortolan and find the entrance at number 8.",
+      "fr": "Quittez la rue Mouffetard par la rue d’Ortolan et cherchez l’entrée au numéro 8.",
+      "zh": "从穆夫塔街拐入多尔托朗街，找到8号入口。"
+    },
+    "detail": {
+      "en": "Take a garden break between the market street and rue Saint-Médard; frame the planting from the path.",
+      "fr": "Faites une pause entre la rue commerçante et la rue Saint-Médard ; cadrez les plantations depuis l’allée.",
+      "zh": "在商业街与圣梅达尔街之间小憩，从步道拍摄花园绿植。"
+    },
+    "access": {
+      "en": "The district lists the garden as closed at night; check the city’s seasonal gate times.",
+      "fr": "La mairie d’arrondissement indique que le jardin ferme la nuit ; vérifiez les horaires saisonniers des grilles.",
+      "zh": "区政府说明花园夜间关闭；请核对当季的开门时段。"
+    }
+  },
+  {
+    "slug": "jardin-tino-rossi",
+    "name": {
+      "en": "Jardin Tino-Rossi",
+      "fr": "Jardin Tino-Rossi",
+      "zh": "蒂诺·罗西花园"
+    },
+    "address": "quai Saint-Bernard, 75005",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/jardin-tino-rossi-1786",
+    "minutes": 25,
+    "history": {
+      "en": "The riverside garden gives the public a promenade along the former port of Saint-Bernard.",
+      "fr": "Le jardin aménagé sur l’ancien port Saint-Bernard donne au public une promenade au bord de l’eau.",
+      "zh": "花园沿昔日圣贝尔纳港布置，提供公共滨河步道。"
+    },
+    "arrival": {
+      "en": "Walk east on quai de la Tournelle and use a signed descent toward quai Saint-Bernard.",
+      "fr": "Longez le quai de la Tournelle vers l’est puis prenez une descente signalée vers le quai Saint-Bernard.",
+      "zh": "沿图尔内勒河岸向东，从标示的坡道或台阶下到圣贝尔纳河岸。"
+    },
+    "detail": {
+      "en": "From the promenade, see the open-air sculpture displays and look across to Île Saint-Louis.",
+      "fr": "Depuis la promenade, observez les sculptures en plein air et regardez vers l’île Saint-Louis.",
+      "zh": "在步道观赏露天雕塑，还能眺望圣路易岛。"
+    }
+  },
+  {
+    "slug": "square-boucicaut",
+    "name": {
+      "en": "Square Boucicaut",
+      "fr": "Square Boucicaut",
+      "zh": "布西科广场"
+    },
+    "address": "1 rue de Babylone, 75007",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-boucicaut-2462",
+    "minutes": 15,
+    "history": {
+      "en": "The garden takes its name from the Boucicaut family associated with the Bon Marché across the street.",
+      "fr": "Le square porte le nom de la famille Boucicaut, liée au Bon Marché qui lui fait face.",
+      "zh": "花园以与对面乐蓬马歇百货有渊源的布西科家族命名。"
+    },
+    "arrival": {
+      "en": "Approach from Sèvres–Babylone and use the gate on rue de Babylone.",
+      "fr": "Arrivez par Sèvres–Babylone et entrez rue de Babylone.",
+      "zh": "从塞夫尔－巴比伦一侧前来，由巴比伦街门口进入。"
+    },
+    "detail": {
+      "en": "Use the paths to frame the mature trees against the surrounding department-store façades.",
+      "fr": "Depuis les allées, cadrez les grands arbres sur les façades voisines du grand magasin.",
+      "zh": "在小道上取景，以百货建筑的立面衬托园中高树。"
+    }
+  },
+  {
+    "slug": "square-vert-galant",
+    "name": {
+      "en": "Square du Vert-Galant",
+      "fr": "Square du Vert-Galant",
+      "zh": "绿骑士广场"
+    },
+    "address": "place du Pont-Neuf, 75001",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-du-vert-galant-2825",
+    "minutes": 15,
+    "history": {
+      "en": "The garden occupies the western point of Île de la Cité below the equestrian statue of Henri IV.",
+      "fr": "Le jardin occupe la pointe ouest de l’île de la Cité sous la statue équestre d’Henri IV.",
+      "zh": "花园位于西岱岛西端、亨利四世骑马像下方。"
+    },
+    "arrival": {
+      "en": "Cross Pont Neuf to the statue and descend the stairs behind it.",
+      "fr": "Traversez le Pont-Neuf jusqu’à la statue et descendez l’escalier derrière elle.",
+      "zh": "沿新桥到骑马像，从雕像后方的台阶下行。"
+    },
+    "detail": {
+      "en": "Walk to the tip to frame the river as it divides around the island. Avoid the edge during high water.",
+      "fr": "Gagnez la pointe pour cadrer les deux bras du fleuve. Évitez le bord en période de crue.",
+      "zh": "走到岛尖，取景塞纳河在岛两侧分流的景象。涨水时远离岸边。"
+    },
+    "access": {
+      "en": "The city lists continuous opening; use the stairs by Henri IV’s statue and check Seine flood notices.",
+      "fr": "La Ville indique un accès permanent ; prenez l’escalier près de la statue d’Henri IV et vérifiez les alertes de crue.",
+      "zh": "市政府列为全天开放；从亨利四世像旁下台阶，留意塞纳河涨水公告。"
+    }
+  },
+  {
+    "slug": "square-jean-xxiii",
+    "name": {
+      "en": "Square Jean XXIII",
+      "fr": "Square Jean XXIII",
+      "zh": "若望二十三世广场"
+    },
+    "address": "4 place du Parvis Notre-Dame, 75004",
+    "kind": "closed",
+    "source": "https://www.paris.fr/lieux/square-jean-xxiii-35",
+    "minutes": 10,
+    "history": {
+      "en": "The garden occupies the ground behind the cathedral choir, where the flying buttresses are easiest to distinguish.",
+      "fr": "Le jardin occupe le terrain derrière le chœur de la cathédrale, où se distinguent ses arcs-boutants.",
+      "zh": "花园位于圣母院唱诗席后方，是辨认飞扶壁的好位置。"
+    },
+    "arrival": {
+      "en": "Walk from the cathedral forecourt toward the east end, following temporary barriers.",
+      "fr": "Partez du parvis vers le chevet en suivant le balisage provisoire.",
+      "zh": "从教堂前广场向东端走，沿现场临时围栏绕行。"
+    },
+    "detail": {
+      "en": "The city lists the garden as closed during cathedral works. Look toward the buttresses from the opposite bank instead.",
+      "fr": "La mairie signale une fermeture pendant les travaux de la cathédrale. Regardez les arcs-boutants depuis la rive opposée.",
+      "zh": "市政府公告花园在教堂工程期间关闭，可到对岸远观飞扶壁。"
+    }
+  },
+  {
+    "slug": "square-ile-de-france",
+    "name": {
+      "en": "Square de l’Île-de-France",
+      "fr": "Square de l’Île-de-France",
+      "zh": "法兰西岛广场"
+    },
+    "address": "1 quai de l’Archevêché, 75004",
+    "kind": "closed",
+    "source": "https://www.paris.fr/lieux/square-de-l-ile-de-france-32",
+    "minutes": 10,
+    "history": {
+      "en": "This municipal garden occupies the eastern tip of Île de la Cité above the deportation memorial.",
+      "fr": "Ce jardin municipal occupe la pointe est de l’île de la Cité au-dessus du mémorial de la Déportation.",
+      "zh": "市政花园位于西岱岛东端、驱逐遇难者纪念馆上方。"
+    },
+    "arrival": {
+      "en": "Go east along quai de l’Archevêché and stop at the public perimeter while the site is fenced.",
+      "fr": "Suivez le quai de l’Archevêché vers l’est et arrêtez-vous au périmètre public pendant les travaux.",
+      "zh": "沿总主教河岸向东，施工期间可走到开放边界。"
+    },
+    "detail": {
+      "en": "The city lists closure until spring 2027. From Pont de l’Archevêché look toward the island point.",
+      "fr": "La mairie annonce une fermeture jusqu’au printemps 2027. Regardez la pointe depuis le pont de l’Archevêché.",
+      "zh": "市政府公告关闭至2027年春。可从总主教桥眺望岛尖。"
+    }
+  },
+  {
+    "slug": "square-barye",
+    "name": {
+      "en": "Square Barye",
+      "fr": "Square Barye",
+      "zh": "巴里广场"
+    },
+    "address": "2 boulevard Henri-IV, 75004",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-barye-29",
+    "minutes": 15,
+    "history": {
+      "en": "The square honours Antoine-Louis Barye, a sculptor known for his bronze animals.",
+      "fr": "Le square rend hommage à Antoine-Louis Barye, sculpteur connu pour ses bronzes animaliers.",
+      "zh": "广场纪念以动物青铜雕塑闻名的安托万－路易·巴里。"
+    },
+    "arrival": {
+      "en": "Walk east along Île Saint-Louis to boulevard Henri-IV and enter on the island side of Pont de Sully.",
+      "fr": "Traversez l’île Saint-Louis vers l’est jusqu’au boulevard Henri-IV et entrez du côté insulaire du pont de Sully.",
+      "zh": "沿圣路易岛向东走到亨利四世大道，从苏利桥靠岛一端进入。"
+    },
+    "detail": {
+      "en": "Find the monument to Barye before following the path toward the island’s eastern point.",
+      "fr": "Repérez le monument à Barye avant de suivre l’allée vers la pointe est de l’île.",
+      "zh": "先看巴里纪念碑，再顺步道走向岛的东端。"
+    },
+    "access": {
+      "en": "The city lists this free square as open around the clock; check any temporary restrictions before crossing Pont de Sully.",
+      "fr": "La Ville indique que ce square gratuit est ouvert en permanence ; vérifiez les restrictions temporaires avant de traverser le pont de Sully.",
+      "zh": "市政府列为免费全天开放；经苏利桥过来前请核对临时限制。"
+    }
+  },
+  {
+    "slug": "square-gabriel-pierne",
+    "name": {
+      "en": "Square Gabriel-Pierné",
+      "fr": "Square Gabriel-Pierné",
+      "zh": "加布里埃尔·皮埃尔内广场"
+    },
+    "address": "5 rue de Seine, 75006",
+    "kind": "city",
+    "source": "https://www.paris.fr/lieux/square-gabriel-pierne-2453",
+    "minutes": 10,
+    "history": {
+      "en": "The garden is named for a composer and conductor and sits behind the Institut de France.",
+      "fr": "Le jardin porte le nom d’un compositeur et chef d’orchestre et se trouve derrière l’Institut de France.",
+      "zh": "花园以一位作曲家兼指挥家命名，位于法兰西学会后方。"
+    },
+    "arrival": {
+      "en": "Turn inland off quai de Conti on rue de Seine and look for the gate at number 5.",
+      "fr": "Quittez le quai de Conti par la rue de Seine et repérez la grille au numéro 5.",
+      "zh": "从孔蒂河岸拐入塞纳街，寻找5号门。"
+    },
+    "detail": {
+      "en": "Look for the fountain and the stone seats shaped like open books.",
+      "fr": "Repérez la fontaine et les bancs de pierre en forme de livres ouverts.",
+      "zh": "留意喷泉和造型如打开书本的石座椅。"
+    }
+  },
+  {
+    "slug": "pont-archeveche",
+    "name": {
+      "en": "Pont de l’Archevêché",
+      "fr": "Pont de l’Archevêché",
+      "zh": "总主教桥"
+    },
+    "address": "quai de la Tournelle, 75005",
+    "kind": "bridge",
+    "source": "https://parisjetaime.com/transport/pont-de-l-archeveche-p1897",
+    "minutes": 10,
+    "history": {
+      "en": "The narrow bridge links the southeastern end of Île de la Cité to the Left Bank.",
+      "fr": "Ce pont étroit relie l’extrémité sud-est de l’île de la Cité à la rive gauche.",
+      "zh": "这座窄桥连接西岱岛东南端与塞纳河左岸。"
+    },
+    "arrival": {
+      "en": "Follow quai de Montebello east to quai de la Tournelle and cross toward the island.",
+      "fr": "Suivez le quai de Montebello vers l’est jusqu’au quai de la Tournelle puis traversez vers l’île.",
+      "zh": "沿蒙特贝洛河岸向东走到图尔内勒河岸，再向岛上过桥。"
+    },
+    "detail": {
+      "en": "From the bridge’s upstream pavement look back toward Notre-Dame’s choir and leave room for cyclists.",
+      "fr": "Depuis le trottoir amont, regardez en arrière vers le chevet de Notre-Dame et laissez passer les cyclistes.",
+      "zh": "从桥上人行道回望圣母院唱诗席一侧，给骑车人留出通行空间。"
+    }
+  },
+  {
+    "slug": "pont-tournelle",
+    "name": {
+      "en": "Pont de la Tournelle",
+      "fr": "Pont de la Tournelle",
+      "zh": "图尔内勒桥"
+    },
+    "address": "quai de la Tournelle, 75005",
+    "kind": "bridge",
+    "source": "https://parisjetaime.com/eng/transport/pont-de-la-tournelle-p1884",
+    "minutes": 10,
+    "history": {
+      "en": "The present bridge is marked by Paul Landowski’s tall monument to Sainte Geneviève.",
+      "fr": "Le pont actuel est marqué par le haut monument à sainte Geneviève de Paul Landowski.",
+      "zh": "现桥以保罗·朗多夫斯基创作的圣热纳维耶芙高柱纪念像为标志。"
+    },
+    "arrival": {
+      "en": "Continue along quai de la Tournelle to the bridge leading to Île Saint-Louis.",
+      "fr": "Continuez sur le quai de la Tournelle jusqu’au pont menant à l’île Saint-Louis.",
+      "zh": "沿图尔内勒河岸走到通往圣路易岛的桥。"
+    },
+    "detail": {
+      "en": "Photograph the statue from the Left Bank pavement, then cross for a view of the quays.",
+      "fr": "Photographiez la statue depuis le trottoir rive gauche, puis traversez pour voir les quais.",
+      "zh": "从左岸人行道拍纪念像，再过桥看两侧河岸。"
+    }
+  },
+  {
+    "slug": "pont-marie",
+    "name": {
+      "en": "Pont Marie",
+      "fr": "Pont Marie",
+      "zh": "玛丽桥"
+    },
+    "address": "quai des Célestins, 75004",
+    "kind": "bridge",
+    "source": "https://parisjetaime.com/eng/transport/pont-marie-p1882",
+    "minutes": 10,
+    "history": {
+      "en": "This seventeenth-century stone bridge connected the newly developed Île Saint-Louis to the Right Bank.",
+      "fr": "Ce pont de pierre du XVIIe siècle a relié l’île Saint-Louis, alors en plein aménagement, à la rive droite.",
+      "zh": "这座17世纪石桥曾将开发中的圣路易岛与塞纳河右岸相连。"
+    },
+    "arrival": {
+      "en": "On Île Saint-Louis head to rue des Deux-Ponts and follow it north onto the bridge.",
+      "fr": "Sur l’île Saint-Louis, rejoignez la rue des Deux-Ponts et remontez-la vers le pont.",
+      "zh": "在圣路易岛找到两桥街，向北直走上桥。"
+    },
+    "detail": {
+      "en": "View the stone spans from quai des Célestins or the island end of the crossing.",
+      "fr": "Observez les arches en pierre depuis le quai des Célestins ou le débouché côté île.",
+      "zh": "从塞莱斯坦河岸或靠岛的桥头观察石拱。"
+    }
+  },
+  {
+    "slug": "pont-louis-philippe",
+    "name": {
+      "en": "Pont Louis-Philippe",
+      "fr": "Pont Louis-Philippe",
+      "zh": "路易－菲利普桥"
+    },
+    "address": "quai de l’Hôtel-de-Ville, 75004",
+    "kind": "bridge",
+    "source": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/pont-louis-philippe-4eme-arrondissement-paris-0",
+    "minutes": 10,
+    "history": {
+      "en": "The current nineteenth-century bridge connects Île Saint-Louis with the Right Bank near the Hôtel de Ville.",
+      "fr": "Le pont actuel, du XIXe siècle, relie l’île Saint-Louis à la rive droite près de l’Hôtel de Ville.",
+      "zh": "现桥建于19世纪，连接圣路易岛与右岸市政厅附近。"
+    },
+    "arrival": {
+      "en": "From the island, follow rue Jean-du-Bellay north to the bridge.",
+      "fr": "Depuis l’île, remontez la rue Jean-du-Bellay jusqu’au pont.",
+      "zh": "从岛上沿让－迪贝莱街向北到桥头。"
+    },
+    "detail": {
+      "en": "From the path beside the river look for the ornament above the bridge piers.",
+      "fr": "Depuis le chemin de berge, observez le décor au-dessus des piles du pont.",
+      "zh": "从河边步道观察桥墩上方的装饰。"
+    }
+  },
+  {
+    "slug": "pont-sully",
+    "name": {
+      "en": "Pont de Sully",
+      "fr": "Pont de Sully",
+      "zh": "苏利桥"
+    },
+    "address": "boulevard Henri-IV, 75004",
+    "kind": "bridge",
+    "source": "https://parisjetaime.com/eng/transport/pont-de-sully-p1870",
+    "minutes": 10,
+    "history": {
+      "en": "Two spans carry the crossing past the eastern end of Île Saint-Louis.",
+      "fr": "Deux ouvrages assurent la traversée à l’extrémité est de l’île Saint-Louis.",
+      "zh": "跨越由两段桥梁组成，经过圣路易岛东端。"
+    },
+    "arrival": {
+      "en": "Follow boulevard Henri-IV to the island, where you can pause at Square Barye before continuing.",
+      "fr": "Suivez le boulevard Henri-IV jusqu’à l’île et faites halte au square Barye avant de poursuivre.",
+      "zh": "沿亨利四世大道走到岛上，在巴里广场停留后可继续过桥。"
+    },
+    "detail": {
+      "en": "Look west from the island end for views along the river in both channels.",
+      "fr": "Depuis l’extrémité insulaire, regardez vers l’ouest pour voir les deux bras du fleuve.",
+      "zh": "从靠岛的桥头向西看，能分别看到塞纳河两条河道。"
+    }
+  },
+  {
+    "slug": "quai-montebello",
+    "name": {
+      "en": "Quai de Montebello",
+      "fr": "Quai de Montebello",
+      "zh": "蒙特贝洛河岸"
+    },
+    "address": "quai de Montebello, 75005",
+    "kind": "bridge",
+    "source": "https://parisjetaime.com/transport/quai-de-montebello-p1987",
+    "minutes": 20,
+    "history": {
+      "en": "The Left Bank quay stretches from Petit Pont to Pont de l’Archevêché opposite Notre-Dame.",
+      "fr": "Le quai rive gauche va du Petit Pont au pont de l’Archevêché, face à Notre-Dame.",
+      "zh": "左岸这段河岸从小桥延伸至总主教桥，与圣母院隔河相望。"
+    },
+    "arrival": {
+      "en": "Walk east past Petit Pont along the upper pavement on the Seine side.",
+      "fr": "Dépassez le Petit Pont vers l’est en suivant le trottoir haut côté Seine.",
+      "zh": "向东经过小桥，沿靠塞纳河的上层人行道行走。"
+    },
+    "detail": {
+      "en": "Pause by the bookstalls and frame the cathedral between the trees from the upper quay.",
+      "fr": "Faites halte près des bouquinistes et cadrez la cathédrale entre les arbres depuis le quai haut.",
+      "zh": "在旧书摊旁稍停，从上层河岸透过树木取景圣母院。"
+    }
+  },
+  {
+    "slug": "crypte-archeologique",
+    "name": {
+      "en": "Crypte archéologique de l’île de la Cité",
+      "fr": "Crypte archéologique de l’île de la Cité",
+      "zh": "西岱岛考古地窖"
+    },
+    "address": "7 place du Parvis Notre-Dame, 75004",
+    "kind": "parismusees",
+    "source": "https://www.crypte.paris.fr/",
+    "minutes": 45,
+    "history": {
+      "en": "Excavations beneath the forecourt revealed remains from Roman and later Paris.",
+      "fr": "Les fouilles sous le parvis ont révélé des vestiges du Paris antique et des époques ultérieures.",
+      "zh": "圣母院前广场下的考古发掘发现了罗马时期及其后各时期的巴黎遗迹。"
+    },
+    "arrival": {
+      "en": "Cross Petit Pont and look for the crypt entrance on the forecourt, away from the cathedral doors.",
+      "fr": "Traversez le Petit Pont et repérez l’entrée de la crypte sur le parvis, à l’écart des portes de la cathédrale.",
+      "zh": "过小桥到前广场，在教堂门口以外找考古地窖入口。"
+    },
+    "detail": {
+      "en": "Read the masonry from the raised visitor path to see how the shoreline and buildings changed.",
+      "fr": "Depuis le parcours surélevé, lisez les maçonneries pour comprendre l’évolution du rivage et du bâti.",
+      "zh": "沿架高的参观步道辨认石墙，观察巴黎河岸线和建筑的变化。"
+    },
+    "access": {
+      "en": "The archaeological crypt has a separate paid admission. Check the crypt’s opening hours and accessibility information before going below the forecourt.",
+      "fr": "La crypte archéologique a sa propre entrée payante. Vérifiez les horaires et les conditions d’accessibilité avant de descendre sous le parvis.",
+      "zh": "考古地窖单独售票。下到广场地下之前，请核对地窖开放时间和无障碍信息。"
+    }
+  },
+  {
+    "slug": "memorial-deportation",
+    "name": {
+      "en": "Mémorial des martyrs de la Déportation",
+      "fr": "Mémorial des martyrs de la Déportation",
+      "zh": "驱逐遇难者纪念馆"
+    },
+    "address": "7 quai de l’Archevêché, 75004",
+    "kind": "defense",
+    "source": "https://www.defense.gouv.fr/chemins-memoire/tourisme-memoire/lieux-memoire/10-hauts-lieux-memoire-nationale/memorial-martyrs-deportation",
+    "minutes": 30,
+    "history": {
+      "en": "The memorial designed by Georges-Henri Pingusson was inaugurated in 1962.",
+      "fr": "Le mémorial conçu par Georges-Henri Pingusson a été inauguré en 1962.",
+      "zh": "纪念馆由乔治－亨利·潘居松设计，1962年揭幕。"
+    },
+    "arrival": {
+      "en": "Follow quai de l’Archevêché past the cathedral choir, then follow the current entrance signs.",
+      "fr": "Longez le quai de l’Archevêché au-delà du chevet de la cathédrale et suivez la signalétique d’accès en place.",
+      "zh": "沿总主教河岸经过教堂东端，再按现场指示寻找入口。"
+    },
+    "detail": {
+      "en": "Descend to the enclosed memorial court and allow time for the underground gallery. This is a place of remembrance.",
+      "fr": "Descendez dans la cour close du mémorial et prévoyez du temps pour la galerie souterraine. Le lieu est voué au recueillement.",
+      "zh": "下行至围合的纪念庭院，留时间看地下长廊。入内宜保持安静。"
+    },
+    "access": {
+      "en": "The memorial offers free entry. Check the current opening arrangements independently of the adjacent municipal garden.",
+      "fr": "Le mémorial est gratuit. Vérifiez ses modalités d’ouverture indépendamment du jardin municipal voisin.",
+      "zh": "纪念馆免费开放，请单独核对其当日开放安排，毗邻市政花园另有规定。"
+    }
+  },
+  {
+    "slug": "musee-curie",
+    "name": {
+      "en": "Musée Curie",
+      "fr": "Musée Curie",
+      "zh": "居里博物馆"
+    },
+    "address": "1 rue Pierre et Marie Curie, 75005",
+    "kind": "curie",
+    "source": "https://musee.curie.fr/",
+    "minutes": 45,
+    "history": {
+      "en": "The museum preserves Marie Curie’s office and laboratory in the former Institut du Radium.",
+      "fr": "Le musée conserve le bureau et le laboratoire de Marie Curie dans l’ancien Institut du radium.",
+      "zh": "馆内保存着昔日镭研究所中的玛丽·居里办公室和实验室。"
+    },
+    "arrival": {
+      "en": "From the Panthéon walk south to rue Pierre et Marie Curie and find number 1.",
+      "fr": "Depuis le Panthéon, descendez vers la rue Pierre et Marie Curie et cherchez le numéro 1.",
+      "zh": "从先贤祠往南走到皮埃尔与玛丽·居里街，寻找1号。"
+    },
+    "detail": {
+      "en": "Set aside time for the office and lab before reading the material on early radiotherapy.",
+      "fr": "Prévoyez du temps pour le bureau et le laboratoire avant de lire les panneaux sur les débuts de la radiothérapie.",
+      "zh": "先看办公室与实验室，再读早期放射治疗的说明。"
+    },
+    "access": {
+      "en": "The museum is free; check the published visiting days and holiday closures before visiting the laboratory.",
+      "fr": "L’entrée du musée est gratuite ; vérifiez les jours de visite et les fermetures exceptionnelles avant de venir voir le laboratoire.",
+      "zh": "博物馆免费；参观实验室前核对开放日及假日闭馆安排。"
+    }
+  },
+  {
+    "slug": "musee-prefecture-police",
+    "name": {
+      "en": "Musée de la Préfecture de Police",
+      "fr": "Musée de la Préfecture de Police",
+      "zh": "巴黎警察总局博物馆"
+    },
+    "address": "4 rue de la Montagne Sainte-Geneviève, 75005",
+    "kind": "police",
+    "source": "https://www.prefecturedepolice.interieur.gouv.fr/musee",
+    "minutes": 45,
+    "history": {
+      "en": "The police museum traces the city’s policing through records, objects and investigations.",
+      "fr": "Le musée retrace l’histoire de la police parisienne par les archives, les objets et les enquêtes.",
+      "zh": "博物馆通过档案、实物与调查案例讲述巴黎警务史。"
+    },
+    "arrival": {
+      "en": "From Maubert–Mutualité turn uphill onto rue de la Montagne Sainte-Geneviève; the entrance is at number 4.",
+      "fr": "Depuis Maubert–Mutualité, remontez la rue de la Montagne Sainte-Geneviève jusqu’au numéro 4.",
+      "zh": "从莫贝尔－互助会一侧沿圣热纳维耶芙山街上坡，入口在4号。"
+    },
+    "detail": {
+      "en": "Look for displays about the identification methods of Alphonse Bertillon; check visitor screening before arrival.",
+      "fr": "Repérez les vitrines sur l’identification selon Alphonse Bertillon et vérifiez les contrôles d’accès avant la visite.",
+      "zh": "留意阿尔方斯·贝蒂荣的身份识别方法展柜，出发前核对访客安检要求。"
+    },
+    "access": {
+      "en": "The collection is free to visit. Consult the Prefecture’s information for reservations and screening at this police building.",
+      "fr": "La collection se visite gratuitement. Consultez la Préfecture pour la réservation et les contrôles à l’entrée de ce bâtiment de police.",
+      "zh": "馆藏免费开放；博物馆设在警务大楼内，请查警察总局的预约及安检说明。"
+    }
+  },
+  {
+    "slug": "musee-histoire-medecine",
+    "name": {
+      "en": "Musée d’Histoire de la Médecine",
+      "fr": "Musée d’Histoire de la Médecine",
+      "zh": "医学史博物馆"
+    },
+    "address": "12 rue de l’École de Médecine, 75006",
+    "kind": "university",
+    "source": "https://u-paris.fr/musee-de-lhistoire-de-la-medecine/",
+    "minutes": 45,
+    "history": {
+      "en": "The university collection documents the history of medical instruments and surgery.",
+      "fr": "La collection universitaire documente l’histoire des instruments médicaux et de la chirurgie.",
+      "zh": "大学馆藏记录医疗器械和外科手术的发展史。"
+    },
+    "arrival": {
+      "en": "From Boulevard Saint-Germain turn into rue de l’École de Médecine; look for the university entrance at number 12.",
+      "fr": "Depuis le boulevard Saint-Germain, tournez dans la rue de l’École de Médecine jusqu’à l’entrée universitaire au numéro 12.",
+      "zh": "从圣日耳曼大道拐入医学院街，在12号寻找大学入口。"
+    },
+    "detail": {
+      "en": "Compare the cases of old surgical instruments before looking at later diagnostic devices.",
+      "fr": "Comparez les vitrines d’instruments chirurgicaux anciens avec celles consacrées au diagnostic.",
+      "zh": "先比较旧外科器械，再看较晚期的诊断设备。"
+    },
+    "access": {
+      "en": "Admission to the museum can be ticketed; use the university’s visitor page for rates and opening hours rather than the surrounding campus schedule.",
+      "fr": "Le musée peut être payant ; consultez la page de visite de l’université pour les tarifs et horaires propres à cette collection.",
+      "zh": "博物馆可能收费；以大学公布的博物馆票价和开放时间为准。"
+    }
+  },
+  {
+    "slug": "musee-delacroix",
+    "name": {
+      "en": "Musée national Eugène-Delacroix",
+      "fr": "Musée national Eugène-Delacroix",
+      "zh": "欧仁·德拉克鲁瓦国家博物馆"
+    },
+    "address": "6 rue de Furstenberg, 75006",
+    "kind": "louvre",
+    "source": "https://www.musee-delacroix.fr/",
+    "minutes": 45,
+    "history": {
+      "en": "The museum occupies Delacroix’s last apartment and studio, used while he worked at Saint-Sulpice.",
+      "fr": "Le musée occupe le dernier appartement et l’atelier de Delacroix, où il vécut pendant les travaux à Saint-Sulpice.",
+      "zh": "博物馆设在德拉克鲁瓦的最后一处公寓和画室，他在为圣叙尔皮斯教堂工作时居住于此。"
+    },
+    "arrival": {
+      "en": "From rue Jacob turn into rue de Furstenberg and find number 6 by the square.",
+      "fr": "Depuis la rue Jacob, tournez rue de Furstenberg et trouvez le numéro 6 près de la place.",
+      "zh": "从雅各布街拐进富尔斯滕贝格街，在小广场旁寻找6号。"
+    },
+    "detail": {
+      "en": "Move from the apartment to the studio and look back across the garden to see how the two are connected.",
+      "fr": "Passez de l’appartement à l’atelier et regardez en arrière depuis le jardin pour comprendre leur disposition.",
+      "zh": "从公寓走向画室，在花园回看两处空间的布局。"
+    },
+    "access": {
+      "en": "The museum issues its own admission. Check current booking and opening arrangements to visit the apartment, studio and garden.",
+      "fr": "Le musée délivre son propre billet. Vérifiez la réservation et les horaires pour visiter l’appartement, l’atelier et le jardin.",
+      "zh": "博物馆设独立门票，参观公寓、画室和花园前请查预约和开放安排。"
+    }
+  },
+  {
+    "slug": "musee-luxembourg",
+    "name": {
+      "en": "Musée du Luxembourg",
+      "fr": "Musée du Luxembourg",
+      "zh": "卢森堡博物馆"
+    },
+    "address": "19 rue de Vaugirard, 75006",
+    "kind": "rmn",
+    "source": "https://museeduluxembourg.fr/",
+    "minutes": 75,
+    "history": {
+      "en": "The museum’s changing exhibitions continue a long history of public art display at the Luxembourg site.",
+      "fr": "Les expositions temporaires poursuivent une longue histoire de présentation de l’art au public au Luxembourg.",
+      "zh": "这里以轮换展览延续卢森堡一带面向公众展示艺术的传统。"
+    },
+    "arrival": {
+      "en": "Follow rue de Vaugirard to number 19 for the museum entrance, separate from the park gates.",
+      "fr": "Suivez la rue de Vaugirard jusqu’au numéro 19 ; l’entrée du musée est distincte des grilles du jardin.",
+      "zh": "沿沃日拉尔街走至19号寻找博物馆入口，博物馆与公园入口各自独立。"
+    },
+    "detail": {
+      "en": "Read the exhibition calendar before walking over; the current show determines the exhibits and admission conditions.",
+      "fr": "Consultez le calendrier avant de venir : l’exposition du moment détermine les œuvres visibles et les conditions d’entrée.",
+      "zh": "前往前查看展览日程，展品和入场条件取决于当期展览。"
+    },
+    "access": {
+      "en": "Admission and opening follow the current exhibition; check whether a show is on before making a separate trip.",
+      "fr": "Le tarif et l’ouverture dépendent de l’exposition en cours ; vérifiez qu’une exposition est programmée avant de vous déplacer.",
+      "zh": "票制与开放安排随展览而变，专程前往前先确认当日有展览。"
+    }
+  },
+  {
+    "slug": "musee-zadkine",
+    "name": {
+      "en": "Musée Zadkine",
+      "fr": "Musée Zadkine",
+      "zh": "扎德金博物馆"
+    },
+    "address": "100 bis rue d’Assas, 75006",
+    "kind": "parismusees",
+    "source": "https://www.zadkine.paris.fr/",
+    "minutes": 40,
+    "history": {
+      "en": "The sculptor Ossip Zadkine lived and worked here. His workshops and garden form the museum today.",
+      "fr": "Le sculpteur Ossip Zadkine a vécu et travaillé ici. Ses ateliers et son jardin forment aujourd’hui le musée.",
+      "zh": "雕塑家奥西普·扎德金曾在此生活创作，画室和花园现组成博物馆。"
+    },
+    "arrival": {
+      "en": "Leave the Luxembourg Gardens on the west side and follow rue d’Assas south to 100 bis.",
+      "fr": "Sortez du jardin du Luxembourg à l’ouest et descendez la rue d’Assas jusqu’au 100 bis.",
+      "zh": "从卢森堡花园西侧出来，沿达萨斯街向南走至100 bis号。"
+    },
+    "detail": {
+      "en": "Compare the carved surfaces indoors with the silhouettes of the sculptures in the garden.",
+      "fr": "Comparez les surfaces sculptées à l’intérieur et les silhouettes des sculptures dans le jardin.",
+      "zh": "对照室内雕塑的刻痕与花园雕塑的轮廓。"
+    },
+    "access": {
+      "en": "The permanent collection is free. Check separate arrangements for temporary exhibitions and workshop access.",
+      "fr": "La collection permanente est gratuite. Vérifiez les modalités des expositions temporaires et l’accès aux ateliers.",
+      "zh": "常设馆藏免费；另行核对临展和画室的开放安排。"
+    }
+  },
+  {
+    "slug": "memorial-shoah",
+    "name": {
+      "en": "Mémorial de la Shoah",
+      "fr": "Mémorial de la Shoah",
+      "zh": "犹太人大屠杀纪念馆"
+    },
+    "address": "17 rue Geoffroy-l’Asnier, 75004",
+    "kind": "shoah",
+    "source": "https://www.memorialdelashoah.org/",
+    "minutes": 90,
+    "history": {
+      "en": "The site combines a memorial, archives and an exhibition on the Holocaust.",
+      "fr": "Le lieu réunit un mémorial, des archives et une exposition sur la Shoah.",
+      "zh": "场馆兼有大屠杀纪念设施、档案与展览。"
+    },
+    "arrival": {
+      "en": "Cross to the Right Bank, follow quai de l’Hôtel-de-Ville east and turn into rue Geoffroy-l’Asnier.",
+      "fr": "Traversez vers la rive droite, longez le quai de l’Hôtel-de-Ville vers l’est et tournez rue Geoffroy-l’Asnier.",
+      "zh": "过河到右岸，沿市政厅河岸向东，再拐入若弗鲁瓦－拉尼耶街。"
+    },
+    "detail": {
+      "en": "Allow quiet time for the Wall of Names and the crypt before the historical exhibition.",
+      "fr": "Prévoyez un moment de recueillement au Mur des Noms et à la crypte avant l’exposition historique.",
+      "zh": "看历史展览前，先在姓名墙与纪念地窖静默停留。"
+    },
+    "access": {
+      "en": "The memorial offers free entry. Check the entrance requirements and the separate conditions for consulting archives.",
+      "fr": "L’entrée au mémorial est gratuite. Vérifiez les conditions d’accès et les modalités distinctes de consultation des archives.",
+      "zh": "纪念馆免费开放。请查入馆要求，查阅档案另有规定。"
+    }
+  },
+  {
+    "slug": "maison-europeenne-photographie",
+    "name": {
+      "en": "Maison Européenne de la Photographie",
+      "fr": "Maison Européenne de la Photographie",
+      "zh": "欧洲摄影之家"
+    },
+    "address": "5/7 rue de Fourcy, 75004",
+    "kind": "mep",
+    "source": "https://www.mep-fr.org/",
+    "minutes": 75,
+    "history": {
+      "en": "The MEP presents changing photography exhibitions in a historic Marais mansion.",
+      "fr": "La MEP présente des expositions de photographie dans un hôtel particulier du Marais.",
+      "zh": "欧洲摄影之家在玛黑区一座历史宅邸里举办轮换摄影展。"
+    },
+    "arrival": {
+      "en": "From Pont Marie head inland toward rue de Fourcy and find the entrance at 5/7.",
+      "fr": "Depuis le pont Marie, remontez vers la rue de Fourcy jusqu’à l’entrée au 5/7.",
+      "zh": "从玛丽桥往内陆走向富尔西街，入口在5/7号。"
+    },
+    "detail": {
+      "en": "Check the current exhibition list and compare the way different galleries present prints and projected work.",
+      "fr": "Consultez le programme du moment et comparez la présentation des tirages et des projections selon les salles.",
+      "zh": "先查看当期展览，比较不同展厅呈现照片与影像投影的方式。"
+    },
+    "access": {
+      "en": "Admission is tied to the current photography exhibitions; check available times and rates before going to rue de Fourcy.",
+      "fr": "L’entrée dépend des expositions photographiques en cours ; vérifiez les créneaux et tarifs avant de vous rendre rue de Fourcy.",
+      "zh": "门票按当期摄影展安排，前往富尔西街前请查可预约时段及票价。"
+    }
+  },
+  {
+    "slug": "musee-carnavalet",
+    "name": {
+      "en": "Musée Carnavalet – Histoire de Paris",
+      "fr": "Musée Carnavalet – Histoire de Paris",
+      "zh": "卡纳瓦莱巴黎历史博物馆"
+    },
+    "address": "23 rue de Sévigné, 75003",
+    "kind": "parismusees",
+    "source": "https://www.carnavalet.paris.fr/",
+    "minutes": 120,
+    "history": {
+      "en": "The museum tells the history of Paris through two historic mansions and their collections.",
+      "fr": "Le musée raconte l’histoire de Paris dans deux hôtels particuliers et leurs collections.",
+      "zh": "博物馆占用两座历史宅邸，通过馆藏讲述巴黎城市史。"
+    },
+    "arrival": {
+      "en": "From rue Saint-Antoine head north on rue de Sévigné to the entrance at number 23.",
+      "fr": "Depuis la rue Saint-Antoine, remontez la rue de Sévigné jusqu’à l’entrée au numéro 23.",
+      "zh": "从圣安托万街沿塞维涅街向北，入口在23号。"
+    },
+    "detail": {
+      "en": "Start with the shop signs, then pick a period or a set of recreated interiors to explore.",
+      "fr": "Commencez par les enseignes, puis choisissez une époque ou un ensemble de décors reconstitués.",
+      "zh": "先看老商铺招牌，再选一个年代或一组复原室内陈设细看。"
+    },
+    "access": {
+      "en": "The permanent Paris history collection is free. Temporary exhibitions may use a separate ticket.",
+      "fr": "Le parcours permanent sur l’histoire de Paris est gratuit. Une exposition temporaire peut nécessiter un billet distinct.",
+      "zh": "巴黎历史常设展免费；临展可能需要另购票。"
+    }
+  },
+  {
+    "slug": "maison-victor-hugo",
+    "name": {
+      "en": "Maison de Victor Hugo",
+      "fr": "Maison de Victor Hugo",
+      "zh": "雨果故居"
+    },
+    "address": "6 place des Vosges, 75004",
+    "kind": "parismusees",
+    "source": "https://www.maisonsvictorhugo.paris.fr/",
+    "minutes": 50,
+    "history": {
+      "en": "Victor Hugo lived in this corner house on the Place des Vosges from 1832 to 1848.",
+      "fr": "Victor Hugo a habité cette maison d’angle de la place des Vosges de 1832 à 1848.",
+      "zh": "1832至1848年，维克多·雨果住在孚日广场角上的这座房子里。"
+    },
+    "arrival": {
+      "en": "Enter Place des Vosges from rue de Birague and find number 6 under the southeast arcade.",
+      "fr": "Entrez place des Vosges par la rue de Birague et cherchez le numéro 6 sous les arcades au sud-est.",
+      "zh": "从比拉格街进入孚日广场，在东南角的拱廊下找6号。"
+    },
+    "detail": {
+      "en": "Compare the reconstructed interiors and look down onto the square from the apartment when the view is available.",
+      "fr": "Comparez les décors reconstitués et, si la vue est dégagée, regardez la place depuis l’appartement.",
+      "zh": "比较复原的室内布置，条件允许时从公寓俯看广场。"
+    },
+    "access": {
+      "en": "The permanent apartment display is free. Check the current arrangements for any temporary exhibition and for access upstairs.",
+      "fr": "L’appartement en présentation permanente est gratuit. Vérifiez les modalités de l’exposition temporaire et l’accès à l’étage.",
+      "zh": "故居常设陈列免费；请查临展安排和上楼的到访条件。"
+    }
+  },
+  {
+    "slug": "musee-orsay",
+    "name": {
+      "en": "Musée d’Orsay",
+      "fr": "Musée d’Orsay",
+      "zh": "奥赛博物馆"
+    },
+    "address": "esplanade Valéry Giscard d’Estaing, 75007",
+    "kind": "orsay",
+    "source": "https://www.musee-orsay.fr/",
+    "minutes": 120,
+    "history": {
+      "en": "The museum adapted a railway station built for the 1900 Exposition Universelle.",
+      "fr": "Le musée a réinvesti la gare construite pour l’Exposition universelle de 1900.",
+      "zh": "博物馆由为1900年世界博览会兴建的火车站改造而来。"
+    },
+    "arrival": {
+      "en": "Walk west along quai Anatole-France toward the former railway station and follow the museum’s entry signs on the esplanade.",
+      "fr": "Longez le quai Anatole-France vers l’ouest jusqu’à l’ancienne gare et suivez les accès du musée sur l’esplanade.",
+      "zh": "沿阿纳托尔·法朗士河岸西行至旧火车站，在广场上按博物馆入口标志行走。"
+    },
+    "detail": {
+      "en": "Start in the former station hall, then choose the Impressionist rooms or another collection before the upper clock view.",
+      "fr": "Commencez dans l’ancienne halle, puis choisissez les salles impressionnistes ou une autre collection avant la vue près de l’horloge.",
+      "zh": "先看旧车站大厅，再选印象派展厅或其他馆藏，最后到楼上看大钟旁的景色。"
+    },
+    "access": {
+      "en": "The museum uses ticketed admission with exemptions; check its current time slots and entry conditions before walking to the esplanade.",
+      "fr": "Le musée est payant, avec des exonérations ; vérifiez les créneaux et conditions d’entrée avant de rejoindre l’esplanade.",
+      "zh": "博物馆售票并设免票资格；走到门前广场前请查可用时段和入馆条件。"
+    }
+  },
+  {
+    "slug": "grande-galerie-evolution",
+    "name": {
+      "en": "Grande Galerie de l’Évolution",
+      "fr": "Grande Galerie de l’Évolution",
+      "zh": "进化大展厅"
+    },
+    "address": "36 rue Geoffroy Saint-Hilaire, 75005",
+    "kind": "mnhn",
+    "source": "https://www.jardindesplantesdeparis.fr/fr/grande-galerie-de-l-evolution",
+    "minutes": 90,
+    "history": {
+      "en": "The former zoology gallery reopened as the Grande Galerie de l’Évolution in 1994.",
+      "fr": "L’ancienne galerie de zoologie a rouvert sous le nom de Grande Galerie de l’Évolution en 1994.",
+      "zh": "原动物学展厅于1994年以进化大展厅之名重新开放。"
+    },
+    "arrival": {
+      "en": "Use the rue Geoffroy Saint-Hilaire side of the Jardin des Plantes and look for the monumental gallery entrance.",
+      "fr": "Prenez le côté rue Geoffroy Saint-Hilaire du Jardin des Plantes et cherchez l’entrée monumentale de la galerie.",
+      "zh": "从植物园若弗鲁瓦·圣伊莱尔街一侧前来，寻找大型展厅入口。"
+    },
+    "detail": {
+      "en": "Compare the central procession of animals from the floor and upper balconies where accessible.",
+      "fr": "Observez la procession d’animaux au centre, depuis le sol puis les balcons accessibles.",
+      "zh": "在底层与开放的上层廊台分别看中央的动物队列。"
+    },
+    "access": {
+      "en": "The gallery is separately ticketed from the public garden paths; check current booking and any special exhibition supplements.",
+      "fr": "La galerie est payante indépendamment des allées publiques du jardin ; vérifiez la réservation et les éventuels suppléments d’exposition.",
+      "zh": "展厅门票与植物园公共步道分开；请查预约方式及临展是否另收费。"
+    }
+  }
+]
