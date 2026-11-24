@@ -83,7 +83,7 @@ export default function TopicPage({ slug }: { slug: string }) {
     headline: topic.h1,
     description: topic.lead,
     inLanguage: locale === 'zh' ? 'zh-CN' : locale,
-    dateModified: visit ? '2026-11-23' : '2026-10-01',
+    dateModified: visit ? '2026-11-24' : '2026-10-01',
     isPartOf: { '@id': `${BASE_URL}/#website` },
     about: visit ? { '@type': 'Place', name: topic.h1, hasMap: reviewsUrl } : { '@id': `${BASE_URL}/#attraction` },
     publisher: { '@id': `${BASE_URL}/#organization` },
@@ -122,6 +122,11 @@ export default function TopicPage({ slug }: { slug: string }) {
         <p className="text-sm mb-8" style={{ color: 'var(--text-muted)' }}>
           {topic.updated}
         </p>
+        {visit && <div className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm" style={{color:'var(--text-secondary)'}}>
+          <span>{visit.time}</span><a className="underline" href="#opening">{visit.labels.hours}</a>
+          <a className="underline" href={reviewsUrl}>{visit.labels.reviews}</a>
+          <a className="underline" href={mapUrl}>{nearbyText.map}</a>
+        </div>}
         <div className="w-12 h-0.5 mb-10" style={{ background: 'var(--accent)' }} />
 
         <p
@@ -153,6 +158,12 @@ export default function TopicPage({ slug }: { slug: string }) {
               ) : <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{nearbyText.pending}</p>}
             </section>
 
+            {visit && nearbyPlace?.visit && <section>
+              <h2 className="font-display text-xl font-semibold mb-3">{visit.labels.facts}</h2>
+              <dl className="rounded-xl border p-5 space-y-3" style={{borderColor:'var(--border-color)',background:'var(--card-bg)'}}>
+                {[[visit.labels.address,nearbyPlace.visit.address], [visit.labels.duration,visit.time], [visit.labels.operator,visit.management]].map(([label,value])=><div key={label} className="grid sm:grid-cols-3 gap-1"><dt className="font-semibold">{label}</dt><dd className="sm:col-span-2">{value}</dd></div>)}
+              </dl>
+            </section>}
             <section>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
                 <h2 className="font-display text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>{nearbyText.walk}</h2>
@@ -202,7 +213,7 @@ export default function TopicPage({ slug }: { slug: string }) {
 
         <div className="space-y-10">
           {(topic.sections || []).map((section, i) => (
-            <section key={i}>
+            <section key={i} id={section.heading === visit?.labels.hours ? "opening" : undefined}>
               <h2
                 className="font-display text-xl sm:text-2xl font-semibold mb-3"
                 style={{ color: 'var(--text-primary)' }}

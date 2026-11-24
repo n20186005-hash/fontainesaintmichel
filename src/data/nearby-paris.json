@@ -47,7 +47,23 @@
         "河岸入口开放时可直接进入，也可转入富阿尔街按门牌找入口。",
         "经过教堂和刺槐，再回到上层河岸，找一处无遮挡的位置看对岸。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "By the church wall, frame the supports beneath the old locust to show how its weight is carried. At the river edge, leave a strip of foreground foliage under the distant cathedral.",
+      "fr": "Près du mur de l’église, cadrez les étais sous le robinier pour montrer comment le tronc est soutenu. Côté Seine, gardez un peu de feuillage au premier plan sous la cathédrale.",
+      "zh": "在教堂墙边把老刺槐的支撑杆收入画面，看出树身的重量由何处承托。移到河边，让前景枝叶衬出对岸的圣母院。"
+    },
+    "specificQuestion": {
+      "en": "How can I recognise the old locust?",
+      "fr": "Comment reconnaître le vieux robinier ?",
+      "zh": "怎样辨认那棵老刺槐？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 08:00–17:00 on weekdays and 09:00–17:00 at weekends. Seasonal and exceptional dates appear on the city calendar. The square closes all day on 25 November 2026 for Christmas market installation.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 08:00 à 17:00 en semaine et de 09:00 à 17:00 le week-end. Le calendrier municipal précise les exceptions et les changements de saison. Le square ferme toute la journée du 25 novembre 2026 pour le montage du marché de Noël.",
+      "zh": "至2027年2月28日，通常平日08:00至17:00开放，周末09:00至17:00。例外日期及换季时间见市政日历。 因布置圣诞市集，2026年11月25日全天闭园。"
+    },
+    "stayArea": 0
   },
   {
     "slug": "square-paul-langevin",
@@ -102,7 +118,23 @@
         "经20号的窄门进园，回头看看街道与园地的高度。",
         "可沿蒙日街继续走，想避开去先贤祠的陡坡则原路返回莫贝尔。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Frame the transition from rue Monge through the narrow gateway, standing to one side so people can enter. Inside, turn back towards the street through the planting: the same opening looks much smaller.",
+      "fr": "Sur la rue Monge, décalez-vous pour cadrer la transition entre la rue et la grille étroite sans gêner le passage. De l’intérieur, photographiez la rue à travers les plantations : l’ouverture paraît bien plus petite.",
+      "zh": "在蒙日街入口旁侧身取景，把街道和窄门一起拍下，留出通行空间。进入后透过植物回拍街道，同一扇门会显得小得多。"
+    },
+    "specificQuestion": {
+      "en": "What makes the entrance awkward for wheelchair users?",
+      "fr": "Pourquoi l’entrée peut-elle être difficile en fauteuil ?",
+      "zh": "为什么轮椅经过入口时需要留意？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 08:00–17:00 on weekdays and 09:00–17:00 at weekends. Seasonal and exceptional dates appear on the city calendar.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 08:00 à 17:00 en semaine et de 09:00 à 17:00 le week-end. Le calendrier municipal précise les exceptions et les changements de saison.",
+      "zh": "至2027年2月28日，通常平日08:00至17:00开放，周末09:00至17:00。例外日期及换季时间见市政日历。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "square-robert-montagne",
@@ -152,7 +184,23 @@
         "从隐士井广场入园，在绿植与园路之间找喷泉。",
         "可在广场看清真寺入口，也可继续沿多邦通街前往植物园。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "At the pool, lower the camera to include the patterned fountain and its reflection if water is present. From the path beside the mulberries, step back for a wider view of the garden opposite the mosque.",
+      "fr": "Depuis le bassin, abaissez l’appareil pour cadrer la fontaine décorée et, si l’eau est présente, son reflet. Du chemin près des mûriers, prenez du recul sur le jardin face à la mosquée.",
+      "zh": "在水池旁降低镜头，拍装饰喷泉；有积水时可带上倒影。移到桑树旁的园路后退几步，交代花园与对面清真寺的位置。"
+    },
+    "specificQuestion": {
+      "en": "Which details connect the small square to the mosque opposite?",
+      "fr": "Quels détails font écho à la mosquée d’en face ?",
+      "zh": "广场上哪些细节与对面的清真寺呼应？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 09:30–17:00 on weekdays and 09:00–17:00 at weekends. Seasonal and exceptional dates appear on the city calendar.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 09:30 à 17:00 en semaine et de 09:00 à 17:00 le week-end. Le calendrier municipal précise les exceptions et les changements de saison.",
+      "zh": "至2027年2月28日，通常平日09:30至17:00开放，周末09:00至17:00。例外日期及换季时间见市政日历。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "square-marius-constant",
@@ -207,7 +255,23 @@
         "若奥尔托朗街一侧关门，走市政府标示的圣梅达尔街15号入口。",
         "回到穆夫塔街，沿坡下行可到圣梅达尔教堂。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the rue Saint-Médard entrance look along the narrow green passage. At a bend in the path, leave the vegetation in the foreground and frame the buildings above it to show how tightly the garden fits into the block.",
+      "fr": "Depuis l’entrée rue Saint-Médard, regardez dans l’axe du passage végétal. À un coude du chemin, gardez le feuillage devant les immeubles pour faire sentir l’étroitesse du jardin dans l’îlot.",
+      "zh": "从圣梅达尔街入口沿狭长绿廊取景。走到园路转弯处，让枝叶挡住部分楼房，便能看出花园如何嵌在街坊内部。"
+    },
+    "specificQuestion": {
+      "en": "Where can I pause off rue Mouffetard?",
+      "fr": "Où faire une pause à l’écart de la rue Mouffetard ?",
+      "zh": "离开穆夫塔街后，哪里适合短暂停留？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 09:30–17:00 on weekdays and 09:00–17:00 at weekends. Seasonal and exceptional dates appear on the city calendar.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 09:30 à 17:00 en semaine et de 09:00 à 17:00 le week-end. Le calendrier municipal précise les exceptions et les changements de saison.",
+      "zh": "至2027年2月28日，通常平日09:30至17:00开放，周末09:00至17:00。例外日期及换季时间见市政日历。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "jardin-tino-rossi",
@@ -257,7 +321,23 @@
         "先向下游的圣路易岛看，再沿步道向东南走到下一组雕塑。",
         "去植物园可从瓦吕贝尔广场离开。遇施工或涨水封闭路段时，可经上层河岸连接两端。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Frame a single sculpture from the riverside path against the opposite embankment. From the upper approach look down along the lower promenade to show how the works punctuate the walk.",
+      "fr": "Cadrez une sculpture depuis l’allée basse avec le quai opposé derrière elle. Depuis l’accès haut, regardez dans l’axe de la promenade pour montrer comment les œuvres jalonnent le parcours.",
+      "zh": "从下层滨河步道借对岸作背景单拍一件雕塑；再到上层入口俯视步道，看雕塑如何散布在沿河线路中。"
+    },
+    "specificQuestion": {
+      "en": "Where do I find the sculptures along the river?",
+      "fr": "Où voir les sculptures au bord de l’eau ?",
+      "zh": "沿河走到哪里能看到雕塑？"
+    },
+    "hours": {
+      "en": "The city lists continuous public access. At high water check quay barriers before taking the lower route.",
+      "fr": "La Ville indique un accès continu. En période de crue, vérifiez les barrières avant de prendre le chemin bas.",
+      "zh": "市政府标示全天开放。水位升高时，走下层河岸路线前应查看是否设有围挡。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "square-boucicaut",
@@ -307,7 +387,23 @@
         "从1号进园，沿小径往里走，看树木与百货商店外墙的层次。",
         "若侧门开放，可由塞夫尔街出园，再往巴克街走。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From rue de Babylone, use the gate to frame the canopy. Inside the garden, find an opening between the trunks through which the department store appears: its façade gives the trees a sense of scale.",
+      "fr": "Rue de Babylone, prenez la grille comme cadre pour la canopée. À l’intérieur, cherchez entre les troncs une trouée sur le grand magasin : la façade donne l’échelle des arbres.",
+      "zh": "在巴比伦街利用园门框住树冠。进园后从树干之间找能看到百货公司外墙的空隙，以建筑尺度衬托老树。"
+    },
+    "specificQuestion": {
+      "en": "How can I see how large the garden trees are?",
+      "fr": "Comment apprécier la taille des arbres du square ?",
+      "zh": "怎样观察花园中老树的尺度？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 08:00–17:45 on weekdays and 09:00–17:45 at weekends. Seasonal and exceptional dates appear on the city calendar.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 08:00 à 17:45 en semaine et de 09:00 à 17:45 le week-end. Le calendrier municipal précise les exceptions et les changements de saison.",
+      "zh": "至2027年2月28日，通常平日08:00至17:45开放，周末09:00至17:45。例外日期及换季时间见市政日历。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "square-vert-galant",
@@ -362,7 +458,23 @@
         "到亨利四世雕像处，若通道开放，经雕像后方的台阶下行。",
         "沿园路到岛尖，再原路走台阶返回。遇涨水时留在桥面观景。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Before taking the stairs near Henri IV, use the bridge-height view to show the island tapering westwards. Down in the square, photograph the two banks from the paved path and keep clear of wet edges.",
+      "fr": "Avant de descendre près d’Henri IV, profitez de la hauteur du pont pour montrer la pointe de l’île. Dans le square, cadrez les deux rives depuis l’allée et restez en retrait des bords mouillés.",
+      "zh": "从亨利四世雕像旁下阶梯前，先从桥面高度拍向西侧渐窄的岛尖。到了园内，从铺装路上拍两岸，远离湿滑边缘。"
+    },
+    "specificQuestion": {
+      "en": "Is the garden on the same level as the bridge?",
+      "fr": "Le jardin est-il au niveau du pont ?",
+      "zh": "花园与桥面在同一高度吗？"
+    },
+    "hours": {
+      "en": "The city lists continuous public access. At high water check quay barriers before taking the lower route.",
+      "fr": "La Ville indique un accès continu. En période de crue, vérifiez les barrières avant de prendre le chemin bas.",
+      "zh": "市政府标示全天开放。水位升高时，走下层河岸路线前应查看是否设有围挡。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "square-jean-xxiii",
@@ -412,7 +524,23 @@
         "可经小桥回到左岸，再沿蒙特贝洛河岸向东，从外部看后殿。",
         "在总主教桥附近的人行道找斜向视角，给过桥的人留出通道。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the Left Bank on quai de Montebello, frame the flying buttresses across the river. At the public end of Pont de l’Archevêché, change angle to separate the chapel roofs; neither shot needs access through the garden barriers.",
+      "fr": "Depuis le quai de Montebello, cadrez les arcs-boutants par-dessus la Seine. À l’extrémité accessible du pont de l’Archevêché, changez d’angle pour détacher les toits des chapelles, sans franchir les barrières.",
+      "zh": "从左岸蒙特贝洛河岸隔河拍飞扶壁。移到大主教桥可通行的一端，调整角度，让几座小礼拜堂的屋顶分开；两个位置都不用跨越围挡。"
+    },
+    "specificQuestion": {
+      "en": "Can I still see the flying buttresses during the closure?",
+      "fr": "D’où voir les arcs-boutants pendant la fermeture ?",
+      "zh": "闭园期间在哪里能看飞扶壁？"
+    },
+    "hours": {
+      "en": "The municipal works calendar lists closure through 30 June 2027. Check the city notice for any revised date before planning to go inside.",
+      "fr": "Le calendrier municipal des travaux annonce une fermeture jusqu’au 30 juin 2027. Vérifiez toute modification de cette échéance avant de prévoir une entrée.",
+      "zh": "市政施工日历列出的关闭期截至2027年6月30日。准备进入前，请查看是否公布了调整后的开放日期。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "square-ile-de-france",
@@ -462,7 +590,23 @@
         "花园关闭期间可从总主教桥外观岛尖。",
         "参观纪念馆要单独确认入口。市政府公布的花园施工期为2026年8月24日至2027年春季。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "On Pont de l’Archevêché, look upstream toward the fenced island tip. From quai de la Tournelle, photograph the low embankment in profile. The walkway outside the works is sufficient for both views.",
+      "fr": "Depuis le pont de l’Archevêché, regardez vers la pointe de l’île en amont. Du quai de la Tournelle, cadrez le profil du mur de berge. Ces deux vues se prennent hors du chantier.",
+      "zh": "从大主教桥朝上游看围起的岛尖。再到图尔内尔河岸从侧面拍低矮岸墙；两处均可从工地外围的公共步道取景。"
+    },
+    "specificQuestion": {
+      "en": "Where can I look towards the eastern point during the works?",
+      "fr": "D’où observer la pointe orientale pendant les travaux ?",
+      "zh": "施工期间在哪里能看到东侧岛尖？"
+    },
+    "hours": {
+      "en": "The municipal works calendar lists closure through 21 June 2027. Check the city notice for any revised date before planning to go inside.",
+      "fr": "Le calendrier municipal des travaux annonce une fermeture jusqu’au 21 juin 2027. Vérifiez toute modification de cette échéance avant de prévoir une entrée.",
+      "zh": "市政施工日历列出的关闭期截至2027年6月21日。准备进入前，请查看是否公布了调整后的开放日期。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "square-barye",
@@ -517,7 +661,23 @@
         "在亨利四世大道2号进入花园，先看纪念碑。",
         "沿步道走向岛尖，再回到亨利四世大道，选一边过河。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From inside the entrance, place Barye’s monument against the trees. From the island pavement by Pont de Sully, widen the view to show the wedge of planted ground between the river channels.",
+      "fr": "Depuis l’entrée, détachez le monument à Barye sur les arbres. Du trottoir de l’île au pont de Sully, élargissez le cadre au triangle de verdure entre les deux bras du fleuve.",
+      "zh": "进门后用树丛衬出巴里纪念碑。再从苏利桥靠岛一侧的人行道拉宽构图，把两条河道间楔形绿地收入画面。"
+    },
+    "specificQuestion": {
+      "en": "What should I look for before heading to the river?",
+      "fr": "Que voir avant de gagner la pointe de l’île ?",
+      "zh": "前往岛尖之前先看什么？"
+    },
+    "hours": {
+      "en": "The city lists continuous public access. At high water check quay barriers before taking the lower route.",
+      "fr": "La Ville indique un accès continu. En période de crue, vérifiez les barrières avant de prendre le chemin bas.",
+      "zh": "市政府标示全天开放。水位升高时，走下层河岸路线前应查看是否设有围挡。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "square-gabriel-pierne",
@@ -567,7 +727,23 @@
         "园门开放时从5号进入，绕至喷泉另一侧看石座。",
         "回到塞纳街继续南行，可到比西街和雅各布街的画廊一带。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the path, align one open-book seat with the fountain without standing on either. At the rue de Seine entrance, turn back for a broader view framed by the street opening.",
+      "fr": "Depuis l’allée, alignez un banc en forme de livre ouvert et la fontaine sans monter dessus. À l’entrée rue de Seine, retournez-vous pour une vue plus large encadrée par l’ouverture sur la rue.",
+      "zh": "在园路上把书本形座椅与喷泉排进同一画面，不用踏上座椅。到塞纳街入口时回头，以街口为框拍花园全貌。"
+    },
+    "specificQuestion": {
+      "en": "How are the stone seats different from ordinary benches?",
+      "fr": "En quoi les bancs de pierre sont-ils particuliers ?",
+      "zh": "石椅和普通长椅有何不同？"
+    },
+    "hours": {
+      "en": "Through 28 February 2027, usual gate hours are 08:00–17:00 on weekdays and 09:00–17:00 at weekends. Seasonal and exceptional dates appear on the city calendar.",
+      "fr": "Jusqu’au 28 février 2027, les grilles ouvrent normalement de 08:00 à 17:00 en semaine et de 09:00 à 17:00 le week-end. Le calendrier municipal précise les exceptions et les changements de saison.",
+      "zh": "至2027年2月28日，通常平日08:00至17:00开放，周末09:00至17:00。例外日期及换季时间见市政日历。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "pont-archeveche",
@@ -617,7 +793,23 @@
         "走下游侧的人行道，近看圣母院后殿。",
         "过桥到岛上，如总主教河岸附近有施工，按标识走公共通道。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "On the bridge pavement frame the cathedral choir across the water. From the upper Left Bank quay, turn the camera along the bridge to show how narrow the crossing is beside the much wider cathedral precinct.",
+      "fr": "Du trottoir du pont, cadrez le chevet au-dessus de l’eau. Sur le quai haut de la rive gauche, regardez dans l’axe du pont pour comparer son étroitesse à l’ampleur de l’ensemble cathédral.",
+      "zh": "从桥上人行道隔水拍后殿。再到左岸上层河岸沿桥纵向取景，以狭窄桥面衬托庞大的教堂建筑群。"
+    },
+    "specificQuestion": {
+      "en": "Which pavement faces the cathedral choir?",
+      "fr": "De quel côté voir le chevet de la cathédrale ?",
+      "zh": "哪一侧人行道朝向教堂后殿？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "pont-tournelle",
@@ -667,7 +859,23 @@
         "沿下游侧人行道过桥去圣路易岛，途中回望圣母院。",
         "若想跨过另一条河道，上岛后走双桥街到玛丽桥。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "On the Left Bank photograph the tall statue with space in front of its face. From the island pavement, step back far enough to fit the arch and the pier into the same frame.",
+      "fr": "Rive gauche, gardez du vide devant le visage de la statue. Du trottoir côté île, éloignez-vous assez pour réunir l’arche et la pile dans le même cadre.",
+      "zh": "从左岸拍高耸的雕像，在其面朝方向留白。再沿岛侧人行道退后，把拱跨与桥墩放进同一画面。"
+    },
+    "specificQuestion": {
+      "en": "Where can I photograph the statue without standing in traffic?",
+      "fr": "Où photographier la statue sans s’engager sur la chaussée ?",
+      "zh": "在哪能拍雕像而不用走入车道？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "pont-marie",
@@ -717,7 +925,23 @@
         "抵达玛丽桥时，在入口一带比较桥两侧的河景。",
         "在右岸桥头转向塞莱斯坦河岸，从侧面看桥，也可从玛丽桥地铁站附近向内陆走到圣保罗。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From quai des Célestins photograph the stone arches at an angle so each opening remains visible. At the island end, look along the parapet into rue des Deux-Ponts to show where the bridge takes pedestrians.",
+      "fr": "Du quai des Célestins, photographiez les arches de biais en gardant chaque ouverture visible. Côté île, suivez visuellement le parapet vers la rue des Deux-Ponts pour montrer où mène la traversée.",
+      "zh": "从塞莱斯坦河岸斜拍石拱，让每个拱洞都保持可见。换到岛头，沿栏墙将视线带向双桥街，说明行人过桥后的去向。"
+    },
+    "specificQuestion": {
+      "en": "Where can I see the stone spans from the side?",
+      "fr": "D’où voir les arches de pierre de profil ?",
+      "zh": "哪里可以从侧面看石拱？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "pont-louis-philippe",
@@ -767,7 +991,23 @@
         "沿桥上人行道上圣路易岛，再转入波旁河岸，斜看桥墩。",
         "沿让－迪贝莱街向岛内步行，可接圣路易岛街。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the right-bank quay look across at the decorated pier faces rather than straight down from the deck. At the island landing, frame the alignment of the span and the street behind it.",
+      "fr": "Du quai de la rive droite, observez de biais le décor des piles, peu visible depuis le tablier. À l’arrivée sur l’île, cadrez l’alignement du pont et de la rue qui le prolonge.",
+      "zh": "从右岸河堤斜看桥墩外侧纹饰；在桥面垂直俯看反而不易辨认。到岛侧桥头后，将桥面与后方街道排成一条线。"
+    },
+    "specificQuestion": {
+      "en": "Can I see the ornament while standing on the bridge?",
+      "fr": "Où se placer pour voir le décor des piles ?",
+      "zh": "站在哪里看桥墩装饰更清楚？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "pont-sully",
@@ -817,7 +1057,23 @@
         "穿过较短的南段，在亨利四世大道下桥，园路开放时可顺路去巴里广场。",
         "过较长的北段可抵右岸叙利－莫尔朗一带，也可回左岸去蒂诺·罗西花园。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "At the island crossing, look along one arm of the river and keep a length of parapet in the foreground. From the opposite sidewalk look along the other channel: the paired images show why one street needs two bridge sections.",
+      "fr": "Au passage sur l’île, regardez dans l’axe d’un bras de Seine avec un peu de parapet au premier plan. Du trottoir opposé, cadrez l’autre bras : les deux vues expliquent les deux tronçons du pont.",
+      "zh": "在岛上交会处沿一条河道拍，前景留一段栏墙。再到对面人行道拍另一条河道，两张照片说明了同一条道路为何需要两段桥梁。"
+    },
+    "specificQuestion": {
+      "en": "Why is it worth stopping on the island rather than crossing straight through?",
+      "fr": "Pourquoi s’arrêter sur l’île entre les deux traversées ?",
+      "zh": "为什么过桥时值得在岛上停一停？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "quai-montebello",
@@ -867,7 +1123,23 @@
         "在勒内·维维亚尼广场附近找书摊之间的空隙，比较圣母院正面和侧面的轮廓。",
         "继续走到总主教桥看后殿。台阶或下层河岸封闭时，沿上层步道走。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Stand back from the bouquinistes’ boxes to frame their outlines against the river without blocking customers. Farther east, find a gap in the trees for a second view of the cathedral from the upper pavement.",
+      "fr": "Reculez des boîtes des bouquinistes pour cadrer leur silhouette sur la Seine sans gêner la clientèle. Plus à l’est, cherchez une trouée dans les arbres pour une deuxième vue de la cathédrale depuis le trottoir haut.",
+      "zh": "从旧书箱前退开，不妨碍顾客，借河面拍箱体的剪影。再沿上层人行道往东，在树间找个空隙拍另一角度的圣母院。"
+    },
+    "specificQuestion": {
+      "en": "Where do the book boxes frame the cathedral?",
+      "fr": "D’où placer les boîtes des bouquinistes devant la cathédrale ?",
+      "zh": "哪里能把沿河书箱和圣母院一起取景？"
+    },
+    "hours": {
+      "en": "The upper pavement is a public walking route with no museum opening time. Any police or works barriers on the day take precedence, particularly at accesses to the lower banks.",
+      "fr": "Le trottoir haut est un passage public sans horaire de musée. Les barrières de police ou de chantier priment, notamment aux descentes vers les quais bas.",
+      "zh": "上层人行道是公共通道，没有博物馆式的入场时段。遇当天管制或施工围挡须服从，尤其是通往下层河岸的入口。"
+    },
+    "stayArea": 0
   },
   {
     "slug": "crypte-archeologique",
@@ -922,7 +1194,23 @@
         "按标识去让保罗二世广场7号，经入口下行。需要时先确认楼梯通行条件。",
         "依标识经过古码头和较晚时期的地基，再回到广场看看如今地面上的建筑。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Before descending, photograph the entrance in relation to the cathedral forecourt. In the crypt, where photography is permitted, use the raised path to frame two levels of wall without leaning over the barrier.",
+      "fr": "Avant la descente, situez l’entrée par rapport au parvis. Dans la crypte, là où la photo est autorisée, cadrez deux niveaux de maçonnerie depuis la passerelle sans vous pencher au-delà du garde-corps.",
+      "zh": "下楼前在教堂广场上拍入口位置。地下若允许拍照，可从高架步道将不同高度的墙面排入画面，不要越过护栏探身。"
+    },
+    "specificQuestion": {
+      "en": "How can I distinguish the different levels of remains?",
+      "fr": "Comment distinguer les niveaux de vestiges ?",
+      "zh": "如何看清不同高度的考古遗存？"
+    },
+    "hours": {
+      "en": "Tuesday–Sunday 10:00–18:00. Ticket sales end at 17:30 and visitors leave the displays by 17:45. Closed on 1 January, 1 May and 25 December.",
+      "fr": "Du mardi au dimanche, 10 h–18 h. La caisse ferme à 17 h 30 et les salles sont évacuées à 17 h 45. Fermé les 1er janvier, 1er mai et 25 décembre.",
+      "zh": "周二至周日10:00至18:00开放；17:30停止售票，17:45开始清场。1月1日、5月1日和12月25日闭馆。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "memorial-deportation",
@@ -977,7 +1265,23 @@
         "沿台阶下至庭院，等眼睛适应光线后再进入较暗的廊道。",
         "在墓室留出安静悼念的时间，再按标识回到街面；上方的市政花园适用独立的开放安排。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the public quay record the approach to the memorial, then stop at the stairhead to see how the high walls exclude the city. Inside, follow the memorial’s instructions and keep visitors in mourning out of the frame.",
+      "fr": "Depuis le quai public, documentez l’approche du mémorial. En haut de l’escalier, observez comment les murs masquent la ville. À l’intérieur, respectez les consignes et la discrétion due aux personnes venues se recueillir.",
+      "zh": "从公共河岸拍下通往纪念地的路线，再到台阶顶部观察高墙怎样将城市景象挡在外面。进馆后遵循拍摄规则，避开前来悼念的人。"
+    },
+    "specificQuestion": {
+      "en": "How does the visitor reach the memorial court?",
+      "fr": "Comment rejoint-on la cour du mémorial ?",
+      "zh": "怎样走到纪念地的下沉庭院？"
+    },
+    "hours": {
+      "en": "The garden works affect the approach to the entrance at 7 quai de l’Archevêché. Consult the defence ministry’s memorial notice for access on the date of your visit before setting out.",
+      "fr": "Les travaux du jardin touchent l’approche du 7 quai de l’Archevêché. Avant de partir, consultez l’avis du ministère des Armées pour l’accès le jour choisi.",
+      "zh": "花园施工影响前往大主教河岸7号的路径。出发前请查看法国国防部门针对所选日期发布的纪念地访客安排。"
+    },
+    "stayArea": 3
   },
   {
     "slug": "musee-curie",
@@ -988,7 +1292,7 @@
     },
     "address": "1 rue Pierre et Marie Curie, 75005",
     "kind": "curie",
-    "source": "https://musee.curie.fr/",
+    "source": "https://curiotheque.musee.curie.fr/s/fr/page/reglement-interieur",
     "minutes": 45,
     "history": {
       "en": "The museum preserves Marie Curie’s office and laboratory in the former Institut du Radium.",
@@ -1032,7 +1336,23 @@
         "到1号博物馆入口，如需使用升降设备，请在接待处询问侧入口。",
         "先看办公室和实验室，开放时再去玛丽·居里的花园。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the approach in rue Pierre-et-Marie-Curie, frame the scientific buildings together. Inside the museum where allowed, shoot through the display glazing at a slight angle to separate instruments from reflections.",
+      "fr": "À l’approche rue Pierre-et-Marie-Curie, cadrez ensemble les bâtiments scientifiques. Dans les salles autorisées, décalez légèrement l’appareil devant une vitrine pour séparer les instruments de leur reflet.",
+      "zh": "从皮埃尔与玛丽·居里街接近时，把研究院建筑群放进同一画面。馆内允许拍照的位置略微侧移，减少玻璃反光，让实验仪器显出轮廓。"
+    },
+    "specificQuestion": {
+      "en": "Which rooms help explain the laboratory’s work?",
+      "fr": "Quelles pièces aident à comprendre le travail du laboratoire ?",
+      "zh": "哪些房间有助于了解实验室的工作？"
+    },
+    "hours": {
+      "en": "Individuals can normally visit Wednesday–Saturday, 13:00–17:00. Public holidays, August, Christmas holidays and exceptional events affect this schedule.",
+      "fr": "Pour les individuels, ouverture habituelle du mercredi au samedi, de 13 h à 17 h, hors jours fériés, août, vacances de Noël et événements exceptionnels.",
+      "zh": "散客通常可于周三至周六13:00至17:00入馆，公共假日、8月、圣诞假期及特别活动期间另有安排。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "musee-prefecture-police",
@@ -1087,7 +1407,23 @@
         "提前登记每位访客，按预约时间到4号警察局接待处报到。",
         "由工作人员引导前往博物馆。对警务档案感兴趣的话，可先看身份识别展品。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Use the public pavement on rue de la Montagne-Sainte-Geneviève to identify the visitor entrance. In the museum request permission before photographing identification displays; keep the working police desk and people checking in out of the frame.",
+      "fr": "Du trottoir rue de la Montagne-Sainte-Geneviève, repérez l’entrée du public. Au musée, demandez avant de photographier les collections d’identification et évitez l’accueil du commissariat et les visiteurs qui s’enregistrent.",
+      "zh": "在圣日内维耶芙山街的公共人行道上辨认访客入口。到馆内如想拍身份鉴别展柜，先询问；不要拍警务接待台或正在登记的访客。"
+    },
+    "specificQuestion": {
+      "en": "Must the children accompanying me be registered as well?",
+      "fr": "Faut-il également inscrire les enfants qui m’accompagnent ?",
+      "zh": "同行儿童也要提前登记吗？"
+    },
+    "hours": {
+      "en": "Arrival follows the time on the individual booking. Go to the police reception with the confirmation and allow time for screening before the museum visit.",
+      "fr": "Présentez-vous à l’heure de votre réservation nominative à l’accueil du commissariat, avec la confirmation. Prévoyez le contrôle avant l’accès au musée.",
+      "zh": "按实名预约时段到警局接待处，带上预约确认，并在入馆前为安检留出时间。"
+    },
+    "stayArea": 1
   },
   {
     "slug": "musee-histoire-medecine",
@@ -1116,9 +1452,9 @@
       "zh": "先比较旧外科器械，再看较晚期的诊断设备。"
     },
     "access": {
-      "en": "Admission to the museum can be ticketed; use the university’s visitor page for rates and opening hours rather than the surrounding campus schedule.",
-      "fr": "Le musée peut être payant ; consultez la page de visite de l’université pour les tarifs et horaires propres à cette collection.",
-      "zh": "博物馆可能收费；以大学公布的博物馆票价和开放时间为准。"
+      "en": "Standard admission €3.50, reduced €2.50. Buy at the museum; the university lists no online ticket sale. Check eligibility for free admission before paying.",
+      "fr": "Plein tarif 3,50 €, tarif réduit 2,50 €. Le billet se prend au musée sans vente en ligne ; consultez les conditions de gratuité avant de régler.",
+      "zh": "全票3.50欧元，优惠票2.50欧元。大学说明须现场购票，不提供线上售票；付款前可核对是否符合免费入馆条件。"
     },
     "backgroundSource": "https://u-paris.fr/musee-de-lhistoire-de-la-medecine/",
     "background": {
@@ -1142,7 +1478,23 @@
         "由12号进大学。校方将展厅标在楼上二层，如需避开楼梯，可事先咨询。",
         "先看早期仪器并读展签年代，再比较较晚期的器械，最后回到街面。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From rue de l’École-de-Médecine, frame the entrance to show the museum’s university setting. In the gallery, where permitted, photograph a whole case first, then one instrument beside its label; the pair preserves its scale and purpose.",
+      "fr": "Rue de l’École-de-Médecine, cadrez l’entrée pour situer le musée dans l’université. Dans la galerie, si la photo est admise, prenez d’abord la vitrine entière puis un instrument avec son cartel pour garder l’échelle et l’usage.",
+      "zh": "从医学院街拍入口，记录博物馆与大学的关系。在展厅获准拍摄时，先拍整个展柜，再拍一件器械及说明牌，便于对照尺度和用途。"
+    },
+    "specificQuestion": {
+      "en": "How can I compare different generations of medical instruments?",
+      "fr": "Comment comparer plusieurs générations d’instruments ?",
+      "zh": "怎样比较不同时期的医疗器械？"
+    },
+    "hours": {
+      "en": "Regular hours are 14:00–17:30, last entry 17:00, Monday–Saturday except Thursday and public holidays. Check the university calendar for special openings.",
+      "fr": "Habituellement de 14 h à 17 h 30, dernière entrée à 17 h, du lundi au samedi sauf jeudi et jours fériés. L’université publie aussi des ouvertures exceptionnelles.",
+      "zh": "常规时段为周一至周六14:00至17:30，周四及公共假日闭馆，17:00最后入场。特殊开放日见大学公告。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "musee-delacroix",
@@ -1197,7 +1549,23 @@
         "先看公寓，再根据当天开放的路线去画室和花园。",
         "离馆后向南走到圣叙尔皮斯广场，去看当年让画家搬来这一带的小礼拜堂。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "At place de Fürstenberg, stand off the central roadway to frame the approach. In the garden, where permitted, photograph the studio windows from the path to show their size relative to the apartment rooms.",
+      "fr": "Place de Fürstenberg, restez à l’écart de la circulation pour cadrer l’approche. Au jardin, si la prise de vue est permise, photographiez depuis l’allée les fenêtres de l’atelier pour les comparer à celles de l’appartement.",
+      "zh": "在菲尔斯滕贝格广场避开车行区域拍入馆路径。花园内若准许拍摄，可从步道拍画室窗户，并与起居室窗户的尺度相比较。"
+    },
+    "specificQuestion": {
+      "en": "How do the apartment and studio fit together?",
+      "fr": "Comment l’appartement et l’atelier s’articulent-ils ?",
+      "zh": "画室与公寓之间怎样联系起来？"
+    },
+    "hours": {
+      "en": "Schedule the studio and apartment together on an opening day. Check the museum timetable before entering the courtyard at place de Fürstenberg; the square itself has no gallery timetable.",
+      "fr": "Prévoyez atelier et appartement le même jour d’ouverture. Consultez les horaires du musée avant de passer la cour, place de Fürstenberg ; la place ne suit pas les horaires des salles.",
+      "zh": "把画室和公寓排在同一开放日。穿过菲尔斯滕贝格广场的院落前请核对馆方时刻表；广场本身没有展厅开放时段。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "musee-luxembourg",
@@ -1252,7 +1620,23 @@
         "走博物馆专用入口，核对所预约展览的最晚入场时间。",
         "若还要散步，可参观后再去卢森堡公园的公共园门。博物馆入场时间以布展日程为准。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "On rue de Vaugirard frame the exhibition entrance and current poster as a record of which show you saw. In the galleries, consult that exhibition’s photography rules before choosing a wide installation view or a detail.",
+      "fr": "Rue de Vaugirard, cadrez l’entrée et l’affiche pour garder la trace de l’exposition visitée. Dans les salles, consultez le règlement propre à cette exposition avant de choisir vue d’ensemble ou détail.",
+      "zh": "在沃吉拉尔街把入口与展览海报一并拍下，日后能确认看到的是哪次特展。进入展厅后先读本次展览的摄影规则，再决定拍展厅全景还是作品细节。"
+    },
+    "specificQuestion": {
+      "en": "Will I always see the same collection here?",
+      "fr": "Y voit-on toujours la même collection ?",
+      "zh": "每次到这里都会看到同一批藏品吗？"
+    },
+    "hours": {
+      "en": "Check the dates of the exhibition first, then the day-specific slots on the museum calendar. Use the rue de Vaugirard entrance on your ticket; the Luxembourg garden gates have separate hours.",
+      "fr": "Vérifiez d’abord les dates de l’exposition, puis les créneaux du jour sur le calendrier du musée. Suivez l’entrée rue de Vaugirard portée sur le billet ; le jardin a ses propres horaires.",
+      "zh": "先确认展期，再查看选定日期的入场时段。按门票找到沃吉拉尔街入口；卢森堡公园园门的开放时间另计。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "musee-zadkine",
@@ -1307,7 +1691,23 @@
         "找100 bis号，经过100号后继续找下一处门牌。工作室在当天开放路线内的话可先去。",
         "园路允许时绕看庭院雕塑，再回阿萨斯街，继续向蒙帕纳斯大道走。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the garden path photograph the outline of a sculpture against foliage. Where interior photography is allowed, change to a close, oblique view of carved surfaces so tool marks cast small shadows.",
+      "fr": "Depuis l’allée du jardin, détachez la silhouette d’une sculpture sur les feuillages. Dans les espaces intérieurs où la photo est permise, cadrez ensuite de biais les surfaces taillées pour faire ressortir les traces d’outil.",
+      "zh": "在花园步道上用枝叶衬出雕塑轮廓。馆内若准许摄影，可换斜角近拍雕刻表面，让工具留下的痕迹显出细小阴影。"
+    },
+    "specificQuestion": {
+      "en": "How can I compare sculptures in the house and garden?",
+      "fr": "Comment comparer les sculptures de l’atelier et du jardin ?",
+      "zh": "如何对比室内与花园中的雕塑？"
+    },
+    "hours": {
+      "en": "Tuesday–Sunday 10:00–18:00. Arrive before the late-afternoon closure of the ticket desk; allow time to finish the rooms before the building closes.",
+      "fr": "Du mardi au dimanche, 10 h–18 h. Arrivez avant la fermeture de la caisse en fin d’après-midi et prévoyez de terminer les salles avant la fermeture du bâtiment.",
+      "zh": "周二至周日10:00至18:00开放。售票处在傍晚先行关闭，请提早抵达，并在整栋建筑闭馆前看完展厅。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "memorial-shoah",
@@ -1362,7 +1762,23 @@
         "从17号入内，先给姓名墙和墓室留出安静停留的时间，再看展览。",
         "查档案要单独核对开放规则。团体须预约，个人访客可免费入场。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From rue Geoffroy-l’Asnier locate the memorial entrance without pointing the camera at screening staff. At the Wall of Names follow the memorial’s instructions and leave room for people finding a relative’s inscription.",
+      "fr": "Rue Geoffroy-l’Asnier, repérez l’entrée sans viser le personnel de sécurité. Au Mur des Noms, suivez les consignes et laissez la place aux personnes venues chercher l’inscription d’un proche.",
+      "zh": "在若弗鲁瓦－拉斯尼耶街辨认入口，镜头避开安检人员。在姓名墙旁遵循馆方指引，为前来寻找亲属姓名的人留出空间。"
+    },
+    "specificQuestion": {
+      "en": "Which stops should I allow time for before the exhibition?",
+      "fr": "Que prévoir avant d’aborder l’exposition historique ?",
+      "zh": "参观历史展前该为哪些空间留出时间？"
+    },
+    "hours": {
+      "en": "Sunday–Friday from 10:00. Saturday is closed. Check the closing time for a Thursday evening or the eve of a holiday; the memorial publishes specific exceptions.",
+      "fr": "Du dimanche au vendredi à partir de 10 h, fermé le samedi. Vérifiez la fermeture pour un jeudi soir ou une veille de fête ; le mémorial publie les exceptions.",
+      "zh": "周日至周五10:00起开放，周六闭馆。若计划周四晚间或节日前夕到访，应查看馆方针对该日期公布的闭馆时间。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "maison-europeenne-photographie",
@@ -1373,7 +1789,7 @@
     },
     "address": "5/7 rue de Fourcy, 75004",
     "kind": "mep",
-    "source": "https://www.paris.fr/lieux/maison-europeenne-de-la-photographie-19189",
+    "source": "https://www.mep-fr.org/venir/",
     "minutes": 75,
     "history": {
       "en": "The MEP presents changing photography exhibitions in a historic Marais mansion.",
@@ -1417,7 +1833,23 @@
         "从5／7号进入，先看楼层图，找主展与可能独立开放的工作室展区。",
         "出馆后可向北走到圣保罗，也可回河岸，经玛丽桥到圣路易岛。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From rue de Fourcy frame the entrance signage to record the programme on view. At the first gallery threshold, check the exhibition rules before including the way prints are hung or a projection fills the room.",
+      "fr": "Rue de Fourcy, cadrez la signalétique de l’entrée pour garder trace du programme. Au seuil de la première galerie, vérifiez les consignes avant de photographier l’accrochage ou la place qu’occupe une projection.",
+      "zh": "在富尔西街拍入口标识，记录当天展览主题。在第一间展厅门口查看摄影规定，再考虑拍作品陈列方式或投影与整个展厅的空间关系。"
+    },
+    "specificQuestion": {
+      "en": "What changes from one photography exhibition to another?",
+      "fr": "Que comparer entre deux espaces d’exposition ?",
+      "zh": "不同摄影展厅有哪些陈列差异值得看？"
+    },
+    "hours": {
+      "en": "For the exhibition through 17 January 2027, Wednesday and Friday 11:00–20:00, Thursday 11:00–22:00 and weekends 10:00–20:00. Check the next programme for later dates.",
+      "fr": "Pour l’exposition jusqu’au 17 janvier 2027 : mercredi et vendredi 11 h–20 h, jeudi 11 h–22 h, week-end 10 h–20 h. Après cette date, consultez la programmation suivante.",
+      "zh": "本期展览至2027年1月17日：周三、周五11:00至20:00，周四11:00至22:00，周末10:00至20:00。之后日期请查看下一期展览安排。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "musee-carnavalet",
@@ -1472,7 +1904,23 @@
         "先看旧招牌，再在导览图上选一个时期，沿路线参观两座府邸。",
         "出馆前可在开放的庭院稍停，看看旧建筑的立面，再回到玛黑区街道。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "In the courtyard frame the façade across the open space to read it as a former residence. In the shop-sign galleries, where photography is permitted, stand to one side and include the brackets that once projected into the street.",
+      "fr": "Dans la cour, cadrez la façade en prenant du recul pour lire l’ancien hôtel particulier. Dans les salles des enseignes, si les photos sont admises, décalez-vous pour montrer les potences autrefois suspendues sur la rue.",
+      "zh": "在院子里后退取景，拍出昔日宅邸正面的尺度。商店招牌展区若准许摄影，可站到侧面，把原来向街道伸出的托架也拍进去。"
+    },
+    "specificQuestion": {
+      "en": "Where should I start if I only have time for one part of Carnavalet?",
+      "fr": "Par où commencer si je dois choisir une partie du musée ?",
+      "zh": "时间只够看一部分时，可以从哪里开始？"
+    },
+    "hours": {
+      "en": "Tuesday–Sunday 10:00–18:00. Arrive before the late-afternoon closure of the ticket desk; allow time to finish the rooms before the building closes.",
+      "fr": "Du mardi au dimanche, 10 h–18 h. Arrivez avant la fermeture de la caisse en fin d’après-midi et prévoyez de terminer les salles avant la fermeture du bâtiment.",
+      "zh": "周二至周日10:00至18:00开放。售票处在傍晚先行关闭，请提早抵达，并在整栋建筑闭馆前看完展厅。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "maison-victor-hugo",
@@ -1483,7 +1931,7 @@
     },
     "address": "6 place des Vosges, 75004",
     "kind": "parismusees",
-    "source": "https://www.maisonsvictorhugo.paris.fr/",
+    "source": "https://www.maisonsvictorhugo.paris.fr/paris/votre-visite/informations-pratiques",
     "minutes": 50,
     "history": {
       "en": "Victor Hugo lived in this corner house on the Place des Vosges from 1832 to 1848.",
@@ -1527,7 +1975,23 @@
         "按参观标识上楼，依次看公寓各室；临窗区域开放时可从窗边看广场。",
         "出馆后穿过广场中央步道，回望刚才参观的那个街角。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "Frame the arcades from outside number 6 before going upstairs. Inside, where permitted, use a doorway to frame one of the reconstructed rooms; avoid standing in the threshold when others are passing.",
+      "fr": "Cadrez les arcades depuis le numéro 6 avant de monter. À l’intérieur, si les consignes le permettent, utilisez une porte pour encadrer une pièce reconstituée sans bloquer le passage.",
+      "zh": "上楼前从6号门外拍拱廊。馆内若允许，以门框为取景框拍一间复原室，随时让出门口供其他访客通行。"
+    },
+    "specificQuestion": {
+      "en": "What should I look for in the reconstructed apartment?",
+      "fr": "Que regarder dans l’appartement reconstitué ?",
+      "zh": "复原公寓中该留意哪些细节？"
+    },
+    "hours": {
+      "en": "Tuesday–Sunday 10:00–18:00. Arrive before the late-afternoon closure of the ticket desk; allow time to finish the rooms before the building closes.",
+      "fr": "Du mardi au dimanche, 10 h–18 h. Arrivez avant la fermeture de la caisse en fin d’après-midi et prévoyez de terminer les salles avant la fermeture du bâtiment.",
+      "zh": "周二至周日10:00至18:00开放。售票处在傍晚先行关闭，请提早抵达，并在整栋建筑闭馆前看完展厅。"
+    },
+    "stayArea": 4
   },
   {
     "slug": "musee-orsay",
@@ -1582,7 +2046,23 @@
         "先看旧站大厅，再按楼层图挑选馆藏，并找通往楼上时钟的位置。",
         "从广场出馆，若去杜乐丽花园，可经利奥波德－塞达尔·桑戈尔人行桥过河。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "From the entrance level frame the nave down its long axis to recall the railway platforms. On an accessible upper level, look back into the hall to compare the scale of the figures below with the station roof.",
+      "fr": "Du niveau d’entrée, cadrez la nef dans sa longueur pour rappeler les quais ferroviaires. À un niveau supérieur ouvert, revenez visuellement sur la salle pour comparer les silhouettes en bas et la toiture de la gare.",
+      "zh": "从入口层沿中央大厅纵轴取景，让人联想到原来的站台。登上开放的上层后回望大厅，以下方人影衬托车站屋顶的高度。"
+    },
+    "specificQuestion": {
+      "en": "Which space still reads as a railway station?",
+      "fr": "Dans quel espace reconnaît-on encore l’ancienne gare ?",
+      "zh": "馆内哪里最容易辨认出旧火车站？"
+    },
+    "hours": {
+      "en": "Tuesday–Sunday 09:30–18:00 with Thursday evening opening until 21:45. On ordinary days entry stops at 17:00 and galleries start closing at 17:30.",
+      "fr": "Du mardi au dimanche, 9 h 30–18 h, avec nocturne le jeudi jusqu’à 21 h 45. Les jours ordinaires, dernière entrée à 17 h et fermeture progressive des salles dès 17 h 30.",
+      "zh": "周二至周日9:30至18:00开放，周四延长至21:45。普通开放日17:00停止入馆，17:30起陆续清场。"
+    },
+    "stayArea": 2
   },
   {
     "slug": "grande-galerie-evolution",
@@ -1637,6 +2117,22 @@
         "持展馆门票入内，先到动物队列所在楼层近看，再上楼从栏边比较。",
         "安排时间看2层濒危与灭绝物种展室，离馆后可走植物园公共步道。"
       ]
-    }
+    },
+    "shoot": {
+      "en": "On the lower floor place yourself to one side of the animal procession to see overlapping bodies. From an open upper balcony, take in the full line and the gallery roof without leaning over the rail.",
+      "fr": "Au niveau bas, placez-vous sur le côté du cortège animal pour distinguer les silhouettes qui se superposent. Depuis un balcon supérieur ouvert, cadrez l’ensemble de la procession et la verrière sans vous pencher.",
+      "zh": "在底层站到动物队列侧面，观察重叠的躯体轮廓。再从开放的上层回廊拍整个队列和馆顶，勿探出栏杆。"
+    },
+    "specificQuestion": {
+      "en": "Is the view better from the floor or the balcony?",
+      "fr": "Faut-il voir le cortège d’en bas ou du balcon ?",
+      "zh": "在底层还是回廊看动物队列更好？"
+    },
+    "hours": {
+      "en": "10:00–18:00 except Tuesdays. The ticket desks close an hour before the gallery; closed on 1 January, 1 May and 25 December.",
+      "fr": "De 10 h à 18 h sauf le mardi. Les caisses ferment une heure avant la galerie ; fermeture les 1er janvier, 1er mai et 25 décembre.",
+      "zh": "除周二外10:00至18:00开放，售票处提前一小时关闭。1月1日、5月1日及12月25日闭馆。"
+    },
+    "stayArea": 1
   }
 ]

@@ -1,3 +1,4 @@
+import stayAreas from './paris-stay-areas.json';
 import newPlaces from './nearby-paris.json';
 
 type Locale = 'en' | 'fr' | 'zh';
@@ -25,6 +26,7 @@ const copy = {
   en: {
     about: 'About', route: 'Approach and entrance', see: 'What to see on site',
     history: 'History and details to look for', walk: 'Suggested route', backgroundSource: 'Historical and site reference',
+    facts: 'At a glance', address: 'Street entrance', duration: 'Time on site', operator: 'Site management', hours: 'Opening hours', admission: 'Admission and access', angles: 'Two photography positions', stay: 'Where to stay',
     plan: 'Hours, admission and access', sources: 'Official visitor information',
     minutes: (time: number) => `Suggested time: ${time} minutes.`,
     visit: 'Check the official schedule for entry times, reservation requirements and the current admission policy.',
@@ -42,6 +44,7 @@ const copy = {
   fr: {
     about: 'À propos de', route: 'Comment rejoindre l’entrée', see: 'À observer sur place',
     history: 'Histoire et détails à observer', walk: 'Parcours conseillé', backgroundSource: 'Source historique et repères sur le site',
+    facts: 'Repères pratiques', address: 'Adresse d’entrée', duration: 'Temps sur place', operator: 'Gestion du site', hours: 'Horaires', admission: 'Tarifs et accès', angles: 'Deux points de vue photographiques', stay: 'Où séjourner',
     plan: 'Horaires, tarifs et accès', sources: 'Informations officielles aux visiteurs',
     minutes: (time: number) => `Prévoyez environ ${time} minutes.`,
     visit: 'Consultez les informations officielles pour les heures d’entrée, les éventuelles réservations et les tarifs en vigueur.',
@@ -59,6 +62,7 @@ const copy = {
   zh: {
     about: '关于', route: '步行与入口', see: '现场看点',
     history: '历史及现场观察', walk: '建议游览路线', backgroundSource: '历史与现场资料',
+    facts: '基本资料', address: '街道入口', duration: '建议停留', operator: '管理单位', hours: '开放时间', admission: '门票与入场条件', angles: '两处拍照机位', stay: '住宿区位',
     plan: '开放时间、费用与到访条件', sources: '官方访客资料',
     minutes: (time: number) => `建议预留 ${time} 分钟。`,
     visit: '请核对官方公布的入场时段、预约要求与现行票价。',
@@ -83,20 +87,26 @@ export function getParisVisit(place: ParisPlace, locale: Locale) {
   const access = place.access?.[locale] ?? (place.kind === 'city' ? labels.garden
     : place.kind === 'closed' ? labels.closed
     : place.kind === 'bridge' ? labels.street : labels.visit);
+  const specificAnswer = place.slug === 'square-paul-langevin' || place.slug === 'square-vert-galant' || place.slug === 'musee-prefecture-police' ? access : place.detail[locale];
   const visit = `${labels.minutes(place.minutes)} ${access}`;
   return {
     labels,
+    time: labels.minutes(place.minutes),
+    hours: place.hours[locale],
     management: `${operators[place.kind][locale]} · ${publicSpace ? labels.publicManager : labels.manager}`,
     sections: [
       { heading: labels.history, content: place.background[locale] },
       { heading: labels.route, content: place.arrival[locale] },
       { heading: labels.see, content: place.detail[locale] },
       { heading: labels.walk, steps: place.walkSteps[locale] },
-      { heading: labels.plan, content: visit },
+      { heading: labels.hours, content: place.hours[locale] },
+      { heading: labels.admission, content: access },
+      { heading: labels.angles, content: place.shoot[locale] },
+      { heading: labels.stay, content: stayAreas[place.stayArea][locale] },
     ],
     faq: [
       { question: labels.arrivalQuestion(name), answer: place.arrival[locale] },
-      { question: labels.detailQuestion(name), answer: place.detail[locale] },
+      { question: place.specificQuestion[locale], answer: specificAnswer },
       { question: labels.accessQuestion(name), answer: visit },
     ],
   };
