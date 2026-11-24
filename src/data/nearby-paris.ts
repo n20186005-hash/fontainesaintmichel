@@ -24,6 +24,7 @@ const operators: Record<string, Record<Locale, string>> = {
 const copy = {
   en: {
     about: 'About', route: 'Approach and entrance', see: 'What to see on site',
+    history: 'History and details to look for', walk: 'Suggested route', backgroundSource: 'Historical and site reference',
     plan: 'Hours, admission and access', sources: 'Official visitor information',
     minutes: (time: number) => `Suggested time: ${time} minutes.`,
     visit: 'Check the official schedule for entry times, reservation requirements and the current admission policy.',
@@ -40,6 +41,7 @@ const copy = {
   },
   fr: {
     about: 'À propos de', route: 'Comment rejoindre l’entrée', see: 'À observer sur place',
+    history: 'Histoire et détails à observer', walk: 'Parcours conseillé', backgroundSource: 'Source historique et repères sur le site',
     plan: 'Horaires, tarifs et accès', sources: 'Informations officielles aux visiteurs',
     minutes: (time: number) => `Prévoyez environ ${time} minutes.`,
     visit: 'Consultez les informations officielles pour les heures d’entrée, les éventuelles réservations et les tarifs en vigueur.',
@@ -56,6 +58,7 @@ const copy = {
   },
   zh: {
     about: '关于', route: '步行与入口', see: '现场看点',
+    history: '历史及现场观察', walk: '建议游览路线', backgroundSource: '历史与现场资料',
     plan: '开放时间、费用与到访条件', sources: '官方访客资料',
     minutes: (time: number) => `建议预留 ${time} 分钟。`,
     visit: '请核对官方公布的入场时段、预约要求与现行票价。',
@@ -85,8 +88,10 @@ export function getParisVisit(place: ParisPlace, locale: Locale) {
     labels,
     management: `${operators[place.kind][locale]} · ${publicSpace ? labels.publicManager : labels.manager}`,
     sections: [
+      { heading: labels.history, content: place.background[locale] },
       { heading: labels.route, content: place.arrival[locale] },
       { heading: labels.see, content: place.detail[locale] },
+      { heading: labels.walk, steps: place.walkSteps[locale] },
       { heading: labels.plan, content: visit },
     ],
     faq: [

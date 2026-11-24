@@ -1,7 +1,7 @@
 import LEGACY_TOPICS from './legacy-topics';
 import { NEARBY_PLACES, NEARBY_SLUGS, NEARBY_TOPICS } from './nearby-directory';
 
-export type TopicSection = { heading: string; content: string };
+export type TopicSection = { heading: string } & ({ content: string } | { steps: string[] });
 export type TopicFaq = { question: string; answer: string };
 export type TopicContent = {
   title: string;

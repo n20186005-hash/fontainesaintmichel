@@ -3,7 +3,7 @@ import { getParisVisit } from '@/data/nearby-paris';
 import photoData from '@/data/nearby-paris-photos.json';
 import { useLocale } from 'next-intl';
 import { BASE_URL, localeUrl } from '@/lib/seo';
-import { getTopic, topicLocales, topicPath } from '@/data/topics';
+import { getTopic, topicLocales, topicPath, type TopicSection } from '@/data/topics';
 import { getNearbyPlace, nearbyCopy, nearbyMapQuery, NEARBY_PLACES } from '@/data/nearby-directory';
 
 type PlacePhoto = {
@@ -19,7 +19,7 @@ type TopicContent = {
   h1: string;
   updated: string;
   lead: string;
-  sections: Array<{ heading: string; content: string }>;
+  sections: TopicSection[];
   faq: Array<{ question: string; answer: string }>;
   nav: string;
   related?: string[];
@@ -139,7 +139,12 @@ export default function TopicPage({ slug }: { slug: string }) {
                 <>
                   <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{visit.management}</p>
                   <p className="text-sm leading-relaxed mt-2" style={{ color: 'var(--text-secondary)' }}>{nearbyPlace.visit.address} · Paris, France</p>
-                  <a className="text-sm underline" style={{ color: 'var(--accent)' }} href={nearbyPlace.visit.source}>{visit.labels.sources}</a>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                    <a className="text-sm underline" style={{ color: 'var(--accent)' }} href={nearbyPlace.visit.source}>{visit.labels.sources}</a>
+                    {nearbyPlace.visit.backgroundSource !== nearbyPlace.visit.source && (
+                      <a className="text-sm underline" style={{ color: 'var(--accent)' }} href={nearbyPlace.visit.backgroundSource}>{visit.labels.backgroundSource}</a>
+                    )}
+                  </div>
                 </>
               ) : nearbyPlace?.operator ? (
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -204,9 +209,15 @@ export default function TopicPage({ slug }: { slug: string }) {
               >
                 {section.heading}
               </h2>
-              <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                {section.content}
-              </p>
+              {'content' in section ? (
+                <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {section.content}
+                </p>
+              ) : (
+                <ol className="list-decimal space-y-2 pl-5 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {section.steps.map((step) => <li key={step}>{step}</li>)}
+                </ol>
+              )}
             </section>
           ))}
         </div>
