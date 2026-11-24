@@ -3,7 +3,7 @@ import { getParisVisit } from '@/data/nearby-paris';
 import photoData from '@/data/nearby-paris-photos.json';
 import { useLocale } from 'next-intl';
 import { BASE_URL, localeUrl } from '@/lib/seo';
-import { getTopic, topicLocales, topicPath, type TopicSection } from '@/data/topics';
+import { getTopic, topicLinkLabel, topicPath, type TopicSection } from '@/data/topics';
 import { getNearbyPlace, nearbyCopy, nearbyMapQuery, NEARBY_PLACES } from '@/data/nearby-directory';
 
 type PlacePhoto = {
@@ -42,9 +42,10 @@ export default function TopicPage({ slug }: { slug: string }) {
   const mapQuery = nearbyMapQuery(slug);
   const reviewsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
   const mapUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Fontaine Saint-Michel, Paris')}&destination=${encodeURIComponent(mapQuery)}&travelmode=walking`;
-  const related = (topic.related ?? []).filter(
-    (s) => s !== slug && topicLocales(s).includes(locale),
-  );
+  const related = (topic.related ?? []).flatMap((target) => {
+    const label = target !== slug && topicLinkLabel(target, locale);
+    return label ? [{ target, label }] : [];
+  });
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -278,22 +279,17 @@ export default function TopicPage({ slug }: { slug: string }) {
               {nearbyText.relatedTitle}
             </h2>
             <ul className="space-y-3">
-              {related.map((s) => {
-                const relEntry = getTopic(s);
-                const relContent = relEntry?.[locale] ?? relEntry?.en;
-                if (!relContent) return null;
-                return (
-                  <li key={s}>
+              {related.map(({ target, label }) => (
+                  <li key={target}>
                     <a
-                      href={`/${locale}/${s}`}
+                      href={`/${locale}/${target}`}
                       className="hover:underline"
                       style={{ color: 'var(--accent)' }}
                     >
-                      {relContent.nav}
+                      {label}
                     </a>
                   </li>
-                );
-              })}
+              ))}
             </ul>
           </section>
         )}

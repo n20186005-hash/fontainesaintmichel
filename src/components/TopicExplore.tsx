@@ -1,19 +1,16 @@
 import { useLocale } from 'next-intl';
 import { TOPIC_SLUGS } from '@/i18n/routing';
-import { getTopic, topicLocales, topicPath } from '@/data/topics';
+import { topicLinkLabel } from '@/data/topics';
 import { nearbyCopy } from '@/data/nearby-directory';
 
 export default function TopicExplore() {
   const locale = useLocale() as 'en' | 'fr' | 'zh';
   const nearbyText = nearbyCopy(locale);
 
-  const items = TOPIC_SLUGS.map((slug) => {
-    const entry = getTopic(slug);
-    if (!entry || !topicLocales(slug).includes(locale)) return null;
-    const content = entry[locale];
-    if (!content) return null;
-    return { slug, nav: content.nav };
-  }).filter(Boolean) as Array<{ slug: string; nav: string }>;
+  const items = TOPIC_SLUGS.flatMap((slug) => {
+    const nav = topicLinkLabel(slug, locale);
+    return nav ? [{ slug, nav }] : [];
+  });
 
   return (
     <section id="guides" className="section-padding" style={{ background: 'var(--bg-secondary)' }}>

@@ -2151,6 +2151,12 @@ export function getTopic(slug: string): TopicLocales | undefined {
   return { ...nearby, ...base, en: base?.en ?? nearby.en, fr: base?.fr ?? nearby.fr, zh: base?.zh ?? nearby.zh };
 }
 
+export function topicLinkLabel(slug: string, locale: 'en' | 'fr' | 'zh'): string | undefined {
+  if (!ALL_TOPIC_SLUGS.includes(slug) || !topicLocales(slug).includes(locale)) return;
+  const content = getTopic(slug)?.[locale];
+  return content?.nav?.trim() || content?.h1?.trim() || content?.title?.trim() || undefined;
+}
+
 export function topicLocales(slug: string): Array<'en' | 'fr' | 'zh'> {
   if (slug === 'nearby' || NEARBY_PLACES.some((place) => `nearby/${place.slug}` === slug)) return ['en', 'fr', 'zh'];
   const entry = TOPICS[slug];
