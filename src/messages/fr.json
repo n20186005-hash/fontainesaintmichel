@@ -242,6 +242,8 @@
     "openMaps": "Voir sur Google Maps"
   },
   "footer": {
+    "guideIndex": "Guides thématiques",
+    "nearbyIndex": "Sites à proximité",
     "rights": "© 2026 Association Indépendante de Recherche Touristique de la Fontaine Saint-Michel · Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation",

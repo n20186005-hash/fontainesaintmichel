@@ -242,6 +242,8 @@
     "openMaps": "在 Google Maps 查看"
   },
   "footer": {
+    "guideIndex": "专题指南",
+    "nearbyIndex": "周边景点",
     "rights": "© 2026 圣米歇尔喷泉独立旅游研究协会 · 保留所有权利。",
     "privacy": "隐私政策",
     "terms": "服务条款",

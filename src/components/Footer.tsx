@@ -1,22 +1,9 @@
-import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
-import { TOPIC_SLUGS } from '@/i18n/routing';
-import { getTopic, topicLocales } from '@/data/topics';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Footer() {
   const t = useTranslations('footer');
-  const tt = useTranslations('topics');
   const locale = useLocale();
   const prefix = `/${locale}`;
-  const loc = locale as 'en' | 'fr' | 'zh';
-  const visibleItems = TOPIC_SLUGS.filter((slug) => topicLocales(slug).includes(loc))
-    .map((slug) => {
-      const entry = getTopic(slug);
-      const nav = entry?.[loc]?.nav ?? entry?.en?.nav;
-      return nav ? { slug, nav } : null;
-    })
-    .filter(Boolean) as Array<{ slug: string; nav: string }>;
-
   return (
     <footer
       className="py-12 px-4 sm:px-6"
@@ -50,19 +37,12 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col gap-2 text-sm mt-4 sm:mt-0">
-            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
-              {tt('exploreTitle')}
-            </p>
-            {visibleItems.map(({ slug, nav }) => (
-              <a
-                key={slug}
-                href={`${prefix}/${slug}`}
-                style={{ color: 'var(--text-secondary)' }}
-                className="hover:underline"
-              >
-                {nav}
-              </a>
-            ))}
+            <a href={`${prefix}/#guides`} className="hover:underline" style={{ color: 'var(--text-secondary)' }}>
+              {t('guideIndex')}
+            </a>
+            <a href={`${prefix}/nearby`} className="hover:underline" style={{ color: 'var(--text-secondary)' }}>
+              {t('nearbyIndex')}
+            </a>
           </div>
           <div className="flex flex-wrap gap-4 text-sm mt-4 sm:mt-0">
             <a href={`${prefix}/privacy-policy`} style={{ color: 'var(--text-secondary)' }} className="hover:underline">

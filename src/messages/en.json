@@ -242,6 +242,8 @@
     "openMaps": "View on Google Maps"
   },
   "footer": {
+    "guideIndex": "Topic guides",
+    "nearbyIndex": "Nearby places",
     "rights": "© 2026 Fontaine Saint-Michel Independent Tourism Research Association · All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
